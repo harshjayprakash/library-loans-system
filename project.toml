@@ -6,3 +6,28 @@ version = "1.2.0.446"
 [java]
 jdk = "openjdk 17.0.6 lts"
 organisation = "adoptium eclipse temurin"
+
+[build]
+tool = "maven"
+source = 17
+target = 17
+
+[structure]
+source_dir = "src/main/java/**"
+resources_dir = "src/main/resources/**"
+build_dir = "target"
+
+[git]
+visibility = "private"
+
+[database]
+type = "mysql"
+driver = "com.mysql.cj.jdbc.Driver"
+url = "jdbc:mysql://localhost:3306/library"
+username = "root"
+password = "dbpassword"
+
+[dependencies]
+openjfx = "17.0.2"
+mysql_connector = "8.0.32"
+junit = "5.9.1"
