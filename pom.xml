@@ -38,6 +38,13 @@
       <version>17.0.2</version>
     </dependency>
 
+    <!-- MySQL Connector -->
+    <dependency>
+      <groupId>mysql</groupId>
+      <artifactId>mysql-connector-java</artifactId>
+      <version>8.0.32</version>
+    </dependency>
+
     <!-- JUnit   -->
     <dependency>
       <groupId>org.junit.jupiter</groupId>
@@ -51,6 +58,7 @@
       <version>${junit.version}</version>
       <scope>test</scope>
     </dependency>
+
   </dependencies>
 
   <build>
@@ -73,7 +81,7 @@
             <!-- Default configuration for running with: mvn clean javafx:run -->
             <id>default-cli</id>
             <configuration>
-              <mainClass>winchester.library/winchester.library.HelloApplication</mainClass>
+              <mainClass>winchester.library/winchester.library.Main</mainClass>
               <launcher>app</launcher>
               <jlinkZipName>app</jlinkZipName>
               <jlinkImageName>app</jlinkImageName>
