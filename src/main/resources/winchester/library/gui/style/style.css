@@ -37,14 +37,14 @@
 /* Control Styling: Toggle Buttons */
 #toggle-button {
     -fx-font-size: 14px;
-    -fx-background-color: -wl-colour-secondary-background;
+    -fx-background-color: -wl-colour-background-secondary;
     -fx-border-color: transparent transparent transparent transparent;
     -fx-border-width: 2px
 }
 
 #toggle-button:selected {
-    -fx-background-color: -wl-colour-primary-background;
-    -fx-border-color: transparent transparent transparent -fx-colour-accent;
+    -fx-background-color: -wl-colour-background-primary;
+    -fx-border-color: transparent transparent transparent -wl-colour-accent;
     -fx-border-width: 2px;
 }
 
