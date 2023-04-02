@@ -10,7 +10,7 @@ public class StylesheetManager {
         this.stylesheetPaths = new ArrayList<>();
     }
 
-    public StylesheetManager getInstance() {
+    public static StylesheetManager getInstance() {
         return StylesheetManager.instance;
     }
 
