@@ -27,4 +27,10 @@ public class StylesheetManager {
             System.out.println("Could not find stylesheet: " + path);
         }
     }
+
+    public void addMultipleStylesheets(String... paths) {
+        for (String path : paths) {
+            this.addStylesheet(path);
+        }
+    }
 }
