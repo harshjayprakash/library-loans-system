@@ -11,7 +11,7 @@ import javafx.stage.Stage;
 
 public class LoginView extends View {
 
-    private Stage parentWindow;
+    private final Stage parentWindow;
     private HBox buttonLayout;
     private Label descriptionLabel;
     private Label usernameLabel;
