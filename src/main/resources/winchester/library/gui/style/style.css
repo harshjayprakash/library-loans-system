@@ -14,6 +14,12 @@
     -wl-colour-accent-lighter: #2563EB;
 }
 
+/* Utility Ids */
+#text-bold {
+    -fx-font-weight: bold;
+}
+
+
 /* Component Styling */
 #header__page-label {
     -fx-font-size: 20px;
