@@ -35,7 +35,6 @@ public class LoginView extends View {
 
     @Override
     protected void initialiseLayouts() {
-        this.setPadding(new Insets(15));
         this.buttonLayout = new HBox();
         this.buttonLayout.setAlignment(Pos.CENTER_RIGHT);
         this.buttonLayout.setPadding(new Insets(15, 0, 0, 0));
