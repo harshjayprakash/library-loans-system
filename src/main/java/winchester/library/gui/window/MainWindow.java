@@ -1,5 +1,6 @@
 package winchester.library.gui.window;
 
+import javafx.geometry.Insets;
 import javafx.scene.input.MouseEvent;
 import winchester.library.gui.component.HeaderPane;
 import winchester.library.gui.component.SidePane;
@@ -34,6 +35,7 @@ public class MainWindow extends WindowBase {
         this.sidePane.setPrefWidth(150);
         this.statusPane = new StatusPane();
         this.viewsManager = new ViewsManager();
+        this.viewsManager.setPadding(new Insets(20));
     }
 
     private void bindEventHandlers() {
