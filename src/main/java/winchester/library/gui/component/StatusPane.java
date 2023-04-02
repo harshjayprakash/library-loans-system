@@ -26,7 +26,7 @@ public class StatusPane extends BorderPane {
         this.versionNumberLabel.setText("Version 1.2");
         this.databaseStatusLabel = new Label();
         this.databaseStatusLabel.setAlignment(Pos.CENTER_RIGHT);
-        this.databaseStatusLabel.setId("status-pane__database-status-label");
+        this.databaseStatusLabel.setId("link-label");
         this.databaseStatusLabel.setPadding(new Insets(5));
         this.databaseStatusLabel.setText("Database not connected");
         this.databaseStatusLabel.setTextAlignment(TextAlignment.RIGHT);
