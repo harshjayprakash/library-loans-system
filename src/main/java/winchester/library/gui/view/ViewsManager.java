@@ -20,7 +20,7 @@ public class ViewsManager extends BorderPane {
                     case LOGIN -> new LoginView(parentWindow);
                     case USERS -> new UsersView();
                     case ADD_ITEM -> new AddItemView();
-                    case REGISTER -> new RegisterView();
+                    case REGISTER -> new RegisterView(parentWindow);
                     case ADD_USER -> new AddUserView();
                     case CUSTOMERS -> new CustomerView();
                     case INVENTORY -> new InventoryView();
