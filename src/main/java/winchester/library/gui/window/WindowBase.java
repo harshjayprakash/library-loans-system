@@ -3,7 +3,7 @@ package winchester.library.gui.window;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
-import winchester.library.gui.style.StylesheetManager;
+import winchester.library.gui.style.StylesheetSetter;
 
 public abstract class WindowBase extends Stage {
     protected Scene scene;
@@ -17,12 +17,7 @@ public abstract class WindowBase extends Stage {
 
     private void initialiseScene(int weight, int height) {
         this.scene = new Scene(this.baseLayout, weight, height);
-    }
-
-    private void loadStylesheets() {
-        for (String path : StylesheetManager.getInstance().getStylesheetPaths()) {
-            this.scene.getStylesheets().add(path);
-        }
+        StylesheetSetter.getInstance().setStyle(this.scene);
     }
 
     protected abstract void initialiseLayouts();
