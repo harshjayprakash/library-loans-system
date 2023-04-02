@@ -37,7 +37,7 @@ public class MainWindow extends WindowBase {
     protected void addComponentsToStage() {
         this.baseLayout.setLeft(this.sidePane);
         this.baseLayout.setBottom(this.statusPane);
-        this.baseLayout.setTop(this.headerPane);
         this.baseLayout.setCenter(this.viewsManager);
+        this.viewsManager.setTop(this.headerPane);
     }
 }
