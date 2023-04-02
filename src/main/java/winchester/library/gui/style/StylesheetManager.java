@@ -1,6 +1,7 @@
 package winchester.library.gui.style;
 
 import java.util.ArrayList;
+import java.util.Objects;
 
 public class StylesheetManager {
     private final static StylesheetManager instance = new StylesheetManager();
@@ -19,6 +20,11 @@ public class StylesheetManager {
     }
 
     public void addStylesheet(String path) {
-        this.stylesheetPaths.add(path);
+        try {
+            this.stylesheetPaths.add(Objects.requireNonNull(getClass().getResource(path)).toExternalForm());
+        }
+        catch (NullPointerException exception) {
+            System.out.println("Could not find stylesheet: " + path);
+        }
     }
 }
