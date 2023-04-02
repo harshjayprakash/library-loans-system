@@ -1,5 +1,6 @@
 package winchester.library.gui.window;
 
+import javafx.scene.input.MouseEvent;
 import winchester.library.gui.component.HeaderPane;
 import winchester.library.gui.component.SidePane;
 import winchester.library.gui.component.StatusPane;
@@ -17,6 +18,7 @@ public class MainWindow extends WindowBase {
         super();
         this.initialiseLayouts();
         this.initialiseControls();
+        this.bindEventHandlers();
         this.addComponentsToStage();
     }
 
@@ -32,6 +34,19 @@ public class MainWindow extends WindowBase {
         this.sidePane.setPrefWidth(150);
         this.statusPane = new StatusPane();
         this.viewsManager = new ViewsManager();
+    }
+
+    private void bindEventHandlers() {
+        this.sidePane.getToggleGroup().getSelectedToggle().selectedProperty().addListener(
+                (value, toggle, newToggle) -> {
+                    this.headerPane.setPageTitle(this.sidePane.getSelectedToggleAsView());
+                    this.viewsManager.showView(this.sidePane.getSelectedToggleAsView(), this, null);
+                });
+        this.sidePane.getLogOutButton().addEventHandler(MouseEvent.MOUSE_CLICKED, event -> {
+            this.close();
+            IndividualViewWindow loginView = new IndividualViewWindow(Views.LOGIN, null);
+            loginView.show();
+        });
     }
 
     @Override
