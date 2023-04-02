@@ -1,14 +1,20 @@
 package winchester.library.impl.users;
 
 public abstract class User {
+    private final int identifier;
     private final String firstName;
     private final String lastName;
     private final String postalCode;
 
-    public User(String firstName, String lastName, String postalCode) {
+    public User(int identifier, String firstName, String lastName, String postalCode) {
+        this.identifier = identifier;
         this.firstName = firstName;
         this.lastName = lastName;
         this.postalCode = postalCode;
+    }
+
+    public int getIdentifier() {
+        return this.identifier;
     }
 
     public String getFirstName() {

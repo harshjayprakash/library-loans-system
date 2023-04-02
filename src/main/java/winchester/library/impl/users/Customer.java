@@ -6,8 +6,8 @@ public class Customer extends User {
     private int overdueFeesPence;
     private final ArrayList<?> loans;
 
-    public Customer(String firstName, String lastName, String postalCode) {
-        super(firstName, lastName, postalCode);
+    public Customer(int identifier, String firstName, String lastName, String postalCode) {
+        super(identifier, firstName, lastName, postalCode);
         this.overdueFeesPence = 0;
         this.loans = new ArrayList<>();
     }

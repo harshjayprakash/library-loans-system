@@ -5,9 +5,9 @@ public class Employee extends User {
     private String password;
     private EmployeeStatus status;
 
-    public Employee(String firstName, String lastName, String postalCode, String username, String password, 
-                    EmployeeStatus status) {
-        super(firstName, lastName, postalCode);
+    public Employee(int identifier, String firstName, String lastName, String postalCode, String username,
+                    String password, EmployeeStatus status) {
+        super(identifier, firstName, lastName, postalCode);
         this.username = username;
         this.password = password;
         this.status = status;
