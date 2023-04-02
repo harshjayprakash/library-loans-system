@@ -32,9 +32,10 @@ public class Customer extends User {
     public String toString() {
         return """
                 %s
+                Type: %s
                 Overdue Fees: £%.2f
                 Loans: null
-               """.formatted(super.toString(), this.getOverdueFeesAsPounds());
+               """.formatted(super.toString(), this.getType().toString(), this.getOverdueFeesAsPounds());
     }
 
     @Override
