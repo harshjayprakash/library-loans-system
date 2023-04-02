@@ -1,0 +1,38 @@
+.root {
+    /* Redefining default JavaFX Colours */
+    -fx-accent: #1E40AF;
+    -fx-focus-color: #1E40AF;
+    -fx-highlight-fill: #1E40AF;
+    -fx-font-size: 14px;
+
+    /* Custom CSS Variables */
+    -wl-colour-background-primary: #FFFFFF;
+    -wl-colour-background-secondary: #F1F5F9;
+    -wl-colour-foreground: #000000;
+    -wl-colour-accent: #1E3A8A;
+    -wl-colour-accent-darker: #1E3A8A;
+    -wl-colour-accent-lighter: #2563EB;
+}
+
+
+/* Component Styling */
+#header__page-label {
+    -fx-font-size: 20px;
+    -fx-font-weight: bold;
+    -fx-text-fill: -fx-colour-accent;
+}
+
+/* Control Styling: Buttons */
+#button-accent {
+    -fx-color: #1E40AF;
+    -fx-background: #1E40AF;
+    -fx-background-color: -fx-shadow-highlight-color, -fx-outer-border, -fx-inner-border, -fx-body-color
+}
+
+#button-accent:hover {
+    -fx-color: #2563eb;
+}
+
+#button-accent:pressed {
+    -fx-color: #1e3a8a;
+}
