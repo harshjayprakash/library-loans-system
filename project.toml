@@ -9,8 +9,6 @@ organisation = "adoptium eclipse temurin"
 
 [build]
 tool = "maven"
-source = 17
-target = 17
 
 [structure]
 source_dir = "src/main/java/**"
