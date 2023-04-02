@@ -6,8 +6,11 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.HBox;
 import javafx.stage.Stage;
+import winchester.library.gui.window.IndividualViewWindow;
+import winchester.library.gui.window.MainWindow;
 
 public class LoginView extends View {
 
@@ -74,7 +77,20 @@ public class LoginView extends View {
 
     @Override
     protected void bindEventHandlers() {
-
+        this.loginButton.addEventHandler(MouseEvent.MOUSE_CLICKED, event -> {
+            this.parentWindow.close();
+            MainWindow mainWindow = new MainWindow();
+            mainWindow.show();
+        });
+        this.registerButton.addEventHandler(MouseEvent.MOUSE_CLICKED, event -> {
+            this.parentWindow.close();
+            IndividualViewWindow registerView = new IndividualViewWindow(Views.REGISTER, null);
+            registerView.show();
+        });
+        this.databaseConfigurationLinkLabel.addEventHandler(MouseEvent.MOUSE_CLICKED, event -> {
+            IndividualViewWindow databaseConfigView = new IndividualViewWindow(Views.DATABASE_CONFIGURATION, null);
+            databaseConfigView.show();
+        });
     }
 
     @Override
