@@ -22,8 +22,6 @@ public abstract class WindowBase extends Stage {
         this.setScene(scene);
     }
 
-    protected abstract void initialiseLayouts();
-
     protected abstract void initialiseControls();
 
     protected abstract void addComponentsToStage();

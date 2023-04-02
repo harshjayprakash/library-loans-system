@@ -21,7 +21,6 @@ public class IndividualViewWindow extends WindowBase {
         this.addComponentsToStage();
     }
 
-    @Override
     protected void initialiseLayouts() {
         this.baseLayout.setPadding(new Insets(15));
     }

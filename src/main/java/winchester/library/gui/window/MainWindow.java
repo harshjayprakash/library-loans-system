@@ -17,15 +17,9 @@ public class MainWindow extends WindowBase {
 
     public MainWindow() {
         super();
-        this.initialiseLayouts();
         this.initialiseControls();
         this.bindEventHandlers();
         this.addComponentsToStage();
-    }
-
-    @Override
-    protected void initialiseLayouts() {
-
     }
 
     @Override
