@@ -1,7 +1,7 @@
 [project]
 name = "Library Loans System"
 main_function = "winchester.library.Main.main"
-version = "1.2.0.446"
+version = "1.2.0.470"
 
 [java]
 jdk = "openjdk 17.0.6 lts"
