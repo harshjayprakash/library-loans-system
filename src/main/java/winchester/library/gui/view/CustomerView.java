@@ -17,11 +17,6 @@ public class CustomerView extends View {
     }
 
     @Override
-    protected void bindEventHandlers() {
-
-    }
-
-    @Override
     protected void addComponentsToView() {
 
     }

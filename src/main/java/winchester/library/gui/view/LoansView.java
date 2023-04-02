@@ -17,11 +17,6 @@ public class LoansView extends View {
     }
 
     @Override
-    protected void bindEventHandlers() {
-
-    }
-
-    @Override
     protected void addComponentsToView() {
 
     }

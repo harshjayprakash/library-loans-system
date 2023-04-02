@@ -17,8 +17,6 @@ public abstract class View extends VBox {
 
     protected abstract void initialiseControls();
 
-    protected abstract void bindEventHandlers();
-
     protected abstract void addComponentsToView();
 
 }

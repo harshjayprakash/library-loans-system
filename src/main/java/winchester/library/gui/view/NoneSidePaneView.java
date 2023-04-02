@@ -4,6 +4,9 @@ public class NoneSidePaneView extends View {
 
     public NoneSidePaneView() {
         super();
+        this.initialiseLayouts();
+        this.initialiseControls();
+        this.addComponentsToView();
     }
 
     @Override
@@ -13,11 +16,6 @@ public class NoneSidePaneView extends View {
 
     @Override
     protected void initialiseControls() {
-
-    }
-
-    @Override
-    protected void bindEventHandlers() {
 
     }
 
