@@ -1,8 +1,6 @@
 package winchester.library.gui.window;
 
 import javafx.geometry.Insets;
-import javafx.scene.layout.BorderPane;
-import javafx.scene.layout.VBox;
 import winchester.library.gui.component.HeaderPane;
 import winchester.library.gui.view.Views;
 import winchester.library.gui.view.ViewsManager;
