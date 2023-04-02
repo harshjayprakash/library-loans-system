@@ -10,7 +10,7 @@ public class Main extends Application {
 
     @Override
     public void start(Stage stage) {
-        StylesheetManager.getInstance().addStylesheet("base.css");
+        StylesheetManager.getInstance().addStylesheet("style.css");
         IndividualViewWindow loginWindow = new IndividualViewWindow(Views.LOGIN, null);
         loginWindow.show();
     }
