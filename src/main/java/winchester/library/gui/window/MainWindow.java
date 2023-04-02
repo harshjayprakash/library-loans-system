@@ -29,6 +29,7 @@ public class MainWindow extends WindowBase {
     protected void initialiseControls() {
         this.headerPane = new HeaderPane(Views.NONE_WITH_SIDEBAR, Views.NONE);
         this.sidePane = new SidePane(null);
+        this.sidePane.setPrefWidth(150);
         this.statusPane = new StatusPane();
         this.viewsManager = new ViewsManager();
     }
