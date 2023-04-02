@@ -2,22 +2,24 @@ package winchester.library.gui.window;
 
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
 import winchester.library.gui.style.StylesheetSetter;
 
 public abstract class WindowBase extends Stage {
     protected Scene scene;
-    protected Parent baseLayout;
+    protected BorderPane baseLayout;
 
-    public WindowBase(Parent baseLayout, int weight, int height) {
+    public WindowBase() {
         super();
-        this.baseLayout = baseLayout;
-        this.initialiseScene(weight, height);
+        this.initialiseScene();
     }
 
-    private void initialiseScene(int weight, int height) {
-        this.scene = new Scene(this.baseLayout, weight, height);
+    private void initialiseScene() {
+        this.baseLayout = new BorderPane();
+        this.scene = new Scene(this.baseLayout, 800, 600);
         StylesheetSetter.getInstance().setStyle(this.scene);
+        this.setScene(scene);
     }
 
     protected abstract void initialiseLayouts();
