@@ -26,6 +26,8 @@ public class LoginView extends View {
         super();
         this.parentWindow = parentWindow;
         this.parentWindow.setTitle("Login In - Winchester Library Services");
+        this.parentWindow.setWidth(440);
+        this.parentWindow.setHeight(315);
         this.initialiseLayouts();
         this.initialiseControls();
         this.initialiseConstraints();
@@ -67,7 +69,7 @@ public class LoginView extends View {
 
     private void initialiseConstraints() {
         HBox.setMargin(this.loginButton, new Insets(0, 0, 0, 10));
-        HBox.setMargin(this.registerButton, new Insets(0, 0, 0, 150));
+        HBox.setMargin(this.registerButton, new Insets(0, 0, 0, 20));
     }
 
     @Override
