@@ -19,6 +19,14 @@
     -fx-font-weight: bold;
 }
 
+#background-primary {
+    -fx-background-color: -fx-colour-background-primary;
+}
+
+#background-secondary {
+    -fx-background-color: -fx-colour-background-secondary;
+}
+
 
 /* Component Styling */
 #header__page-label {
