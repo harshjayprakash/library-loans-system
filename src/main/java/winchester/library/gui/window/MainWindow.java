@@ -1,11 +1,12 @@
 package winchester.library.gui.window;
 
-import javafx.scene.layout.BorderPane;
-
 public class MainWindow extends WindowBase {
 
     public MainWindow() {
-        super(new BorderPane(), 800, 600);
+        super();
+        this.initialiseLayouts();
+        this.initialiseControls();
+        this.addComponentsToStage();
     }
 
     @Override
