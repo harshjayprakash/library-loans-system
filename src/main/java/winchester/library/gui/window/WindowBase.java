@@ -6,7 +6,10 @@ import javafx.stage.Stage;
 import winchester.library.gui.style.StylesheetManager;
 
 public abstract class WindowBase extends Stage {
-    public WindowBase() {
+    protected Scene scene;
+    protected Parent baseLayout;
+
+    public WindowBase(Parent baseLayout, int weight, int height) {
         super();
     }
 }
