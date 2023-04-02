@@ -14,7 +14,6 @@
     -wl-colour-accent-lighter: #2563EB;
 }
 
-
 /* Component Styling */
 #header__page-label {
     -fx-font-size: 20px;
@@ -35,4 +34,22 @@
 
 #button-accent:pressed {
     -fx-color: #1e3a8a;
+}
+
+/* Control Styling: Toggle Buttons */
+#toggle-button {
+    -fx-font-size: 14px;
+    -fx-background-color: -fx-colour-secondary-background;
+    -fx-border-color: transparent transparent transparent transparent;
+    -fx-border-width: 2px
+}
+
+#toggle-button:selected {
+    -fx-background-color: -fx-colour-primary-background;
+    -fx-border-color: transparent transparent transparent -fx-colour-accent;
+    -fx-border-width: 2px;
+}
+
+#toggle-button:hover {
+    -fx-underline: true;
 }
