@@ -41,7 +41,8 @@ public class Employee extends User {
                 Username: %s
                 Password: %s
                 Status: %s
-               """.formatted(super.toString(), this.username, this.password, this.status.toString());
+               """.formatted(super.toString(), this.getType().toString(), this.username, this.password,
+                this.status.toString());
     }
 
     @Override
