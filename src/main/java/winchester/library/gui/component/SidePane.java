@@ -35,6 +35,7 @@ public class SidePane extends VBox {
         this.setPadding(new Insets(0, 0, 0, 20));
         this.setSpacing(5);
         this.setFillWidth(true);
+        this.setId("background-secondary");
         this.initialiseLayouts();
         this.initialiseControls();
         this.initialiseConstraints();

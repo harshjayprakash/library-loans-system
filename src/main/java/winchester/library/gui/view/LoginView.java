@@ -31,6 +31,7 @@ public class LoginView extends View {
         this.parentWindow.setTitle("Login In - Winchester Library Services");
         this.parentWindow.setWidth(440);
         this.parentWindow.setHeight(315);
+        this.setId("background-primary");
         this.initialiseLayouts();
         this.initialiseControls();
         this.initialiseConstraints();

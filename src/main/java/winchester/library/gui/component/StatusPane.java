@@ -17,6 +17,7 @@ public class StatusPane extends BorderPane {
     public StatusPane() {
         super();
         this.setPadding(new Insets(5));
+        this.setId("background-primary");
         this.initialiseControls();
         this.loadStylesheets();
         this.bindEventHandlers();

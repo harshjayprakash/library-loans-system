@@ -16,6 +16,7 @@ public class HeaderPane extends VBox {
         super();
         this.page = page;
         this.parentPage = parentPage;
+        this.setId("background-primary");
         StylesheetSetter.getInstance().setStyle(this);
         this.setPadding(new Insets(0, 0, 10, 0));
         this.initialiseControls();
