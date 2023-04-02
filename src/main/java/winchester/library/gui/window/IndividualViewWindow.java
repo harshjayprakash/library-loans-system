@@ -2,8 +2,8 @@ package winchester.library.gui.window;
 
 import javafx.scene.layout.VBox;
 
-public class LoginWindow extends WindowBase {
-    public LoginWindow() {
+public class IndividualViewWindow extends WindowBase {
+    public IndividualViewWindow() {
         super(new VBox(), 450, 700);
     }
 
