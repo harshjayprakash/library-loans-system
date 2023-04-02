@@ -5,6 +5,7 @@ import javafx.scene.input.MouseEvent;
 import winchester.library.gui.component.HeaderPane;
 import winchester.library.gui.component.SidePane;
 import winchester.library.gui.component.StatusPane;
+import winchester.library.gui.view.NoneSidePaneView;
 import winchester.library.gui.view.Views;
 import winchester.library.gui.view.ViewsManager;
 
@@ -51,5 +52,6 @@ public class MainWindow extends WindowBase {
         this.baseLayout.setBottom(this.statusPane);
         this.baseLayout.setCenter(this.viewsManager);
         this.viewsManager.setTop(this.headerPane);
+        this.viewsManager.setCenter(new NoneSidePaneView());
     }
 }
