@@ -37,7 +37,7 @@ public class MainWindow extends WindowBase {
     }
 
     private void bindEventHandlers() {
-        this.sidePane.getToggleGroup().getSelectedToggle().selectedProperty().addListener(
+        this.sidePane.getToggleGroup().selectedToggleProperty().addListener(
                 (value, toggle, newToggle) -> {
                     this.headerPane.setPageTitle(this.sidePane.getSelectedToggleAsView());
                     this.viewsManager.showView(this.sidePane.getSelectedToggleAsView(), this, null);
