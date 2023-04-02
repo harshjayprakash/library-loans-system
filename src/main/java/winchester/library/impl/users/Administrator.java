@@ -7,6 +7,11 @@ public class Administrator extends Employee {
     }
 
     @Override
+    public String toString() {
+        return super.toString();
+    }
+
+    @Override
     public UserType getType() {
         return UserType.ADMINISTRATOR;
     }
