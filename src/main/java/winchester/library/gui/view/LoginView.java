@@ -57,7 +57,7 @@ public class LoginView extends View {
         this.passwordField = new PasswordField();
         this.databaseConfigurationLinkLabel = new Label();
         this.databaseConfigurationLinkLabel.setText("Configure Database");
-        this.databaseConfigurationLinkLabel.setStyle("-fx-underline: true");
+        this.databaseConfigurationLinkLabel.setId("link-label");
         this.loginButton = new Button();
         this.loginButton.setText("Log In");
         this.loginButton.setId("button-accent");
