@@ -6,6 +6,9 @@ import winchester.library.gui.style.StylesheetManager;
 import winchester.library.gui.view.Views;
 import winchester.library.gui.window.IndividualViewWindow;
 
+/**
+ * The Main class specifies the entrypoint into the program, inheriting JavaFX Application to provide a start point.
+ */
 public class Main extends Application {
 
     @Override
