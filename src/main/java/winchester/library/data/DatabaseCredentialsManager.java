@@ -1,13 +1,13 @@
 package winchester.library.data;
 
-public class DatabaseConnectionManager {
+public class DatabaseCredentialsManager {
 
-    private final static DatabaseConnectionManager instance = new DatabaseConnectionManager();
+    private final static DatabaseCredentialsManager instance = new DatabaseCredentialsManager();
     private String url;
     private String username;
     private String password;
 
-    private DatabaseConnectionManager() { }
+    private DatabaseCredentialsManager() { }
 
     public String getUrl() {
         return this.url;
@@ -33,8 +33,8 @@ public class DatabaseConnectionManager {
         this.password = password;
     }
 
-    public static DatabaseConnectionManager getInstance() {
-        return DatabaseConnectionManager.instance;
+    public static DatabaseCredentialsManager getInstance() {
+        return DatabaseCredentialsManager.instance;
     }
 
 }
