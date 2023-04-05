@@ -31,6 +31,9 @@ public class DatabaseConfigurationView extends View {
     public DatabaseConfigurationView(Stage parentWindow) {
         super();
         this.parentWindow = parentWindow;
+        this.parentWindow.setTitle("Database Configuration - Winchester Library Services");
+        this.parentWindow.setWidth(550);
+        this.parentWindow.setHeight(375);
         this.databaseConnectionManager = DatabaseConnectionManager.getInstance();
         this.databaseCredentialsManager = DatabaseCredentialsManager.getInstance();
         this.initialiseLayouts();
@@ -52,6 +55,7 @@ public class DatabaseConfigurationView extends View {
         this.descriptionLabel.setText(
             "Setting database connection information can stop the program from functioning."
             + " This view is for advanced users only.");
+        this.descriptionLabel.setWrapText(true);
         this.urlLabel = new Label();
         this.urlLabel.setPadding(new Insets(10, 0, 0, 0));
         this.urlLabel.setText("Database URL: ");
