@@ -1,15 +1,17 @@
 package winchester.library.impl.users;
 
 import java.util.ArrayList;
+import winchester.library.impl.loans.Loan;
+import winchester.library.impl.loans.LoansManager;
 
 public class Customer extends User {
     private int overdueFeesPence;
-    private final ArrayList<?> loans;
+    private final LoansManager loansManager;
 
     public Customer(int identifier, String firstName, String lastName, String postalCode) {
         super(identifier, firstName, lastName, postalCode);
         this.overdueFeesPence = 0;
-        this.loans = new ArrayList<>();
+        this.loansManager = new LoansManager();
     }
 
     public int getOverdueFeesAsPence() {
@@ -24,8 +26,8 @@ public class Customer extends User {
         this.overdueFeesPence = feesPence;
     }
 
-    public ArrayList<?> getLoans() {
-        return this.loans;
+    public ArrayList<Loan> getLoans() {
+        return this.loansManager.getLoans();
     }
 
     @Override
