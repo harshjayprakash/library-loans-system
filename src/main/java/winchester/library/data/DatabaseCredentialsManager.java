@@ -3,9 +3,9 @@ package winchester.library.data;
 public class DatabaseCredentialsManager {
 
     private final static DatabaseCredentialsManager instance = new DatabaseCredentialsManager();
-    private String url;
-    private String username;
-    private String password;
+    private String url = "jdbc:mysql://localhost:3306/library";
+    private String username = "root";
+    private String password = "dbpassword";
 
     private DatabaseCredentialsManager() { }
 
