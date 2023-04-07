@@ -8,13 +8,13 @@ import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.HBox;
-import javafx.stage.Stage;
 import winchester.library.gui.window.IndividualViewWindow;
 import winchester.library.gui.window.MainWindow;
+import winchester.library.gui.window.WindowBase;
 
 public class LoginView extends View {
 
-    private final Stage parentWindow;
+    private final WindowBase parentWindow;
     private HBox buttonLayout;
     private Label descriptionLabel;
     private Label usernameLabel;
@@ -25,10 +25,10 @@ public class LoginView extends View {
     private Button loginButton;
     private Button registerButton;
 
-    public LoginView(Stage parentWindow) {
+    public LoginView(WindowBase parentWindow) {
         super();
         this.parentWindow = parentWindow;
-        this.parentWindow.setTitle("Login In - Winchester Library Services");
+        this.parentWindow.setTitleText(Views.LOGIN.toString());
         this.parentWindow.setWidth(440);
         this.parentWindow.setHeight(315);
         this.setId("background-primary");

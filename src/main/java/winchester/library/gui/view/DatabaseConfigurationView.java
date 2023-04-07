@@ -7,14 +7,14 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.HBox;
-import javafx.stage.Stage;
 import winchester.library.data.DatabaseConnectionManager;
 import winchester.library.data.DatabaseConstants;
 import winchester.library.data.DatabaseCredentialsManager;
+import winchester.library.gui.window.WindowBase;
 
 public class DatabaseConfigurationView extends View {
 
-    private final Stage parentWindow;
+    private final WindowBase parentWindow;
     private final DatabaseConnectionManager databaseConnectionManager;
     private final DatabaseCredentialsManager databaseCredentialsManager;
     private HBox buttonLayout;
@@ -28,10 +28,10 @@ public class DatabaseConfigurationView extends View {
     private Button cancelButton;
     private Button saveAndTestButton;
 
-    public DatabaseConfigurationView(Stage parentWindow) {
+    public DatabaseConfigurationView(WindowBase parentWindow) {
         super();
         this.parentWindow = parentWindow;
-        this.parentWindow.setTitle("Database Configuration - Winchester Library Services");
+        this.parentWindow.setTitleText(Views.DATABASE_CONFIGURATION.toString());
         this.parentWindow.setWidth(550);
         this.parentWindow.setHeight(375);
         this.databaseConnectionManager = DatabaseConnectionManager.getInstance();

@@ -9,13 +9,13 @@ import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.HBox;
-import javafx.stage.Stage;
 import winchester.library.gui.window.IndividualViewWindow;
+import winchester.library.gui.window.WindowBase;
 import winchester.library.impl.users.UserType;
 
 public class RegisterView extends View {
 
-    private final Stage parentWindow;
+    private final WindowBase parentWindow;
     private HBox buttonLayout;
     private Label descriptionLabel;
     private Label firstNameLabel;
@@ -37,10 +37,10 @@ public class RegisterView extends View {
     private Button backButton;
     private Button requestButton;
 
-    public RegisterView(Stage parentWindow) {
+    public RegisterView(WindowBase parentWindow) {
         super();
         this.parentWindow = parentWindow;
-        this.parentWindow.setTitle("Register - Winchester Library Services");
+        this.parentWindow.setTitleText(Views.REGISTER.toString());
         this.parentWindow.setHeight(750);
         this.parentWindow.setWidth(500);
         this.initialiseLayouts();

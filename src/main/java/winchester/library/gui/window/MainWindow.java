@@ -19,6 +19,7 @@ public class MainWindow extends WindowBase {
 
     public MainWindow() {
         super();
+        this.setTitleText("Main Window");
         this.initialiseControls();
         this.bindEventHandlers();
         this.addComponentsToStage();

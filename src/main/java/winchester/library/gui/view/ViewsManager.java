@@ -1,7 +1,7 @@
 package winchester.library.gui.view;
 
 import javafx.scene.layout.BorderPane;
-import javafx.stage.Stage;
+import winchester.library.gui.window.WindowBase;
 import winchester.library.impl.users.Employee;
 
 public class ViewsManager extends BorderPane {
@@ -10,7 +10,7 @@ public class ViewsManager extends BorderPane {
         super();
     }
 
-    public void showView(Views view, Stage parentWindow, Employee employee) {
+    public void showView(Views view, WindowBase parentWindow, Employee employee) {
         this.setCenter(null);
         this.setCenter(
                 switch (view) {
