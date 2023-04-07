@@ -6,6 +6,7 @@ import javafx.scene.control.Label;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.text.TextAlignment;
+import winchester.library.data.DatabaseStatus;
 import winchester.library.gui.style.StylesheetSetter;
 import winchester.library.gui.view.Views;
 import winchester.library.gui.window.IndividualViewWindow;
@@ -27,7 +28,7 @@ public class StatusPane extends BorderPane {
     private void initialiseControls() {
         this.versionNumberLabel = new Label();
         this.versionNumberLabel.setPadding(new Insets(5));
-        this.versionNumberLabel.setText("Version 1.2");
+        this.versionNumberLabel.setText("gui::component::StatusPane->versionNumberLabel");
         this.databaseStatusLabel = new Label();
         this.databaseStatusLabel.setAlignment(Pos.CENTER_RIGHT);
         this.databaseStatusLabel.setId("link-label");
@@ -50,5 +51,10 @@ public class StatusPane extends BorderPane {
     private void addComponentsToPane() {
         this.setLeft(this.versionNumberLabel);
         this.setRight(this.databaseStatusLabel);
+    }
+
+    public void setDatabaseConnected(boolean connected) {
+        this.databaseStatusLabel.setText(
+                connected ? DatabaseStatus.CONNECTED.toString() : DatabaseStatus.NOT_CONNECTED.toString());
     }
 }
