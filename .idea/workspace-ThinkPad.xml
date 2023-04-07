@@ -1,0 +1,521 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="d965ee68-3706-4508-b655-544e2bec26b8" name="Changes" comment="Updated version number.">
+      <change afterPath="$PROJECT_DIR$/src/main/java/winchester/library/interop/DatabaseInteraction.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/winchester/library/gui/images/icon.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/project.toml" beforeDir="false" afterPath="$PROJECT_DIR$/project.toml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/module-info.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/module-info.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/winchester/library/gui/component/SidePane.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/winchester/library/gui/component/SidePane.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/winchester/library/gui/component/StatusPane.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/winchester/library/gui/component/StatusPane.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/winchester/library/gui/view/RegisterView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/winchester/library/gui/view/RegisterView.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/winchester/library/gui/window/MainWindow.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/winchester/library/gui/window/MainWindow.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/winchester/library/gui/window/WindowBase.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/winchester/library/gui/window/WindowBase.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/winchester/library/impl/users/UserType.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/winchester/library/impl/users/UserType.java" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Enum" />
+        <option value="Interface" />
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPEN&quot;
+  }
+}</component>
+  <component name="GithubPullRequestsUISettings">
+    <option name="selectedUrlAndAccountId">
+      <UrlAndAccount>
+        <option name="accountId" value="8c8ad874-df1b-4a6a-b782-ee5cafc16851" />
+        <option name="url" value="https://github.com/harshjayprakash/uow-library-loans.git" />
+      </UrlAndAccount>
+    </option>
+  </component>
+  <component name="MacroExpansionManager">
+    <option name="directoryName" value="abu7jibu" />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="MavenImportPreferences">
+    <option name="generalSettings">
+      <MavenGeneralSettings>
+        <option name="mavenHome" value="Use Maven wrapper" />
+        <option name="useMavenConfig" value="true" />
+      </MavenGeneralSettings>
+    </option>
+  </component>
+  <component name="ProblemsViewState">
+    <option name="selectedTabId" value="CurrentFile" />
+  </component>
+  <component name="ProjectId" id="2NpuhDES0RZEHD2NfllVCz3PDBn" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/harsh/Cloud/Code/uow-library-loans/src/main/resources/winchester/library/gui/images&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.0&quot;,
+    &quot;run.code.analysis.last.selected.profile&quot;: &quot;pProject Default&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;reference.settings.ide.settings.new.ui&quot;
+  },
+  &quot;keyToStringList&quot;: {
+    &quot;com.intellij.ide.scratch.ScratchImplUtil$2/New Scratch File&quot;: [
+      &quot;TEXT&quot;
+    ]
+  }
+}</component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\harsh\Cloud\Code\uow-library-loans\src\main\resources\winchester\library\gui\images" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\harsh\Cloud\Code\uow-library-loans\src\main\resources\winchester\library\gui\style" />
+      <recent name="C:\Users\harsh\Cloud\Code\uow-library-loans\src\main\resources\winchester\library\gui" />
+    </key>
+  </component>
+  <component name="RunManager">
+    <configuration name="Main" type="Application" factoryName="Application" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="winchester.library.Main" />
+      <module name="library" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="winchester.library.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+        <option name="ToolBeforeRunTask" enabled="true" actionId="Tool_External Tools_Python Version Updater" />
+      </method>
+    </configuration>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="d965ee68-3706-4508-b655-544e2bec26b8" name="Changes" comment="" />
+      <created>1680373462313</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1680373462313</updated>
+    </task>
+    <task id="LOCAL-00053" summary="Added styles.">
+      <created>1680451831558</created>
+      <option name="number" value="00053" />
+      <option name="presentableId" value="LOCAL-00053" />
+      <option name="project" value="LOCAL" />
+      <updated>1680451831558</updated>
+    </task>
+    <task id="LOCAL-00054" summary="Updated stylesheet name.">
+      <created>1680451846002</created>
+      <option name="number" value="00054" />
+      <option name="presentableId" value="LOCAL-00054" />
+      <option name="project" value="LOCAL" />
+      <updated>1680451846003</updated>
+    </task>
+    <task id="LOCAL-00055" summary="Added Toggle Button Styling.">
+      <created>1680451922685</created>
+      <option name="number" value="00055" />
+      <option name="presentableId" value="LOCAL-00055" />
+      <option name="project" value="LOCAL" />
+      <updated>1680451922685</updated>
+    </task>
+    <task id="LOCAL-00056" summary="Added `text-bold` utility id.">
+      <created>1680452048508</created>
+      <option name="number" value="00056" />
+      <option name="presentableId" value="LOCAL-00056" />
+      <option name="project" value="LOCAL" />
+      <updated>1680452048508</updated>
+    </task>
+    <task id="LOCAL-00057" summary="Added background utility ids.">
+      <created>1680452116730</created>
+      <option name="number" value="00057" />
+      <option name="presentableId" value="LOCAL-00057" />
+      <option name="project" value="LOCAL" />
+      <updated>1680452116730</updated>
+    </task>
+    <task id="LOCAL-00058" summary="Updated styles.">
+      <created>1680452370995</created>
+      <option name="number" value="00058" />
+      <option name="presentableId" value="LOCAL-00058" />
+      <option name="project" value="LOCAL" />
+      <updated>1680452370995</updated>
+    </task>
+    <task id="LOCAL-00059" summary="Added controls.">
+      <created>1680452391470</created>
+      <option name="number" value="00059" />
+      <option name="presentableId" value="LOCAL-00059" />
+      <option name="project" value="LOCAL" />
+      <updated>1680452391470</updated>
+    </task>
+    <task id="LOCAL-00060" summary="Marked stage as final.">
+      <created>1680452436503</created>
+      <option name="number" value="00060" />
+      <option name="presentableId" value="LOCAL-00060" />
+      <option name="project" value="LOCAL" />
+      <updated>1680452436503</updated>
+    </task>
+    <task id="LOCAL-00061" summary="Updated database config label id.">
+      <created>1680452506535</created>
+      <option name="number" value="00061" />
+      <option name="presentableId" value="LOCAL-00061" />
+      <option name="project" value="LOCAL" />
+      <updated>1680452506535</updated>
+    </task>
+    <task id="LOCAL-00062" summary="Removed view padding.">
+      <created>1680452621725</created>
+      <option name="number" value="00062" />
+      <option name="presentableId" value="LOCAL-00062" />
+      <option name="project" value="LOCAL" />
+      <updated>1680452621725</updated>
+    </task>
+    <task id="LOCAL-00063" summary="Separated variables.">
+      <created>1680453009641</created>
+      <option name="number" value="00063" />
+      <option name="presentableId" value="LOCAL-00063" />
+      <option name="project" value="LOCAL" />
+      <updated>1680453009641</updated>
+    </task>
+    <task id="LOCAL-00064" summary="Adjusted window size.">
+      <created>1680453020745</created>
+      <option name="number" value="00064" />
+      <option name="presentableId" value="LOCAL-00064" />
+      <option name="project" value="LOCAL" />
+      <updated>1680453020745</updated>
+    </task>
+    <task id="LOCAL-00065" summary="Added base stylesheet.">
+      <created>1680453034813</created>
+      <option name="number" value="00065" />
+      <option name="presentableId" value="LOCAL-00065" />
+      <option name="project" value="LOCAL" />
+      <updated>1680453034814</updated>
+    </task>
+    <task id="LOCAL-00066" summary="Added ability to add more css files at once.">
+      <created>1680453183597</created>
+      <option name="number" value="00066" />
+      <option name="presentableId" value="LOCAL-00066" />
+      <option name="project" value="LOCAL" />
+      <updated>1680453183597</updated>
+    </task>
+    <task id="LOCAL-00067" summary="Changed to use `addMultipleStylesheets()` method.">
+      <created>1680453246554</created>
+      <option name="number" value="00067" />
+      <option name="presentableId" value="LOCAL-00067" />
+      <option name="project" value="LOCAL" />
+      <updated>1680453246554</updated>
+    </task>
+    <task id="LOCAL-00068" summary="Removed unused import.">
+      <created>1680453326374</created>
+      <option name="number" value="00068" />
+      <option name="presentableId" value="LOCAL-00068" />
+      <option name="project" value="LOCAL" />
+      <updated>1680453326374</updated>
+    </task>
+    <task id="LOCAL-00069" summary="Updated `LoginView` arguments.">
+      <created>1680453372352</created>
+      <option name="number" value="00069" />
+      <option name="presentableId" value="LOCAL-00069" />
+      <option name="project" value="LOCAL" />
+      <updated>1680453372352</updated>
+    </task>
+    <task id="LOCAL-00070" summary="Added event handlers.">
+      <created>1680453585930</created>
+      <option name="number" value="00070" />
+      <option name="presentableId" value="LOCAL-00070" />
+      <option name="project" value="LOCAL" />
+      <updated>1680453585930</updated>
+    </task>
+    <task id="LOCAL-00071" summary="Removed redundant required statements.">
+      <created>1680453799967</created>
+      <option name="number" value="00071" />
+      <option name="presentableId" value="LOCAL-00071" />
+      <option name="project" value="LOCAL" />
+      <updated>1680453799967</updated>
+    </task>
+    <task id="LOCAL-00072" summary="Removed unused imports.">
+      <created>1680453821474</created>
+      <option name="number" value="00072" />
+      <option name="presentableId" value="LOCAL-00072" />
+      <option name="project" value="LOCAL" />
+      <updated>1680453821474</updated>
+    </task>
+    <task id="LOCAL-00073" summary="Updated `databaseStatusLabel` id.">
+      <created>1680453968037</created>
+      <option name="number" value="00073" />
+      <option name="presentableId" value="LOCAL-00073" />
+      <option name="project" value="LOCAL" />
+      <updated>1680453968037</updated>
+    </task>
+    <task id="LOCAL-00074" summary="Created `DatabaseStatus` enumeration.">
+      <created>1680454170666</created>
+      <option name="number" value="00074" />
+      <option name="presentableId" value="LOCAL-00074" />
+      <option name="project" value="LOCAL" />
+      <updated>1680454170666</updated>
+    </task>
+    <task id="LOCAL-00075" summary="Added event handler.">
+      <created>1680454269698</created>
+      <option name="number" value="00075" />
+      <option name="presentableId" value="LOCAL-00075" />
+      <option name="project" value="LOCAL" />
+      <updated>1680454269698</updated>
+    </task>
+    <task id="LOCAL-00076" summary="Added main components.">
+      <created>1680454524379</created>
+      <option name="number" value="00076" />
+      <option name="presentableId" value="LOCAL-00076" />
+      <option name="project" value="LOCAL" />
+      <updated>1680454524379</updated>
+    </task>
+    <task id="LOCAL-00077" summary="Updated toggle button ids.">
+      <created>1680454654997</created>
+      <option name="number" value="00077" />
+      <option name="presentableId" value="LOCAL-00077" />
+      <option name="project" value="LOCAL" />
+      <updated>1680454654997</updated>
+    </task>
+    <task id="LOCAL-00078" summary="Updated css toggle button variables.">
+      <created>1680454838520</created>
+      <option name="number" value="00078" />
+      <option name="presentableId" value="LOCAL-00078" />
+      <option name="project" value="LOCAL" />
+      <updated>1680454838520</updated>
+    </task>
+    <task id="LOCAL-00079" summary="Added background through id.">
+      <created>1680455216954</created>
+      <option name="number" value="00079" />
+      <option name="presentableId" value="LOCAL-00079" />
+      <option name="project" value="LOCAL" />
+      <updated>1680455216954</updated>
+    </task>
+    <task id="LOCAL-00080" summary="Header added to top of view manager.">
+      <created>1680455292329</created>
+      <option name="number" value="00080" />
+      <option name="presentableId" value="LOCAL-00080" />
+      <option name="project" value="LOCAL" />
+      <updated>1680455292329</updated>
+    </task>
+    <task id="LOCAL-00081" summary="Set width of sidebar.">
+      <created>1680455371316</created>
+      <option name="number" value="00081" />
+      <option name="presentableId" value="LOCAL-00081" />
+      <option name="project" value="LOCAL" />
+      <updated>1680455371316</updated>
+    </task>
+    <task id="LOCAL-00082" summary="Added event handlers.">
+      <created>1680455631902</created>
+      <option name="number" value="00082" />
+      <option name="presentableId" value="LOCAL-00082" />
+      <option name="project" value="LOCAL" />
+      <updated>1680455631902</updated>
+    </task>
+    <task id="LOCAL-00083" summary="Updated property selection for event.">
+      <created>1680455730023</created>
+      <option name="number" value="00083" />
+      <option name="presentableId" value="LOCAL-00083" />
+      <option name="project" value="LOCAL" />
+      <updated>1680455730023</updated>
+    </task>
+    <task id="LOCAL-00084" summary="Changed background id.">
+      <created>1680455991343</created>
+      <option name="number" value="00084" />
+      <option name="presentableId" value="LOCAL-00084" />
+      <option name="project" value="LOCAL" />
+      <updated>1680455991343</updated>
+    </task>
+    <task id="LOCAL-00085" summary="Updated version number.">
+      <created>1680456597779</created>
+      <option name="number" value="00085" />
+      <option name="presentableId" value="LOCAL-00085" />
+      <option name="project" value="LOCAL" />
+      <updated>1680456597779</updated>
+    </task>
+    <task id="LOCAL-00086" summary="Added padding to main content view.">
+      <created>1680457547825</created>
+      <option name="number" value="00086" />
+      <option name="presentableId" value="LOCAL-00086" />
+      <option name="project" value="LOCAL" />
+      <updated>1680457547825</updated>
+    </task>
+    <task id="LOCAL-00087" summary="Removed `initialiseLayouts` abstract method.">
+      <created>1680457619991</created>
+      <option name="number" value="00087" />
+      <option name="presentableId" value="LOCAL-00087" />
+      <option name="project" value="LOCAL" />
+      <updated>1680457619991</updated>
+    </task>
+    <task id="LOCAL-00088" summary="Create python script to update version number.">
+      <created>1680457702703</created>
+      <option name="number" value="00088" />
+      <option name="presentableId" value="LOCAL-00088" />
+      <option name="project" value="LOCAL" />
+      <updated>1680457702703</updated>
+    </task>
+    <task id="LOCAL-00089" summary="Updated version number.">
+      <created>1680457712690</created>
+      <option name="number" value="00089" />
+      <option name="presentableId" value="LOCAL-00089" />
+      <option name="project" value="LOCAL" />
+      <updated>1680457712690</updated>
+    </task>
+    <task id="LOCAL-00090" summary="Removed `bindEventHandlers` as an abstract method.">
+      <created>1680458113340</created>
+      <option name="number" value="00090" />
+      <option name="presentableId" value="LOCAL-00090" />
+      <option name="project" value="LOCAL" />
+      <updated>1680458113340</updated>
+    </task>
+    <task id="LOCAL-00091" summary="Added controls.">
+      <created>1680458299362</created>
+      <option name="number" value="00091" />
+      <option name="presentableId" value="LOCAL-00091" />
+      <option name="project" value="LOCAL" />
+      <updated>1680458299362</updated>
+    </task>
+    <task id="LOCAL-00092" summary="Set default start view as None.">
+      <created>1680458369542</created>
+      <option name="number" value="00092" />
+      <option name="presentableId" value="LOCAL-00092" />
+      <option name="project" value="LOCAL" />
+      <updated>1680458369542</updated>
+    </task>
+    <task id="LOCAL-00093" summary="Added parent window as argument.">
+      <created>1680458801800</created>
+      <option name="number" value="00093" />
+      <option name="presentableId" value="LOCAL-00093" />
+      <option name="project" value="LOCAL" />
+      <updated>1680458801800</updated>
+    </task>
+    <task id="LOCAL-00094" summary="Added controls.">
+      <created>1680460422809</created>
+      <option name="number" value="00094" />
+      <option name="presentableId" value="LOCAL-00094" />
+      <option name="project" value="LOCAL" />
+      <updated>1680460422809</updated>
+    </task>
+    <task id="LOCAL-00095" summary="Created `DatabaseConstants` class.">
+      <created>1680460650100</created>
+      <option name="number" value="00095" />
+      <option name="presentableId" value="LOCAL-00095" />
+      <option name="project" value="LOCAL" />
+      <updated>1680460650100</updated>
+    </task>
+    <task id="LOCAL-00096" summary="Created `SQLQueryBuilder` class.">
+      <created>1680460785187</created>
+      <option name="number" value="00096" />
+      <option name="presentableId" value="LOCAL-00096" />
+      <option name="project" value="LOCAL" />
+      <updated>1680460785187</updated>
+    </task>
+    <task id="LOCAL-00097" summary="Created `DatabaseConnection` class.">
+      <created>1680460797812</created>
+      <option name="number" value="00097" />
+      <option name="presentableId" value="LOCAL-00097" />
+      <option name="project" value="LOCAL" />
+      <updated>1680460797812</updated>
+    </task>
+    <task id="LOCAL-00098" summary="Renamed.">
+      <created>1680460991793</created>
+      <option name="number" value="00098" />
+      <option name="presentableId" value="LOCAL-00098" />
+      <option name="project" value="LOCAL" />
+      <updated>1680460991793</updated>
+    </task>
+    <task id="LOCAL-00099" summary="Added basic attributes.">
+      <created>1680461679995</created>
+      <option name="number" value="00099" />
+      <option name="presentableId" value="LOCAL-00099" />
+      <option name="project" value="LOCAL" />
+      <updated>1680461679995</updated>
+    </task>
+    <task id="LOCAL-00100" summary="Created `library.sql` data file.">
+      <created>1680461761444</created>
+      <option name="number" value="00100" />
+      <option name="presentableId" value="LOCAL-00100" />
+      <option name="project" value="LOCAL" />
+      <updated>1680461761444</updated>
+    </task>
+    <task id="LOCAL-00101" summary="Updated version number.">
+      <created>1680461776969</created>
+      <option name="number" value="00101" />
+      <option name="presentableId" value="LOCAL-00101" />
+      <option name="project" value="LOCAL" />
+      <updated>1680461776969</updated>
+    </task>
+    <option name="localTasksCounter" value="102" />
+    <servers />
+  </component>
+  <component name="UnknownFeatures">
+    <option featureType="com.intellij.fileTypeFactory" implementationName="*.py" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
+    <MESSAGE value="Created `DatabaseStatus` enumeration." />
+    <MESSAGE value="Added event handler." />
+    <MESSAGE value="Added main components." />
+    <MESSAGE value="Updated toggle button ids." />
+    <MESSAGE value="Updated css toggle button variables." />
+    <MESSAGE value="Added background through id." />
+    <MESSAGE value="Header added to top of view manager." />
+    <MESSAGE value="Set width of sidebar." />
+    <MESSAGE value="Added event handlers." />
+    <MESSAGE value="Updated property selection for event." />
+    <MESSAGE value="Changed background id." />
+    <MESSAGE value="Added padding to main content view." />
+    <MESSAGE value="Removed `initialiseLayouts` abstract method." />
+    <MESSAGE value="Create python script to update version number." />
+    <MESSAGE value="Removed `bindEventHandlers` as an abstract method." />
+    <MESSAGE value="Set default start view as None." />
+    <MESSAGE value="Added parent window as argument." />
+    <MESSAGE value="Added controls." />
+    <MESSAGE value="Created `DatabaseConstants` class." />
+    <MESSAGE value="Created `SQLQueryBuilder` class." />
+    <MESSAGE value="Created `DatabaseConnection` class." />
+    <MESSAGE value="Renamed." />
+    <MESSAGE value="Added basic attributes." />
+    <MESSAGE value="Created `library.sql` data file." />
+    <MESSAGE value="Updated version number." />
+    <option name="LAST_COMMIT_MESSAGE" value="Updated version number." />
+  </component>
+  <component name="XSLT-Support.FileAssociations.UIState">
+    <expand />
+    <select />
+  </component>
+</project>
