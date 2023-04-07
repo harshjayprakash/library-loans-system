@@ -13,7 +13,8 @@ public class Main extends Application {
 
     @Override
     public void start(Stage stage) {
-        StylesheetManager.getInstance().addMultipleStylesheets("/winchester/library/gui/style/base.css", "/winchester/library/gui/style/style.css");
+        StylesheetManager.getInstance().addMultipleStylesheets(
+                "/winchester/library/gui/style/base.css", "/winchester/library/gui/style/style.css");
         IndividualViewWindow loginWindow = new IndividualViewWindow(Views.LOGIN, null);
         loginWindow.show();
     }
