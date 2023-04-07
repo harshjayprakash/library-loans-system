@@ -6,6 +6,7 @@ import javafx.scene.image.Image;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
 import winchester.library.gui.style.StylesheetSetter;
+import winchester.library.meta.Metadata;
 
 public abstract class WindowBase extends Stage {
     protected Scene scene;
@@ -33,6 +34,10 @@ public abstract class WindowBase extends Stage {
         catch (NullPointerException exception) {
             System.out.println("Failed to load program icon");
         }
+    }
+
+    public void setTitleText(String text) {
+        this.setTitle("%s - %s".formatted(text, Metadata.getInstance().getProgramName()));
     }
 
     protected abstract void initialiseControls();
