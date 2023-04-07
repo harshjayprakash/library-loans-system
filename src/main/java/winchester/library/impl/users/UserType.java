@@ -1,10 +1,10 @@
 package winchester.library.impl.users;
 
 public enum UserType {
-    DEMO(0, "Demo Account"),
-    CUSTOMER(1, "Customer Account"),
-    STANDARD(2, "Standard Account"),
-    ADMINISTRATOR(3, "Administrator Account");
+    DEMO(0, "Demo"),
+    CUSTOMER(1, "Customer"),
+    STANDARD(2, "Standard"),
+    ADMINISTRATOR(3, "Administrator");
 
     private final int identifier;
     private final String text;
