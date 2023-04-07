@@ -51,7 +51,7 @@ public class SidePane extends VBox {
 
     private void initialiseControls() {
         this.serviceLabel = new Label();
-        this.serviceLabel.setId("side-pane__service-label");
+        this.serviceLabel.setId("text-bold");
         this.serviceLabel.setPadding(new Insets(10, 5, 5, 5));
         this.serviceLabel.setText("Winchester\nLibrary Services");
         this.serviceLabel.setWrapText(true);
