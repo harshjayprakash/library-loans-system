@@ -82,7 +82,7 @@ public class RegisterView extends View {
         this.usernameLabel.setText("Username: ");
         this.usernameDescriptionLabel = new Label();
         this.usernameDescriptionLabel.setPadding(new Insets(0, 0, 4, 0));
-        this.usernameDescriptionLabel.setText("Password: ");
+        this.usernameDescriptionLabel.setText("This must be a unique name that you will login with.");
         this.usernameField = new TextField();
         this.passwordLabel = new Label();
         this.passwordLabel.setPadding(new Insets(10, 0, 0, 0));
