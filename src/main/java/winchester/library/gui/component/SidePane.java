@@ -57,7 +57,8 @@ public class SidePane extends VBox {
         this.serviceLabel.setWrapText(true);
         this.privilegeModeLabel = new Label();
         this.privilegeModeLabel.setPadding(new Insets(2, 5, 10, 5));
-        this.privilegeModeLabel.setText("Demo");
+        this.privilegeModeLabel.setText("::gui::components::SidePane->privilegeModeLabel");
+        this.privilegeModeLabel.setWrapText(true);
         this.pageButtons = new ToggleGroup();
         this.homePageButton = new ToggleButton();
         this.homePageButton.setAlignment(Pos.CENTER_LEFT);
