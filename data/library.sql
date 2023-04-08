@@ -1,8 +1,8 @@
 create schema `library`;
 
 create table `library`.`user_types` (
-    `user_type_id`   int           not null,
-    `user_type`      varchar(45)   not null,
+    `user_type_id`   int            not null,
+    `user_type`      varchar(255)   not null,
 
     primary key (`user_type_id`),
     unique index `user_type_unique` (`user_type` asc) visible
@@ -15,11 +15,11 @@ values (0, 'Demo'),
        (3, 'Administrator');
 
 create table `library`.`users` (
-    `user_id`        int           not null,
-    `user_type_id`   int           not null,
-    `first_name`     varchar(60)   not null,
-    `last_name`      varchar(60)   not null,
-    `postal_code`    varchar(10)   not null,
+    `user_id`        int            not null,
+    `user_type_id`   int            not null,
+    `first_name`     varchar(127)   not null,
+    `last_name`      varchar(127)   not null,
+    `postal_code`    varchar(10)    not null,
     primary key (`user_id`)
 );
 
@@ -31,8 +31,8 @@ values (0, 0, 'Demo', 'Account', 'AB123CD'),
 create table `library`.`employees` (
     `employee_id`   int           not null,
     `user_id`       int           not null,
-    `username`      varchar(45)   not null,
-    `password`      varchar(45)   not null,
+    `username`      varchar(255)   not null,
+    `password`      varchar(255)   not null,
     `status_id`     int           not null,
     primary key (`employee_id`),
     unqiue index `username_unique` (`username` asc) visible
@@ -51,7 +51,7 @@ values (0, 0, 'demo', 'password', 1),
 
 create table `library`.`item_types` (
     `item_type_id`   int           not null,
-    `item_type`      varchar(45)   not null,
+    `item_type`      varchar(255)   not null,
     primary key (`item_type_id`),
     unique index `item_type_unque` (`item_type` asc) visible
 );
@@ -63,7 +63,7 @@ values (1, 'Books')
 create table `library`.`item_subtypes` (
     `item_subtypes_id`   int           not null,
     `item_type_id`       int           not null,
-    `item_subtype`       varchar(45)   not null,
+    `item_subtype`       varchar(255)   not null,
     primary key (`id_subtype_id`),
     unique index `item_subtype_unique` (`item_subtype` asc) visible
 )
