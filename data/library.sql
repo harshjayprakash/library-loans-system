@@ -43,6 +43,18 @@ values (0, 0, 'demo', 'password', 1),
        (1, 1, 'admin', '6oUpZ6k$^iw4J&', 1),
        (2, 2, 'user', 'SqpQPP&9jWHmr4g', 1);
 
+create table `library`.`employee_status` (
+    `status_id`   int           not null,
+    `status`      varchar(255)   not null,
+    primary key (`status_id`)
+    unique index `status_unique` (`status` asc) visible
+);
+
+insert into `library`.`employee_status`
+values (-1, 'Disabled'),
+       (0, 'Not Approved'),
+       (1, 'Active');
+
 create table `library`.`item_types` (
     `item_type_id`   int           not null,
     `item_type`      varchar(255)   not null,
