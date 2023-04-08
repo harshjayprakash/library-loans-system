@@ -10,6 +10,7 @@ import winchester.library.data.DatabaseStatus;
 import winchester.library.gui.style.StylesheetSetter;
 import winchester.library.gui.view.Views;
 import winchester.library.gui.window.IndividualViewWindow;
+import winchester.library.meta.Metadata;
 
 public class StatusPane extends BorderPane {
     private Label versionNumberLabel;
@@ -28,7 +29,7 @@ public class StatusPane extends BorderPane {
     private void initialiseControls() {
         this.versionNumberLabel = new Label();
         this.versionNumberLabel.setPadding(new Insets(5));
-        this.versionNumberLabel.setText("gui::component::StatusPane->versionNumberLabel");
+        this.versionNumberLabel.setText(Metadata.getInstance().getProgramVersionNumber());
         this.databaseStatusLabel = new Label();
         this.databaseStatusLabel.setAlignment(Pos.CENTER_RIGHT);
         this.databaseStatusLabel.setId("link-label");
