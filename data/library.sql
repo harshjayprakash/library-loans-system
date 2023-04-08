@@ -35,13 +35,7 @@ create table `library`.`employees` (
     `password`      varchar(255)   not null,
     `status_id`     int           not null,
     primary key (`employee_id`),
-    unqiue index `username_unique` (`username` asc) visible
-);
-
-create table `library`.`employee_status` (
-    `status_id`   int           not null,
-    `status`      varchar(30)   not null,
-    primary key (`status_id`)
+    unique index `username_unique` (`username` asc) visible
 );
 
 insert into `library`.`employees`
@@ -53,7 +47,7 @@ create table `library`.`item_types` (
     `item_type_id`   int           not null,
     `item_type`      varchar(255)   not null,
     primary key (`item_type_id`),
-    unique index `item_type_unque` (`item_type` asc) visible
+    unique index `item_type_unique` (`item_type` asc) visible
 );
 
 insert into `library`.`item_types`
