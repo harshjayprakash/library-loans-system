@@ -92,7 +92,7 @@ public class SidePane extends VBox {
         this.usersPageButton.prefWidthProperty().bind(this.prefWidthProperty());
         this.currentUserLabel = new Label();
         this.currentUserLabel.setAlignment(Pos.BOTTOM_LEFT);
-        this.currentUserLabel.setText("Logged In As\n" + this.currentEmployee.getType().toString());
+        this.currentUserLabel.setText("Logged In As\n" + this.currentEmployee.getUsername());
         this.logOutButton = new Button();
         this.logOutButton.setText("Log Out");
     }
