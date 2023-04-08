@@ -1,6 +1,6 @@
 package winchester.library.meta;
 
-public class Metadata {
+public final class Metadata {
 
     private static final Metadata instance = new Metadata();
     private final String programName = "Winchester Library Services Technical Preview";
