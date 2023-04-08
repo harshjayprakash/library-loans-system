@@ -182,6 +182,6 @@ create table `library`.`loans` (
     `item_id`       varchar(13)   not null,
     `loan_date`     date          not null,
     `return_date`   date          not null, 
-    `returned`      date          not null,
+    `returned`      tinyint       not null,
     primary key (`loan_id`)
 );
