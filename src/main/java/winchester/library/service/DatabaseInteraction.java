@@ -23,4 +23,13 @@ public class DatabaseInteraction {
                 databaseCredentialsManager.getPassword()) == DatabaseConstants.CONNECTION_SUCCESSFUL.getIdentifier();
     }
 
+    public DatabaseConstants getDatabaseStatus() {
+        DatabaseConnectionManager databaseConnectionManager = DatabaseConnectionManager.getInstance();
+        DatabaseCredentialsManager databaseCredentialsManager = DatabaseCredentialsManager.getInstance();
+        return DatabaseConstants.getFromIdentifier(databaseConnectionManager.testConnection(
+                databaseCredentialsManager.getUrl(),
+                databaseCredentialsManager.getUsername(),
+                databaseCredentialsManager.getPassword()));
+    }
+
 }
