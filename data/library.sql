@@ -29,11 +29,11 @@ values (0, 0, 'Demo', 'Account', 'AB123CD'),
        (2, 2, 'Standard', 'Account', 'IU921ED');
 
 create table `library`.`employees` (
-    `employee_id`   int           not null,
-    `user_id`       int           not null,
+    `employee_id`   int            not null,
+    `user_id`       int            not null,
     `username`      varchar(255)   not null,
     `password`      varchar(255)   not null,
-    `status_id`     int           not null,
+    `status_id`     int            not null,
     primary key (`employee_id`),
     unique index `username_unique` (`username` asc) visible
 );
@@ -44,7 +44,7 @@ values (0, 0, 'demo', 'password', 1),
        (2, 2, 'user', 'SqpQPP&9jWHmr4g', 1);
 
 create table `library`.`employee_status` (
-    `status_id`   int           not null,
+    `status_id`   int            not null,
     `status`      varchar(255)   not null,
     primary key (`status_id`)
     unique index `status_unique` (`status` asc) visible
@@ -56,7 +56,7 @@ values (-1, 'Disabled'),
        (1, 'Active');
 
 create table `library`.`item_types` (
-    `item_type_id`   int           not null,
+    `item_type_id`   int            not null,
     `item_type`      varchar(255)   not null,
     primary key (`item_type_id`),
     unique index `item_type_unique` (`item_type` asc) visible
@@ -67,8 +67,8 @@ values (1, 'Books')
        (2, 'Films');
 
 create table `library`.`item_subtypes` (
-    `item_subtypes_id`   int           not null,
-    `item_type_id`       int           not null,
+    `item_subtypes_id`   int            not null,
+    `item_type_id`       int            not null,
     `item_subtype`       varchar(255)   not null,
     primary key (`id_subtype_id`),
     unique index `item_subtype_unique` (`item_subtype` asc) visible
