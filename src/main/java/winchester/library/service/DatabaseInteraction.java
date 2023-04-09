@@ -14,7 +14,7 @@ public class DatabaseInteraction {
         return DatabaseInteraction.instance;
     }
 
-    public boolean getDatabaseStatus() {
+    public boolean getDatabaseAvailable() {
         DatabaseConnectionManager databaseConnectionManager = DatabaseConnectionManager.getInstance();
         DatabaseCredentialsManager databaseCredentialsManager = DatabaseCredentialsManager.getInstance();
         return databaseConnectionManager.testConnection(

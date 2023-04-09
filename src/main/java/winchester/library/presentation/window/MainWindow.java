@@ -31,7 +31,7 @@ public class MainWindow extends WindowBase {
         this.sidePane = new SidePane(null);
         this.sidePane.setPrefWidth(150);
         this.statusPane = new StatusPane();
-        this.statusPane.setDatabaseConnected(DatabaseInteraction.getInstance().getDatabaseStatus());
+        this.statusPane.setDatabaseConnected(DatabaseInteraction.getInstance().getDatabaseAvailable());
         this.viewsManager = new ViewsManager();
         this.viewsManager.setPadding(new Insets(20));
     }
@@ -42,7 +42,7 @@ public class MainWindow extends WindowBase {
                 (value, toggle, newToggle) -> {
                     this.headerPane.setPageTitle(this.sidePane.getSelectedToggleAsView());
                     this.viewsManager.showView(this.sidePane.getSelectedToggleAsView(), this, null);
-                    this.statusPane.setDatabaseConnected(DatabaseInteraction.getInstance().getDatabaseStatus());
+                    this.statusPane.setDatabaseConnected(DatabaseInteraction.getInstance().getDatabaseAvailable());
                 });
         this.sidePane.getLogOutButton().addEventHandler(MouseEvent.MOUSE_CLICKED, event -> {
             this.close();
