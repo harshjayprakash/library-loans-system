@@ -22,4 +22,13 @@ public enum DatabaseConstants {
     public String toString() {
         return this.value;
     }
+
+    public static DatabaseConstants getFromIdentifier(int identifier) {
+        for (DatabaseConstants constant : DatabaseConstants.values()) {
+            if (constant.identifier == identifier) {
+                return constant;
+            }
+        }
+        return UNKNOWN_ERROR;
+    }
 }
