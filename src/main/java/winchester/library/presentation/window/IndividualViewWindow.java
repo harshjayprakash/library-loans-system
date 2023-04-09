@@ -1,6 +1,7 @@
 package winchester.library.presentation.window;
 
 import javafx.geometry.Insets;
+import javafx.stage.WindowEvent;
 import winchester.library.data.model.users.Employee;
 import winchester.library.presentation.component.HeaderPane;
 import winchester.library.presentation.view.Views;
