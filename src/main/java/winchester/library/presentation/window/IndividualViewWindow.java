@@ -8,6 +8,8 @@ import winchester.library.presentation.view.Views;
 import winchester.library.presentation.view.ViewsManager;
 
 public class IndividualViewWindow extends WindowBase {
+
+    private static int instanceCount = 0;
     private HeaderPane header;
     private ViewsManager viewsManager;
     private final Views windowContentView;
@@ -20,6 +22,7 @@ public class IndividualViewWindow extends WindowBase {
         this.initialiseLayouts();
         this.initialiseControls();
         this.addComponentsToStage();
+        IndividualViewWindow.instanceCount += 1;
     }
 
     protected void initialiseLayouts() {
@@ -42,5 +45,9 @@ public class IndividualViewWindow extends WindowBase {
         this.viewsManager.showView(this.windowContentView, this, this.employee);
         this.baseLayout.setTop(this.header);
         this.baseLayout.setCenter(this.viewsManager);
+    }
+
+    public static int getInstanceCount() {
+        return IndividualViewWindow.instanceCount;
     }
 }
