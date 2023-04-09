@@ -30,7 +30,7 @@ public class ViewsManager extends BorderPane {
                     case INDIVIDUAL_LOAN -> new IndividualLoanView();
                     case NONE_WITH_SIDEBAR -> new NoneSidePaneView();
                     case INDIVIDUAL_CUSTOMER -> new IndividualCustomerView();
-                    case DATABASE_INFORMATION -> new DatabaseInformationView();
+                    case DATABASE_INFORMATION -> new DatabaseInformationView(parentWindow);
                     case DATABASE_CONFIGURATION -> new DatabaseConfigurationView(parentWindow);
                 }
         );
