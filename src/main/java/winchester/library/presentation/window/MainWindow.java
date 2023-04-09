@@ -36,7 +36,8 @@ public class MainWindow extends WindowBase {
         this.viewsManager.setPadding(new Insets(20));
     }
 
-    private void bindEventHandlers() {
+    @Override
+    protected void bindEventHandlers() {
         this.sidePane.getToggleGroup().selectedToggleProperty().addListener(
                 (value, toggle, newToggle) -> {
                     this.headerPane.setPageTitle(this.sidePane.getSelectedToggleAsView());

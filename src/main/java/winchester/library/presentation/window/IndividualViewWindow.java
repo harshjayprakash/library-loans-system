@@ -32,6 +32,11 @@ public class IndividualViewWindow extends WindowBase {
     }
 
     @Override
+    protected void bindEventHandlers() {
+        this.addEventHandler(WindowEvent.WINDOW_CLOSE_REQUEST, event -> IndividualViewWindow.instanceCount -= 1);
+    }
+
+    @Override
     protected void addComponentsToStage() {
         this.viewsManager.showView(this.windowContentView, this, this.employee);
         this.baseLayout.setTop(this.header);
