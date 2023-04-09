@@ -1,6 +1,8 @@
 package winchester.library.data.model.users;
 
-public class Employee extends User {
+import winchester.library.data.model.loans.LoanManagement;
+
+public class Employee extends User implements LoanManagement {
     private final String username;
     private String password;
     private EmployeeStatus status;
@@ -48,5 +50,20 @@ public class Employee extends User {
     @Override
     public UserType getType() {
         return UserType.STANDARD;
+    }
+
+    @Override
+    public void loanItem() {
+
+    }
+
+    @Override
+    public void returnItem() {
+
+    }
+
+    @Override
+    public void extendItem() {
+
     }
 }
