@@ -42,5 +42,7 @@ public abstract class WindowBase extends Stage {
 
     protected abstract void initialiseControls();
 
+    protected abstract void bindEventHandlers();
+
     protected abstract void addComponentsToStage();
 }
