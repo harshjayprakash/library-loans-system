@@ -1,38 +1,60 @@
 package winchester.library.data.model.items;
 
 public class Film extends Item {
-    private final FilmFormat format;
-    private final String director;
-    private final String leadActor;
-    private final int durationMinutes;
 
-    public Film(int identifier, FilmFormat format, String name, int releaseYear, String director, String leadActor,
-                int durationMinutes) {
-        super(identifier, name, releaseYear);
-        this.format = format;
+    public final String identifier;
+    private final String title;
+    private final String director;
+    private final int releaseYear;
+    private final String distrubutor;
+    private final int durationMinutes;
+    private String imageUrl;
+
+    public Film(String identifier, String title, String director, int releaseYear, String distributor, int durationMinutes,
+                String imageUrl) {
+        this.identifier = identifier;
+        this.title = title;
         this.director = director;
-        this.leadActor = leadActor;
+        this.releaseYear = releaseYear;
+        this.distrubutor = distributor;
         this.durationMinutes = durationMinutes;
+        this.imageUrl = imageUrl;
     }
 
-    public FilmFormat getFormat() {
-        return this.format;
+    public String getIdentifier() {
+        return this.identifier;
+    }
+
+    public String getTitle() {
+        return this.title;
     }
 
     public String getDirector() {
         return this.director;
     }
 
-    public String getLeadActor() {
-        return this.leadActor;
+    public int getReleaseYear() {
+        return this.releaseYear;
     }
 
-    public int getDurationInMinutes() {
+    public String getDistrubutor() {
+        return this.distrubutor;
+    }
+
+    public int getDurationMinutes() {
         return this.durationMinutes;
     }
 
-    public double getDurationInHours() {
+    public double getDurationHours() {
         return this.durationMinutes / 60.0;
+    }
+
+    public String getImageUrl() {
+        return this.imageUrl;
+    }
+
+    public void setImageUrl(String imageUrl) {
+        this.imageUrl = imageUrl;
     }
 
     @Override

@@ -1,34 +1,50 @@
 package winchester.library.data.model.items;
 
 public class Book extends Item {
-    private final BookFormat format;
+
     private final String isbn;
+    private final String title;
     private final String author;
-    private final int edition;
+    private final int publicationYear;
+    private final String publisher;
+    private String imageUrl;
 
-    public Book(int identifier, BookFormat format, String isbn, String name, String author, int releaseYear,
-                int edition) {
-        super(identifier, name, releaseYear);
-        this.format = format;
+    public Book(String isbn, String title, String author, int publicationYear, String publisher, String imageUrl) {
+        super();
         this.isbn = isbn;
+        this.title = title;
         this.author = author;
-        this.edition = edition;
-    }
-
-    public BookFormat getFormat() {
-        return this.format;
+        this.publicationYear = publicationYear;
+        this.publisher = publisher;
+        this.imageUrl = imageUrl;
     }
 
     public String getIsbn() {
         return this.isbn;
     }
 
+    public String getTitle() {
+        return this.title;
+    }
+
     public String getAuthor() {
         return this.author;
     }
 
-    public int getEdition() {
-        return this.edition;
+    public int getPublicationYear() {
+        return this.publicationYear;
+    }
+
+    public String getPublisher() {
+        return this.publisher;
+    }
+
+    public String getImageUrl() {
+        return this.imageUrl;
+    }
+
+    public void setImageUrl(String imageUrl) {
+        this.imageUrl = imageUrl;
     }
 
     @Override
