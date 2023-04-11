@@ -6,18 +6,24 @@ import winchester.library.data.model.items.Item;
 import winchester.library.data.model.users.Customer;
 
 public class Loan {
+    private final int identifier;
     private final Customer customer;
     private final Item loanedItem;
     private final LocalDate loanDate;
     private LocalDate dueDate;
     private boolean returned;
 
-    public Loan(Customer customer, Item loanedItem, LocalDate loanDate, LocalDate dueDate, boolean returned) {
+    public Loan(int identifier, Customer customer, Item loanedItem, LocalDate loanDate, LocalDate dueDate, boolean returned) {
+        this.identifier = identifier;
         this.customer = customer;
         this.loanedItem = loanedItem;
         this.loanDate = loanDate;
         this.dueDate = dueDate;
         this.returned = returned;
+    }
+
+    public int getIdentifier() {
+        return this.identifier;
     }
 
     public Customer getCustomer() {
