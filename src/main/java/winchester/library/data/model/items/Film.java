@@ -6,7 +6,7 @@ public class Film extends Item {
     private final String title;
     private final String director;
     private final int releaseYear;
-    private final String distrubutor;
+    private final String distributor;
     private final int durationMinutes;
     private String imageUrl;
 
@@ -16,7 +16,7 @@ public class Film extends Item {
         this.title = title;
         this.director = director;
         this.releaseYear = releaseYear;
-        this.distrubutor = distributor;
+        this.distributor = distributor;
         this.durationMinutes = durationMinutes;
         this.imageUrl = imageUrl;
     }
@@ -37,8 +37,8 @@ public class Film extends Item {
         return this.releaseYear;
     }
 
-    public String getDistrubutor() {
-        return this.distrubutor;
+    public String getDistributor() {
+        return this.distributor;
     }
 
     public int getDurationMinutes() {
