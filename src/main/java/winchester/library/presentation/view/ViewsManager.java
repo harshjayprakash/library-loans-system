@@ -14,7 +14,7 @@ public class ViewsManager extends BorderPane {
         this.setCenter(null);
         this.setCenter(
                 switch (view) {
-                    case HOME -> new HomeView();
+                    case HOME -> new HomeView(employee);
                     case NONE -> new NoneView();
                     case LOANS -> new LoansView();
                     case LOGIN -> new LoginView(parentWindow);
