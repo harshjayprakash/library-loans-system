@@ -10,7 +10,7 @@ public class Loan {
     private final int identifier;
     private final Customer customer;
     private final Item loanedItem;
-    private final ItemType loanedItemSubType;
+    private final ItemType loanedItemFormat;
     private final LocalDate loanDate;
     private LocalDate dueDate;
     private boolean returned;
@@ -20,7 +20,7 @@ public class Loan {
         this.identifier = identifier;
         this.customer = customer;
         this.loanedItem = loanedItem;
-        this.loanedItemSubType = loanedItemSubType;
+        this.loanedItemFormat = loanedItemSubType;
         this.loanDate = loanDate;
         this.dueDate = dueDate;
         this.returned = returned;
@@ -38,8 +38,8 @@ public class Loan {
         return this.loanedItem;
     }
 
-    public ItemType getLoanedItemSubType() {
-        return this.loanedItemSubType;
+    public ItemType getLoanedItemFormat() {
+        return this.loanedItemFormat;
     }
 
     public LocalDate getLoanDate() {

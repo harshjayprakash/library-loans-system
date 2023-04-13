@@ -3,13 +3,13 @@ package winchester.library.data.model.items;
 public class ItemStock {
 
     private final Item item;
-    private final ItemType subtype;
+    private final ItemFormat subtype;
     private int copiesAvailable;
     private int copiesOnLoan;
 
-    public ItemStock(Item item, ItemType subtype, int copiesAvailable, int copiesOnLoan) {
+    public ItemStock(Item item, ItemFormat itemFormat, int copiesAvailable, int copiesOnLoan) {
         this.item = item;
-        this.subtype = subtype;
+        this.subtype = itemFormat;
         this.copiesAvailable = copiesAvailable;
         this.copiesOnLoan = copiesOnLoan;
     }
@@ -25,7 +25,7 @@ public class ItemStock {
         };
     }
 
-    public ItemType getItemSubType() {
+    public ItemFormat getItemFormat() {
         return this.subtype;
     }
 
