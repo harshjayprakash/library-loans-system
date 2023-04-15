@@ -5,6 +5,10 @@ organisation = "adoptium eclipse temurin"
 [build]
 tool = "maven"
 
+[editors]
+jetbrains = ["intellij idea community", "fleet"]
+microsoft = ["visual studio code"]
+
 [structure]
 source_dir = "src/main/java/**"
 resources_dir = "src/main/resources/**"
