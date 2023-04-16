@@ -6,8 +6,8 @@ organisation = "adoptium eclipse temurin"
 tool = "maven"
 
 [editors]
-jetbrains = ["intellij idea community", "fleet"]
-microsoft = ["visual studio code"]
+jetbrains = [ "intellij idea community", "fleet",]
+microsoft = [ "visual studio code",]
 
 [structure]
 source_dir = "src/main/java/**"
