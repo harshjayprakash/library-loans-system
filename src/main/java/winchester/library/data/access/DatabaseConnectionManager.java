@@ -2,7 +2,13 @@ package winchester.library.data.access;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.Optional;
+import winchester.library.data.model.items.Book;
+import winchester.library.data.model.items.Film;
 
 public class DatabaseConnectionManager {
     
