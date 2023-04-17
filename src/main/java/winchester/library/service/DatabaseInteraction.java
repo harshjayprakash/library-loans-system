@@ -1,12 +1,19 @@
 package winchester.library.service;
 
+import java.util.ArrayList;
+import java.util.Optional;
 import winchester.library.data.access.DatabaseConnectionManager;
-import winchester.library.data.access.DatabaseConstants;
+import winchester.library.data.access.DatabaseConstant;
 import winchester.library.data.access.DatabaseCredentialsManager;
+import winchester.library.data.model.items.Book;
+
+
 
 public class DatabaseInteraction {
 
     private static final DatabaseInteraction instance = new DatabaseInteraction();
+    private final DatabaseConnectionManager connectionManager = DatabaseConnectionManager.getInstance();
+    private final DatabaseCredentialsManager credentialsManager = DatabaseCredentialsManager.getInstance();
 
     private DatabaseInteraction() { }
 
@@ -15,21 +22,15 @@ public class DatabaseInteraction {
     }
 
     public boolean getDatabaseAvailable() {
-        DatabaseConnectionManager databaseConnectionManager = DatabaseConnectionManager.getInstance();
-        DatabaseCredentialsManager databaseCredentialsManager = DatabaseCredentialsManager.getInstance();
-        return databaseConnectionManager.testConnection(
-                databaseCredentialsManager.getUrl(),
-                databaseCredentialsManager.getUsername(),
-                databaseCredentialsManager.getPassword()) == DatabaseConstants.CONNECTION_SUCCESSFUL.getIdentifier();
+        return connectionManager.test(credentialsManager) == DatabaseConstant.CONNECTION_SUCCESSFUL.getIdentifier();
     }
 
-    public DatabaseConstants getDatabaseStatus() {
-        DatabaseConnectionManager databaseConnectionManager = DatabaseConnectionManager.getInstance();
-        DatabaseCredentialsManager databaseCredentialsManager = DatabaseCredentialsManager.getInstance();
-        return DatabaseConstants.getFromIdentifier(databaseConnectionManager.testConnection(
-                databaseCredentialsManager.getUrl(),
-                databaseCredentialsManager.getUsername(),
-                databaseCredentialsManager.getPassword()));
+    public DatabaseConstant getDatabaseStatus() {
+        return DatabaseConstant.getFromIdentifier(connectionManager.test(credentialsManager));
+    }
+
+    public Optional<ArrayList<Book>> getBooks() {
+        return connectionManager.getBooks(credentialsManager);
     }
 
 }
