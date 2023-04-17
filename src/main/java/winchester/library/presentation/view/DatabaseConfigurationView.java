@@ -8,7 +8,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.HBox;
 import winchester.library.data.access.DatabaseConnectionManager;
-import winchester.library.data.access.DatabaseConstants;
+import winchester.library.data.access.DatabaseConstant;
 import winchester.library.data.access.DatabaseCredentialsManager;
 import winchester.library.presentation.window.WindowBase;
 
@@ -81,9 +81,8 @@ public class DatabaseConfigurationView extends View {
     private void bindEventHandlers() {
         this.cancelButton.addEventHandler(MouseEvent.MOUSE_CLICKED, event -> this.parentWindow.close());
         this.saveAndTestButton.addEventHandler(MouseEvent.MOUSE_CLICKED, event -> {
-            int testResult = this.databaseConnectionManager.testConnection(
-                this.urlField.getText(), this.usernameField.getText(), this.passwordField.getText());
-            if (testResult != DatabaseConstants.CONNECTION_SUCCESSFUL.getIdentifier()) {
+            int testResult = this.databaseConnectionManager.test(this.databaseCredentialsManager);
+            if (testResult != DatabaseConstant.CONNECTION_SUCCESSFUL.getIdentifier()) {
                 return;
             }
             this.databaseCredentialsManager.setUrl(this.urlField.getText());
