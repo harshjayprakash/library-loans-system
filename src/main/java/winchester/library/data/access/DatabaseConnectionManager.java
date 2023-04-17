@@ -16,7 +16,7 @@ public class DatabaseConnectionManager {
         return DatabaseConnectionManager.instance;
     }
 
-    public int testConnection(String url, String username, String password) {
+    public int test(DatabaseCredentialsManager credentials) {
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
             Connection connection = DriverManager.getConnection(
