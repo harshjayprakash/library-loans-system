@@ -51,4 +51,17 @@ public class Book extends Item {
     public ItemType getType() {
         return ItemType.BOOK;
     }
+
+    @Override
+    public String toString() {
+        return "Book{" +
+                "isbn='" + isbn + '\'' +
+                ", title='" + title + '\'' +
+                ", author='" + author + '\'' +
+                ", publicationYear=" + publicationYear +
+                ", publisher='" + publisher + '\'' +
+                ", imageUrl='" + imageUrl + '\'' +
+                ", stockAvailable=" + stockAvailable +
+                '}';
+    }
 }
