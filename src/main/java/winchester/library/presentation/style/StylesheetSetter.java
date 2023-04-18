@@ -4,11 +4,14 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 
 public class StylesheetSetter {
-    private final static StylesheetSetter instance = new StylesheetSetter();
+    private static StylesheetSetter instance;
 
     private StylesheetSetter() { }
 
     public static StylesheetSetter getInstance() {
+        if (StylesheetSetter.instance == null) {
+            StylesheetSetter.instance = new StylesheetSetter();
+        }
         return StylesheetSetter.instance;
     }
 

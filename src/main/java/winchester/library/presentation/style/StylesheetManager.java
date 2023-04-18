@@ -4,7 +4,8 @@ import java.util.ArrayList;
 import java.util.Objects;
 
 public class StylesheetManager {
-    private final static StylesheetManager instance = new StylesheetManager();
+
+    private static StylesheetManager instance;
     private final ArrayList<String> stylesheetPaths;
 
     private StylesheetManager() {
@@ -12,6 +13,9 @@ public class StylesheetManager {
     }
 
     public static StylesheetManager getInstance() {
+        if (StylesheetManager.instance == null) {
+            StylesheetManager.instance = new StylesheetManager();
+        }
         return StylesheetManager.instance;
     }
 

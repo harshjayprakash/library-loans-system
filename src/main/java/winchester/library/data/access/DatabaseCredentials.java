@@ -2,7 +2,7 @@ package winchester.library.data.access;
 
 public class DatabaseCredentials {
 
-    private final static DatabaseCredentials instance = new DatabaseCredentials();
+    private static DatabaseCredentials instance;
     private String url = "jdbc:mysql://localhost:3306/library";
     private String username = "root";
     private String password = "dbpassword";
@@ -34,6 +34,9 @@ public class DatabaseCredentials {
     }
 
     public static DatabaseCredentials getInstance() {
+        if (DatabaseCredentials.instance == null) {
+            DatabaseCredentials.instance = new DatabaseCredentials();
+        }
         return DatabaseCredentials.instance;
     }
 
