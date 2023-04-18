@@ -1,6 +1,6 @@
 package winchester.library.data.access;
 
-public enum SQLQueryType {
+public enum QueryType {
     GET("SELECT %s FROM %s;"),
     GET_AND_FILTER("SELECT %s FROM %s WHERE %s;"),
     INSERT_ONE("INSERT INTO %s VALUE %s;"),
@@ -10,7 +10,7 @@ public enum SQLQueryType {
 
     private final String queryFormat;
 
-    SQLQueryType(String queryFormat) {
+    QueryType(String queryFormat) {
         this.queryFormat = queryFormat;
     }
 
