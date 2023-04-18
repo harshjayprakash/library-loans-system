@@ -1,13 +1,13 @@
 package winchester.library.data.access;
 
-public class DatabaseCredentialsManager {
+public class DatabaseCredentials {
 
-    private final static DatabaseCredentialsManager instance = new DatabaseCredentialsManager();
+    private final static DatabaseCredentials instance = new DatabaseCredentials();
     private String url = "jdbc:mysql://localhost:3306/library";
     private String username = "root";
     private String password = "dbpassword";
 
-    private DatabaseCredentialsManager() { }
+    private DatabaseCredentials() { }
 
     public String getUrl() {
         return this.url;
@@ -33,8 +33,8 @@ public class DatabaseCredentialsManager {
         this.password = password;
     }
 
-    public static DatabaseCredentialsManager getInstance() {
-        return DatabaseCredentialsManager.instance;
+    public static DatabaseCredentials getInstance() {
+        return DatabaseCredentials.instance;
     }
 
 }
