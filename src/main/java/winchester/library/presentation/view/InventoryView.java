@@ -34,7 +34,7 @@ public class InventoryView extends View {
 
     @Override
     protected void initialiseControls() {
-        Optional<ArrayList<Book>> optionalBooks = DatabaseInteraction.getInstance().getBooks();
+        Optional<HashSet<Book>> optionalBooks = DatabaseInteraction.getInstance().getBooks();
         if (optionalBooks.isEmpty()) {
             DatabaseNotConnectedView notConnectedView = new DatabaseNotConnectedView();
             this.getChildren().addAll(notConnectedView);
