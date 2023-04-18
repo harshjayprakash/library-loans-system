@@ -1,36 +1,51 @@
 package winchester.library.service;
 
-import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.Optional;
-import winchester.library.data.access.DatabaseConnectionManager;
-import winchester.library.data.access.DatabaseConstant;
-import winchester.library.data.access.DatabaseCredentialsManager;
+import winchester.library.data.access.*;
 import winchester.library.data.model.items.Book;
 
 
 
 public class DatabaseInteraction {
 
-    private static final DatabaseInteraction instance = new DatabaseInteraction();
-    private final DatabaseConnectionManager connectionManager = DatabaseConnectionManager.getInstance();
-    private final DatabaseCredentialsManager credentialsManager = DatabaseCredentialsManager.getInstance();
+    private static DatabaseInteraction instance;
+    private final DatabaseCredentials credentials;
+    private final DatabaseConnectionTester connectionTester;
+    private final DataMapper dataMapper;
 
-    private DatabaseInteraction() { }
+    private DatabaseInteraction() {
+        this.credentials = DatabaseCredentials.getInstance();
+        this.connectionTester = DatabaseConnectionTester.getInstance();
+        this.dataMapper = new DataMapper();
+    }
 
     public static DatabaseInteraction getInstance() {
+        if (DatabaseInteraction.instance == null) {
+            DatabaseInteraction.instance = new DatabaseInteraction();
+        }
         return DatabaseInteraction.instance;
     }
 
     public boolean getDatabaseAvailable() {
-        return connectionManager.test(credentialsManager) == DatabaseConstant.CONNECTION_SUCCESSFUL.getIdentifier();
+        return connectionTester.testCredentials(credentials) == DatabaseConstant.CONNECTION_SUCCESSFUL;
     }
 
     public DatabaseConstant getDatabaseStatus() {
-        return DatabaseConstant.getFromIdentifier(connectionManager.test(credentialsManager));
+        return connectionTester.testCredentials(credentials);
     }
 
-    public Optional<ArrayList<Book>> getBooks() {
-        return connectionManager.getBooks(credentialsManager);
+    public Optional<HashSet<Book>> getBooks() {
+        DatabaseConnection connection = new DatabaseConnection();
+        connection.establish(credentials);
+        QueryBuilder query = QueryBuilder.createQuery(QueryType.GET_AND_FILTER)
+                .select("isbn", "title", "author", "publication_year", "publisher", "image_url", "item_subtype_id",
+                        "copies_available")
+                .from("library.books", "library.item_copies")
+                .where("library.books.isbn = library.item_copies.item_id");
+        Optional<HashSet<Book>> books = dataMapper.mapAsBooks(connection.executeQuery(query).orElse(null));
+        connection.close();
+        return books;
     }
 
 }
