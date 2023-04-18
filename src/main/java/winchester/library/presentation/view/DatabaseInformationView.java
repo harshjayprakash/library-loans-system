@@ -6,7 +6,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.HBox;
-import winchester.library.data.access.DatabaseCredentialsManager;
+import winchester.library.data.access.DatabaseCredentials;
 import winchester.library.presentation.window.IndividualViewWindow;
 import winchester.library.presentation.window.WindowBase;
 import winchester.library.service.DatabaseInteraction;
@@ -42,7 +42,7 @@ public class DatabaseInformationView extends View {
     @Override
     protected void initialiseControls() {
         this.databaseUrlLabel = new Label();
-        this.databaseUrlLabel.setText("Url: " + DatabaseCredentialsManager.getInstance().getUrl());
+        this.databaseUrlLabel.setText("Url: " + DatabaseCredentials.getInstance().getUrl());
         this.databaseStatusLabel = new Label();
         this.databaseStatusLabel.setText("Status: " + DatabaseInteraction.getInstance().getDatabaseStatus().toString());
         this.configurationButton = new Button();
