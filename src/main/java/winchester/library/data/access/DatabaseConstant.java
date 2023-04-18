@@ -1,8 +1,12 @@
 package winchester.library.data.access;
 
 public enum DatabaseConstant {
-    CONNECTION_SUCCESSFUL(0, "Database connection successful"),
-    DRIVER_NOT_FOUND(1, "Failed to find MySQL JDBC Connector Driver"),
+    CONNECTION_SUCCESSFUL(0, "Connection Successful"),
+    CONNECTION_TIMEOUT(1, "Connection Timed Out"),
+    CONNECTION_NOT_AVAILABLE(2, "Connection Not Available"),
+    CONNECTION_CLOSE_ERROR(3, "Failed to Close Connection"),
+    DRIVER_NOT_FOUND(2, "Failed To Load Driver"),
+    DRIVER_FOUND(3, "Driver Loaded Successfully"),
     NOT_ACCESSIBLE(7, "Error accessing the database"),
     UNKNOWN_ERROR(10, "Error");
 
