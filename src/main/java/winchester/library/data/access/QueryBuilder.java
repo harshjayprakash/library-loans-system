@@ -10,13 +10,13 @@ public class QueryBuilder {
     private String columns;
     private String conditions;
     private String values;
-    private final SQLQueryType type;
+    private final QueryType type;
 
-    private QueryBuilder(SQLQueryType type) {
+    private QueryBuilder(QueryType type) {
         this.type = type;
     }
 
-    public static QueryBuilder createQuery(SQLQueryType type) {
+    public static QueryBuilder createQuery(QueryType type) {
         return new QueryBuilder(type);
     }
 
