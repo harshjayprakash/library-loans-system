@@ -55,7 +55,7 @@ public class ItemCard extends BorderPane {
         this.detailsLabel = new Label();
         if (this.item.getType() == ItemType.BOOK) {
             Book book = (Book) this.item;
-            this.itemImage.setImage(new Image(book.getImageUrl()));
+            this.itemImage.setImage(new Image(book.getImageUrl(), 100, 100, false, false));
             this.itemNameLabel.setText(book.getTitle());
             this.authorOrDirectorLabel.setText(book.getAuthor());
         }
