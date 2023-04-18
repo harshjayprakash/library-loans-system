@@ -18,10 +18,10 @@ public class StylesheetSetter {
                 scene.getStylesheets().add(path);
             }
             catch (UnsupportedOperationException exception) {
-                System.out.println("Add operation not supported: " + path);
+                System.err.println("Add operation not supported: " + path);
             }
             catch (Exception exception) {
-                System.out.println("Error assigning stylesheet: " + path);
+                System.err.println("Error assigning stylesheet: " + path);
             }
         }
     }
@@ -32,10 +32,10 @@ public class StylesheetSetter {
                 parent.getStylesheets().add(path);
             }
             catch (UnsupportedOperationException exception) {
-                System.out.println("Add operation not supported: " + path);
+                System.err.println("Add operation not supported: " + path);
             }
             catch (Exception exception) {
-                System.out.println("Error assigning stylesheet: " + path);
+                System.err.println("Error assigning stylesheet: " + path);
             }
         }
     }
