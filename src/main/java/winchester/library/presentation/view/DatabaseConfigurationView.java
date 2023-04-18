@@ -7,16 +7,15 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.HBox;
-import winchester.library.data.access.DatabaseConnectionManager;
+import winchester.library.data.access.DatabaseConnectionTester;
 import winchester.library.data.access.DatabaseConstant;
-import winchester.library.data.access.DatabaseCredentialsManager;
+import winchester.library.data.access.DatabaseCredentials;
 import winchester.library.presentation.window.WindowBase;
 
 public class DatabaseConfigurationView extends View {
 
     private final WindowBase parentWindow;
-    private final DatabaseConnectionManager databaseConnectionManager;
-    private final DatabaseCredentialsManager databaseCredentialsManager;
+    private final DatabaseCredentials credentials;
     private HBox buttonLayout;
     private Label descriptionLabel;
     private Label urlLabel;
@@ -34,8 +33,7 @@ public class DatabaseConfigurationView extends View {
         this.parentWindow.setTitleText(Views.DATABASE_CONFIGURATION.toString());
         this.parentWindow.setWidth(550);
         this.parentWindow.setHeight(375);
-        this.databaseConnectionManager = DatabaseConnectionManager.getInstance();
-        this.databaseCredentialsManager = DatabaseCredentialsManager.getInstance();
+        this.credentials = DatabaseCredentials.getInstance();
         this.initialiseLayouts();
         this.initialiseControls();
         this.bindEventHandlers();
@@ -60,17 +58,17 @@ public class DatabaseConfigurationView extends View {
         this.urlLabel.setPadding(new Insets(10, 0, 0, 0));
         this.urlLabel.setText("Database URL: ");
         this.urlField = new TextField();
-        this.urlField.setText(this.databaseCredentialsManager.getUrl());
+        this.urlField.setText(this.credentials.getUrl());
         this.usernameLabel = new Label();
         this.usernameLabel.setPadding(new Insets(10, 0, 0 , 0));
         this.usernameLabel.setText("Database Username: ");
         this.usernameField = new TextField();
-        this.usernameField.setText(this.databaseCredentialsManager.getUsername());
+        this.usernameField.setText(this.credentials.getUsername());
         this.passwordLabel = new Label();
         this.passwordLabel.setPadding(new Insets(10, 0, 0, 0));
         this.passwordLabel.setText("Database Password: ");
         this.passwordField = new TextField();
-        this.passwordField.setText(this.databaseCredentialsManager.getPassword());
+        this.passwordField.setText(this.credentials.getPassword());
         this.cancelButton = new Button();
         this.cancelButton.setText("Cancel");
         this.saveAndTestButton = new Button();
@@ -81,13 +79,13 @@ public class DatabaseConfigurationView extends View {
     private void bindEventHandlers() {
         this.cancelButton.addEventHandler(MouseEvent.MOUSE_CLICKED, event -> this.parentWindow.close());
         this.saveAndTestButton.addEventHandler(MouseEvent.MOUSE_CLICKED, event -> {
-            int testResult = this.databaseConnectionManager.test(this.databaseCredentialsManager);
-            if (testResult != DatabaseConstant.CONNECTION_SUCCESSFUL.getIdentifier()) {
+            DatabaseConstant testResult = DatabaseConnectionTester.getInstance().testCredentials(this.credentials);
+            if (testResult != DatabaseConstant.CONNECTION_SUCCESSFUL) {
                 return;
             }
-            this.databaseCredentialsManager.setUrl(this.urlField.getText());
-            this.databaseCredentialsManager.setUsername(this.usernameField.getText());
-            this.databaseCredentialsManager.setPassword(this.passwordField.getText());
+            this.credentials.setUrl(this.urlField.getText());
+            this.credentials.setUsername(this.usernameField.getText());
+            this.credentials.setPassword(this.passwordField.getText());
             this.parentWindow.close();
         });
     }
