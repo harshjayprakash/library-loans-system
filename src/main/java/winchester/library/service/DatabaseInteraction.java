@@ -1,6 +1,6 @@
 package winchester.library.service;
 
-import java.util.HashSet;
+import java.util.ArrayList;
 import java.util.Optional;
 import winchester.library.data.access.*;
 import winchester.library.data.model.items.Book;
@@ -35,7 +35,7 @@ public class DatabaseInteraction {
         return connectionTester.testCredentials(credentials);
     }
 
-    public Optional<HashSet<Book>> getBooks() {
+    public Optional<ArrayList<Book>> getBooks() {
         DatabaseConnection connection = new DatabaseConnection();
         connection.establish(credentials);
         QueryBuilder query = QueryBuilder.createQuery(QueryType.GET_AND_FILTER)
@@ -43,7 +43,7 @@ public class DatabaseInteraction {
                         "copies_available")
                 .from("library.books", "library.item_copies")
                 .where("library.books.isbn = library.item_copies.item_id");
-        Optional<HashSet<Book>> books = dataMapper.mapAsBooks(connection.executeQuery(query).orElse(null));
+        Optional<ArrayList<Book>> books = dataMapper.mapAsBooks(connection.executeQuery(query).orElse(null));
         connection.close();
         return books;
     }

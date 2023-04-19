@@ -1,7 +1,6 @@
 package winchester.library.presentation.view;
 
 import java.util.ArrayList;
-import java.util.HashSet;
 import java.util.Optional;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.layout.VBox;
@@ -35,14 +34,12 @@ public class InventoryView extends View {
 
     @Override
     protected void initialiseControls() {
-        Optional<HashSet<Book>> optionalBooks = DatabaseInteraction.getInstance().getBooks();
+        Optional<ArrayList<Book>> optionalBooks = DatabaseInteraction.getInstance().getBooks();
         if (optionalBooks.isEmpty()) {
             DatabaseNotConnectedView notConnectedView = new DatabaseNotConnectedView();
             this.getChildren().addAll(notConnectedView);
             return;
         }
-        DatabaseNotConnectedView notConnectedView = new DatabaseNotConnectedView();
-        this.getChildren().addAll(notConnectedView);
         this.items = new ArrayList<>();
         for (Book book : optionalBooks.get()) {
             this.items.add(new ItemCard(book));
