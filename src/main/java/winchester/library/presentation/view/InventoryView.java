@@ -5,6 +5,7 @@ import java.util.Optional;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.layout.VBox;
 import winchester.library.data.model.items.Book;
+import winchester.library.presentation.component.Banner;
 import winchester.library.presentation.component.ItemCard;
 import winchester.library.service.DatabaseInteraction;
 
@@ -13,6 +14,7 @@ public class InventoryView extends View {
     private ScrollPane scrollPane;
     private VBox itemsList;
     private ArrayList<ItemCard> items;
+    private Banner banner;
 
     public InventoryView() {
         super();
@@ -36,9 +38,10 @@ public class InventoryView extends View {
     protected void initialiseControls() {
         Optional<ArrayList<Book>> optionalBooks = DatabaseInteraction.getInstance().getBooks();
         if (optionalBooks.isEmpty()) {
-            DatabaseNotConnectedView notConnectedView = new DatabaseNotConnectedView();
-            this.getChildren().addAll(notConnectedView);
-            return;
+            this.banner = new Banner(
+                "Data is not accessible", 
+                "Please check the database configuration by clicking on the database status on the bottom right hand "
+                + "corner.");
         }
         this.items = new ArrayList<>();
         for (Book book : optionalBooks.get()) {
@@ -48,6 +51,9 @@ public class InventoryView extends View {
 
     @Override
     protected void addComponentsToView() {
+        if (this.banner != null) {
+            this.getChildren().add(this.banner);
+        }
         for (ItemCard card : this.items) {
             this.itemsList.getChildren().add(card);
         }
