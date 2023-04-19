@@ -1,6 +1,7 @@
 package winchester.library.data.model.users;
 
 public abstract class User {
+
     private final int identifier;
     private final String firstName;
     private final String lastName;
