@@ -42,6 +42,9 @@ public class DatabaseConnection {
             PreparedStatement statement = this.connection.prepareStatement(sql.toString());
             return Optional.ofNullable(statement.executeQuery());
         }
+        catch (NullPointerException exception) {
+            System.err.printf("%s : %s%n", DatabaseConstant.CONNECTION_NOT_AVAILABLE, exception.getMessage());
+        }
         catch (SQLTimeoutException exception) {
             System.err.printf("%s : %s%n", DatabaseConstant.CONNECTION_TIMEOUT, exception.getMessage());
         }
