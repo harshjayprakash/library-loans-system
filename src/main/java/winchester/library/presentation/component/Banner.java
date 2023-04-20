@@ -33,6 +33,7 @@ public class Banner extends VBox {
         this.messageLabel.setText(this.message);
         this.messageDetailsLabel = new Label();
         this.messageDetailsLabel.setText(this.messageDetails);
+        this.messageDetailsLabel.setWrapText(true);
     }
 
     private void addComponentsToBanner() {
