@@ -8,6 +8,10 @@ import java.sql.SQLException;
 import java.sql.SQLTimeoutException;
 import java.util.Optional;
 
+/**
+ * A class encapsulates the sql connection as well as handles any exceptions that may occur, which is written to the
+ * standard error stream.
+ */
 public class DatabaseConnection {
 
     private Connection connection;

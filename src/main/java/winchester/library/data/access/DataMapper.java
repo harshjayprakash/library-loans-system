@@ -7,6 +7,10 @@ import java.util.Optional;
 import winchester.library.data.model.items.Book;
 import winchester.library.data.model.items.Film;
 
+/**
+ * A class that has the ability to map the returned ResultSet from the database connection to the correct list of
+ * objects.
+ */
 public class DataMapper {
 
     public DataMapper() { }

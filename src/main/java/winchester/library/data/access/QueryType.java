@@ -1,5 +1,8 @@
 package winchester.library.data.access;
 
+/**
+ * A set of values to help set up a sql query.
+ */
 public enum QueryType {
     GET("SELECT %s FROM %s;"),
     GET_AND_FILTER("SELECT %s FROM %s WHERE %s;"),

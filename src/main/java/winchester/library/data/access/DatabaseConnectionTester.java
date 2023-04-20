@@ -5,6 +5,9 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.sql.SQLTimeoutException;
 
+/**
+ * A singleton class that provides a way of testing the connection to get the current status.
+ */
 public class DatabaseConnectionTester {
 
     private static DatabaseConnectionTester instance;

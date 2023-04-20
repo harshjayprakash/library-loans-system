@@ -1,5 +1,8 @@
 package winchester.library.data.access;
 
+/**
+ * Provides a more readable format to any error or success messages during the database connection.
+ */
 public enum DatabaseConstant {
     CONNECTION_SUCCESSFUL(0, "Connection Successful"),
     CONNECTION_TIMEOUT(1, "Connection Timed Out"),

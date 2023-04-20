@@ -1,5 +1,9 @@
 package winchester.library.data.access;
 
+/**
+ * A singleton class that stores the credentials to connect to the database, providing mutators for the ability of
+ * change the credentials
+ */
 public class DatabaseCredentials {
 
     private static DatabaseCredentials instance;
