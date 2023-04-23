@@ -1,11 +1,9 @@
 package winchester.library.data.model.items;
 
 import winchester.library.data.access.DatabaseEntity;
-import winchester.library.util.Castable;
 
 @DatabaseEntity
-public class Film extends Item
-    implements Castable<Film, Item> {
+public class Film extends Item {
 
     public final String identifier;
     private final String title;
@@ -67,8 +65,7 @@ public class Film extends Item
         return ItemType.FILM;
     }
 
-    @Override
-    public Film castFrom(Item item) {
+    public static Film castFrom(Item item) {
         return (Film) item;
     }
 }

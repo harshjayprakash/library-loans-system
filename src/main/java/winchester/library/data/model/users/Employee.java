@@ -1,10 +1,9 @@
 package winchester.library.data.model.users;
 
 import winchester.library.data.model.loans.LoanManagement;
-import winchester.library.util.Castable;
 
 public class Employee extends User 
-    implements Castable<Employee, User>, LoanManagement {
+    implements LoanManagement {
     
     private final String username;
     private String password;
@@ -55,8 +54,7 @@ public class Employee extends User
         return UserType.STANDARD;
     }
 
-    @Override
-    public Employee castFrom(User user) {
+    public static Employee castFrom(User user) {
         return (Employee) user;
     }
 

@@ -3,10 +3,8 @@ package winchester.library.data.model.users;
 import java.util.ArrayList;
 import winchester.library.data.model.loans.Loan;
 import winchester.library.data.model.loans.LoansManager;
-import winchester.library.util.Castable;
 
-public class Customer extends User 
-    implements Castable<Customer, User> {
+public class Customer extends User  {
     
     private int overdueFeesPence;
     private final LoansManager loansManager;
@@ -48,8 +46,7 @@ public class Customer extends User
         return UserType.CUSTOMER;
     }
 
-    @Override
-    public Customer castFrom(User user) {
+    public static Customer castFrom(User user) {
         return (Customer) user;
     }
 }

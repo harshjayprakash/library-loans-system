@@ -1,11 +1,9 @@
 package winchester.library.data.model.items;
 
 import winchester.library.data.access.DatabaseEntity;
-import winchester.library.util.Castable;
 
 @DatabaseEntity
-public class Book extends Item 
-    implements Castable<Book, Item> {
+public class Book extends Item {
 
     private final String isbn;
     private final String title;
@@ -70,8 +68,7 @@ public class Book extends Item
                 '}';
     }
 
-    @Override
-    public Book castFrom(Item item) {
+    public static Book castFrom(Item item) {
         return (Book) item;
     }
 }
