@@ -83,8 +83,9 @@ public class ItemCard extends BorderPane {
     private void addComponentsToCard() {
         this.optionsLayout.getChildren().addAll(this.detailsLabel);
         this.itemInformationLayout.getChildren().addAll(
-                this.itemNameLabel, this.authorOrDirectorLabel, this.itemCategoryLabel, this.stockCountLabel);
+                this.itemNameLabel, this.authorOrDirectorLabel, this.itemCategoryLabel);
         this.setRight(this.optionsLayout);
+        this.setLeft(this.itemImage);
         this.setCenter(this.itemInformationLayout);
     }
 
