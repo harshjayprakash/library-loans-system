@@ -2,7 +2,7 @@ package winchester.library.meta;
 
 public final class Metadata {
 
-    private static Metadata instance;
+    private static Metadata instance = null;
     private final String programName;
     private final String programVersion;
 
