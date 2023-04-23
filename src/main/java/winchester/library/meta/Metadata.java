@@ -7,8 +7,8 @@ public final class Metadata {
     private final String programVersion;
 
     private Metadata() {
-        this.programName = "Winchester Library Services Technical Preview";
-        this.programVersion = "::meta::Metadata->programVersion";
+        this.programName = "Winchester Library Services [EAP]";
+        this.programVersion = "Version 1.0.2";
     }
 
     public static Metadata getInstance() {
