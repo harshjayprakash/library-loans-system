@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.layout.VBox;
 import winchester.library.data.model.items.Book;
+import winchester.library.data.model.items.Film;
 import winchester.library.presentation.component.Banner;
 import winchester.library.presentation.component.ItemCard;
 import winchester.library.service.DatabaseInteraction;
@@ -46,6 +47,9 @@ public class InventoryView extends View {
         this.items = new ArrayList<>();
         for (Book book : books) {
             this.items.add(new ItemCard(book));
+        }
+        for (Film film : DatabaseInteraction.getInstance().getFilms()) {
+            this.items.add(new ItemCard(film));
         }
     }
 
