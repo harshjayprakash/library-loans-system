@@ -1,5 +1,8 @@
 package winchester.library.data.model.items;
 
+import winchester.library.data.access.DatabaseEntity;
+
+@DatabaseEntity
 public class Book extends Item {
 
     private final String isbn;

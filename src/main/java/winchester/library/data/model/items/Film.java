@@ -1,5 +1,8 @@
 package winchester.library.data.model.items;
 
+import winchester.library.data.access.DatabaseEntity;
+
+@DatabaseEntity
 public class Film extends Item {
 
     public final String identifier;
