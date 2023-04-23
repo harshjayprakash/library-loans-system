@@ -2,14 +2,20 @@ package winchester.library.data.model.items;
 
 public class ItemStock {
 
+    private final String itemIdentifier;
     private final ItemFormat subtype;
     private int copiesAvailable;
     private int copiesOnLoan;
 
-    public ItemStock(ItemFormat itemFormat, int copiesAvailable, int copiesOnLoan) {
+    public ItemStock(String itemIdentifier, ItemFormat itemFormat, int copiesAvailable, int copiesOnLoan) {
+        this.itemIdentifier = itemIdentifier;
         this.subtype = itemFormat;
         this.copiesAvailable = copiesAvailable;
         this.copiesOnLoan = copiesOnLoan;
+    }
+
+    public String getItemIdentifier() {
+        return this.itemIdentifier;
     }
 
     public ItemFormat getItemFormat() {
