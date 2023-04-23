@@ -1,5 +1,7 @@
 package winchester.library.data.model.items;
 
+import java.util.Optional;
+
 public enum ItemFormat {
     AUDIO_BOOK(11, "Audio Book"),
     PHYSICAL_BOOK(12, "Physical Book"),
@@ -18,6 +20,15 @@ public enum ItemFormat {
 
     public int getIdentifier() {
         return this.identifier;
+    }
+
+    public static Optional<ItemFormat> getFromIdentifier(int identifier) {
+        for (ItemFormat format : ItemFormat.values()) {
+            if (format.identifier == identifier) {
+                return Optional.of(format);
+            }
+        }
+        return Optional.empty();
     }
 
     @Override
