@@ -1,6 +1,8 @@
 package winchester.library.data.model.users;
 
-public class Administrator extends Employee implements UserManagement {
+public class Administrator extends Employee 
+    implements UserManagement {
+    
     public Administrator(int identifier, String firstName, String lastName, String postalCode, String username,
                          String password, EmployeeStatus status) {
         super(identifier, firstName, lastName, postalCode, username, password, status);
