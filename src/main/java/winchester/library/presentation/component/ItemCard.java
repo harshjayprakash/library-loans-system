@@ -23,7 +23,6 @@ public class ItemCard extends BorderPane {
     private Label itemNameLabel;
     private Label authorOrDirectorLabel;
     private Label itemCategoryLabel;
-    private Label stockCountLabel;
     private Label detailsLabel;
     private Item item;
 
