@@ -27,7 +27,7 @@ public class SidePane extends VBox {
     private VBox accountPane;
     private Label currentUserLabel;
     private Button logOutButton;
-    private Employee currentEmployee;
+    private final Employee currentEmployee;
 
     public SidePane(Employee employee) {
         super();
