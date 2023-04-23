@@ -119,7 +119,7 @@ public class RegisterView extends View {
     private void bindEventHandlers() {
         this.backButton.addEventHandler(MouseEvent.MOUSE_CLICKED, event -> {
             this.parentWindow.close();
-            IndividualViewWindow loginView = new IndividualViewWindow(Views.LOGIN, null);
+            IndividualViewWindow loginView = new IndividualViewWindow(Views.LOGIN);
             loginView.show();
         });
     }

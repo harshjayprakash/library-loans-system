@@ -54,8 +54,7 @@ public class DatabaseInformationView extends View {
 
     private void bindEventHandlers() {
         this.configurationButton.addEventHandler(MouseEvent.MOUSE_CLICKED, event -> {
-            IndividualViewWindow databaseConfigurationView = new IndividualViewWindow(
-                    Views.DATABASE_CONFIGURATION, null);
+            IndividualViewWindow databaseConfigurationView = new IndividualViewWindow(Views.DATABASE_CONFIGURATION);
             databaseConfigurationView.show();
         });
         this.closeButton.addEventHandler(MouseEvent.MOUSE_CLICKED, event -> this.parentWindow.close());

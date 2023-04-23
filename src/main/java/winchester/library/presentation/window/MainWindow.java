@@ -41,13 +41,13 @@ public class MainWindow extends WindowBase {
         this.sidePane.getToggleGroup().selectedToggleProperty().addListener(
                 (value, toggle, newToggle) -> {
                     this.headerPane.setPageTitle(this.sidePane.getSelectedToggleAsView());
-                    this.viewsManager.showView(this.sidePane.getSelectedToggleAsView(), this, null);
+                    this.viewsManager.showView(this.sidePane.getSelectedToggleAsView(), this, null, null);
                     this.statusPane.setDatabaseConnected(DatabaseInteraction.getInstance().getDatabaseAvailable());
                     this.setTitleText(this.sidePane.getSelectedToggleAsView().toString());
                 });
         this.sidePane.getLogOutButton().addEventHandler(MouseEvent.MOUSE_CLICKED, event -> {
             this.close();
-            IndividualViewWindow loginView = new IndividualViewWindow(Views.LOGIN, null);
+            IndividualViewWindow loginView = new IndividualViewWindow(Views.LOGIN);
             loginView.show();
         });
     }

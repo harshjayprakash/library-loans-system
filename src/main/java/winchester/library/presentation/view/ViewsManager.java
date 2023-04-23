@@ -1,6 +1,7 @@
 package winchester.library.presentation.view;
 
 import javafx.scene.layout.BorderPane;
+import winchester.library.data.model.items.Item;
 import winchester.library.data.model.users.Employee;
 import winchester.library.presentation.window.WindowBase;
 
@@ -10,7 +11,7 @@ public class ViewsManager extends BorderPane {
         super();
     }
 
-    public void showView(Views view, WindowBase parentWindow, Employee employee) {
+    public void showView(Views view, WindowBase parentWindow, Employee employee, Item item) {
         this.setCenter(null);
         this.setCenter(
                 switch (view) {
@@ -35,4 +36,6 @@ public class ViewsManager extends BorderPane {
                 }
         );
     }
+
+
 }

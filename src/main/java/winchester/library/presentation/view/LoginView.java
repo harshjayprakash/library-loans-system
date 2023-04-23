@@ -84,11 +84,11 @@ public class LoginView extends View {
         });
         this.registerButton.addEventHandler(MouseEvent.MOUSE_CLICKED, event -> {
             this.parentWindow.close();
-            IndividualViewWindow registerView = new IndividualViewWindow(Views.REGISTER, null);
+            IndividualViewWindow registerView = new IndividualViewWindow(Views.REGISTER);
             registerView.show();
         });
         this.databaseConfigurationLinkLabel.addEventHandler(MouseEvent.MOUSE_CLICKED, event -> {
-            IndividualViewWindow databaseConfigView = new IndividualViewWindow(Views.DATABASE_CONFIGURATION, null);
+            IndividualViewWindow databaseConfigView = new IndividualViewWindow(Views.DATABASE_CONFIGURATION);
             databaseConfigView.show();
         });
     }
