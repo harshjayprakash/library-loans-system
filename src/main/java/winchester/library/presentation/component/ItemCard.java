@@ -27,6 +27,7 @@ public class ItemCard extends BorderPane {
         super();
         this.item = item;
         this.setId("background-secondary");
+        this.setPadding(new Insets(5));
         StylesheetSetter.getInstance().setStyle(this);
         this.initialiseLayouts();
         this.initialiseControls();
@@ -37,8 +38,10 @@ public class ItemCard extends BorderPane {
     private void initialiseLayouts() {
         this.itemInformationLayout = new VBox();
         this.itemInformationLayout.setId("background-secondary");
+        this.itemInformationLayout.setPadding(new Insets(10));
         this.optionsLayout = new VBox();
         this.optionsLayout.setId("background-secondary");
+        this.optionsLayout.setPadding(new Insets(10));
     }
 
     private void initialiseControls() {
