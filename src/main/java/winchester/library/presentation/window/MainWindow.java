@@ -43,6 +43,7 @@ public class MainWindow extends WindowBase {
                     this.headerPane.setPageTitle(this.sidePane.getSelectedToggleAsView());
                     this.viewsManager.showView(this.sidePane.getSelectedToggleAsView(), this, null);
                     this.statusPane.setDatabaseConnected(DatabaseInteraction.getInstance().getDatabaseAvailable());
+                    this.setTitleText(this.sidePane.getSelectedToggleAsView().toString());
                 });
         this.sidePane.getLogOutButton().addEventHandler(MouseEvent.MOUSE_CLICKED, event -> {
             this.close();
