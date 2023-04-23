@@ -53,6 +53,8 @@ public class ItemCard extends BorderPane {
         this.itemCategoryLabel.setText(this.item.getType().toString());
         this.stockCountLabel = new Label();
         this.detailsLabel = new Label();
+        this.detailsLabel.setId("link-label");
+        this.detailsLabel.setText("View Details");
         if (this.item.getType() == ItemType.BOOK) {
             Book book = (Book) this.item;
             this.itemImage.setImage(new Image(book.getImageUrl(), 100, 100, false, false));
@@ -67,7 +69,10 @@ public class ItemCard extends BorderPane {
     }
 
     private void bindEventHandlers() {
-
+        this.detailsLabel.addEventHandler(MouseEvent.MOUSE_CLICKED, event -> {
+            IndividualViewWindow itemView = new IndividualViewWindow(Views.INDIVIDUAL_ITEM);
+            itemView.show();
+        });
     }
 
     private void addComponentsToCard() {
