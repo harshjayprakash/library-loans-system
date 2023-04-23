@@ -10,6 +10,7 @@ import winchester.library.data.model.items.ItemFormat;
 import winchester.library.data.model.items.ItemStock;
 import winchester.library.data.model.items.ItemType;
 import winchester.library.data.model.users.Customer;
+import winchester.library.data.model.users.Employee;
 
 /**
  * A class that has the ability to map the returned ResultSet from the database connection to the correct list of
@@ -107,6 +108,11 @@ public class DataMapper {
             return Optional.empty();
         }
         return Optional.of(customers);
+    }
+
+    public Optional<ArrayList<Employee>> mapAsEmployees(ResultSet data) {
+        ArrayList<Employee> employees = new ArrayList<>();
+        return Optional.of(employees);
     }
 
 }
