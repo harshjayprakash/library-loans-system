@@ -7,6 +7,7 @@ import winchester.library.data.access.DatabaseConstant;
 import winchester.library.data.access.DatabaseCredentials;
 import winchester.library.data.model.items.Book;
 import winchester.library.data.model.items.Film;
+import winchester.library.data.model.users.Customer;
 
 public class DatabaseInteraction {
 
@@ -42,6 +43,10 @@ public class DatabaseInteraction {
 
     public ArrayList<Film> getFilms() {
         return dataRetriever.getFilms();
+    }
+
+    public ArrayList<Customer> getCustomers() {
+        return dataRetriever.getCustomers();
     }
 
 }
