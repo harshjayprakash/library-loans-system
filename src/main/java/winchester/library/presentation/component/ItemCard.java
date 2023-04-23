@@ -68,6 +68,7 @@ public class ItemCard extends BorderPane {
         }
         if (this.item.getType() == ItemType.FILM) {
             Film film = (Film) this.item;
+            this.itemImage.setImage(new Image(film.getImageUrl(), 100, 100, false, false));
             this.itemNameLabel.setText(film.getTitle());
             this.authorOrDirectorLabel.setText(film.getDirector());
         }
