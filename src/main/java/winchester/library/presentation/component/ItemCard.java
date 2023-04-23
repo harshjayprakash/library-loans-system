@@ -51,7 +51,6 @@ public class ItemCard extends BorderPane {
         this.authorOrDirectorLabel.setText("ItemCard->authorOrDirectorLabel");
         this.itemCategoryLabel = new Label();
         this.itemCategoryLabel.setText(this.item.getType().toString());
-        this.stockCountLabel = new Label();
         this.detailsLabel = new Label();
         this.detailsLabel.setId("link-label");
         this.detailsLabel.setText("View Details");
