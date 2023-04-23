@@ -43,8 +43,8 @@ public class ItemCard extends BorderPane {
 
     private void initialiseControls() {
         this.itemImage = new ImageView();
-        this.itemImage.setFitWidth(45);
-        this.itemImage.setFitHeight(45);
+        this.itemImage.setFitWidth(60);
+        this.itemImage.setFitHeight(85);
         this.itemNameLabel = new Label();
         this.itemNameLabel.setText("ItemCard->itemNameLabel");
         this.authorOrDirectorLabel = new Label();
