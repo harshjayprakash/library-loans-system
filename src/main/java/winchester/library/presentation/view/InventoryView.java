@@ -1,7 +1,6 @@
 package winchester.library.presentation.view;
 
 import java.util.ArrayList;
-import java.util.Optional;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.layout.VBox;
 import winchester.library.data.model.items.Book;
