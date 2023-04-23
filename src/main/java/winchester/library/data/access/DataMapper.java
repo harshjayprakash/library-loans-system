@@ -6,6 +6,9 @@ import java.util.ArrayList;
 import java.util.Optional;
 import winchester.library.data.model.items.Book;
 import winchester.library.data.model.items.Film;
+import winchester.library.data.model.items.ItemFormat;
+import winchester.library.data.model.items.ItemStock;
+import winchester.library.data.model.items.ItemType;
 
 /**
  * A class that has the ability to map the returned ResultSet from the database connection to the correct list of
@@ -34,6 +37,32 @@ public class DataMapper {
             return Optional.empty();
         }
         return Optional.of(books);
+    }
+
+    public Optional<ArrayList<ItemStock>> mapAsItemStock(ResultSet data, ItemType type) {
+        ArrayList<ItemStock> itemStock = new ArrayList<>();
+        try {
+            while (data.next()) {
+                ItemStock individualStock = new ItemStock(
+                        switch (type) {
+                            case BOOK -> data.getString("isbn");
+                            case FILM -> data.getString("film_id");
+                        },
+                        ItemFormat.getFromIdentifier(data.getInt("item_subtype_id")).orElse(null),
+                        data.getInt("copies_available"),
+                        0);
+                itemStock.add(individualStock);
+            }
+        }
+        catch (SQLException exception) {
+            System.err.printf("%s : %s%n", DatabaseConstant.NOT_ACCESSIBLE, exception.getMessage());
+            return Optional.empty();
+        }
+        catch (Exception exception) {
+            System.err.printf("%s : %s%n", DatabaseConstant.UNKNOWN_ERROR, exception.getMessage());
+            return Optional.empty();
+        }
+        return Optional.of(itemStock);
     }
 
     public Optional<ArrayList<Film>> mapAsFilms(ResultSet data) {
