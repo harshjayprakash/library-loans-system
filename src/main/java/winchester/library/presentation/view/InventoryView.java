@@ -36,8 +36,8 @@ public class InventoryView extends View {
 
     @Override
     protected void initialiseControls() {
-        Optional<ArrayList<Book>> optionalBooks = DatabaseInteraction.getInstance().getBooks();
-        if (optionalBooks.isEmpty()) {
+        ArrayList<Book> books = DatabaseInteraction.getInstance().getBooks();
+        if (books.isEmpty()) {
             this.banner = new Banner(
                 "Data is not accessible", 
                 "Please check the database configuration by clicking on the database status on the bottom right hand "
@@ -45,7 +45,7 @@ public class InventoryView extends View {
                 return;
         } 
         this.items = new ArrayList<>();
-        for (Book book : optionalBooks.get()) {
+        for (Book book : books) {
             this.items.add(new ItemCard(book));
         }
     }
