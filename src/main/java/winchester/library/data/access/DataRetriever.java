@@ -2,6 +2,7 @@ package winchester.library.data.access;
 
 import java.util.ArrayList;
 import winchester.library.data.model.items.Book;
+import winchester.library.data.model.items.Film;
 import winchester.library.data.model.items.ItemStock;
 import winchester.library.data.model.items.ItemType;
 
@@ -38,6 +39,31 @@ public class DataRetriever {
         }
         connection.close();
         return books;
+    }
+
+    public ArrayList<Film> getFilms() {
+        DatabaseConnection connection = new DatabaseConnection();
+        connection.establish(credentials);
+        ArrayList<Film> films = dataMapper.mapAsFilms(connection.executeQuery(
+                QueryBuilder.createQuery(QueryType.GET)
+                       .select("*")
+                       .from("library.films")
+        ).orElse(null)).orElse(new ArrayList<>());
+        ArrayList<ItemStock> stocks = dataMapper.mapAsItemStock(connection.executeQuery(
+                QueryBuilder.createQuery(QueryType.GET_AND_FILTER)
+                       .select("film_id", "item_subtype_id", "copies_available")
+                       .from("library.films", "library.item_copies")
+                       .where("library.films.film_id = library.item_copies.item_id")
+        ).orElse(null), ItemType.FILM).orElse(new ArrayList<>());
+        for (Film film : films) {
+            for (ItemStock stock : stocks) {
+                if (stock.getItemIdentifier().equals(film.getIdentifier())) {
+                    film.getStockAvailable().add(stock);
+                }
+            }
+        }
+        connection.close();
+        return films;
     }
 
 }
