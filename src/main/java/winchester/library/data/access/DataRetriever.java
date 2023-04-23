@@ -5,6 +5,7 @@ import winchester.library.data.model.items.Book;
 import winchester.library.data.model.items.Film;
 import winchester.library.data.model.items.ItemStock;
 import winchester.library.data.model.items.ItemType;
+import winchester.library.data.model.users.Customer;
 
 public class DataRetriever {
 
@@ -64,6 +65,19 @@ public class DataRetriever {
         }
         connection.close();
         return films;
+    }
+
+    public ArrayList<Customer> getCustomers() {
+        DatabaseConnection connection = new DatabaseConnection();
+        connection.establish(credentials);
+        ArrayList<Customer> customers = dataMapper.mapAsCustomers(connection.executeQuery(
+                QueryBuilder.createQuery(QueryType.GET)
+                      .select("users_id", "first_name", "last_name", "postal_code")
+                      .from("library.users")
+                      .where("library.users.user_type_id = 1")
+        ).orElse(null)).orElse(new ArrayList<>());
+        connection.close();
+        return customers;
     }
 
 }

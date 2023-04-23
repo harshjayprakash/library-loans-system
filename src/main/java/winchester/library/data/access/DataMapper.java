@@ -9,6 +9,7 @@ import winchester.library.data.model.items.Film;
 import winchester.library.data.model.items.ItemFormat;
 import winchester.library.data.model.items.ItemStock;
 import winchester.library.data.model.items.ItemType;
+import winchester.library.data.model.users.Customer;
 
 /**
  * A class that has the ability to map the returned ResultSet from the database connection to the correct list of
@@ -85,6 +86,27 @@ public class DataMapper {
             return Optional.empty();
         }
         return Optional.of(films);
+    }
+
+    public Optional<ArrayList<Customer>> mapAsCustomers(ResultSet data) {
+        ArrayList<Customer> customers = new ArrayList<>();
+        try {
+            while (data.next()) {
+                Customer individualCustomer = new Customer(
+                        data.getInt("user_id"), data.getString("first_name"), 
+                        data.getString("last_name"), data.getString("postal_code"));
+                customers.add(individualCustomer);
+            }
+        }
+        catch (SQLException exception) {
+            System.err.printf("%s : %s%n", DatabaseConstant.NOT_ACCESSIBLE, exception.getMessage());
+            return Optional.empty();
+        }
+        catch (Exception exception) {
+            System.err.printf("%s : %s%n", DatabaseConstant.UNKNOWN_ERROR, exception.getMessage());
+            return Optional.empty();
+        }
+        return Optional.of(customers);
     }
 
 }
