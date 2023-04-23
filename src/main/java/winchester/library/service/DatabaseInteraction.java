@@ -1,23 +1,23 @@
 package winchester.library.service;
 
 import java.util.ArrayList;
-import java.util.Optional;
-import winchester.library.data.access.*;
+import winchester.library.data.access.DataRetriever;
+import winchester.library.data.access.DatabaseConnectionTester;
+import winchester.library.data.access.DatabaseConstant;
+import winchester.library.data.access.DatabaseCredentials;
 import winchester.library.data.model.items.Book;
-
-
 
 public class DatabaseInteraction {
 
     private static DatabaseInteraction instance;
     private final DatabaseCredentials credentials;
     private final DatabaseConnectionTester connectionTester;
-    private final DataMapper dataMapper;
+    private final DataRetriever dataRetriever;
 
     private DatabaseInteraction() {
         this.credentials = DatabaseCredentials.getInstance();
         this.connectionTester = DatabaseConnectionTester.getInstance();
-        this.dataMapper = new DataMapper();
+        this.dataRetriever = new DataRetriever();
     }
 
     public static DatabaseInteraction getInstance() {
@@ -35,17 +35,8 @@ public class DatabaseInteraction {
         return connectionTester.testCredentials(credentials);
     }
 
-    public Optional<ArrayList<Book>> getBooks() {
-        DatabaseConnection connection = new DatabaseConnection();
-        connection.establish(credentials);
-        QueryBuilder query = QueryBuilder.createQuery(QueryType.GET_AND_FILTER)
-                .select("isbn", "title", "author", "publication_year", "publisher", "image_url", "item_subtype_id",
-                        "copies_available")
-                .from("library.books", "library.item_copies")
-                .where("library.books.isbn = library.item_copies.item_id");
-        Optional<ArrayList<Book>> books = dataMapper.mapAsBooks(connection.executeQuery(query).orElse(null));
-        connection.close();
-        return books;
+    public ArrayList<Book> getBooks() {
+        return dataRetriever.getBooks();
     }
 
 }
