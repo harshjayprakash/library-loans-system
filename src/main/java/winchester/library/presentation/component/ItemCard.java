@@ -1,8 +1,10 @@
 package winchester.library.presentation.component;
 
+import javafx.geometry.Insets;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.VBox;
 import winchester.library.data.model.items.Book;
@@ -10,6 +12,8 @@ import winchester.library.data.model.items.Film;
 import winchester.library.data.model.items.Item;
 import winchester.library.data.model.items.ItemType;
 import winchester.library.presentation.style.StylesheetSetter;
+import winchester.library.presentation.view.Views;
+import winchester.library.presentation.window.IndividualViewWindow;
 
 public class ItemCard extends BorderPane {
 
