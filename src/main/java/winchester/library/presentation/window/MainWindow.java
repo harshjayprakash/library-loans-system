@@ -58,6 +58,6 @@ public class MainWindow extends WindowBase {
         this.baseLayout.setBottom(this.statusPane);
         this.baseLayout.setCenter(this.viewsManager);
         this.viewsManager.setTop(this.headerPane);
-        this.viewsManager.setCenter(new NoneSidePaneView());
+        this.viewsManager.setCenter(new NoneSidePaneView(this));
     }
 }
