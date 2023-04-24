@@ -15,23 +15,23 @@ public class ViewsManager extends BorderPane {
         this.setCenter(null);
         this.setCenter(
                 switch (view) {
-                    case HOME -> new HomeView(employee);
-                    case NONE -> new NoneView();
-                    case LOANS -> new LoansView();
+                    case HOME -> new HomeView(parentWindow, employee);
+                    case NONE -> new NoneView(parentWindow);
+                    case LOANS -> new LoansView(parentWindow);
                     case LOGIN -> new LoginView(parentWindow);
-                    case USERS -> new UsersView();
-                    case ADD_ITEM -> new AddItemView();
+                    case USERS -> new UsersView(parentWindow);
+                    case SETTINGS -> new SettingsView(parentWindow);
+                    case ADD_ITEM -> new AddItemView(parentWindow);
                     case REGISTER -> new RegisterView(parentWindow);
-                    case ADD_USER -> new AddUserView();
-                    case CUSTOMERS -> new CustomerView();
-                    case INVENTORY -> new InventoryView();
-                    case LOANING_ITEMS -> new LoaningItemView();
-                    case CHANGE_PASSWORD -> new ChangePasswordView();
-                    case INDIVIDUAL_ITEM -> new IndividualItemView();
-                    case INDIVIDUAL_LOAN -> new IndividualLoanView();
-                    case NONE_WITH_SIDEBAR -> new NoneSidePaneView();
-                    case INDIVIDUAL_CUSTOMER -> new IndividualCustomerView();
-                    case DATABASE_INFORMATION -> new DatabaseInformationView(parentWindow);
+                    case ADD_USER -> new AddUserView(parentWindow);
+                    case CUSTOMERS -> new CustomerView(parentWindow);
+                    case INVENTORY -> new InventoryView(parentWindow);
+                    case LOANING_ITEMS -> new LoaningItemView(parentWindow);
+                    case CHANGE_PASSWORD -> new ChangePasswordView(parentWindow);
+                    case INDIVIDUAL_ITEM -> new IndividualItemView(parentWindow);
+                    case INDIVIDUAL_LOAN -> new IndividualLoanView(parentWindow);
+                    case NONE_WITH_SIDEBAR -> new NoneSidePaneView(parentWindow);
+                    case INDIVIDUAL_CUSTOMER -> new IndividualCustomerView(parentWindow);
                     case DATABASE_CONFIGURATION -> new DatabaseConfigurationView(parentWindow);
                 }
         );
