@@ -7,7 +7,6 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.text.TextAlignment;
 import winchester.library.data.access.DatabaseStatus;
-import winchester.library.meta.Metadata;
 import winchester.library.presentation.style.StylesheetSetter;
 import winchester.library.presentation.view.Views;
 import winchester.library.presentation.window.IndividualViewWindow;
