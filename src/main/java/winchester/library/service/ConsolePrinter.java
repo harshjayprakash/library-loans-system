@@ -39,15 +39,16 @@ public class ConsolePrinter {
     }
 
     public void WriteLineError(String message, String javaMessage) {
-        if (this.exceptionMessagesEnabled) {
-            System.err.printf("%s: %s%n", message, javaMessage);
-        }
-        else {
+        if (!this.enabled) { return; }
+        if (!this.exceptionMessagesEnabled) {
             this.WriteLineError(message);
+            return;
         }
+        System.err.printf("%s: %s%n", message, javaMessage);
     }
 
     public void WriteLineError(String message) {
+        if (!this.enabled) { return; }
         System.err.println(message);
     }
 
