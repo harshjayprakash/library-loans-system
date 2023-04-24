@@ -4,6 +4,7 @@ module winchester.library {
     requires javafx.controls;
     requires transitive javafx.graphics;
     requires org.jetbrains.annotations;
+    requires mysql.connector.j;
 
     opens winchester.library to javafx.controls;
     exports winchester.library;
