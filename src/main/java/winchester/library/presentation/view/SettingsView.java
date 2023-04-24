@@ -26,6 +26,7 @@ public class SettingsView extends View {
     public SettingsView(WindowBase parentWindow) {
         super(parentWindow, Views.SETTINGS.toString());
         this.credentials = DatabaseCredentials.getInstance();
+        this.setSpacing(20);
         this.initialiseLayouts();
         this.initialiseControls();
         this.bindEventHandlers();
