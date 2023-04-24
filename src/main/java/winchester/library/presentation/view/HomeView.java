@@ -35,10 +35,10 @@ public class HomeView extends View {
     protected void initialiseLayouts() {
         this.setSpacing(15);
         this.userPanel = new VBox();
-        this.userPanel.setId("background-secondary");
+        this.userPanel.setId("background-secondary-border");
         this.userPanel.setPadding(new Insets(10));
         this.inventoryPanel = new VBox();
-        this.inventoryPanel.setId("background-secondary");
+        this.inventoryPanel.setId("background-secondary-border");
         this.inventoryPanel.setPadding(new Insets(10));
     }
 
