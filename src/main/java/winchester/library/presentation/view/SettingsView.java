@@ -17,7 +17,10 @@ public class SettingsView extends View {
     private Label dataSourceStatusLabel;
     private Label dataSourceEditCredentialsLinkLabel;
     private Label descriptionLabel;
+    private VBox fileExporterSettingsPane;
     private Label fileExporterTitleLabel;
+    private Label fileExporterOutputPath;
+    private Label fileExporterEditOutputPath;
     private final DatabaseCredentials credentials;
 
     public SettingsView(WindowBase parentWindow) {
@@ -34,6 +37,9 @@ public class SettingsView extends View {
         this.dataSourceSettingsPane = new VBox();
         this.dataSourceSettingsPane.setId("background-secondary-border");
         this.dataSourceSettingsPane.setPadding(new Insets(15));
+        this.fileExporterSettingsPane = new VBox();
+        this.fileExporterSettingsPane.setId("background-secondary-border");
+        this.fileExporterSettingsPane.setPadding(new Insets(15));
     }
 
     @Override
@@ -54,6 +60,11 @@ public class SettingsView extends View {
         this.fileExporterTitleLabel = new Label();
         this.fileExporterTitleLabel.setId("text-bold");
         this.fileExporterTitleLabel.setText("Exporter");
+        this.fileExporterOutputPath = new Label();
+        this.fileExporterOutputPath.setText("C:/Users/harsh/Cloud/Code/uow-library-loans/exports/");
+        this.fileExporterEditOutputPath = new Label();
+        this.fileExporterEditOutputPath.setId("link-label");
+        this.fileExporterEditOutputPath.setText("Edit Export Path");
     }
 
     private void bindEventHandlers() {
@@ -68,7 +79,9 @@ public class SettingsView extends View {
         this.dataSourceSettingsPane.getChildren().addAll(
                 this.dataSourceTitleLabel, this.dataSourceUrlLabel, this.dataSourceStatusLabel,
                 this.dataSourceEditCredentialsLinkLabel);
-        this.getChildren().addAll(this.descriptionLabel, this.dataSourceSettingsPane);
+        this.fileExporterSettingsPane.getChildren().addAll(
+                this.fileExporterTitleLabel, this.fileExporterOutputPath, this.fileExporterEditOutputPath);
+        this.getChildren().addAll(this.descriptionLabel, this.dataSourceSettingsPane, this.fileExporterSettingsPane);
     }
 
 }
