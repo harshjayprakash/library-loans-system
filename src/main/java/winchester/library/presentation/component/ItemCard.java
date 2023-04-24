@@ -29,7 +29,7 @@ public class ItemCard extends BorderPane {
     public ItemCard(Item item) {
         super();
         this.item = item;
-        this.setId("background-secondary");
+        this.setId("background-secondary-border");
         this.setPadding(new Insets(5));
         StylesheetSetter.getInstance().setStyle(this);
         this.initialiseLayouts();
