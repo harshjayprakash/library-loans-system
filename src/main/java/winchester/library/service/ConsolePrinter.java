@@ -4,9 +4,11 @@ public class ConsolePrinter {
 
     private static ConsolePrinter instance = null;
     private boolean enabled;
+    private boolean exceptionMessagesEnabled;
 
     private ConsolePrinter() {
         this.enabled = true;
+        this.exceptionMessagesEnabled = false;
     }
 
     public static ConsolePrinter getInstance() {
@@ -24,12 +26,25 @@ public class ConsolePrinter {
         this.enabled = enabled;
     }
 
+    public boolean isExceptionMessagesEnabled() {
+        return this.exceptionMessagesEnabled;
+    }
+
+    public void setExceptionMessagesEnabled(boolean enabled) {
+        this.exceptionMessagesEnabled = enabled;
+    }
+
     public void WriteLine(String message) {
         System.out.println(message);
     }
 
     public void WriteLineError(String message, String javaMessage) {
-        System.err.printf("%s: %s%n", message, javaMessage);
+        if (this.exceptionMessagesEnabled) {
+            System.err.printf("%s: %s%n", message, javaMessage);
+        }
+        else {
+            this.WriteLineError(message);
+        }
     }
 
     public void WriteLineError(String message) {
