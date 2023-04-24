@@ -19,7 +19,11 @@ import winchester.library.service.ConsolePrinter;
  */
 public class DataMapper {
 
-    public DataMapper() { }
+    private final ConsolePrinter consolePrinter;
+
+    public DataMapper() {
+        this.consolePrinter = ConsolePrinter.getInstance();
+    }
 
     public Optional<ArrayList<Book>> mapAsBooks(ResultSet data) {
         ArrayList<Book> books = new ArrayList<>();
@@ -30,18 +34,18 @@ public class DataMapper {
                         data.getInt("publication_year"), data.getString("publisher"), data.getString("image_url"));
                 books.add(individualBook);
             }
+            return Optional.of(books);
+        }
+        catch (NullPointerException exception) {
+            consolePrinter.WriteLineError(DatabaseConstant.DATA_NOT_ACCESSIBLE.toString(), exception.getMessage());
         }
         catch (SQLException exception) {
-            ConsolePrinter.getInstance().WriteLineError(
-                    DatabaseConstant.DATABASE_NOT_ACCESSIBLE.toString(), exception.getMessage());
-            return Optional.empty();
+            consolePrinter.WriteLineError(DatabaseConstant.DATABASE_NOT_ACCESSIBLE.toString(), exception.getMessage());
         }
         catch (Exception exception) {
-            ConsolePrinter.getInstance().WriteLineError(
-                    DatabaseConstant.UNKNOWN_ERROR.toString(), exception.getMessage());
-            return Optional.empty();
+            consolePrinter.WriteLineError(DatabaseConstant.UNKNOWN_ERROR.toString(), exception.getMessage());
         }
-        return Optional.of(books);
+        return Optional.empty();
     }
 
     public Optional<ArrayList<ItemStock>> mapAsItemStock(ResultSet data, ItemType type) {
@@ -58,18 +62,18 @@ public class DataMapper {
                         0);
                 itemStock.add(individualStock);
             }
+            return Optional.of(itemStock);
+        }
+        catch (NullPointerException exception) {
+            consolePrinter.WriteLineError(DatabaseConstant.DATA_NOT_ACCESSIBLE.toString(), exception.getMessage());
         }
         catch (SQLException exception) {
-            ConsolePrinter.getInstance().WriteLineError(
-                    DatabaseConstant.DATABASE_NOT_ACCESSIBLE.toString(), exception.getMessage());
-            return Optional.empty();
+            consolePrinter.WriteLineError(DatabaseConstant.DATABASE_NOT_ACCESSIBLE.toString(), exception.getMessage());
         }
         catch (Exception exception) {
-            ConsolePrinter.getInstance().WriteLineError(
-                    DatabaseConstant.UNKNOWN_ERROR.toString(), exception.getMessage());
-            return Optional.empty();
+            consolePrinter.WriteLineError(DatabaseConstant.UNKNOWN_ERROR.toString(), exception.getMessage());
         }
-        return Optional.of(itemStock);
+        return Optional.empty();
     }
 
     public Optional<ArrayList<Film>> mapAsFilms(ResultSet data) {
@@ -82,18 +86,18 @@ public class DataMapper {
                         data.getString("image_url"));
                 films.add(individualFilm);
             }
+            return Optional.of(films);
+        }
+        catch (NullPointerException exception) {
+            consolePrinter.WriteLineError(DatabaseConstant.DATA_NOT_ACCESSIBLE.toString(), exception.getMessage());
         }
         catch (SQLException exception) {
-            ConsolePrinter.getInstance().WriteLineError(
-                    DatabaseConstant.DATABASE_NOT_ACCESSIBLE.toString(), exception.getMessage());
-            return Optional.empty();
+            consolePrinter.WriteLineError(DatabaseConstant.DATABASE_NOT_ACCESSIBLE.toString(), exception.getMessage());
         }
         catch (Exception exception) {
-            ConsolePrinter.getInstance().WriteLineError(
-                    DatabaseConstant.UNKNOWN_ERROR.toString(), exception.getMessage());
-            return Optional.empty();
+            consolePrinter.WriteLineError(DatabaseConstant.UNKNOWN_ERROR.toString(), exception.getMessage());
         }
-        return Optional.of(films);
+        return Optional.empty();
     }
 
     public Optional<ArrayList<Customer>> mapAsCustomers(ResultSet data) {
@@ -105,18 +109,18 @@ public class DataMapper {
                         data.getString("last_name"), data.getString("postal_code"));
                 customers.add(individualCustomer);
             }
+            return Optional.of(customers);
+        }
+        catch (NullPointerException exception) {
+            consolePrinter.WriteLineError(DatabaseConstant.DATA_NOT_ACCESSIBLE.toString(), exception.getMessage());
         }
         catch (SQLException exception) {
-            ConsolePrinter.getInstance().WriteLineError(
-                    DatabaseConstant.DATABASE_NOT_ACCESSIBLE.toString(), exception.getMessage());
-            return Optional.empty();
+            consolePrinter.WriteLineError(DatabaseConstant.DATABASE_NOT_ACCESSIBLE.toString(), exception.getMessage());
         }
         catch (Exception exception) {
-            ConsolePrinter.getInstance().WriteLineError(
-                    DatabaseConstant.UNKNOWN_ERROR.toString(), exception.getMessage());
-            return Optional.empty();
+            consolePrinter.WriteLineError(DatabaseConstant.UNKNOWN_ERROR.toString(), exception.getMessage());
         }
-        return Optional.of(customers);
+        return Optional.empty();
     }
 
     public Optional<ArrayList<Employee>> mapAsEmployees(ResultSet data) {
