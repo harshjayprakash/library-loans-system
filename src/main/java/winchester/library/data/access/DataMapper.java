@@ -11,6 +11,8 @@ import winchester.library.data.model.items.ItemFormat;
 import winchester.library.data.model.items.ItemStock;
 import winchester.library.data.model.items.ItemType;
 import winchester.library.data.model.users.Customer;
+import winchester.library.data.model.users.Employee;
+import winchester.library.data.model.users.EmployeeStatus;
 import winchester.library.service.ConsolePrinter;
 
 /**
@@ -103,6 +105,21 @@ public class DataMapper {
                         ItemFormat.getFromIdentifier(result.getInt("item_subtype_id")).orElse(null),
                         result.getInt("copies_available"),
                         0);
+            }
+            catch (SQLException exception) {
+                consolePrinter.WriteLineError(DatabaseConstant.DATA_NOT_ACCESSIBLE.toString(), exception.getMessage());
+                return null;
+            }
+        });
+    }
+
+    public Optional<ArrayList<Employee>> mapAsEmployee(ResultSet data) {
+        return this.mapToList(data, result -> {
+            try {
+                return new Employee(
+                        result.getInt("employee_id"), result.getString("first_name"), result.getString("last_name"),
+                        result.getString("postal_code"), result.getString("username"), result.getString("password"),
+                        EmployeeStatus.fromIdentifier(result.getInt("status_id")).orElse(EmployeeStatus.DISABLED));
             }
             catch (SQLException exception) {
                 consolePrinter.WriteLineError(DatabaseConstant.DATA_NOT_ACCESSIBLE.toString(), exception.getMessage());
