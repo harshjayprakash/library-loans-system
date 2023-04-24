@@ -1,5 +1,7 @@
 package winchester.library.data.model.users;
 
+import java.util.Optional;
+
 public enum EmployeeStatus {
     DISABLED(-1, "Disabled"),
     NOT_APPROVED(0, "Not Approved"),
@@ -15,6 +17,15 @@ public enum EmployeeStatus {
 
     public int getIdentifier() {
         return this.identifier;
+    }
+
+    public static Optional<EmployeeStatus> fromIdentifier(int identifier) {
+        for (EmployeeStatus status : EmployeeStatus.values()) {
+            if (status.identifier == identifier) {
+                return Optional.of(status);
+            }
+        }
+        return Optional.empty();
     }
 
     @Override
