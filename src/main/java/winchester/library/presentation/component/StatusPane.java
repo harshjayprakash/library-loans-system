@@ -33,7 +33,7 @@ public class StatusPane extends BorderPane {
         this.databaseStatusLabel = new Label();
         this.databaseStatusLabel.setAlignment(Pos.CENTER_RIGHT);
         this.databaseStatusLabel.setPadding(new Insets(5));
-        this.databaseStatusLabel.setText("Database not connected");
+        this.databaseStatusLabel.setText("Data Source Status");
         this.databaseStatusLabel.setTextAlignment(TextAlignment.RIGHT);
     }
 
