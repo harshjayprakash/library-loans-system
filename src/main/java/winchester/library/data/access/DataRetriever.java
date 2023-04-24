@@ -82,11 +82,20 @@ public class DataRetriever {
         return customers;
     }
 
-    public ArrayList<Employee> getEmployee() {
+    public ArrayList<Employee> getEmployees() {
         DatabaseConnection connection = new DatabaseConnection();
         connection.establish(credentials);
+        ArrayList<Employee> employees = dataMapper.mapAsEmployee(connection.executeQuery(
+                QueryBuilder.createQuery(QueryType.GET_AND_FILTER)
+                        .select("employee_id", "first_name", "last_name", "postal_code", "username", "password",
+                                "status_id")
+                        .from("library.users", "library.employees", "library.user_types")
+                        .where("library.users.user_type_id = library.user_types.user_type_id",
+                                "and library.users.user_id = library.employees.employee_id",
+                                "and library.user_types.user_type <> 'Customer'")
+        ).orElse(null)).orElse(new ArrayList<>());
         connection.close();
-        return null;
+        return employees;
     }
 
 }
