@@ -2,6 +2,7 @@ package winchester.library.presentation.style;
 
 import java.util.ArrayList;
 import java.util.Objects;
+import winchester.library.service.ConsolePrinter;
 
 public class StylesheetManager {
 
@@ -28,7 +29,7 @@ public class StylesheetManager {
             this.stylesheetPaths.add(Objects.requireNonNull(getClass().getResource(path)).toExternalForm());
         }
         catch (NullPointerException exception) {
-            System.out.println("Could not find stylesheet: " + path);
+            ConsolePrinter.getInstance().WriteLineError("Cannot find stylesheet at " + path);
         }
     }
 

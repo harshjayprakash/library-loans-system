@@ -11,6 +11,7 @@ import winchester.library.data.model.items.ItemStock;
 import winchester.library.data.model.items.ItemType;
 import winchester.library.data.model.users.Customer;
 import winchester.library.data.model.users.Employee;
+import winchester.library.service.ConsolePrinter;
 
 /**
  * A class that has the ability to map the returned ResultSet from the database connection to the correct list of
@@ -31,11 +32,13 @@ public class DataMapper {
             }
         }
         catch (SQLException exception) {
-            System.err.printf("%s : %s%n", DatabaseConstant.NOT_ACCESSIBLE, exception.getMessage());
+            ConsolePrinter.getInstance().WriteLineError(
+                    DatabaseConstant.NOT_ACCESSIBLE.toString(), exception.getMessage());
             return Optional.empty();
         }
         catch (Exception exception) {
-            System.err.printf("%s : %s%n", DatabaseConstant.UNKNOWN_ERROR, exception.getMessage());
+            ConsolePrinter.getInstance().WriteLineError(
+                    DatabaseConstant.UNKNOWN_ERROR.toString(), exception.getMessage());
             return Optional.empty();
         }
         return Optional.of(books);
@@ -57,11 +60,13 @@ public class DataMapper {
             }
         }
         catch (SQLException exception) {
-            System.err.printf("%s : %s%n", DatabaseConstant.NOT_ACCESSIBLE, exception.getMessage());
+            ConsolePrinter.getInstance().WriteLineError(
+                    DatabaseConstant.NOT_ACCESSIBLE.toString(), exception.getMessage());
             return Optional.empty();
         }
         catch (Exception exception) {
-            System.err.printf("%s : %s%n", DatabaseConstant.UNKNOWN_ERROR, exception.getMessage());
+            ConsolePrinter.getInstance().WriteLineError(
+                    DatabaseConstant.UNKNOWN_ERROR.toString(), exception.getMessage());
             return Optional.empty();
         }
         return Optional.of(itemStock);
@@ -79,11 +84,13 @@ public class DataMapper {
             }
         }
         catch (SQLException exception) {
-            System.err.printf("%s : %s%n", DatabaseConstant.NOT_ACCESSIBLE, exception.getMessage());
+            ConsolePrinter.getInstance().WriteLineError(
+                    DatabaseConstant.NOT_ACCESSIBLE.toString(), exception.getMessage());
             return Optional.empty();
         }
         catch (Exception exception) {
-            System.err.printf("%s : %s%n", DatabaseConstant.UNKNOWN_ERROR, exception.getMessage());
+            ConsolePrinter.getInstance().WriteLineError(
+                    DatabaseConstant.UNKNOWN_ERROR.toString(), exception.getMessage());
             return Optional.empty();
         }
         return Optional.of(films);
@@ -100,11 +107,13 @@ public class DataMapper {
             }
         }
         catch (SQLException exception) {
-            System.err.printf("%s : %s%n", DatabaseConstant.NOT_ACCESSIBLE, exception.getMessage());
+            ConsolePrinter.getInstance().WriteLineError(
+                    DatabaseConstant.NOT_ACCESSIBLE.toString(), exception.getMessage());
             return Optional.empty();
         }
         catch (Exception exception) {
-            System.err.printf("%s : %s%n", DatabaseConstant.UNKNOWN_ERROR, exception.getMessage());
+            ConsolePrinter.getInstance().WriteLineError(
+                    DatabaseConstant.UNKNOWN_ERROR.toString(), exception.getMessage());
             return Optional.empty();
         }
         return Optional.of(customers);

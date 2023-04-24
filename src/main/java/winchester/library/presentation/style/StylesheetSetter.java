@@ -2,6 +2,7 @@ package winchester.library.presentation.style;
 
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import winchester.library.service.ConsolePrinter;
 
 public class StylesheetSetter {
     private static StylesheetSetter instance;
@@ -21,10 +22,11 @@ public class StylesheetSetter {
                 scene.getStylesheets().add(path);
             }
             catch (UnsupportedOperationException exception) {
-                System.err.println("Add operation not supported: " + path);
+                ConsolePrinter.getInstance().WriteLineError("Add operation not supported", exception.getMessage());
             }
             catch (Exception exception) {
-                System.err.println("Error assigning stylesheet: " + path);
+                ConsolePrinter.getInstance().WriteLineError(
+                        "Error assigning stylesheet at " + path, exception.getMessage());
             }
         }
     }
@@ -35,10 +37,11 @@ public class StylesheetSetter {
                 parent.getStylesheets().add(path);
             }
             catch (UnsupportedOperationException exception) {
-                System.err.println("Add operation not supported: " + path);
+                ConsolePrinter.getInstance().WriteLineError("Add operation not supported", exception.getMessage());
             }
             catch (Exception exception) {
-                System.err.println("Error assigning stylesheet: " + path);
+                ConsolePrinter.getInstance().WriteLineError(
+                        "Error assigning stylesheet at " + path, exception.getMessage());
             }
         }
     }

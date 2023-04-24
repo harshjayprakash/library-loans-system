@@ -7,6 +7,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.SQLTimeoutException;
 import java.util.Optional;
+import winchester.library.service.ConsolePrinter;
 
 /**
  * A class encapsulates the sql connection as well as handles any exceptions that may occur, which is written to the
@@ -23,7 +24,8 @@ public class DatabaseConnection {
             Class.forName("com.mysql.cj.jdbc.Driver");
         }
         catch (ClassNotFoundException exception) {
-            System.err.printf("%s : %s%n", DatabaseConstant.DRIVER_NOT_FOUND, exception.getMessage());
+            ConsolePrinter.getInstance().WriteLineError(
+                    DatabaseConstant.DRIVER_NOT_FOUND.toString(), exception.getMessage());
         }
     }
 
@@ -34,10 +36,12 @@ public class DatabaseConnection {
                     credentials.getUrl(), credentials.getUsername(), credentials.getPassword());
         }
         catch (SQLTimeoutException exception) {
-            System.err.printf("%s : %s%n", DatabaseConstant.CONNECTION_TIMEOUT, exception.getMessage());
+            ConsolePrinter.getInstance().WriteLineError(
+                    DatabaseConstant.CONNECTION_TIMEOUT.toString(), exception.getMessage());
         }
         catch (SQLException exception) {
-            System.err.printf("%s : %s%n", DatabaseConstant.NOT_ACCESSIBLE, exception.getMessage());
+            ConsolePrinter.getInstance().WriteLineError(
+                    DatabaseConstant.NOT_ACCESSIBLE.toString(), exception.getMessage());
         }
     }
 
@@ -47,13 +51,16 @@ public class DatabaseConnection {
             return Optional.ofNullable(statement.executeQuery());
         }
         catch (NullPointerException exception) {
-            System.err.printf("%s : %s%n", DatabaseConstant.CONNECTION_NOT_AVAILABLE, exception.getMessage());
+            ConsolePrinter.getInstance().WriteLineError(
+                    DatabaseConstant.CONNECTION_NOT_AVAILABLE.toString(), exception.getMessage());
         }
         catch (SQLTimeoutException exception) {
-            System.err.printf("%s : %s%n", DatabaseConstant.CONNECTION_TIMEOUT, exception.getMessage());
+            ConsolePrinter.getInstance().WriteLineError(
+                    DatabaseConstant.CONNECTION_TIMEOUT.toString(), exception.getMessage());
         }
         catch (SQLException exception) {
-            System.err.printf("%s : %s", DatabaseConstant.NOT_ACCESSIBLE, exception.getMessage());
+            ConsolePrinter.getInstance().WriteLineError(
+                    DatabaseConstant.NOT_ACCESSIBLE.toString(), exception.getMessage());
         }
         return Optional.empty();
     }
@@ -65,7 +72,8 @@ public class DatabaseConnection {
             }
         }
         catch (SQLException exception) {
-            System.err.printf("%s : %s%n", DatabaseConstant.CONNECTION_CLOSE_ERROR, exception.getMessage());
+            ConsolePrinter.getInstance().WriteLineError(
+                    DatabaseConstant.CONNECTION_CLOSE_ERROR.toString(), exception.getMessage());
         }
     }
 }

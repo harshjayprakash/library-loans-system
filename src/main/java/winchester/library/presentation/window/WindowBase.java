@@ -7,6 +7,7 @@ import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
 import winchester.library.meta.Metadata;
 import winchester.library.presentation.style.StylesheetSetter;
+import winchester.library.service.ConsolePrinter;
 
 public abstract class WindowBase extends Stage {
     protected Scene scene;
@@ -32,7 +33,7 @@ public abstract class WindowBase extends Stage {
                     getClass().getResourceAsStream("/winchester/library/presentation/images/icon.png"))));
         }
         catch (NullPointerException exception) {
-            System.out.println("Failed to load program icon");
+            ConsolePrinter.getInstance().WriteLineError("Failed to load program icon.");
         }
     }
 
