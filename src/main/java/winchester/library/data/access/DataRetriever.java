@@ -73,8 +73,9 @@ public class DataRetriever {
         ArrayList<Customer> customers = dataMapper.mapAsCustomers(connection.executeQuery(
                 QueryBuilder.createQuery(QueryType.GET_AND_FILTER)
                       .select("user_id", "first_name", "last_name", "postal_code")
-                      .from("library.users")
-                      .where("library.users.user_type_id = 1")
+                      .from("library.users", "library.user_types")
+                      .where("library.users.user_type_id = library.user_types.user_type_id",
+                              "and library.user_types.user_type = 'Customer'")
         ).orElse(null)).orElse(new ArrayList<>());
         connection.close();
         return customers;
