@@ -49,7 +49,7 @@ public class DatabaseConnectionTester {
             return DatabaseConstant.CONNECTION_TIMEOUT;
         }
         catch (SQLException ignored) {
-            return DatabaseConstant.NOT_ACCESSIBLE;
+            return DatabaseConstant.DATABASE_NOT_ACCESSIBLE;
         }
         catch (Exception ignored) {
             return DatabaseConstant.UNKNOWN_ERROR;

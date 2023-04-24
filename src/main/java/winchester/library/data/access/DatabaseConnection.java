@@ -41,7 +41,7 @@ public class DatabaseConnection {
         }
         catch (SQLException exception) {
             ConsolePrinter.getInstance().WriteLineError(
-                    DatabaseConstant.NOT_ACCESSIBLE.toString(), exception.getMessage());
+                    DatabaseConstant.DATABASE_NOT_ACCESSIBLE.toString(), exception.getMessage());
         }
     }
 
@@ -60,7 +60,7 @@ public class DatabaseConnection {
         }
         catch (SQLException exception) {
             ConsolePrinter.getInstance().WriteLineError(
-                    DatabaseConstant.NOT_ACCESSIBLE.toString(), exception.getMessage());
+                    DatabaseConstant.DATABASE_NOT_ACCESSIBLE.toString(), exception.getMessage());
         }
         return Optional.empty();
     }
