@@ -1,7 +1,6 @@
 package winchester.library.presentation.view;
 
 import java.util.Objects;
-
 import javafx.geometry.Insets;
 import javafx.scene.control.Label;
 import javafx.scene.layout.VBox;
