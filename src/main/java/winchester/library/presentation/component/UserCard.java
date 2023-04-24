@@ -26,7 +26,7 @@ public class UserCard extends BorderPane {
     public UserCard(User user) {
         super();
         this.user = user;
-        this.setId("background-secondary");
+        this.setId("background-secondary-border");
         this.initialiseLayouts();
         this.initialiseControls();
         this.bindEventHandlers();
