@@ -4,13 +4,13 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Optional;
+import java.util.function.Function;
 import winchester.library.data.model.items.Book;
 import winchester.library.data.model.items.Film;
 import winchester.library.data.model.items.ItemFormat;
 import winchester.library.data.model.items.ItemStock;
 import winchester.library.data.model.items.ItemType;
 import winchester.library.data.model.users.Customer;
-import winchester.library.data.model.users.Employee;
 import winchester.library.service.ConsolePrinter;
 
 /**
@@ -25,16 +25,16 @@ public class DataMapper {
         this.consolePrinter = ConsolePrinter.getInstance();
     }
 
-    public Optional<ArrayList<Book>> mapAsBooks(ResultSet data) {
-        ArrayList<Book> books = new ArrayList<>();
+    private <T> Optional<ArrayList<T>> mapToList(ResultSet data, Function<ResultSet, T> mapFunction) {
+        ArrayList<T> entityList = new ArrayList<>();
         try {
             while (data.next()) {
-                Book individualBook = new Book(
-                        data.getString("isbn"), data.getString("title"), data.getString("author"),
-                        data.getInt("publication_year"), data.getString("publisher"), data.getString("image_url"));
-                books.add(individualBook);
+                T entity = mapFunction.apply(data);
+                if (entity != null) {
+                    entityList.add(entity);
+                }
             }
-            return Optional.of(books);
+            return Optional.of(entityList);
         }
         catch (NullPointerException exception) {
             consolePrinter.WriteLineError(DatabaseConstant.DATA_NOT_ACCESSIBLE.toString(), exception.getMessage());
@@ -48,84 +48,67 @@ public class DataMapper {
         return Optional.empty();
     }
 
-    public Optional<ArrayList<ItemStock>> mapAsItemStock(ResultSet data, ItemType type) {
-        ArrayList<ItemStock> itemStock = new ArrayList<>();
-        try {
-            while (data.next()) {
-                ItemStock individualStock = new ItemStock(
-                        switch (type) {
-                            case BOOK -> data.getString("isbn");
-                            case FILM -> data.getString("film_id");
-                        },
-                        ItemFormat.getFromIdentifier(data.getInt("item_subtype_id")).orElse(null),
-                        data.getInt("copies_available"),
-                        0);
-                itemStock.add(individualStock);
+    public Optional<ArrayList<Book>> mapAsBooks(ResultSet data) {
+        return this.mapToList(data, result -> {
+            try {
+                return new Book(
+                        result.getString("isbn"), result.getString("title"), result.getString("author"),
+                        result.getInt("publication_year"), result.getString("publisher"),
+                        result.getString("image_url"));
             }
-            return Optional.of(itemStock);
-        }
-        catch (NullPointerException exception) {
-            consolePrinter.WriteLineError(DatabaseConstant.DATA_NOT_ACCESSIBLE.toString(), exception.getMessage());
-        }
-        catch (SQLException exception) {
-            consolePrinter.WriteLineError(DatabaseConstant.DATABASE_NOT_ACCESSIBLE.toString(), exception.getMessage());
-        }
-        catch (Exception exception) {
-            consolePrinter.WriteLineError(DatabaseConstant.UNKNOWN_ERROR.toString(), exception.getMessage());
-        }
-        return Optional.empty();
+            catch (SQLException exception) {
+                consolePrinter.WriteLineError(DatabaseConstant.DATA_NOT_ACCESSIBLE.toString(), exception.getMessage());
+                return null;
+            }
+        });
     }
 
     public Optional<ArrayList<Film>> mapAsFilms(ResultSet data) {
-        ArrayList<Film> films = new ArrayList<>();
-        try {
-            while (data.next()) {
-                Film individualFilm = new Film(
-                        data.getString("film_id"), data.getString("title"), data.getString("director"),
-                        data.getInt("release_year"), data.getString("distributor"), data.getInt("duration_minutes"),
-                        data.getString("image_url"));
-                films.add(individualFilm);
+        return this.mapToList(data, result -> {
+            try {
+                return new Film(
+                        result.getString("film_id"), result.getString("title"), result.getString("director"),
+                        result.getInt("release_year"), result.getString("distributor"),
+                        result.getInt("duration_minutes"), result.getString("image_url"));
             }
-            return Optional.of(films);
-        }
-        catch (NullPointerException exception) {
-            consolePrinter.WriteLineError(DatabaseConstant.DATA_NOT_ACCESSIBLE.toString(), exception.getMessage());
-        }
-        catch (SQLException exception) {
-            consolePrinter.WriteLineError(DatabaseConstant.DATABASE_NOT_ACCESSIBLE.toString(), exception.getMessage());
-        }
-        catch (Exception exception) {
-            consolePrinter.WriteLineError(DatabaseConstant.UNKNOWN_ERROR.toString(), exception.getMessage());
-        }
-        return Optional.empty();
+            catch (SQLException exception) {
+                consolePrinter.WriteLineError(DatabaseConstant.DATA_NOT_ACCESSIBLE.toString(), exception.getMessage());
+                return null;
+            }
+        });
     }
 
     public Optional<ArrayList<Customer>> mapAsCustomers(ResultSet data) {
-        ArrayList<Customer> customers = new ArrayList<>();
-        try {
-            while (data.next()) {
-                Customer individualCustomer = new Customer(
-                        data.getInt("user_id"), data.getString("first_name"), 
-                        data.getString("last_name"), data.getString("postal_code"));
-                customers.add(individualCustomer);
+        return this.mapToList(data, result -> {
+            try {
+                return new Customer(
+                        result.getInt("user_id"), result.getString("first_name"),
+                        result.getString("last_name"), result.getString("postal_code"));
             }
-            return Optional.of(customers);
-        }
-        catch (NullPointerException exception) {
-            consolePrinter.WriteLineError(DatabaseConstant.DATA_NOT_ACCESSIBLE.toString(), exception.getMessage());
-        }
-        catch (SQLException exception) {
-            consolePrinter.WriteLineError(DatabaseConstant.DATABASE_NOT_ACCESSIBLE.toString(), exception.getMessage());
-        }
-        catch (Exception exception) {
-            consolePrinter.WriteLineError(DatabaseConstant.UNKNOWN_ERROR.toString(), exception.getMessage());
-        }
-        return Optional.empty();
+            catch (SQLException exception) {
+                consolePrinter.WriteLineError(DatabaseConstant.DATA_NOT_ACCESSIBLE.toString(), exception.getMessage());
+                return null;
+            }
+        });
     }
 
-    public Optional<ArrayList<Employee>> mapAsEmployees(ResultSet data) {
-        ArrayList<Employee> employees = new ArrayList<>();
-        return Optional.of(employees);
+    public Optional<ArrayList<ItemStock>> mapAsItemStock(ResultSet data, ItemType type) {
+        return this.mapToList(data, result -> {
+            try {
+                return new ItemStock (
+                        switch (type) {
+                            case BOOK -> result.getString("isbn");
+                            case FILM -> result.getString("film_id");
+                        },
+                        ItemFormat.getFromIdentifier(result.getInt("item_subtype_id")).orElse(null),
+                        result.getInt("copies_available"),
+                        0);
+            }
+            catch (SQLException exception) {
+                consolePrinter.WriteLineError(DatabaseConstant.DATA_NOT_ACCESSIBLE.toString(), exception.getMessage());
+                return null;
+            }
+        });
     }
 
 }
