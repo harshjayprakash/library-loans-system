@@ -17,6 +17,7 @@ public enum Views {
     NONE(304, " "),
     NONE_WITH_SIDEBAR(1316, " "),
     REGISTER(613, "Register"),
+    SETTINGS(625, "Settings"),
     USERS(402, "Users");
 
     private final int identifier;
