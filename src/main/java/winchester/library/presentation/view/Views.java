@@ -6,7 +6,6 @@ public enum Views {
     CHANGE_PASSWORD(1144, "Change Password"),
     CUSTOMERS(709, "Customers"),
     DATABASE_CONFIGURATION(1644, "Database Configuration"),
-    DATABASE_INFORMATION(1498, "Database Information"),
     HOME(267, "Home"),
     INDIVIDUAL_CUSTOMER(1466, "Individual Customer"),
     INDIVIDUAL_ITEM(1143, "Individual Item"),
