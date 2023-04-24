@@ -13,7 +13,7 @@ import winchester.library.presentation.view.Views;
 import winchester.library.presentation.window.IndividualViewWindow;
 
 public class StatusPane extends BorderPane {
-    private Label versionNumberLabel;
+    private Label settingsLabel;
     private Label databaseStatusLabel;
 
     public StatusPane() {
@@ -27,9 +27,10 @@ public class StatusPane extends BorderPane {
     }
 
     private void initialiseControls() {
-        this.versionNumberLabel = new Label();
-        this.versionNumberLabel.setPadding(new Insets(5));
-        this.versionNumberLabel.setText(Metadata.getInstance().getProgramVersionNumber());
+        this.settingsLabel = new Label();
+        this.settingsLabel.setId("link-label");
+        this.settingsLabel.setPadding(new Insets(0, 0, 0, 15));
+        this.settingsLabel.setText("Settings");
         this.databaseStatusLabel = new Label();
         this.databaseStatusLabel.setAlignment(Pos.CENTER_RIGHT);
         this.databaseStatusLabel.setId("link-label");
@@ -50,7 +51,7 @@ public class StatusPane extends BorderPane {
     }
 
     private void addComponentsToPane() {
-        this.setLeft(this.versionNumberLabel);
+        this.setLeft(this.settingsLabel);
         this.setRight(this.databaseStatusLabel);
     }
 
