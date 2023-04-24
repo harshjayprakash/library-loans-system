@@ -11,6 +11,12 @@
     -fx-background-color: -wl-colour-background-secondary;
 }
 
+#background-secondary-border {
+    -fx-background-color: -wl-colour-background-secondary;
+    -fx-border-color: lightgray;
+    -fx-border-width: 1px;
+}
+
 
 /* Component Styling */
 #header__page-label {
