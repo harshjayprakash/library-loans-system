@@ -58,7 +58,7 @@ public class LoginView extends View {
         this.passwordLabel.setPadding(new Insets(10, 0, 0, 0));
         this.passwordField = new PasswordField();
         this.databaseConfigurationLinkLabel = new Label();
-        this.databaseConfigurationLinkLabel.setText("Configure Database");
+        this.databaseConfigurationLinkLabel.setText("Configure Data Source");
         this.databaseConfigurationLinkLabel.setId("link-label");
         this.loginButton = new Button();
         this.loginButton.setText("Log In");
