@@ -6,6 +6,7 @@ import winchester.library.data.model.items.Film;
 import winchester.library.data.model.items.ItemStock;
 import winchester.library.data.model.items.ItemType;
 import winchester.library.data.model.users.Customer;
+import winchester.library.data.model.users.Employee;
 
 public class DataRetriever {
 
@@ -79,6 +80,13 @@ public class DataRetriever {
         ).orElse(null)).orElse(new ArrayList<>());
         connection.close();
         return customers;
+    }
+
+    public ArrayList<Employee> getEmployee() {
+        DatabaseConnection connection = new DatabaseConnection();
+        connection.establish(credentials);
+        connection.close();
+        return null;
     }
 
 }
