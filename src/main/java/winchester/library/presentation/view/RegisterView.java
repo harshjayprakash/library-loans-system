@@ -15,7 +15,6 @@ import winchester.library.presentation.window.WindowBase;
 
 public class RegisterView extends View {
 
-    private final WindowBase parentWindow;
     private HBox buttonLayout;
     private Label descriptionLabel;
     private Label firstNameLabel;
@@ -38,9 +37,7 @@ public class RegisterView extends View {
     private Button requestButton;
 
     public RegisterView(WindowBase parentWindow) {
-        super();
-        this.parentWindow = parentWindow;
-        this.parentWindow.setTitleText(Views.REGISTER.toString());
+        super(parentWindow, Views.REGISTER.toString());
         this.parentWindow.setHeight(750);
         this.parentWindow.setWidth(500);
         this.initialiseLayouts();

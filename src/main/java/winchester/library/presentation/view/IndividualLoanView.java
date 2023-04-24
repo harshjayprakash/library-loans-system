@@ -1,9 +1,11 @@
 package winchester.library.presentation.view;
 
+import winchester.library.presentation.window.WindowBase;
+
 public class IndividualLoanView extends View {
 
-    public IndividualLoanView() {
-        super();
+    public IndividualLoanView(WindowBase parentWindow) {
+        super(parentWindow, Views.INDIVIDUAL_LOAN.toString());
     }
 
     @Override

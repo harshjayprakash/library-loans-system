@@ -6,6 +6,7 @@ import javafx.scene.layout.VBox;
 import winchester.library.data.model.users.Customer;
 import winchester.library.presentation.component.Banner;
 import winchester.library.presentation.component.UserCard;
+import winchester.library.presentation.window.WindowBase;
 import winchester.library.service.DatabaseInteraction;
 
 public class CustomerView extends View {
@@ -15,8 +16,8 @@ public class CustomerView extends View {
     private ArrayList<UserCard> customersCardList;
     private Banner banner;
 
-    public CustomerView() {
-        super();
+    public CustomerView(WindowBase parentWindow) {
+        super(parentWindow, Views.CUSTOMERS.toString());
         setSpacing(20);
         this.initialiseLayouts();
         this.initialiseControls();

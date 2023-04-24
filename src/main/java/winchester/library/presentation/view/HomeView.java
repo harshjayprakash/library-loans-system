@@ -7,6 +7,8 @@ import javafx.scene.control.Label;
 import javafx.scene.layout.VBox;
 import winchester.library.data.access.DemoAccount;
 import winchester.library.data.model.users.Employee;
+import winchester.library.presentation.window.WindowBase;
+import winchester.library.service.DatabaseInteraction;
 
 public class HomeView extends View {
 
@@ -20,8 +22,8 @@ public class HomeView extends View {
     private Label overdueCountLabel;
     private final Employee currentEmployee;
 
-    public HomeView(Employee currentEmployee) {
-        super();
+    public HomeView(WindowBase parentWindow, Employee currentEmployee) {
+        super(parentWindow, Views.HOME.toString());
         this.currentEmployee = Objects.isNull(currentEmployee) ? DemoAccount.get() : currentEmployee;
         this.initialiseLayouts();
         this.initialiseControls();

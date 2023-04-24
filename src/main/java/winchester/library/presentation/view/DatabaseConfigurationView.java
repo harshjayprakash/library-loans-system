@@ -28,7 +28,7 @@ public class DatabaseConfigurationView extends View {
     private Button saveAndTestButton;
 
     public DatabaseConfigurationView(WindowBase parentWindow) {
-        super();
+        super(parentWindow, Views.DATABASE_CONFIGURATION.toString());
         this.parentWindow = parentWindow;
         this.parentWindow.setTitleText(Views.DATABASE_CONFIGURATION.toString());
         this.parentWindow.setWidth(550);

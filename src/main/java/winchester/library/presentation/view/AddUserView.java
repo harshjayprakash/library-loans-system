@@ -1,9 +1,11 @@
 package winchester.library.presentation.view;
 
+import winchester.library.presentation.window.WindowBase;
+
 public class AddUserView extends View {
 
-    public AddUserView() {
-        super();
+    public AddUserView(WindowBase parentWindow) {
+        super(parentWindow, Views.ADD_USER.toString());
     }
 
     @Override

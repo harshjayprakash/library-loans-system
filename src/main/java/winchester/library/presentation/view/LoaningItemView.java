@@ -1,9 +1,11 @@
 package winchester.library.presentation.view;
 
+import winchester.library.presentation.window.WindowBase;
+
 public class LoaningItemView extends View {
 
-    public LoaningItemView() {
-        super();
+    public LoaningItemView(WindowBase parentWindow) {
+        super(parentWindow, Views.LOANING_ITEMS.toString());
     }
 
     @Override

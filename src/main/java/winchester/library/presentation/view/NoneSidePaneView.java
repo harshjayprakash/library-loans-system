@@ -3,14 +3,15 @@ package winchester.library.presentation.view;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.control.Label;
+import winchester.library.presentation.window.WindowBase;
 
 public class NoneSidePaneView extends View {
 
     private Label messageLabel;
     private Label informationLabel;
 
-    public NoneSidePaneView() {
-        super();
+    public NoneSidePaneView(WindowBase parentWindow) {
+        super(parentWindow, Views.NONE_WITH_SIDEBAR.toString());
         this.initialiseLayouts();
         this.initialiseControls();
         this.addComponentsToView();

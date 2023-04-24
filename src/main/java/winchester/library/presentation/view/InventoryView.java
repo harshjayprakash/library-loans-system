@@ -7,6 +7,7 @@ import winchester.library.data.model.items.Book;
 import winchester.library.data.model.items.Film;
 import winchester.library.presentation.component.Banner;
 import winchester.library.presentation.component.ItemCard;
+import winchester.library.presentation.window.WindowBase;
 import winchester.library.service.DatabaseInteraction;
 
 public class InventoryView extends View {
@@ -16,8 +17,8 @@ public class InventoryView extends View {
     private ArrayList<ItemCard> items;
     private Banner banner;
 
-    public InventoryView() {
-        super();
+    public InventoryView(WindowBase parentWindow) {
+        super(parentWindow, Views.INVENTORY.toString());
         this.setSpacing(20);
         this.initialiseLayouts();
         this.initialiseControls();
