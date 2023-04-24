@@ -3,9 +3,10 @@ package winchester.library.service;
 public class ConsolePrinter {
 
     private static ConsolePrinter instance = null;
+    private boolean enabled;
 
     private ConsolePrinter() {
-
+        this.enabled = true;
     }
 
     public static ConsolePrinter getInstance() {
@@ -13,6 +14,14 @@ public class ConsolePrinter {
             ConsolePrinter.instance = new ConsolePrinter();
         }
         return ConsolePrinter.instance;
+    }
+
+    public boolean isEnabled() {
+        return this.enabled;
+    }
+
+    public void setEnabled(boolean enabled) {
+        this.enabled = enabled;
     }
 
     public void WriteLine(String message) {
