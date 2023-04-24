@@ -21,10 +21,12 @@ public class HomeView extends View {
     private Label loanCountLabel;
     private Label overdueCountLabel;
     private final Employee currentEmployee;
+    private final DatabaseInteraction databaseInteraction;
 
     public HomeView(WindowBase parentWindow, Employee currentEmployee) {
         super(parentWindow, Views.HOME.toString());
         this.currentEmployee = Objects.isNull(currentEmployee) ? DemoAccount.get() : currentEmployee;
+        this.databaseInteraction = DatabaseInteraction.getInstance();
         this.initialiseLayouts();
         this.initialiseControls();
         this.addComponentsToView();
