@@ -42,9 +42,9 @@ public class StatusPane extends BorderPane {
     }
 
     private void bindEventHandlers() {
-        this.databaseStatusLabel.addEventHandler(MouseEvent.MOUSE_CLICKED, event -> {
-            IndividualViewWindow databaseInformationView = new IndividualViewWindow(Views.DATABASE_INFORMATION);
-            databaseInformationView.show();
+        this.settingsLabel.addEventHandler(MouseEvent.MOUSE_CLICKED, event -> {
+            IndividualViewWindow settingsView = new IndividualViewWindow(Views.SETTINGS);
+            settingsView.show();
         });
     }
 
