@@ -23,10 +23,4 @@ public abstract class Item {
 
     public abstract ItemType getType();
 
-    @Override
-    public String toString() {
-        return "Item{" +
-                "stockAvailable=" + stockAvailable +
-                '}';
-    }
 }
