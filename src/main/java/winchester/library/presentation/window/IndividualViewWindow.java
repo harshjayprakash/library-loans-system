@@ -8,7 +8,7 @@ import winchester.library.presentation.component.pane.HeaderPane;
 import winchester.library.presentation.view.Views;
 import winchester.library.presentation.view.ViewsManager;
 
-public class IndividualViewWindow extends WindowBase {
+public final class IndividualViewWindow extends WindowBase {
 
     private static int instanceCount = 0;
     private HeaderPane header;

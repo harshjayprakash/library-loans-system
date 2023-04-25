@@ -10,7 +10,7 @@ import winchester.library.presentation.view.Views;
 import winchester.library.presentation.view.ViewsManager;
 import winchester.library.service.DatabaseInteraction;
 
-public class MainWindow extends WindowBase {
+public final class MainWindow extends WindowBase {
 
     private HeaderPane headerPane;
     private SidePane sidePane;
