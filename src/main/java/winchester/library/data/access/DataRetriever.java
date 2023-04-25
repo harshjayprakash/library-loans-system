@@ -8,6 +8,9 @@ import winchester.library.data.model.items.ItemType;
 import winchester.library.data.model.users.Customer;
 import winchester.library.data.model.users.Employee;
 
+/**
+ * A class that abstracts the database connection and operations to get the list of entities.
+ */
 public class DataRetriever {
 
     private final DatabaseCredentials credentials;
