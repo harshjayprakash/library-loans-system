@@ -14,8 +14,7 @@ public class Main extends Application {
 
     @Override
     public void start(Stage stage) {
-        ConsolePrinter.getInstance().setExceptionMessagesEnabled(false);
-        ConsolePrinter.getInstance().setEnabled(false);
+        Logger.getInstance().setEnabled(true);
         StylesheetManager.getInstance().addMultipleStylesheets(
                 "/winchester/library/presentation/style/base.css", "/winchester/library/presentation/style/style.css");
         IndividualViewWindow loginWindow = new IndividualViewWindow(Views.LOGIN);
