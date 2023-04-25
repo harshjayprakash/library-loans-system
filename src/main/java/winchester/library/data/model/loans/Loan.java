@@ -3,7 +3,6 @@ package winchester.library.data.model.loans;
 import java.time.LocalDate;
 import java.time.temporal.ChronoUnit;
 import winchester.library.data.access.DatabaseEntity;
-import winchester.library.data.model.items.Item;
 import winchester.library.data.model.items.ItemType;
 import winchester.library.data.model.users.Customer;
 
@@ -11,17 +10,17 @@ import winchester.library.data.model.users.Customer;
 public class Loan {
     private final int identifier;
     private final Customer customer;
-    private final Item loanedItem;
+    private final String loanedItemIdentifier;
     private final ItemType loanedItemFormat;
     private final LocalDate loanDate;
     private LocalDate dueDate;
     private boolean returned;
 
-    public Loan(int identifier, Customer customer, Item loanedItem, ItemType loanedItemSubType, LocalDate loanDate,
+    public Loan(int identifier, Customer customer, String loanedItemIdentifier, ItemType loanedItemSubType, LocalDate loanDate,
                 LocalDate dueDate, boolean returned) {
         this.identifier = identifier;
         this.customer = customer;
-        this.loanedItem = loanedItem;
+        this.loanedItemIdentifier = loanedItemIdentifier;
         this.loanedItemFormat = loanedItemSubType;
         this.loanDate = loanDate;
         this.dueDate = dueDate;
@@ -36,8 +35,8 @@ public class Loan {
         return this.customer;
     }
 
-    public Item getLoanedItem() {
-        return this.loanedItem;
+    public String getLoanedItemIdentifier() {
+        return this.loanedItemIdentifier;
     }
 
     public ItemType getLoanedItemFormat() {
