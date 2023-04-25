@@ -255,11 +255,12 @@ values (1, '9780063021426', 11, 10),
        (42, '1905001', 22, 5);
 
 create table `library`.`loans` (
-    `loan_id`       int           not null,
-    `customer_id`   int           not null,
-    `item_id`       varchar(13)   not null,
-    `loan_date`     date          not null,
-    `return_date`   date          not null,
-    `returned`      tinyint       not null,
+    `loan_id`           int           not null,
+    `customer_id`       int           not null,
+    `item_id`           varchar(13)   not null,
+    `item_subtype_id`   int           not null,
+    `loan_date`         date          not null,
+    `return_date`       date          not null,
+    `returned`          tinyint       not null,
     primary key (`loan_id`)
 );
