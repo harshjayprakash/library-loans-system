@@ -3,7 +3,7 @@ package winchester.library.presentation.component.pane;
 import javafx.geometry.Insets;
 import javafx.scene.control.Label;
 import javafx.scene.layout.VBox;
-import winchester.library.presentation.style.StylesheetSetter;
+import winchester.library.presentation.style.ComponentStyler;
 import winchester.library.presentation.view.Views;
 
 public class HeaderPane extends VBox {
@@ -17,7 +17,7 @@ public class HeaderPane extends VBox {
         this.page = page;
         this.parentPage = parentPage;
         this.setId("background-primary");
-        StylesheetSetter.getInstance().setStyle(this);
+        ComponentStyler.getInstance().setStyle(this);
         this.setPadding(new Insets(0, 0, 10, 0));
         this.initialiseControls();
         this.addControlsToPane();

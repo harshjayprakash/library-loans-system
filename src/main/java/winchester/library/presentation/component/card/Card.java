@@ -3,7 +3,7 @@ package winchester.library.presentation.component.card;
 import javafx.scene.control.Label;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.VBox;
-import winchester.library.presentation.style.StylesheetSetter;
+import winchester.library.presentation.style.ComponentStyler;
 
 public abstract class Card extends BorderPane {
 
@@ -19,10 +19,10 @@ public abstract class Card extends BorderPane {
     }
 
     private void loadStylesheets() {
-        StylesheetSetter.getInstance().setStyle(this);
+        ComponentStyler.getInstance().setStyle(this);
     }
 
-    private void initialiseLayouts() {
+    protected void initialiseLayouts() {
         this.actionsLayout = new VBox();
     }
 

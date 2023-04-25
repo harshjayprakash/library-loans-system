@@ -6,7 +6,7 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.VBox;
 import winchester.library.data.model.loans.Loan;
-import winchester.library.presentation.style.StylesheetSetter;
+import winchester.library.presentation.style.ComponentStyler;
 import winchester.library.presentation.view.Views;
 import winchester.library.presentation.window.IndividualViewWindow;
 
@@ -23,7 +23,7 @@ public class LoanCard extends BorderPane {
         super();
         this.loan = loan;
         this.setId("background-secondary-border");
-        StylesheetSetter.getInstance().setStyle(this);
+        ComponentStyler.getInstance().setStyle(this);
         this.initialiseLayouts();
         this.initialiseControls();
         this.bindEventHandlers();

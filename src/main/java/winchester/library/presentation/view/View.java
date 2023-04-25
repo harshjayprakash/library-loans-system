@@ -1,7 +1,7 @@
 package winchester.library.presentation.view;
 
 import javafx.scene.layout.VBox;
-import winchester.library.presentation.style.StylesheetSetter;
+import winchester.library.presentation.style.ComponentStyler;
 import winchester.library.presentation.window.WindowBase;
 
 public abstract class View extends VBox {
@@ -15,7 +15,7 @@ public abstract class View extends VBox {
     }
 
     private void loadStylesheets() {
-        StylesheetSetter.getInstance().setStyle(this);
+        ComponentStyler.getInstance().setStyle(this);
     }
 
     protected abstract void initialiseLayouts();

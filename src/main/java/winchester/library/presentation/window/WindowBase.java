@@ -6,7 +6,7 @@ import javafx.scene.image.Image;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
 import winchester.library.meta.Metadata;
-import winchester.library.presentation.style.StylesheetSetter;
+import winchester.library.presentation.style.ComponentStyler;
 import winchester.library.service.Logger;
 
 public abstract class WindowBase extends Stage {
@@ -23,7 +23,7 @@ public abstract class WindowBase extends Stage {
         this.baseLayout = new BorderPane();
         this.baseLayout.setId("background-primary");
         this.scene = new Scene(this.baseLayout, 800, 600);
-        StylesheetSetter.getInstance().setStyle(this.scene);
+        ComponentStyler.getInstance().setStyle(this.scene);
         this.setScene(scene);
     }
 

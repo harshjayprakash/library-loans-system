@@ -2,7 +2,7 @@ package winchester.library;
 
 import javafx.application.Application;
 import javafx.stage.Stage;
-import winchester.library.presentation.style.StylesheetManager;
+import winchester.library.presentation.style.StylesheetRegistry;
 import winchester.library.presentation.view.Views;
 import winchester.library.presentation.window.IndividualViewWindow;
 import winchester.library.service.Logger;
@@ -15,7 +15,7 @@ public class Main extends Application {
     @Override
     public void start(Stage stage) {
         Logger.getInstance().setEnabled(true);
-        StylesheetManager.getInstance().addMultipleStylesheets(
+        StylesheetRegistry.getInstance().addMultipleStylesheets(
                 "/winchester/library/presentation/style/base.css",
                 "/winchester/library/presentation/style/components.css",
                 "/winchester/library/presentation/style/misc.css",

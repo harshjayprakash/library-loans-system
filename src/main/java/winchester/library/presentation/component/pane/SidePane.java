@@ -12,7 +12,7 @@ import javafx.scene.layout.Priority;
 import javafx.scene.layout.VBox;
 import winchester.library.data.access.DemoAccount;
 import winchester.library.data.model.users.Employee;
-import winchester.library.presentation.style.StylesheetSetter;
+import winchester.library.presentation.style.ComponentStyler;
 import winchester.library.presentation.view.Views;
 
 public class SidePane extends VBox {
@@ -106,7 +106,7 @@ public class SidePane extends VBox {
     }
 
     private void loadStylesheets() {
-        StylesheetSetter.getInstance().setStyle(this);
+        ComponentStyler.getInstance().setStyle(this);
     }
 
     private void addComponentsToPane() {
