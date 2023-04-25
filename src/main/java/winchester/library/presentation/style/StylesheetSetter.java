@@ -22,11 +22,18 @@ public class StylesheetSetter {
                 scene.getStylesheets().add(path);
             }
             catch (UnsupportedOperationException exception) {
-                ConsolePrinter.getInstance().WriteLineError("Add operation not supported", exception.getMessage());
+                Logger.getInstance().PrintError(
+                        this.getClass().getName(),
+                        "Setting Styles To Scene",
+                        "Add option not supported on given object",
+                        "Ensure the correct type is given");
             }
             catch (Exception exception) {
-                ConsolePrinter.getInstance().WriteLineError(
-                        "Error assigning stylesheet at " + path, exception.getMessage());
+                Logger.getInstance().PrintError(
+                        this.getClass().getName(),
+                        "Setting Styles To Scene",
+                        String.format("Error Assigning Stylesheet '%s' due to %s", path, exception.getMessage()),
+                        "^ Please find solution to problem described above");
             }
         }
     }
@@ -37,11 +44,18 @@ public class StylesheetSetter {
                 parent.getStylesheets().add(path);
             }
             catch (UnsupportedOperationException exception) {
-                ConsolePrinter.getInstance().WriteLineError("Add operation not supported", exception.getMessage());
+                Logger.getInstance().PrintError(
+                        this.getClass().getName(),
+                        "Setting Styles To Scene",
+                        "Add option not supported on given object",
+                        "Ensure the correct type is given");
             }
             catch (Exception exception) {
-                ConsolePrinter.getInstance().WriteLineError(
-                        "Error assigning stylesheet at " + path, exception.getMessage());
+                Logger.getInstance().PrintError(
+                        this.getClass().getName(),
+                        "Setting Styles To Scene",
+                        String.format("Error Assigning Stylesheet '%s' due to %s", path, exception.getMessage()),
+                        "^ Please find solution to problem described above");
             }
         }
     }

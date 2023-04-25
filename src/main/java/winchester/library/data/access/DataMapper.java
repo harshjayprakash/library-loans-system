@@ -35,13 +35,25 @@ public class DataMapper {
             return Optional.of(entityList);
         }
         catch (NullPointerException exception) {
-            consolePrinter.WriteLineError(DatabaseConstant.DATA_NOT_ACCESSIBLE.toString(), exception.getMessage());
+            Logger.getInstance().PrintError(
+                    this.getClass().getName(),
+                    "Mapping Data to an Array",
+                    DatabaseConstant.DATA_NOT_ACCESSIBLE.toString(),
+                    "Ensure that the Result Set Contains Data");
         }
         catch (SQLException exception) {
-            consolePrinter.WriteLineError(DatabaseConstant.DATABASE_NOT_ACCESSIBLE.toString(), exception.getMessage());
+            Logger.getInstance().PrintError(
+                    this.getClass().getName(),
+                    "Mapping Data to an Array",
+                    DatabaseConstant.DATABASE_NOT_ACCESSIBLE.toString(),
+                    "Ensure there is an Active Connection to the Database");
         }
         catch (Exception exception) {
-            consolePrinter.WriteLineError(DatabaseConstant.UNKNOWN_ERROR.toString(), exception.getMessage());
+            Logger.getInstance().PrintError(
+                    this.getClass().getName(),
+                    "Mapping Data to an Array",
+                    DatabaseConstant.UNKNOWN_ERROR.toString() + ": " + exception.getMessage(),
+                    "^ Please find a solution to the above error");
         }
         return Optional.empty();
     }
@@ -55,7 +67,11 @@ public class DataMapper {
                         result.getString("image_url"));
             }
             catch (SQLException exception) {
-                consolePrinter.WriteLineError(DatabaseConstant.DATA_NOT_ACCESSIBLE.toString(), exception.getMessage());
+                Logger.getInstance().PrintError(
+                        this.getClass().getName(),
+                        "Mapping an Entity to Specified Class",
+                        DatabaseConstant.DATA_NOT_ACCESSIBLE.toString(),
+                        "Ensure that the column specified is valid");
                 return null;
             }
         });
@@ -70,7 +86,11 @@ public class DataMapper {
                         result.getInt("duration_minutes"), result.getString("image_url"));
             }
             catch (SQLException exception) {
-                consolePrinter.WriteLineError(DatabaseConstant.DATA_NOT_ACCESSIBLE.toString(), exception.getMessage());
+                Logger.getInstance().PrintError(
+                        this.getClass().getName(),
+                        "Mapping an Entity to Specified Class",
+                        DatabaseConstant.DATA_NOT_ACCESSIBLE.toString(),
+                        "Ensure that the column specified is valid");
                 return null;
             }
         });
@@ -84,7 +104,11 @@ public class DataMapper {
                         result.getString("last_name"), result.getString("postal_code"));
             }
             catch (SQLException exception) {
-                consolePrinter.WriteLineError(DatabaseConstant.DATA_NOT_ACCESSIBLE.toString(), exception.getMessage());
+                Logger.getInstance().PrintError(
+                        this.getClass().getName(),
+                        "Mapping an Entity to Specified Class",
+                        DatabaseConstant.DATA_NOT_ACCESSIBLE.toString(),
+                        "Ensure that the column specified is valid");
                 return null;
             }
         });
@@ -103,7 +127,11 @@ public class DataMapper {
                         0);
             }
             catch (SQLException exception) {
-                consolePrinter.WriteLineError(DatabaseConstant.DATA_NOT_ACCESSIBLE.toString(), exception.getMessage());
+                Logger.getInstance().PrintError(
+                        this.getClass().getName(),
+                        "Mapping an Entity to Specified Class",
+                        DatabaseConstant.DATA_NOT_ACCESSIBLE.toString(),
+                        "Ensure that the column specified is valid");
                 return null;
             }
         });
@@ -118,7 +146,11 @@ public class DataMapper {
                         EmployeeStatus.fromIdentifier(result.getInt("status_id")).orElse(EmployeeStatus.DISABLED));
             }
             catch (SQLException exception) {
-                consolePrinter.WriteLineError(DatabaseConstant.DATA_NOT_ACCESSIBLE.toString(), exception.getMessage());
+                Logger.getInstance().PrintError(
+                        this.getClass().getName(),
+                        "Mapping an Entity to Specified Class",
+                        DatabaseConstant.DATA_NOT_ACCESSIBLE.toString(),
+                        "Ensure that the column specified is valid");
                 return null;
             }
         });

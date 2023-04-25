@@ -29,7 +29,11 @@ public class StylesheetManager {
             this.stylesheetPaths.add(Objects.requireNonNull(getClass().getResource(path)).toExternalForm());
         }
         catch (NullPointerException exception) {
-            ConsolePrinter.getInstance().WriteLineError("Cannot find stylesheet at " + path);
+            Logger.getInstance().PrintError(
+                    this.getClass().getName(),
+                    String.format("Loading Stylesheet '%s'", path),
+                    "Stylesheet Not Found",
+                    "Ensure availability of stylesheet");
         }
     }
 

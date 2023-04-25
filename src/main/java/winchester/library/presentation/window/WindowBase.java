@@ -33,7 +33,11 @@ public abstract class WindowBase extends Stage {
                     getClass().getResourceAsStream("/winchester/library/presentation/images/icon.png"))));
         }
         catch (NullPointerException exception) {
-            ConsolePrinter.getInstance().WriteLineError("Failed to load program icon.");
+            Logger.getInstance().PrintError(
+                    this.getClass().getName(),
+                    "Loading Program Icon",
+                    "Object Not Found",
+                    "Ensure the availability of the icon");
         }
     }
 

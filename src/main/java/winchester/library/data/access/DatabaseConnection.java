@@ -24,8 +24,11 @@ public class DatabaseConnection {
             Class.forName("com.mysql.cj.jdbc.Driver");
         }
         catch (ClassNotFoundException exception) {
-            ConsolePrinter.getInstance().WriteLineError(
-                    DatabaseConstant.DRIVER_NOT_FOUND.toString(), exception.getMessage());
+            Logger.getInstance().PrintError(
+                    this.getClass().getName(),
+                    "Loading MySQL Driver",
+                    DatabaseConstant.DRIVER_NOT_FOUND.toString(),
+                    "Ensure the availability of the MySQL Connector Dependency");
         }
     }
 
@@ -36,12 +39,18 @@ public class DatabaseConnection {
                     credentials.getUrl(), credentials.getUsername(), credentials.getPassword());
         }
         catch (SQLTimeoutException exception) {
-            ConsolePrinter.getInstance().WriteLineError(
-                    DatabaseConstant.CONNECTION_TIMEOUT.toString(), exception.getMessage());
+            Logger.getInstance().PrintError(
+                    this.getClass().getName(),
+                    "Establishing Database Connection",
+                    DatabaseConstant.CONNECTION_TIMEOUT.toString(),
+                    "Ensure that the Connection is Active");
         }
         catch (SQLException exception) {
-            ConsolePrinter.getInstance().WriteLineError(
-                    DatabaseConstant.DATABASE_NOT_ACCESSIBLE.toString(), exception.getMessage());
+            Logger.getInstance().PrintError(
+                    this.getClass().getName(),
+                    "Establishing Database Connection",
+                    DatabaseConstant.DATABASE_NOT_ACCESSIBLE.toString(),
+                    "Ensure that the credentials provided are correct");
         }
     }
 
@@ -51,16 +60,25 @@ public class DatabaseConnection {
             return Optional.ofNullable(statement.executeQuery());
         }
         catch (NullPointerException exception) {
-            ConsolePrinter.getInstance().WriteLineError(
-                    DatabaseConstant.CONNECTION_NOT_AVAILABLE.toString(), exception.getMessage());
+            Logger.getInstance().PrintError(
+                    this.getClass().getName(),
+                    "Executing an SQL Query",
+                    DatabaseConstant.CONNECTION_NOT_AVAILABLE.toString(),
+                    "Ensure that there is a Connection Available");
         }
         catch (SQLTimeoutException exception) {
-            ConsolePrinter.getInstance().WriteLineError(
-                    DatabaseConstant.CONNECTION_TIMEOUT.toString(), exception.getMessage());
+            Logger.getInstance().PrintError(
+                    this.getClass().getName(),
+                    "Executing an SQL Query",
+                    DatabaseConstant.CONNECTION_TIMEOUT.toString(),
+                    "Ensure that the Connection is Active");
         }
         catch (SQLException exception) {
-            ConsolePrinter.getInstance().WriteLineError(
-                    DatabaseConstant.DATABASE_NOT_ACCESSIBLE.toString(), exception.getMessage());
+            Logger.getInstance().PrintError(
+                    this.getClass().getName(),
+                    "Executing an SQL Query",
+                    DatabaseConstant.DATABASE_NOT_ACCESSIBLE.toString(),
+                    "Ensure that the Connection is Active");
         }
         return Optional.empty();
     }
@@ -72,8 +90,11 @@ public class DatabaseConnection {
             }
         }
         catch (SQLException exception) {
-            ConsolePrinter.getInstance().WriteLineError(
-                    DatabaseConstant.CONNECTION_CLOSE_ERROR.toString(), exception.getMessage());
+            Logger.getInstance().PrintError(
+                    this.getClass().getName(),
+                    "Closing Database Connection",
+                    DatabaseConstant.CONNECTION_CLOSE_ERROR.toString(),
+                    "Ensure that the Connection is Active.");
         }
     }
 }
