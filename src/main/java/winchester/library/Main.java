@@ -16,7 +16,10 @@ public class Main extends Application {
     public void start(Stage stage) {
         Logger.getInstance().setEnabled(true);
         StylesheetManager.getInstance().addMultipleStylesheets(
-                "/winchester/library/presentation/style/base.css", "/winchester/library/presentation/style/style.css");
+                "/winchester/library/presentation/style/base.css",
+                "/winchester/library/presentation/style/components.css",
+                "/winchester/library/presentation/style/misc.css",
+                "/winchester/library/presentation/style/utility.css");
         IndividualViewWindow loginWindow = new IndividualViewWindow(Views.LOGIN);
         loginWindow.show();
     }
