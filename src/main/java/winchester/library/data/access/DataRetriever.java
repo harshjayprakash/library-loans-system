@@ -5,6 +5,7 @@ import winchester.library.data.model.items.Book;
 import winchester.library.data.model.items.Film;
 import winchester.library.data.model.items.ItemStock;
 import winchester.library.data.model.items.ItemType;
+import winchester.library.data.model.loans.Loan;
 import winchester.library.data.model.users.Customer;
 import winchester.library.data.model.users.Employee;
 
@@ -99,6 +100,22 @@ public class DataRetriever {
         ).orElse(null)).orElse(new ArrayList<>());
         connection.close();
         return employees;
+    }
+
+    public ArrayList<Loan> getLoans() {
+        DatabaseConnection connection = new DatabaseConnection();
+        connection.establish(credentials);
+        ArrayList<Loan> loans = dataMapper.mapAsLoans(connection.executeQuery(
+                QueryBuilder.createQuery(QueryType.GET_AND_FILTER)
+                        .select("loan_id", "customer_id", "first_name", "last_name", "postal_code", "loans.item_id",
+                                "loans.item_subtype_id", "loan_date", "return_date", "returned")
+                        .from("library.loans", "library.users", "library.item_subtypes", "library.item_copies")
+                        .where("library.loans.customer_id = library.users.user_id",
+                                "and library.loans.item_id = library.item_copies.item_id",
+                                "and library.loans.item_subtype_id = library.item_subtypes.item_subtype_id")
+        ).orElse(null)).orElse(new ArrayList<>());
+        connection.close();
+        return loans;
     }
 
 }
