@@ -1,4 +1,4 @@
-package winchester.library.presentation.component;
+package winchester.library.presentation.component.pane;
 
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;

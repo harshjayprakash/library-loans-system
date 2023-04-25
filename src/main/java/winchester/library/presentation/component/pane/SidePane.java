@@ -1,4 +1,4 @@
-package winchester.library.presentation.component;
+package winchester.library.presentation.component.pane;
 
 import java.util.Objects;
 import javafx.geometry.Insets;
