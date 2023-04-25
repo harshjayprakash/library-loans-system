@@ -2,6 +2,8 @@ package winchester.library.data.access;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.time.LocalDate;
+import java.time.format.DateTimeParseException;
 import java.util.ArrayList;
 import java.util.Optional;
 import java.util.function.Function;
@@ -10,6 +12,7 @@ import winchester.library.data.model.items.Film;
 import winchester.library.data.model.items.ItemFormat;
 import winchester.library.data.model.items.ItemStock;
 import winchester.library.data.model.items.ItemType;
+import winchester.library.data.model.loans.Loan;
 import winchester.library.data.model.users.Customer;
 import winchester.library.data.model.users.Employee;
 import winchester.library.data.model.users.EmployeeStatus;
@@ -153,6 +156,35 @@ public class DataMapper {
                         "Ensure that the column specified is valid");
                 return null;
             }
+        });
+    }
+
+    public Optional<ArrayList<Loan>> mapAsLoans(ResultSet data) {
+        return this.mapToList(data, result -> {
+            try {
+                return new Loan(
+                        result.getInt("loan_id"), new Customer(result.getInt("customer_id"),
+                        result.getString("first_name"), result.getString("last_name"),
+                        result.getString("postal_code")), result.getString("item_id"),
+                        ItemType.fromIdentifier(result.getInt("item_subtype_id")).orElse(null),
+                        LocalDate.parse(result.getString("loan_date")), LocalDate.parse(result.getString("return_date")),
+                        result.getBoolean("returned"));
+            }
+            catch (DateTimeParseException ignored) {
+                Logger.getInstance().PrintError(
+                        this.getClass().getName(),
+                        "Mapping Entity to Loans Class",
+                        "Invalid Data Format",
+                        "Ensure that the dates are in a logical format (year-month-day)");
+            }
+            catch (SQLException exception) {
+                Logger.getInstance().PrintError(
+                        this.getClass().getName(),
+                        "Mapping an Entity to Specified Class",
+                        DatabaseConstant.DATA_NOT_ACCESSIBLE.toString(),
+                        "Ensure that the column specified is valid");
+            }
+            return null;
         });
     }
 
