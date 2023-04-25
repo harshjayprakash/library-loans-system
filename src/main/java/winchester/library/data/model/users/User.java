@@ -1,5 +1,8 @@
 package winchester.library.data.model.users;
 
+import winchester.library.data.access.DatabaseEntity;
+
+@DatabaseEntity(table = "users")
 public abstract class User {
 
     private final int identifier;

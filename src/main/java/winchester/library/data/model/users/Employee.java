@@ -1,7 +1,9 @@
 package winchester.library.data.model.users;
 
+import winchester.library.data.access.DatabaseEntity;
 import winchester.library.data.model.loans.LoanManagement;
 
+@DatabaseEntity(table = "employees")
 public class Employee extends User 
     implements LoanManagement {
     

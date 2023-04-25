@@ -1,7 +1,9 @@
 package winchester.library.data.model.users;
 
 import java.util.Optional;
+import winchester.library.data.access.DatabaseEntity;
 
+@DatabaseEntity(table = "employee_status")
 public enum EmployeeStatus {
     DISABLED(-1, "Disabled"),
     NOT_APPROVED(0, "Not Approved"),

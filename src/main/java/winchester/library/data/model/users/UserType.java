@@ -1,5 +1,8 @@
 package winchester.library.data.model.users;
 
+import winchester.library.data.access.DatabaseEntity;
+
+@DatabaseEntity(table = "user_types")
 public enum UserType {
     DEMO(0, "Demo"),
     CUSTOMER(1, "Customer"),

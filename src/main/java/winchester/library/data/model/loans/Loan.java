@@ -2,10 +2,12 @@ package winchester.library.data.model.loans;
 
 import java.time.LocalDate;
 import java.time.temporal.ChronoUnit;
+import winchester.library.data.access.DatabaseEntity;
 import winchester.library.data.model.items.Item;
 import winchester.library.data.model.items.ItemType;
 import winchester.library.data.model.users.Customer;
 
+@DatabaseEntity(table = "loans")
 public class Loan {
     private final int identifier;
     private final Customer customer;

@@ -1,5 +1,8 @@
 package winchester.library.data.model.items;
 
+import winchester.library.data.access.DatabaseEntity;
+
+@DatabaseEntity(table = "item_copies")
 public class ItemStock {
 
     private final String itemIdentifier;
