@@ -4,20 +4,20 @@ import java.util.ArrayList;
 import java.util.Objects;
 import winchester.library.service.Logger;
 
-public class StylesheetManager {
+public class StylesheetRegistry {
 
-    private static StylesheetManager instance;
+    private static StylesheetRegistry instance;
     private final ArrayList<String> stylesheetPaths;
 
-    private StylesheetManager() {
+    private StylesheetRegistry() {
         this.stylesheetPaths = new ArrayList<>();
     }
 
-    public static StylesheetManager getInstance() {
-        if (StylesheetManager.instance == null) {
-            StylesheetManager.instance = new StylesheetManager();
+    public static StylesheetRegistry getInstance() {
+        if (StylesheetRegistry.instance == null) {
+            StylesheetRegistry.instance = new StylesheetRegistry();
         }
-        return StylesheetManager.instance;
+        return StylesheetRegistry.instance;
     }
 
     public ArrayList<String> getStylesheetPaths() {
