@@ -1,5 +1,6 @@
 package winchester.library.presentation.component.card;
 
+import javafx.geometry.Insets;
 import javafx.scene.control.Label;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.VBox;
@@ -7,36 +8,34 @@ import winchester.library.presentation.style.ComponentStyler;
 
 public abstract class Card extends BorderPane {
 
-    protected VBox actionsLayout;
-    protected Label viewDetailsLinkLabel;
+    protected VBox actions;
+    protected Label viewDetailsLabel;
 
     public Card() {
         this.setId("background-secondary-border");
+        this.setPadding(new Insets(5));
         this.loadStylesheets();
-        this.initialiseLayouts();
-        this.initialiseControls();
-        this.addComponentsToCard();
+        this.initialiseDefaultComponents();
     }
 
     private void loadStylesheets() {
         ComponentStyler.getInstance().setStyle(this);
     }
 
-    protected void initialiseLayouts() {
-        this.actionsLayout = new VBox();
+    private void initialiseDefaultComponents() {
+        this.actions = new VBox();
+        this.actions.setPadding(new Insets(10));
+        this.viewDetailsLabel = new Label();
+        this.viewDetailsLabel.setId("link-label");
+        this.viewDetailsLabel.setText("View Details");
     }
 
-    protected void initialiseControls() {
-        this.viewDetailsLinkLabel = new Label();
-        this.viewDetailsLinkLabel.setId("link-label");
-        this.viewDetailsLinkLabel.setText("View Details");
-    }
+    protected abstract void initialiseLayouts();
+
+    protected abstract void initialiseControls();
 
     protected abstract void bindEventHandlers();
 
-    protected void addComponentsToCard() {
-        this.actionsLayout.getChildren().add(this.viewDetailsLinkLabel);
-        this.setRight(this.actionsLayout);
-    }
+    protected abstract void addComponentsToCard();
 
 }
