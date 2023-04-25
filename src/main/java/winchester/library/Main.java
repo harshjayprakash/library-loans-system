@@ -5,7 +5,7 @@ import javafx.stage.Stage;
 import winchester.library.presentation.style.StylesheetManager;
 import winchester.library.presentation.view.Views;
 import winchester.library.presentation.window.IndividualViewWindow;
-import winchester.library.service.ConsolePrinter;
+import winchester.library.service.Logger;
 
 /**
  * The Main class specifies the entrypoint into the program, inheriting JavaFX Application to provide a start point.
