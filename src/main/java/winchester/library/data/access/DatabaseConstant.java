@@ -8,10 +8,10 @@ public enum DatabaseConstant {
     CONNECTION_TIMEOUT(1, "Connection Timed Out"),
     CONNECTION_NOT_AVAILABLE(2, "Connection Not Available"),
     CONNECTION_CLOSE_ERROR(3, "Failed to Close Connection"),
-    DRIVER_NOT_FOUND(2, "Failed To Load Driver"),
+    DRIVER_NOT_FOUND(2, "MySQL Driver Not Found."),
     DRIVER_FOUND(3, "Driver Loaded Successfully"),
-    DATABASE_NOT_ACCESSIBLE(7, "Error accessing the database"),
-    DATA_NOT_ACCESSIBLE(8, "Error accessing data"),
+    DATABASE_NOT_ACCESSIBLE(7, "Error Accessing the Database"),
+    DATA_NOT_ACCESSIBLE(8, "Error Accessing Data"),
     UNKNOWN_ERROR(10, "Error");
 
     private final int identifier;
