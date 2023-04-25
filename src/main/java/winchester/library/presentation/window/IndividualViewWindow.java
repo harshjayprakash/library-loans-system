@@ -36,7 +36,7 @@ public final class IndividualViewWindow extends WindowBase {
         this(windowContentView, null, null);
     }
 
-    protected void initialiseLayouts() {
+    private void initialiseLayouts() {
         this.baseLayout.setPadding(new Insets(15));
     }
 
