@@ -13,7 +13,7 @@ import winchester.library.data.model.items.ItemType;
 import winchester.library.data.model.users.Customer;
 import winchester.library.data.model.users.Employee;
 import winchester.library.data.model.users.EmployeeStatus;
-import winchester.library.service.ConsolePrinter;
+import winchester.library.service.Logger;
 
 /**
  * A class that has the ability to map the returned ResultSet from the database connection to the correct list of
