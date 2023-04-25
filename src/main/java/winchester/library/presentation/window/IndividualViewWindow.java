@@ -4,7 +4,7 @@ import javafx.geometry.Insets;
 import javafx.stage.WindowEvent;
 import winchester.library.data.model.items.Item;
 import winchester.library.data.model.users.Employee;
-import winchester.library.presentation.component.HeaderPane;
+import winchester.library.presentation.component.pane.HeaderPane;
 import winchester.library.presentation.view.Views;
 import winchester.library.presentation.view.ViewsManager;
 

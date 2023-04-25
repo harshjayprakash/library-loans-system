@@ -2,9 +2,9 @@ package winchester.library.presentation.window;
 
 import javafx.geometry.Insets;
 import javafx.scene.input.MouseEvent;
-import winchester.library.presentation.component.HeaderPane;
-import winchester.library.presentation.component.SidePane;
-import winchester.library.presentation.component.StatusPane;
+import winchester.library.presentation.component.pane.HeaderPane;
+import winchester.library.presentation.component.pane.SidePane;
+import winchester.library.presentation.component.pane.StatusPane;
 import winchester.library.presentation.view.NoneSidePaneView;
 import winchester.library.presentation.view.Views;
 import winchester.library.presentation.view.ViewsManager;
