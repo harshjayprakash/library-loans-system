@@ -6,7 +6,7 @@ import javafx.scene.layout.VBox;
 import winchester.library.data.model.items.Book;
 import winchester.library.data.model.items.Film;
 import winchester.library.presentation.component.Banner;
-import winchester.library.presentation.component.ItemCard;
+import winchester.library.presentation.component.card.ItemCard;
 import winchester.library.presentation.window.WindowBase;
 import winchester.library.service.DatabaseInteraction;
 

@@ -5,7 +5,7 @@ import javafx.scene.control.ScrollPane;
 import javafx.scene.layout.VBox;
 import winchester.library.data.model.users.Employee;
 import winchester.library.presentation.component.Banner;
-import winchester.library.presentation.component.UserCard;
+import winchester.library.presentation.component.card.UserCard;
 import winchester.library.presentation.window.WindowBase;
 import winchester.library.service.DatabaseInteraction;
 
