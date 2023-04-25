@@ -21,11 +21,7 @@ import winchester.library.service.ConsolePrinter;
  */
 public class DataMapper {
 
-    private final ConsolePrinter consolePrinter;
-
-    public DataMapper() {
-        this.consolePrinter = ConsolePrinter.getInstance();
-    }
+    public DataMapper() { }
 
     private <T> Optional<ArrayList<T>> mapToList(ResultSet data, Function<ResultSet, T> mapFunction) {
         ArrayList<T> entityList = new ArrayList<>();
