@@ -1,5 +1,6 @@
 package winchester.library.data.model.items;
 
+import java.util.Optional;
 import winchester.library.data.access.DatabaseEntity;
 
 @DatabaseEntity(table = "item_types")
@@ -17,6 +18,15 @@ public enum ItemType {
 
     public int getIdentifier() {
         return this.identifier;
+    }
+
+    public static Optional<ItemType> fromIdentifier(int identifier) {
+        for (ItemType type : ItemType.values()) {
+            if (type.identifier == identifier) {
+                return Optional.of(type);
+            }
+        }
+        return Optional.empty();
     }
 
     @Override
