@@ -4,20 +4,20 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import winchester.library.service.Logger;
 
-public class StylesheetSetter {
-    private static StylesheetSetter instance;
+public class ComponentStyler {
+    private static ComponentStyler instance;
 
-    private StylesheetSetter() { }
+    private ComponentStyler() { }
 
-    public static StylesheetSetter getInstance() {
-        if (StylesheetSetter.instance == null) {
-            StylesheetSetter.instance = new StylesheetSetter();
+    public static ComponentStyler getInstance() {
+        if (ComponentStyler.instance == null) {
+            ComponentStyler.instance = new ComponentStyler();
         }
-        return StylesheetSetter.instance;
+        return ComponentStyler.instance;
     }
 
     public void setStyle(Scene scene) {
-        for (String path : StylesheetManager.getInstance().getStylesheetPaths()) {
+        for (String path : StylesheetRegistry.getInstance().getStylesheetPaths()) {
             try {
                 scene.getStylesheets().add(path);
             }
@@ -39,7 +39,7 @@ public class StylesheetSetter {
     }
 
     public void setStyle(Parent parent) {
-        for (String path : StylesheetManager.getInstance().getStylesheetPaths()) {
+        for (String path : StylesheetRegistry.getInstance().getStylesheetPaths()) {
             try {
                 parent.getStylesheets().add(path);
             }
