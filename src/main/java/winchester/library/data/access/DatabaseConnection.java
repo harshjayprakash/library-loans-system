@@ -7,7 +7,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.SQLTimeoutException;
 import java.util.Optional;
-import winchester.library.service.ConsolePrinter;
+import winchester.library.service.Logger;
 
 /**
  * A class encapsulates the sql connection as well as handles any exceptions that may occur, which is written to the

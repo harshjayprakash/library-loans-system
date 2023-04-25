@@ -2,7 +2,7 @@ package winchester.library.presentation.style;
 
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import winchester.library.service.ConsolePrinter;
+import winchester.library.service.Logger;
 
 public class StylesheetSetter {
     private static StylesheetSetter instance;

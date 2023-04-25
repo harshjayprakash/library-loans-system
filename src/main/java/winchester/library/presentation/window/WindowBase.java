@@ -7,7 +7,7 @@ import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
 import winchester.library.meta.Metadata;
 import winchester.library.presentation.style.StylesheetSetter;
-import winchester.library.service.ConsolePrinter;
+import winchester.library.service.Logger;
 
 public abstract class WindowBase extends Stage {
     protected Scene scene;

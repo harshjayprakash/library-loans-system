@@ -2,7 +2,7 @@ package winchester.library.presentation.style;
 
 import java.util.ArrayList;
 import java.util.Objects;
-import winchester.library.service.ConsolePrinter;
+import winchester.library.service.Logger;
 
 public class StylesheetManager {
 
