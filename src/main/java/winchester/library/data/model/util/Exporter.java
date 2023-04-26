@@ -2,7 +2,7 @@ package winchester.library.data.model.util;
 
 public class Exporter {
 
-    private static String exportOutputPath;
+    private static String exportOutputPath = "exports";
 
     public Exporter() {
 
