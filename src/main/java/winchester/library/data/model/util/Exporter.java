@@ -16,7 +16,7 @@ public class Exporter {
     public boolean export(Exportable exportable) {
         try {
             LocalDateTime dateTime = LocalDateTime.now();
-            DateTimeFormatter dateTimeFormat = DateTimeFormatter.ofPattern("dd-MM-yyyy HH mm ss");
+            DateTimeFormatter dateTimeFormat = DateTimeFormatter.ofPattern("dd-MM-yyyy HH-mm-ss");
             FileWriter exportFile = new FileWriter(
                     String.format("%s/%s WL Export.txt", Exporter.exportOutputPath, dateTime.format(dateTimeFormat)));
             exportFile.write(String.format(
