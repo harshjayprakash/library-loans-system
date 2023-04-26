@@ -72,6 +72,10 @@ public final class ItemCard extends Card {
         this.viewDetailsLabel.addEventHandler(MouseEvent.MOUSE_CLICKED, event -> {
             IndividualViewWindow individualItemView = new IndividualViewWindow(Views.INDIVIDUAL_ITEM);
             individualItemView.show();
+            switch (this.referencedItem.getType()) {
+                case FILM -> System.out.println(Film.castFrom(this.referencedItem).toString());
+                case BOOK -> System.out.println(Book.castFrom(this.referencedItem).toString());
+            }
         });
     }
 
