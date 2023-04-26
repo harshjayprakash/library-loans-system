@@ -22,11 +22,11 @@ public final class ItemCard extends Card {
     private Label itemNameLabel;
     private Label itemCreatorLabel;
     private Label itemCategoryLabel;
-    private Item item;
+    private Item referencedItem;
 
     public ItemCard(Item item) {
         super();
-        this.item = item;
+        this.referencedItem = item;
         this.itemImageViewWidth = 60;
         this.itemImageViewHeight = 85;
         this.initialiseLayouts();
@@ -50,16 +50,16 @@ public final class ItemCard extends Card {
         this.itemNameLabel = new Label();
         this.itemCreatorLabel = new Label();
         this.itemCategoryLabel = new Label();
-        this.itemCategoryLabel.setText(this.item.getType().toString());
-        if (this.item.getType() == ItemType.BOOK) {
-            Book castedBook = Book.castFrom(this.item);
+        this.itemCategoryLabel.setText(this.referencedItem.getType().toString());
+        if (this.referencedItem.getType() == ItemType.BOOK) {
+            Book castedBook = Book.castFrom(this.referencedItem);
             this.itemImageView.setImage(new Image(
                     castedBook.getImageUrl(), this.itemImageViewWidth, this.itemImageViewHeight, false, false));
             this.itemNameLabel.setText(castedBook.getTitle());
             this.itemCreatorLabel.setText(castedBook.getAuthor());
         }
-        else if (this.item.getType() == ItemType.FILM) {
-            Film castedFilm = Film.castFrom(this.item);
+        else if (this.referencedItem.getType() == ItemType.FILM) {
+            Film castedFilm = Film.castFrom(this.referencedItem);
             this.itemImageView.setImage(new Image(
                     castedFilm.getImageUrl(), this.itemImageViewWidth, this.itemImageViewHeight, false, false));
             this.itemNameLabel.setText(castedFilm.getTitle());
