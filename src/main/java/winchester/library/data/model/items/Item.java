@@ -1,6 +1,10 @@
 package winchester.library.data.model.items;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Optional;
+
 import winchester.library.data.model.loans.Loan;
 
 public abstract class Item {
@@ -19,6 +23,17 @@ public abstract class Item {
 
     public ArrayList<Loan> getLoans() {
         return this.loans;
+    }
+
+    public Optional<LocalDate> getEarliestReturnDate() {
+        ArrayList<LocalDate> dates = new ArrayList<>();
+        for (Loan loan : this.loans) {
+            if (loan.getDueDate().isAfter(LocalDate.now())) {
+                dates.add(loan.getDueDate());
+            }
+        }
+        Collections.sort(dates);
+        return dates.stream().findFirst();
     }
 
     public abstract ItemType getType();
