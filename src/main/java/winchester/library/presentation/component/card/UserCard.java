@@ -3,8 +3,6 @@ package winchester.library.presentation.component.card;
 import javafx.geometry.Insets;
 import javafx.scene.control.Label;
 import javafx.scene.input.MouseEvent;
-import javafx.scene.layout.BorderPane;
-import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import winchester.library.data.model.users.Employee;
 import winchester.library.data.model.users.User;
@@ -12,65 +10,61 @@ import winchester.library.data.model.users.UserType;
 import winchester.library.presentation.view.Views;
 import winchester.library.presentation.window.IndividualViewWindow;
 
-public class UserCard extends BorderPane {
- 
-    private VBox userDetailsLayout;
-    private HBox actionsLayout;
-    private Label fullNameLabel;
+public class UserCard extends Card {
+
+    private VBox userDetails;
+    private Label nameLabel;
     private Label usernameLabel;
     private Label accountTypeLabel;
     private Label accountStatusLabel;
-    private Label viewDetailsLinkLabel;
-    private User user;
+    private User referencedUser;
 
     public UserCard(User user) {
         super();
-        this.user = user;
-        this.setId("background-secondary-border");
+        this.referencedUser = user;
         this.initialiseLayouts();
         this.initialiseControls();
         this.bindEventHandlers();
         this.addComponentsToCard();
     }
 
-    private void initialiseLayouts() {
-        this.userDetailsLayout = new VBox();
-        this.userDetailsLayout.setPadding(new Insets(10));
-        this.actionsLayout = new HBox();
-        this.actionsLayout.setPadding(new Insets(10));
+    @Override
+    protected void initialiseLayouts() {
+        this.userDetails = new VBox();
+        this.userDetails.setId("background-secondary");
+        this.userDetails.setPadding(new Insets(10));
     }
 
-    private void initialiseControls() {
-        this.fullNameLabel = new Label();
-        this.fullNameLabel.setText(this.user.getFullName());
-        this.viewDetailsLinkLabel = new Label();
-        this.viewDetailsLinkLabel.setText("View Details");
-        if (this.user.getType() != UserType.CUSTOMER) {
+    @Override
+    protected void initialiseControls() {
+        this.nameLabel = new Label();
+        this.nameLabel.setText(this.referencedUser.getFullName());
+        if (this.referencedUser.getType() != UserType.CUSTOMER) {
             this.usernameLabel = new Label();
-            this.usernameLabel.setText(Employee.castFrom(user).getUsername());
+            this.usernameLabel.setText(Employee.castFrom(this.referencedUser).getUsername());
             this.accountTypeLabel = new Label();
-            this.accountTypeLabel.setText(user.getType().toString() + " Account");
+            this.accountTypeLabel.setText("Account Type: " + this.referencedUser.getType().toString());
             this.accountStatusLabel = new Label();
-            this.accountStatusLabel.setText(Employee.castFrom(user).getStatus().toString());
+            this.accountStatusLabel.setText(
+                "Account Status: " + Employee.castFrom(this.referencedUser).getStatus().toString());
         }
     }
 
-    private void bindEventHandlers() {
-        this.viewDetailsLinkLabel.addEventHandler(MouseEvent.MOUSE_CLICKED, event -> {
+    @Override
+    protected void bindEventHandlers() {
+        this.viewDetailsLabel.addEventHandler(MouseEvent.MOUSE_CLICKED, event -> {
             IndividualViewWindow individualCustomerView = new IndividualViewWindow(Views.INDIVIDUAL_CUSTOMER);
             individualCustomerView.show();
         });
     }
 
-    private void addComponentsToCard() {
-        this.userDetailsLayout.getChildren().add(this.fullNameLabel);
-        if (this.user.getType() != UserType.CUSTOMER) {
-            this.userDetailsLayout.getChildren().addAll(
-                    this.usernameLabel, this.accountTypeLabel, this.accountStatusLabel);
+    @Override
+    protected void addComponentsToCard() {
+        this.userDetails.getChildren().add(this.nameLabel);
+        if (this.referencedUser.getType() != UserType.CUSTOMER) {
+            this.userDetails.getChildren().addAll(this.usernameLabel, this.accountTypeLabel, this.accountStatusLabel);
         }
-        this.setRight(this.actionsLayout);
-        this.actionsLayout.getChildren().add(this.viewDetailsLinkLabel);
-        this.setCenter(this.userDetailsLayout);
+        this.setCenter(this.userDetails);
     }
 
 }
