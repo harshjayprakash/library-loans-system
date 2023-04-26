@@ -40,4 +40,14 @@ public class ItemStock {
     public void setCopiesOnLoan(int copiesOnLoan) {
         this.copiesOnLoan = copiesOnLoan;
     }
+
+    @Override
+    public String toString() {
+        return String.format(
+                """
+                [Format : %s]
+                Copies Available : %d
+                Loaned Copies : %d
+                """, this.subtype.toString(), this.copiesAvailable, this.copiesOnLoan);
+    }
 }

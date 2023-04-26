@@ -57,15 +57,26 @@ public class Book extends Item {
 
     @Override
     public String toString() {
-        return "Book{" +
-                "isbn='" + isbn + '\'' +
-                ", title='" + title + '\'' +
-                ", author='" + author + '\'' +
-                ", publicationYear=" + publicationYear +
-                ", publisher='" + publisher + '\'' +
-                ", imageUrl='" + imageUrl + '\'' +
-                ", stockAvailable=" + stockAvailable +
-                '}';
+        StringBuilder itemCopies = new StringBuilder();
+        for (ItemStock stock : this.getStockAvailable()) {
+            itemCopies.append(stock.toString());
+        }
+        return String.format(
+                """
+                Resource : Book
+                
+                ISBN : %s
+                Title : %s
+                Author : %s
+                Publication Year : %d
+                Publisher : %s
+                
+                Copies:
+                %s
+                
+                Earliest Return : %s
+                """, this.isbn, this.title, this.author, this.publicationYear, this.publisher,
+                itemCopies.toString(), this.getEarliestReturnDate());
     }
 
     public static Book castFrom(Item item) {

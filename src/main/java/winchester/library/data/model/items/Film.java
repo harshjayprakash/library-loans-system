@@ -65,6 +65,31 @@ public class Film extends Item {
         return ItemType.FILM;
     }
 
+    @Override
+    public String toString() {
+        StringBuilder itemCopies = new StringBuilder();
+        for (ItemStock stock : this.getStockAvailable()) {
+            itemCopies.append(stock.toString());
+        }
+        return String.format(
+                """
+                Resource : Book
+                
+                Identifier : %s
+                Title : %s
+                Director : %s
+                Release Year : %d
+                Distributor : %s
+                Duration : %s
+                
+                Copies:
+                %s
+                
+                Earliest Return : %s
+                """, this.identifier, this.title, this.director, this.releaseYear, this.distributor,
+                this.getDurationToString(), itemCopies.toString(), this.getEarliestReturnDate());
+    }
+
     public static Film castFrom(Item item) {
         return (Film) item;
     }
