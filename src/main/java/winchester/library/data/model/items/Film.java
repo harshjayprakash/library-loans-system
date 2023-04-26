@@ -52,6 +52,10 @@ public class Film extends Item {
         return this.durationMinutes / 60.0;
     }
 
+    public String getDurationToString() {
+        return String.format("%d hours and %d minutes", this.durationMinutes / 60, this.durationMinutes % 60);
+    }
+
     public String getImageUrl() {
         return this.imageUrl;
     }
