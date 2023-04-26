@@ -15,19 +15,21 @@ public abstract class Card extends BorderPane {
         this.setId("background-secondary-border");
         this.setPadding(new Insets(5));
         this.loadStylesheets();
-        this.initialiseDefaultComponents();
+        this.initialiseAndAddDefaultComponents();
     }
 
     private void loadStylesheets() {
         ComponentStyler.getInstance().setStyle(this);
     }
 
-    private void initialiseDefaultComponents() {
+    private void initialiseAndAddDefaultComponents() {
         this.actions = new VBox();
         this.actions.setPadding(new Insets(10));
         this.viewDetailsLabel = new Label();
         this.viewDetailsLabel.setId("link-label");
         this.viewDetailsLabel.setText("View Details");
+        this.actions.getChildren().add(this.viewDetailsLabel);
+        this.setRight(this.actions);
     }
 
     protected abstract void initialiseLayouts();
