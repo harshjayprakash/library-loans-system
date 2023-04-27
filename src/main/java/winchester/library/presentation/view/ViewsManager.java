@@ -27,7 +27,7 @@ public class ViewsManager extends BorderPane {
                     case CUSTOMERS -> new CustomerView(parentWindow);
                     case INVENTORY -> new InventoryView(parentWindow);
                     case LOANING_ITEMS -> new LoaningItemView(parentWindow);
-                    case CHANGE_PASSWORD -> new ChangePasswordView(parentWindow);
+                    case CHANGE_PASSWORD -> new ChangePasswordView(parentWindow, employee);
                     case INDIVIDUAL_ITEM -> new IndividualItemView(parentWindow);
                     case INDIVIDUAL_LOAN -> new IndividualLoanView(parentWindow);
                     case NONE_WITH_SIDEBAR -> new NoneSidePaneView(parentWindow);
