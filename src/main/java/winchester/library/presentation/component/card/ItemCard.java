@@ -47,21 +47,19 @@ public final class ItemCard extends Card {
         this.itemImageView = new ImageView();
         this.itemImageView.setFitWidth(this.itemImageViewWidth);
         this.itemImageView.setFitHeight(this.itemImageViewHeight);
+        this.itemImageView.setImage(new Image(
+                this.referencedItem.getImageUrl(), this.itemImageViewWidth, this.itemImageViewHeight, false, false));
         this.itemNameLabel = new Label();
         this.itemCreatorLabel = new Label();
         this.itemCategoryLabel = new Label();
         this.itemCategoryLabel.setText(this.referencedItem.getType().toString());
         if (this.referencedItem.getType() == ItemType.BOOK) {
             Book castedBook = Book.castFrom(this.referencedItem);
-            this.itemImageView.setImage(new Image(
-                    castedBook.getImageUrl(), this.itemImageViewWidth, this.itemImageViewHeight, false, false));
             this.itemNameLabel.setText(castedBook.getTitle());
             this.itemCreatorLabel.setText(castedBook.getAuthor());
         }
         else if (this.referencedItem.getType() == ItemType.FILM) {
             Film castedFilm = Film.castFrom(this.referencedItem);
-            this.itemImageView.setImage(new Image(
-                    castedFilm.getImageUrl(), this.itemImageViewWidth, this.itemImageViewHeight, false, false));
             this.itemNameLabel.setText(castedFilm.getTitle());
             this.itemCreatorLabel.setText(castedFilm.getDirector());
         }
