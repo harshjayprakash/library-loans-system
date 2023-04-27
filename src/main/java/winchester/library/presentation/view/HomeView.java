@@ -30,6 +30,7 @@ public class HomeView extends View {
         this.databaseInteraction = DatabaseInteraction.getInstance();
         this.initialiseLayouts();
         this.initialiseControls();
+        this.bindEventHandlers();
         this.addComponentsToView();
     }
 
