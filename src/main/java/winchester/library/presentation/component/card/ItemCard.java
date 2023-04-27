@@ -68,7 +68,7 @@ public final class ItemCard extends Card {
     @Override
     protected void bindEventHandlers() {
         this.viewDetailsLabel.addEventHandler(MouseEvent.MOUSE_CLICKED, event -> {
-            IndividualViewWindow individualItemView = new IndividualViewWindow(Views.INDIVIDUAL_ITEM);
+            IndividualViewWindow individualItemView = new IndividualViewWindow(Views.INDIVIDUAL_ITEM, this.referencedItem);
             individualItemView.show();
         });
     }
