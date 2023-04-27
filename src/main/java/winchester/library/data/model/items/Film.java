@@ -91,7 +91,7 @@ public class Film extends Item {
                 
                 Earliest Return : %s
                 """, this.identifier, this.title, this.director, this.releaseYear, this.distributor,
-                this.getDurationToString(), itemCopies.toString(), this.getEarliestReturnDate());
+                this.getDurationToString(), itemCopies.toString(), this.getLoans().getEarliestReturnDate().toString());
     }
 
     public static Film castFrom(Item item) {

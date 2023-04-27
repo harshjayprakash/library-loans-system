@@ -76,7 +76,7 @@ public class Book extends Item {
                 
                 Earliest Return : %s
                 """, this.isbn, this.title, this.author, this.publicationYear, this.publisher,
-                itemCopies.toString(), this.getEarliestReturnDate());
+                itemCopies.toString(), this.getLoans().getEarliestReturnDate().toString());
     }
 
     public static Book castFrom(Item item) {
