@@ -28,6 +28,10 @@ public final class IndividualViewWindow extends WindowBase {
         IndividualViewWindow.instanceCount += 1;
     }
 
+    public IndividualViewWindow(Views windowContentView, Item item) {
+        this(windowContentView, null, item);
+    }
+
     public IndividualViewWindow(Views windowContentView, Employee employee) {
         this(windowContentView, employee, null);
     }
