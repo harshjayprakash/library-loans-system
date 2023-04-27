@@ -14,7 +14,6 @@ import winchester.library.presentation.window.WindowBase;
 
 public class DatabaseConfigurationView extends View {
 
-    private final WindowBase parentWindow;
     private final DatabaseCredentials credentials;
     private HBox buttonLayout;
     private Label descriptionLabel;
@@ -29,8 +28,6 @@ public class DatabaseConfigurationView extends View {
 
     public DatabaseConfigurationView(WindowBase parentWindow) {
         super(parentWindow, Views.DATABASE_CONFIGURATION.toString());
-        this.parentWindow = parentWindow;
-        this.parentWindow.setTitleText(Views.DATABASE_CONFIGURATION.toString());
         this.parentWindow.setWidth(550);
         this.parentWindow.setHeight(375);
         this.credentials = DatabaseCredentials.getInstance();
