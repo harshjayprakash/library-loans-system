@@ -11,6 +11,9 @@ import winchester.library.data.model.loans.Loan;
 import winchester.library.data.model.users.Customer;
 import winchester.library.data.model.users.Employee;
 
+/**
+ * A class that provides an abstraction to the database for the graphical user interface.
+ */
 public class DatabaseInteraction {
 
     private static DatabaseInteraction instance;
