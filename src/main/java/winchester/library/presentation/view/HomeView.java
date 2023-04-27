@@ -18,7 +18,6 @@ public class HomeView extends View {
     private Label inventoryCountLabel;
     private Label customerCountLabel;
     private Label loanCountLabel;
-    private Label overdueCountLabel;
     private final Employee currentEmployee;
     private final DatabaseInteraction databaseInteraction;
 
@@ -56,15 +55,13 @@ public class HomeView extends View {
                 databaseInteraction.getCustomers().size()));
         this.loanCountLabel = new Label();
         this.loanCountLabel.setText("Number of Loans: %d".formatted(0));
-        this.overdueCountLabel = new Label();
-        this.overdueCountLabel.setText("Number of Overdue Items: %d".formatted(0));
     }
 
     @Override
     protected void addComponentsToView() {
         this.userPanel.getChildren().addAll(this.userLabel, this.userRoleLabel);
         this.inventoryPanel.getChildren().addAll(
-                this.inventoryCountLabel, this.customerCountLabel, this.loanCountLabel, this.overdueCountLabel);
+                this.inventoryCountLabel, this.customerCountLabel, this.loanCountLabel);
         this.getChildren().addAll(this.userPanel, this.inventoryPanel);
     }
 
