@@ -25,17 +25,6 @@ public abstract class Item {
         return this.loans;
     }
 
-    public Optional<LocalDate> getEarliestReturnDate() {
-        ArrayList<LocalDate> dates = new ArrayList<>();
-        for (Loan loan : this.loans) {
-            if (loan.getDueDate().isAfter(LocalDate.now())) {
-                dates.add(loan.getDueDate());
-            }
-        }
-        Collections.sort(dates);
-        return dates.stream().findFirst();
-    }
-
     public abstract ItemType getType();
 
 }
