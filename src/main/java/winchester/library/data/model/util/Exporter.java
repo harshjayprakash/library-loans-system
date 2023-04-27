@@ -27,7 +27,7 @@ public class Exporter {
                             
                             %s
                             
-                            """, dateTime.format(dateTimeFormat), exportable.toString()));
+                            """, dateTime.format(dateTimeFormat), exportable.export()));
             exportFile.close();
         }
         catch (IOException exception) {
