@@ -10,7 +10,7 @@ import winchester.library.presentation.window.IndividualViewWindow;
 import winchester.library.presentation.window.WindowBase;
 import winchester.library.service.DatabaseInteraction;
 
-public class SettingsView extends View {
+public final class SettingsView extends View {
 
     private VBox dataSourceSettingsPane;
     private Label dataSourceTitleLabel;

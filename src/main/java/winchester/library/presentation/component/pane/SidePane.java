@@ -15,7 +15,8 @@ import winchester.library.data.model.users.Employee;
 import winchester.library.presentation.style.ComponentStyler;
 import winchester.library.presentation.view.Views;
 
-public class SidePane extends VBox {
+public final class SidePane extends VBox {
+
     private Label serviceLabel;
     private Label privilegeModeLabel;
     private ToggleGroup pageButtons;

@@ -14,7 +14,7 @@ import winchester.library.presentation.window.IndividualViewWindow;
 import winchester.library.presentation.window.WindowBase;
 import winchester.library.service.PasswordPolicyManager;
 
-public class RegisterView extends View {
+public final class RegisterView extends View {
 
     private HBox buttonLayout;
     private Label descriptionLabel;

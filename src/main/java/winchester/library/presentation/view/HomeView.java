@@ -11,7 +11,7 @@ import winchester.library.presentation.window.IndividualViewWindow;
 import winchester.library.presentation.window.WindowBase;
 import winchester.library.service.DatabaseInteraction;
 
-public class HomeView extends View {
+public final class HomeView extends View {
 
     private VBox userPanel;
     private VBox inventoryPanel;

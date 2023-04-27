@@ -1,6 +1,6 @@
 package winchester.library.service;
 
-public class PasswordPolicyManager {
+public final class PasswordPolicyManager {
 
     public final String passwordRequirements;
 

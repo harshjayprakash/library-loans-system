@@ -5,7 +5,7 @@ import javafx.geometry.Pos;
 import javafx.scene.control.Label;
 import javafx.scene.layout.VBox;
 
-public class Banner extends VBox {
+public final class Banner extends VBox {
 
     private final String message;
     private final String messageDetails;

@@ -12,7 +12,7 @@ import winchester.library.data.access.DatabaseConstant;
 import winchester.library.data.access.DatabaseCredentials;
 import winchester.library.presentation.window.WindowBase;
 
-public class DatabaseConfigurationView extends View {
+public final class DatabaseConfigurationView extends View {
 
     private final DatabaseCredentials credentials;
     private HBox buttonLayout;

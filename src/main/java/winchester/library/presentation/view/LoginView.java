@@ -12,7 +12,7 @@ import winchester.library.presentation.window.IndividualViewWindow;
 import winchester.library.presentation.window.MainWindow;
 import winchester.library.presentation.window.WindowBase;
 
-public class LoginView extends View {
+public final class LoginView extends View {
 
     private HBox buttonLayout;
     private Label descriptionLabel;

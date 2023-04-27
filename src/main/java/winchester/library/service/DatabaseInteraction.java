@@ -14,7 +14,7 @@ import winchester.library.data.model.users.Employee;
 /**
  * A class that provides an abstraction to the database for the graphical user interface.
  */
-public class DatabaseInteraction {
+public final class DatabaseInteraction {
 
     private static DatabaseInteraction instance;
     private final DatabaseCredentials credentials;

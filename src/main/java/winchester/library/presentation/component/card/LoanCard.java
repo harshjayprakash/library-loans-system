@@ -8,7 +8,7 @@ import winchester.library.data.model.loans.Loan;
 import winchester.library.presentation.view.Views;
 import winchester.library.presentation.window.IndividualViewWindow;
 
-public class LoanCard extends Card {
+public final class LoanCard extends Card {
 
     private VBox loanInformation;
     private Label loanIdentifierLabel;

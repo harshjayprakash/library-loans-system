@@ -2,7 +2,7 @@ package winchester.library.presentation.view;
 
 import winchester.library.presentation.window.WindowBase;
 
-public class IndividualCustomerView extends View {
+public final class IndividualCustomerView extends View {
 
     public IndividualCustomerView(WindowBase parentWindow) {
         super(parentWindow, Views.INDIVIDUAL_CUSTOMER.toString());

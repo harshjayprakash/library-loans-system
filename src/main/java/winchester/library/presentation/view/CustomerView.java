@@ -9,7 +9,7 @@ import winchester.library.presentation.component.card.UserCard;
 import winchester.library.presentation.window.WindowBase;
 import winchester.library.service.DatabaseInteraction;
 
-public class CustomerView extends View {
+public final class CustomerView extends View {
 
     private ScrollPane scrollPane;
     private VBox customerList;

@@ -4,7 +4,8 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import winchester.library.service.Logger;
 
-public class ComponentStyler {
+public final class ComponentStyler {
+
     private static ComponentStyler instance;
 
     private ComponentStyler() { }

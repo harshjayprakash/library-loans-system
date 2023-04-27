@@ -2,7 +2,7 @@ package winchester.library.presentation.view;
 
 import winchester.library.presentation.window.WindowBase;
 
-public class IndividualItemView extends View {
+public final class IndividualItemView extends View {
 
     public IndividualItemView(WindowBase parentWindow) {
         super(parentWindow, Views.INDIVIDUAL_ITEM.toString());

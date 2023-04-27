@@ -10,7 +10,7 @@ import winchester.library.presentation.component.card.ItemCard;
 import winchester.library.presentation.window.WindowBase;
 import winchester.library.service.DatabaseInteraction;
 
-public class InventoryView extends View {
+public final class InventoryView extends View {
 
     private ScrollPane scrollPane;
     private VBox itemsList;

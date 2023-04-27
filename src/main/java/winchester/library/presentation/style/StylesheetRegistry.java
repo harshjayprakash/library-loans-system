@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.Objects;
 import winchester.library.service.Logger;
 
-public class StylesheetRegistry {
+public final class StylesheetRegistry {
 
     private static StylesheetRegistry instance;
     private final ArrayList<String> stylesheetPaths;

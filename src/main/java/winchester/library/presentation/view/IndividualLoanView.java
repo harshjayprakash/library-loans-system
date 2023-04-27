@@ -2,7 +2,7 @@ package winchester.library.presentation.view;
 
 import winchester.library.presentation.window.WindowBase;
 
-public class IndividualLoanView extends View {
+public final class IndividualLoanView extends View {
 
     public IndividualLoanView(WindowBase parentWindow) {
         super(parentWindow, Views.INDIVIDUAL_LOAN.toString());

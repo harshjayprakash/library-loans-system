@@ -10,7 +10,7 @@ import winchester.library.data.model.users.UserType;
 import winchester.library.presentation.view.Views;
 import winchester.library.presentation.window.IndividualViewWindow;
 
-public class UserCard extends Card {
+public final class UserCard extends Card {
 
     private VBox userDetails;
     private Label nameLabel;

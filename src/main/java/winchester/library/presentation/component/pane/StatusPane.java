@@ -11,7 +11,8 @@ import winchester.library.presentation.style.ComponentStyler;
 import winchester.library.presentation.view.Views;
 import winchester.library.presentation.window.IndividualViewWindow;
 
-public class StatusPane extends BorderPane {
+public final class StatusPane extends BorderPane {
+
     private Label settingsLabel;
     private Label databaseStatusLabel;
 

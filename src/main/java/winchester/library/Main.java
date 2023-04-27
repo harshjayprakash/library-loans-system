@@ -10,7 +10,7 @@ import winchester.library.service.Logger;
 /**
  * The Main class specifies the entrypoint into the program, inheriting JavaFX Application to provide a start point.
  */
-public class Main extends Application {
+public final class Main extends Application {
 
     @Override
     public void start(Stage stage) {

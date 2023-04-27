@@ -8,7 +8,7 @@ import winchester.library.service.DatabaseInteraction;
 
 import java.util.ArrayList;
 
-public class LoansView extends View {
+public final class LoansView extends View {
 
     private VBox loansList;
     private ScrollPane scrollPane;

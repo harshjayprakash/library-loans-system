@@ -13,7 +13,7 @@ import winchester.library.data.model.users.UserType;
 import winchester.library.presentation.window.WindowBase;
 import winchester.library.service.PasswordPolicyManager;
 
-public class ChangePasswordView extends View {
+public final class ChangePasswordView extends View {
 
     private HBox actionButtons;
     private Label descriptionLabel;

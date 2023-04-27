@@ -1,6 +1,6 @@
 package winchester.library.service;
 
-public class Logger {
+public final class Logger {
 
     private static Logger instance = null;
     private boolean enabled;

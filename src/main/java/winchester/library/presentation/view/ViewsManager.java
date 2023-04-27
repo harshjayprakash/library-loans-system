@@ -5,7 +5,7 @@ import winchester.library.data.model.items.Item;
 import winchester.library.data.model.users.Employee;
 import winchester.library.presentation.window.WindowBase;
 
-public class ViewsManager extends BorderPane {
+public final class ViewsManager extends BorderPane {
 
     public ViewsManager() {
         super();

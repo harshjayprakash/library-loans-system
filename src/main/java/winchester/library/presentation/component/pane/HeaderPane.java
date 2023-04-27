@@ -6,7 +6,8 @@ import javafx.scene.layout.VBox;
 import winchester.library.presentation.style.ComponentStyler;
 import winchester.library.presentation.view.Views;
 
-public class HeaderPane extends VBox {
+public final class HeaderPane extends VBox {
+
     private Views page;
     private Views parentPage;
     private Label pageLabel;
