@@ -29,7 +29,7 @@ public class ChangePasswordView extends View {
     private Button cancelButton;
     private Button changePasswordButton;
     private Employee currentEmployee;
-    private PasswordPolicyManager passwordPolicyManager;
+    private final PasswordPolicyManager passwordPolicyManager;
 
     public ChangePasswordView(WindowBase parentWindow, Employee employee) {
         super(parentWindow, Views.CHANGE_PASSWORD.toString());
