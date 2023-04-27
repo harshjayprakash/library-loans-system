@@ -32,7 +32,7 @@ public class LoansManager {
         return this.loans;
     }
 
-    private Optional<LocalDate> getEarliestReturnDate() {
+    public Optional<LocalDate> getEarliestReturnDate() {
         ArrayList<LocalDate> dates = new ArrayList<>();
         LocalDate currentDate = LocalDate.now();
         for (Loan loan : this.loans) {
