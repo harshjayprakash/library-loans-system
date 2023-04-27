@@ -7,15 +7,13 @@ import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
-import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
-import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
+import javafx.scene.text.TextAlignment;
 import winchester.library.data.model.items.Book;
 import winchester.library.data.model.items.Film;
 import winchester.library.data.model.items.Item;
-import winchester.library.data.model.items.ItemType;
 import winchester.library.data.model.util.Exporter;
 import winchester.library.presentation.alert.AlertFactory;
 import winchester.library.presentation.window.WindowBase;
@@ -24,7 +22,7 @@ public final class IndividualItemView extends View {
 
     private HBox actions;
     private Button exportToFileButton;
-    private BorderPane itemDetails;
+    private HBox itemDetails;
     private ImageView itemImageView;
     private final int itemImageViewHeight;
     private final int itemImageViewWidth;
@@ -33,6 +31,7 @@ public final class IndividualItemView extends View {
     private Label itemFormatLabel;
     private Label stockAvailableLabel;
     private Label onLoanLabel;
+
     private final Item referencedItem;
     private final Exporter exporter;
 
@@ -53,10 +52,13 @@ public final class IndividualItemView extends View {
         this.setSpacing(10);
         this.actions = new HBox();
         this.actions.setId("background-secondary");
-        this.actions.setPadding(new Insets(15));
-        this.itemDetails = new BorderPane();
+        this.actions.setPadding(new Insets(10));
+        this.itemDetails = new HBox();
         this.itemDetails.setId("background-secondary-border");
         this.itemDetails.setPadding(new Insets(15));
+        this.itemAvailability = new GridPane();
+        this.itemAvailability.setId("background-secondary-border");
+        this.itemAvailability.setPadding(new Insets(15));
     }
 
     @Override
@@ -69,11 +71,13 @@ public final class IndividualItemView extends View {
         this.itemImageView.setImage(new Image(
                 this.referencedItem.getImageUrl(), this.itemImageViewWidth, this.itemImageViewHeight, false, false));
         this.itemInformation = new Text();
+        this.itemInformation.setTextAlignment(TextAlignment.LEFT);
         this.itemInformation.setId("background-secondary");
         this.itemInformation.setText(switch (this.referencedItem.getType()) {
             case BOOK -> Book.castFrom(this.referencedItem).toString();
             case FILM -> Film.castFrom(this.referencedItem).toString();
         });
+        HBox.setMargin(this.itemImageView, new Insets(0, 15, 0, 0));
     }
 
     private void bindEventHandlers() {
@@ -98,7 +102,7 @@ public final class IndividualItemView extends View {
     @Override
     protected void addComponentsToView() {
         this.actions.getChildren().addAll(this.exportToFileButton);
-        this.itemDetails.setLeft(this.itemImageView);
+        this.itemDetails.getChildren().addAll(this.itemImageView, this.itemInformation);
         this.getChildren().addAll(this.actions, this.itemDetails);
     }
 }
