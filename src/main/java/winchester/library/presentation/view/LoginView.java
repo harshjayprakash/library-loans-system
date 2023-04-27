@@ -73,7 +73,7 @@ public final class LoginView extends View {
         HBox.setMargin(this.registerButton, new Insets(0, 0, 0, 20));
     }
 
-    protected void bindEventHandlers() {
+    private void bindEventHandlers() {
         this.loginButton.addEventHandler(MouseEvent.MOUSE_CLICKED, event -> {
             this.parentWindow.close();
             MainWindow mainWindow = new MainWindow();
