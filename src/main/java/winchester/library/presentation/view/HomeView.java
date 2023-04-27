@@ -75,7 +75,7 @@ public class HomeView extends View {
 
     @Override
     protected void addComponentsToView() {
-        this.userPanel.getChildren().addAll(this.userLabel, this.userRoleLabel);
+        this.userPanel.getChildren().addAll(this.userLabel, this.userRoleLabel, this.changePasswordLinkLabel);
         this.inventoryPanel.getChildren().addAll(
                 this.inventoryCountLabel, this.customerCountLabel, this.loanCountLabel);
         this.getChildren().addAll(this.userPanel, this.inventoryPanel);
