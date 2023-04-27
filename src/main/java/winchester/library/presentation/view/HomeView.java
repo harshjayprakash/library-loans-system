@@ -46,15 +46,17 @@ public class HomeView extends View {
         this.userLabel = new Label();
         this.userLabel.setText(this.currentEmployee.getFullName());
         this.userRoleLabel = new Label();
-        this.userRoleLabel.setText(this.currentEmployee.getType().toString());
+        this.userRoleLabel.setText(String.format("%s Account", this.currentEmployee.getType().toString()));
         this.inventoryCountLabel = new Label();
-        this.inventoryCountLabel.setText("Number of Items in Inventory: %d".formatted(
-                databaseInteraction.getBooks().size() + databaseInteraction.getFilms().size()));
+        this.inventoryCountLabel.setText(
+                String.format("Number of Items in Inventory: %d",
+                        databaseInteraction.getBooks().size() + databaseInteraction.getFilms().size()));
         this.customerCountLabel = new Label();
-        this.customerCountLabel.setText("Number of Customers: %d".formatted(
-                databaseInteraction.getCustomers().size()));
+        this.customerCountLabel.setText(
+                String.format("Number of Customers: %d", databaseInteraction.getCustomers().size()));
         this.loanCountLabel = new Label();
-        this.loanCountLabel.setText("Number of Loans: %d".formatted(0));
+        this.loanCountLabel.setText(
+                String.format("Number of Loans: %d", databaseInteraction.getLoans().size()));
     }
 
     @Override
