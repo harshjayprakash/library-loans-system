@@ -34,7 +34,6 @@ public abstract class WindowBase extends Stage {
         }
         catch (NullPointerException exception) {
             Logger.getInstance().PrintError(
-                    this.getClass().getName(),
                     "Loading Program Icon",
                     "Object Not Found",
                     "Ensure the availability of the icon");
