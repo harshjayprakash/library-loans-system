@@ -1,7 +1,12 @@
 package winchester.library.data.model.loans;
 
+import org.jetbrains.annotations.NotNull;
+
+import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Objects;
+import java.util.Optional;
 
 public class LoansManager {
 
@@ -25,6 +30,18 @@ public class LoansManager {
 
     public ArrayList<Loan> getLoans() {
         return this.loans;
+    }
+
+    private Optional<LocalDate> getEarliestReturnDate() {
+        ArrayList<LocalDate> dates = new ArrayList<>();
+        LocalDate currentDate = LocalDate.now();
+        for (Loan loan : this.loans) {
+            if (loan.getDueDate().isAfter(currentDate)) {
+                dates.add(loan.getDueDate());
+            }
+        }
+        Collections.sort(dates);
+        return dates.stream().findFirst();
     }
 
 }
