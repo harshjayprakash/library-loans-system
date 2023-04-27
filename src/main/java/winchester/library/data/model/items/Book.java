@@ -11,7 +11,6 @@ public class Book extends Item implements Exportable {
     private final String author;
     private final int publicationYear;
     private final String publisher;
-    private String imageUrl;
 
     public Book(String isbn, String title, String author, int publicationYear, String publisher, String imageUrl) {
         super();
@@ -41,14 +40,6 @@ public class Book extends Item implements Exportable {
 
     public String getPublisher() {
         return this.publisher;
-    }
-
-    public String getImageUrl() {
-        return this.imageUrl;
-    }
-
-    public void setImageUrl(String imageUrl) {
-        this.imageUrl = imageUrl;
     }
 
     @Override

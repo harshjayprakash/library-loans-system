@@ -7,6 +7,7 @@ public abstract class Item {
 
     protected ArrayList<ItemStock> stockAvailable;
     protected LoansManager loans;
+    protected String imageUrl;
 
     public Item() {
         this.stockAvailable = new ArrayList<>();
@@ -19,6 +20,14 @@ public abstract class Item {
 
     public LoansManager getLoans() {
         return this.loans;
+    }
+
+    public String getImageUrl() {
+        return this.imageUrl;
+    }
+
+    public void setImageUrl(String url) {
+        this.imageUrl = url;
     }
 
     public abstract ItemType getType();
