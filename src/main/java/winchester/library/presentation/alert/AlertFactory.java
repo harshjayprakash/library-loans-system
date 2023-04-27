@@ -11,4 +11,10 @@ public final class AlertFactory {
         return alert;
     }
 
+    public static Alert createAlert(Alert.AlertType type, String headerText) {
+        Alert alert = new Alert(type);
+        alert.setHeaderText(headerText);
+        return alert;
+    }
+
 }
