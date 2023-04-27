@@ -1,9 +1,10 @@
 package winchester.library.data.model.items;
 
 import winchester.library.data.access.DatabaseEntity;
+import winchester.library.data.model.util.Exportable;
 
 @DatabaseEntity(table = "films")
-public class Film extends Item {
+public class Film extends Item implements Exportable {
 
     public final String identifier;
     private final String title;
