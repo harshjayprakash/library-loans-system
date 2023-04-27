@@ -68,7 +68,8 @@ public class HomeView extends View {
 
     private void bindEventHandlers() {
         this.changePasswordLinkLabel.addEventHandler(MouseEvent.MOUSE_CLICKED, event -> {
-            IndividualViewWindow changePasswordView = new IndividualViewWindow(Views.CHANGE_PASSWORD);
+            IndividualViewWindow changePasswordView = new IndividualViewWindow(
+                    Views.CHANGE_PASSWORD, this.currentEmployee);
             changePasswordView.show();
         });
     }
