@@ -63,27 +63,35 @@ public class Film extends Item implements Exportable {
 
     @Override
     public String toString() {
+        return String.format(
+                """
+                Resource : Film
+                
+                Identifier : %s
+                Title : %s
+                Director : %s
+                Release Year : %s
+                Distributor : %s
+                Duration : %s
+                """, this.identifier, this.title, this.director, this.releaseYear, this.distributor,
+                this.getDurationToString());
+    }
+
+    @Override
+    public String export() {
         StringBuilder itemCopies = new StringBuilder();
         for (ItemStock stock : this.getStockAvailable()) {
             itemCopies.append(stock.toString());
         }
         return String.format(
                 """
-                Resource : Book
-                
-                Identifier : %s
-                Title : %s
-                Director : %s
-                Release Year : %d
-                Distributor : %s
-                Duration : %s
+                %s
                 
                 Copies:
                 %s
                 
                 Earliest Return : %s
-                """, this.identifier, this.title, this.director, this.releaseYear, this.distributor,
-                this.getDurationToString(), itemCopies.toString(), this.getLoans().getEarliestReturnDate().toString());
+                """, this.toString(), itemCopies.toString(), this.getLoans().getEarliestReturnDate().toString());
     }
 
     public static Film castFrom(Item item) {

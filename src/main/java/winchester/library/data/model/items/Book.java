@@ -49,10 +49,6 @@ public class Book extends Item implements Exportable {
 
     @Override
     public String toString() {
-        StringBuilder itemCopies = new StringBuilder();
-        for (ItemStock stock : this.getStockAvailable()) {
-            itemCopies.append(stock.toString());
-        }
         return String.format(
                 """
                 Resource : Book
@@ -62,13 +58,24 @@ public class Book extends Item implements Exportable {
                 Author : %s
                 Publication Year : %d
                 Publisher : %s
+                """, this.isbn, this.title, this.author, this.publicationYear, this.publisher);
+    }
+
+    @Override
+    public String export() {
+        StringBuilder itemCopies = new StringBuilder();
+        for (ItemStock stock : this.getStockAvailable()) {
+            itemCopies.append(stock.toString());
+        }
+        return String.format(
+                """
+                %s
                 
                 Copies:
                 %s
                 
                 Earliest Return : %s
-                """, this.isbn, this.title, this.author, this.publicationYear, this.publisher,
-                itemCopies.toString(), this.getLoans().getEarliestReturnDate().toString());
+                """, this.toString(), itemCopies.toString(), this.getLoans().getEarliestReturnDate().toString());
     }
 
     public static Book castFrom(Item item) {
