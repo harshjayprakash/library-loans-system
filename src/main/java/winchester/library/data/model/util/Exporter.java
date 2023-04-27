@@ -4,6 +4,7 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import winchester.library.service.Logger;
 
 public class Exporter {
 
@@ -30,7 +31,10 @@ public class Exporter {
             exportFile.close();
         }
         catch (IOException exception) {
-            System.err.println(exception.toString());
+            Logger.getInstance().PrintError(
+                    "Writing entity to text file",
+                    "Error creating and opening a file",
+                    "Ensure that the export directory exists");
         }
         return true;
     }
