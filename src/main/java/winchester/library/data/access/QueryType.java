@@ -8,6 +8,8 @@ public enum QueryType {
     GET_AND_FILTER("SELECT %s FROM %s WHERE %s;"),
     INSERT_ONE("INSERT INTO %s VALUE %s;"),
     INSERT_MANY("INSERT INTO %s VALUES %s;"),
+    ORDERED_GET("SELECT %s FROM %s ORDER BY %s"),
+    ORDERED_GET_AND_FILTER("SELECT %s FROM %s WHERE %s ORDER BY %s"),
     UPDATE("UPDATE %s SET %s;"),
     UPDATE_AND_FILTER("UPDATE %s SET %s WHERE %s;");
 
