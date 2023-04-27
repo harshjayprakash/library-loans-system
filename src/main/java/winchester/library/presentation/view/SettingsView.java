@@ -5,6 +5,7 @@ import javafx.scene.control.Label;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.VBox;
 import winchester.library.data.access.DatabaseCredentials;
+import winchester.library.meta.Metadata;
 import winchester.library.presentation.window.IndividualViewWindow;
 import winchester.library.presentation.window.WindowBase;
 import winchester.library.service.DatabaseInteraction;
@@ -21,6 +22,10 @@ public class SettingsView extends View {
     private Label fileExporterTitleLabel;
     private Label fileExporterOutputPath;
     private Label fileExporterEditOutputPath;
+    private VBox programMetadata;
+    private Label programMetadataTitleLabel;
+    private Label programNameLabel;
+    private Label programVersionLabel;
     private final DatabaseCredentials credentials;
 
     public SettingsView(WindowBase parentWindow) {
@@ -41,6 +46,9 @@ public class SettingsView extends View {
         this.fileExporterSettingsPane = new VBox();
         this.fileExporterSettingsPane.setId("background-secondary-border");
         this.fileExporterSettingsPane.setPadding(new Insets(15));
+        this.programMetadata = new VBox();
+        this.programMetadata.setId("background-secondary-border");
+        this.programMetadata.setPadding(new Insets(15));
     }
 
     @Override
@@ -66,6 +74,13 @@ public class SettingsView extends View {
         this.fileExporterEditOutputPath = new Label();
         this.fileExporterEditOutputPath.setId("link-label");
         this.fileExporterEditOutputPath.setText("Edit Export Path");
+        this.programMetadataTitleLabel = new Label();
+        this.programMetadataTitleLabel.setId("text-bold");
+        this.programMetadataTitleLabel.setText("Program Information");
+        this.programNameLabel = new Label();
+        this.programNameLabel.setText(Metadata.getInstance().getProgramName());
+        this.programVersionLabel = new Label();
+        this.programVersionLabel.setText(Metadata.getInstance().getProgramVersionNumber());
     }
 
     private void bindEventHandlers() {
@@ -82,7 +97,11 @@ public class SettingsView extends View {
                 this.dataSourceEditCredentialsLinkLabel);
         this.fileExporterSettingsPane.getChildren().addAll(
                 this.fileExporterTitleLabel, this.fileExporterOutputPath, this.fileExporterEditOutputPath);
-        this.getChildren().addAll(this.descriptionLabel, this.dataSourceSettingsPane, this.fileExporterSettingsPane);
+        this.programMetadata.getChildren().addAll(
+                this.programMetadataTitleLabel, this.programNameLabel, this.programVersionLabel);
+        this.getChildren().addAll(
+                this.descriptionLabel, this.dataSourceSettingsPane, this.fileExporterSettingsPane,
+                this.programMetadata);
     }
 
 }
