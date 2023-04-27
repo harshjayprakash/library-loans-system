@@ -12,6 +12,7 @@ import javafx.scene.layout.HBox;
 import winchester.library.data.model.users.UserType;
 import winchester.library.presentation.window.IndividualViewWindow;
 import winchester.library.presentation.window.WindowBase;
+import winchester.library.service.PasswordPolicyManager;
 
 public class RegisterView extends View {
 
@@ -86,14 +87,7 @@ public class RegisterView extends View {
         this.passwordLabel.setText("Password: ");
         this.passwordDescriptionLabel = new Label();
         this.passwordDescriptionLabel.setPadding(new Insets(0, 0, 4, 0));
-        this.passwordDescriptionLabel.setText(
-                """
-                Your password must:
-                - be at least 8 characters long
-                - contain a number (0-9)
-                - contain a letter (A-Z, a-z)
-                - contain a special character (. , : @ # £ $ % & * ! ? < > SPACE)
-                """);
+        this.passwordDescriptionLabel.setText(new PasswordPolicyManager().getPasswordRequirements());
         this.passwordField = new PasswordField();
         this.passwordConfirmationLabel = new Label();
         this.passwordConfirmationLabel.setPadding(new Insets(10, 0, 0, 0));
