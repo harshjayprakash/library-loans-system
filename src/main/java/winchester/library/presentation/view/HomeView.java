@@ -3,9 +3,11 @@ package winchester.library.presentation.view;
 import java.util.Objects;
 import javafx.geometry.Insets;
 import javafx.scene.control.Label;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.VBox;
 import winchester.library.data.access.DemoAccount;
 import winchester.library.data.model.users.Employee;
+import winchester.library.presentation.window.IndividualViewWindow;
 import winchester.library.presentation.window.WindowBase;
 import winchester.library.service.DatabaseInteraction;
 
@@ -15,6 +17,7 @@ public class HomeView extends View {
     private VBox inventoryPanel;
     private Label userLabel;
     private Label userRoleLabel;
+    private Label changePasswordLinkLabel;
     private Label inventoryCountLabel;
     private Label customerCountLabel;
     private Label loanCountLabel;
@@ -47,6 +50,9 @@ public class HomeView extends View {
         this.userLabel.setText(this.currentEmployee.getFullName());
         this.userRoleLabel = new Label();
         this.userRoleLabel.setText(String.format("%s Account", this.currentEmployee.getType().toString()));
+        this.changePasswordLinkLabel = new Label();
+        this.changePasswordLinkLabel.setId("link-label");
+        this.changePasswordLinkLabel.setText("Change Password");
         this.inventoryCountLabel = new Label();
         this.inventoryCountLabel.setText(
                 String.format("Number of Items in Inventory: %d",
@@ -57,6 +63,13 @@ public class HomeView extends View {
         this.loanCountLabel = new Label();
         this.loanCountLabel.setText(
                 String.format("Number of Loans: %d", databaseInteraction.getLoans().size()));
+    }
+
+    private void bindEventHandlers() {
+        this.changePasswordLinkLabel.addEventHandler(MouseEvent.MOUSE_CLICKED, event -> {
+            IndividualViewWindow changePasswordView = new IndividualViewWindow(Views.CHANGE_PASSWORD);
+            changePasswordView.show();
+        });
     }
 
     @Override
