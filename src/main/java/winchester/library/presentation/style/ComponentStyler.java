@@ -24,14 +24,12 @@ public final class ComponentStyler {
             }
             catch (UnsupportedOperationException exception) {
                 Logger.getInstance().PrintError(
-                        this.getClass().getName(),
                         "Setting Styles To Scene",
                         "Add option not supported on given object",
                         "Ensure the correct type is given");
             }
             catch (Exception exception) {
                 Logger.getInstance().PrintError(
-                        this.getClass().getName(),
                         "Setting Styles To Scene",
                         String.format("Error Assigning Stylesheet '%s' due to %s", path, exception.getMessage()),
                         "^ Please find solution to problem described above");
@@ -46,14 +44,12 @@ public final class ComponentStyler {
             }
             catch (UnsupportedOperationException exception) {
                 Logger.getInstance().PrintError(
-                        this.getClass().getName(),
                         "Setting Styles To Scene",
                         "Add option not supported on given object",
                         "Ensure the correct type is given");
             }
             catch (Exception exception) {
                 Logger.getInstance().PrintError(
-                        this.getClass().getName(),
                         "Setting Styles To Scene",
                         String.format("Error Assigning Stylesheet '%s' due to %s", path, exception.getMessage()),
                         "^ Please find solution to problem described above");

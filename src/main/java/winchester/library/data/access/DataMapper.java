@@ -39,21 +39,18 @@ public class DataMapper {
         }
         catch (NullPointerException exception) {
             Logger.getInstance().PrintError(
-                    this.getClass().getName(),
                     "Mapping Data to an Array",
                     DatabaseConstant.DATA_NOT_ACCESSIBLE.toString(),
                     "Ensure that the Result Set Contains Data");
         }
         catch (SQLException exception) {
             Logger.getInstance().PrintError(
-                    this.getClass().getName(),
                     "Mapping Data to an Array",
                     DatabaseConstant.DATABASE_NOT_ACCESSIBLE.toString(),
                     "Ensure there is an Active Connection to the Database");
         }
         catch (Exception exception) {
             Logger.getInstance().PrintError(
-                    this.getClass().getName(),
                     "Mapping Data to an Array",
                     DatabaseConstant.UNKNOWN_ERROR.toString() + ": " + exception.getMessage(),
                     "^ Please find a solution to the above error");
@@ -71,7 +68,6 @@ public class DataMapper {
             }
             catch (SQLException exception) {
                 Logger.getInstance().PrintError(
-                        this.getClass().getName(),
                         "Mapping an Entity to Specified Class",
                         DatabaseConstant.DATA_NOT_ACCESSIBLE.toString(),
                         "Ensure that the column specified is valid");
@@ -90,7 +86,6 @@ public class DataMapper {
             }
             catch (SQLException exception) {
                 Logger.getInstance().PrintError(
-                        this.getClass().getName(),
                         "Mapping an Entity to Specified Class",
                         DatabaseConstant.DATA_NOT_ACCESSIBLE.toString(),
                         "Ensure that the column specified is valid");
