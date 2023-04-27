@@ -26,9 +26,10 @@ public class DataRetriever {
         DatabaseConnection connection = new DatabaseConnection();
         connection.establish(credentials);
         ArrayList<Book> books = dataMapper.mapAsBooks(connection.executeQuery(
-                QueryBuilder.createQuery(QueryType.GET)
+                QueryBuilder.createQuery(QueryType.ORDERED_GET)
                         .select("*")
                         .from("library.books")
+                        .orderBy("title asc")
         ).orElse(null)).orElse(new ArrayList<>());
         ArrayList<ItemStock> stocks = dataMapper.mapAsItemStock(connection.executeQuery(
                 QueryBuilder.createQuery(QueryType.GET_AND_FILTER)
@@ -51,9 +52,10 @@ public class DataRetriever {
         DatabaseConnection connection = new DatabaseConnection();
         connection.establish(credentials);
         ArrayList<Film> films = dataMapper.mapAsFilms(connection.executeQuery(
-                QueryBuilder.createQuery(QueryType.GET)
-                       .select("*")
-                       .from("library.films")
+                QueryBuilder.createQuery(QueryType.ORDERED_GET)
+                        .select("*")
+                        .from("library.films")
+                        .orderBy("title asc")
         ).orElse(null)).orElse(new ArrayList<>());
         ArrayList<ItemStock> stocks = dataMapper.mapAsItemStock(connection.executeQuery(
                 QueryBuilder.createQuery(QueryType.GET_AND_FILTER)
