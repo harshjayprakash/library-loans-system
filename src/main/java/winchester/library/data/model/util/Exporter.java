@@ -8,8 +8,6 @@ import winchester.library.service.Logger;
 
 public class Exporter {
 
-    private static String exportOutputPath = "exports";
-
     public Exporter() {
 
     }
@@ -19,7 +17,7 @@ public class Exporter {
             LocalDateTime dateTime = LocalDateTime.now();
             DateTimeFormatter dateTimeFormat = DateTimeFormatter.ofPattern("dd-MM-yyyy HH-mm-ss");
             FileWriter exportFile = new FileWriter(
-                    String.format("%s/%s WL Export.txt", Exporter.exportOutputPath, dateTime.format(dateTimeFormat)));
+                    String.format("exports/%s WL Export.txt", dateTime.format(dateTimeFormat)));
             exportFile.write(String.format(
                             """
                             --- Winchester Library Services ---
@@ -37,14 +35,6 @@ public class Exporter {
                     "Ensure that the export directory exists");
         }
         return true;
-    }
-
-    public static String getExportOutputPath() {
-        return Exporter.exportOutputPath;
-    }
-
-    public static void setExportOutputPath(String path) {
-        Exporter.exportOutputPath = path;
     }
 
 }
