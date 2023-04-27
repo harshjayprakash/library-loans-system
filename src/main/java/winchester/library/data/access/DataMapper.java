@@ -103,7 +103,6 @@ public class DataMapper {
             }
             catch (SQLException exception) {
                 Logger.getInstance().PrintError(
-                        this.getClass().getName(),
                         "Mapping an Entity to Specified Class",
                         DatabaseConstant.DATA_NOT_ACCESSIBLE.toString(),
                         "Ensure that the column specified is valid");
@@ -126,7 +125,6 @@ public class DataMapper {
             }
             catch (SQLException exception) {
                 Logger.getInstance().PrintError(
-                        this.getClass().getName(),
                         "Mapping an Entity to Specified Class",
                         DatabaseConstant.DATA_NOT_ACCESSIBLE.toString(),
                         "Ensure that the column specified is valid");
@@ -145,7 +143,6 @@ public class DataMapper {
             }
             catch (SQLException exception) {
                 Logger.getInstance().PrintError(
-                        this.getClass().getName(),
                         "Mapping an Entity to Specified Class",
                         DatabaseConstant.DATA_NOT_ACCESSIBLE.toString(),
                         "Ensure that the column specified is valid");
@@ -167,14 +164,12 @@ public class DataMapper {
             }
             catch (DateTimeParseException ignored) {
                 Logger.getInstance().PrintError(
-                        this.getClass().getName(),
                         "Mapping Entity to Loans Class",
                         "Invalid Data Format",
                         "Ensure that the dates are in a logical format (year-month-day)");
             }
             catch (SQLException exception) {
                 Logger.getInstance().PrintError(
-                        this.getClass().getName(),
                         "Mapping an Entity to Specified Class",
                         DatabaseConstant.DATA_NOT_ACCESSIBLE.toString(),
                         "Ensure that the column specified is valid");
