@@ -1,27 +1,23 @@
 package winchester.library.data.model.items;
 
-import java.time.LocalDate;
 import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Optional;
-
-import winchester.library.data.model.loans.Loan;
+import winchester.library.data.model.loans.LoansManager;
 
 public abstract class Item {
 
     protected ArrayList<ItemStock> stockAvailable;
-    protected ArrayList<Loan> loans;
+    protected LoansManager loans;
 
     public Item() {
         this.stockAvailable = new ArrayList<>();
-        this.loans = new ArrayList<>();
+        this.loans = new LoansManager();
     }
 
     public ArrayList<ItemStock> getStockAvailable() {
         return this.stockAvailable;
     }
 
-    public ArrayList<Loan> getLoans() {
+    public LoansManager getLoans() {
         return this.loans;
     }
 
