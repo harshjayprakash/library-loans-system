@@ -119,7 +119,7 @@ public class DataMapper {
                             case BOOK -> result.getString("isbn");
                             case FILM -> result.getString("film_id");
                         },
-                        ItemFormat.getFromIdentifier(result.getInt("item_subtype_id")).orElse(null),
+                        ItemFormat.fromIdentifier(result.getInt("item_subtype_id")).orElse(null),
                         result.getInt("copies_available"),
                         0);
             }
@@ -155,10 +155,10 @@ public class DataMapper {
         return this.mapToList(data, result -> {
             try {
                 return new Loan(
-                        result.getInt("loan_id"), new Customer(result.getInt("customer_id"),
+                        result.getLong("loan_id"), new Customer(result.getInt("customer_id"),
                         result.getString("first_name"), result.getString("last_name"),
                         result.getString("postal_code")), result.getString("item_id"),
-                        ItemType.fromIdentifier(result.getInt("item_subtype_id")).orElse(null),
+                        ItemFormat.fromIdentifier(result.getInt("item_subtype_id")).orElse(null),
                         LocalDate.parse(result.getString("loan_date")), LocalDate.parse(result.getString("return_date")),
                         result.getBoolean("returned"));
             }
