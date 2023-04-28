@@ -18,7 +18,7 @@ public abstract class Item {
         return this.stockAvailable;
     }
 
-    public LoansManager getLoans() {
+    public LoansManager getLoansManager() {
         return this.loans;
     }
 
