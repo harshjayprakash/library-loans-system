@@ -75,7 +75,7 @@ public class Book extends Item implements Exportable {
                 %s
                 
                 Earliest Return : %s
-                """, this.toString(), itemCopies.toString(), this.getLoans().getEarliestReturnDate().toString());
+                """, this.toString(), itemCopies.toString(), this.getLoansManager().getEarliestReturnDate().toString());
     }
 
     public static Book castFrom(Item item) {

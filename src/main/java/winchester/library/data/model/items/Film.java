@@ -91,7 +91,7 @@ public class Film extends Item implements Exportable {
                 %s
                 
                 Earliest Return : %s
-                """, this.toString(), itemCopies.toString(), this.getLoans().getEarliestReturnDate().toString());
+                """, this.toString(), itemCopies.toString(), this.getLoansManager().getEarliestReturnDate().toString());
     }
 
     public static Film castFrom(Item item) {
