@@ -8,6 +8,7 @@ public enum Views {
     DATABASE_CONFIGURATION(1644, "Database Configuration"),
     HOME(267, "Home"),
     INDIVIDUAL_CUSTOMER(1466, "Individual Customer"),
+    INDIVIDUAL_EMPLOYEE(1448, "Individual Employee"),
     INDIVIDUAL_ITEM(1143, "Individual Item"),
     INDIVIDUAL_LOAN(1138, "Individual Loans"),
     INVENTORY(718, "Inventory"),
