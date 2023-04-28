@@ -24,7 +24,7 @@ public enum ItemFormat {
         return this.identifier;
     }
 
-    public static Optional<ItemFormat> getFromIdentifier(int identifier) {
+    public static Optional<ItemFormat> fromIdentifier(int identifier) {
         for (ItemFormat format : ItemFormat.values()) {
             if (format.identifier == identifier) {
                 return Optional.of(format);
