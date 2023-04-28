@@ -39,14 +39,17 @@ public class DataRetriever {
         ).orElse(null), ItemType.BOOK).orElse(new ArrayList<>());
         ArrayList<Loan> loans = this.getLoans();
         for (Book book : books) {
-            for (ItemStock stock : stocks) {
-                if (stock.getItemIdentifier().equals(book.getIsbn())) {
-                    book.getStockAvailable().add(stock);
-                }
-            }
             for (Loan loan : loans) {
                 if (loan.getLoanedItemIdentifier().equals(book.getIsbn())) {
-                    book.getLoans().addLoan(loan);
+                    book.getLoansManager().addLoan(loan);
+                }
+                for (ItemStock stock : stocks) {
+                    if (stock.getItemIdentifier().equals(book.getIsbn())) {
+                        if (!loan.getReturned() && loan.getLoanedItemFormat() == stock.getItemFormat() && loan.getLoanedItemIdentifier().equals(stock.getItemIdentifier())) {
+                            stock.setCopiesOnLoan(stock.getCopiesOnLoan() + 1);
+                        }
+                        book.getStockAvailable().add(stock);
+                    }
                 }
             }
         }
