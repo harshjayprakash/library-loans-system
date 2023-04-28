@@ -127,10 +127,8 @@ public class DataRetriever {
                 QueryBuilder.createQuery(QueryType.ORDERED_GET_AND_FILTER)
                         .select("loan_id", "customer_id", "first_name", "last_name", "postal_code", "loans.item_id",
                                 "loans.item_subtype_id", "loan_date", "return_date", "returned")
-                        .from("library.loans", "library.users", "library.item_subtypes", "library.item_copies")
-                        .where("library.loans.customer_id = library.users.user_id",
-                                "and library.loans.item_id = library.item_copies.item_id",
-                                "and library.loans.item_subtype_id = library.item_subtypes.item_subtype_id")
+                        .from("library.loans", "library.users")
+                        .where("library.loans.customer_id = library.users.user_id")
                         .orderBy("loan_date asc")
         ).orElse(null)).orElse(new ArrayList<>());
         connection.close();
