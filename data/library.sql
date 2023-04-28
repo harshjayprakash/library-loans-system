@@ -267,7 +267,7 @@ values (1, '9780063021426', 11, 10),
        (42, '1905001', 22, 5);
 
 create table `library`.`loans` (
-    `loan_id`           int           not null,
+    `loan_id`           bigint(16)    not null,
     `customer_id`       int           not null,
     `item_id`           varchar(13)   not null,
     `item_subtype_id`   int           not null,
