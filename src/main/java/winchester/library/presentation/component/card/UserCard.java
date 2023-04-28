@@ -53,7 +53,12 @@ public final class UserCard extends Card {
     @Override
     protected void bindEventHandlers() {
         this.viewDetailsLabel.addEventHandler(MouseEvent.MOUSE_CLICKED, event -> {
-            IndividualViewWindow individualCustomerView = new IndividualViewWindow(Views.INDIVIDUAL_CUSTOMER);
+            IndividualViewWindow individualCustomerView = new IndividualViewWindow(
+                    switch (this.referencedUser.getType()) {
+                        case CUSTOMER -> Views.CUSTOMERS;
+                        case STANDARD, ADMINISTRATOR -> Views.INDIVIDUAL_EMPLOYEE;
+                        default -> Views.NONE;
+                    });
             individualCustomerView.show();
         });
     }
