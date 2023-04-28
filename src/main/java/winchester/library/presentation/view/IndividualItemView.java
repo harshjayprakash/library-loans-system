@@ -1,6 +1,10 @@
 package winchester.library.presentation.view;
 
+import java.util.ArrayList;
+
+import javafx.geometry.HPos;
 import javafx.geometry.Insets;
+import javafx.geometry.VPos;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -9,11 +13,11 @@ import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
+import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
 import javafx.scene.text.TextAlignment;
-import winchester.library.data.model.items.Book;
-import winchester.library.data.model.items.Film;
-import winchester.library.data.model.items.Item;
+import winchester.library.data.model.items.*;
+import winchester.library.data.model.loans.Loan;
 import winchester.library.data.model.util.Exporter;
 import winchester.library.presentation.alert.AlertFactory;
 import winchester.library.presentation.window.WindowBase;
@@ -27,10 +31,14 @@ public final class IndividualItemView extends View {
     private final int itemImageViewHeight;
     private final int itemImageViewWidth;
     private Text itemInformation;
-    private GridPane itemAvailability;
+    private VBox itemAvailability;
+    private Label itemAvailabilityTitleLabel;
     private Label itemFormatLabel;
-    private Label stockAvailableLabel;
-    private Label onLoanLabel;
+    private Label itemStockAvailableLabel;
+    private Label itemOnLoanLabel;
+    private ArrayList<Label> itemFormatLabelList;
+    private ArrayList<Label> itemStockAvailableLLabelList;
+    private ArrayList<Label> itemsOnLoanLabelList;
 
     private final Item referencedItem;
     private final Exporter exporter;
@@ -56,8 +64,7 @@ public final class IndividualItemView extends View {
         this.itemDetails = new HBox();
         this.itemDetails.setId("background-secondary-border");
         this.itemDetails.setPadding(new Insets(15));
-        this.itemAvailability = new GridPane();
-        this.itemAvailability.setId("background-secondary-border");
+        this.itemAvailability = new VBox();
         this.itemAvailability.setPadding(new Insets(15));
     }
 
@@ -78,6 +85,15 @@ public final class IndividualItemView extends View {
             case FILM -> Film.castFrom(this.referencedItem).toString();
         });
         HBox.setMargin(this.itemImageView, new Insets(0, 15, 0, 0));
+        this.itemAvailabilityTitleLabel = new Label();
+        this.itemAvailabilityTitleLabel.setId("text-bold");
+        this.itemAvailabilityTitleLabel.setText("Item Availability");
+        this.itemFormatLabel = new Label();
+        this.itemFormatLabel.setText("Format");
+        this.itemStockAvailableLabel = new Label();
+        this.itemStockAvailableLabel.setText("Stock Available");
+        this.itemOnLoanLabel = new Label();
+        this.itemOnLoanLabel.setText("On Loan");
     }
 
     private void bindEventHandlers() {
@@ -94,7 +110,7 @@ public final class IndividualItemView extends View {
                 return;
             }
             Alert exportSuccess = AlertFactory.createAlert(
-                    Alert.AlertType.INFORMATION, "Item exported successfully", "");
+                    Alert.AlertType.INFORMATION, "Item exported successfully");
             exportSuccess.show();
         });
     }
@@ -103,6 +119,6 @@ public final class IndividualItemView extends View {
     protected void addComponentsToView() {
         this.actions.getChildren().addAll(this.exportToFileButton);
         this.itemDetails.getChildren().addAll(this.itemImageView, this.itemInformation);
-        this.getChildren().addAll(this.actions, this.itemDetails);
+        this.getChildren().addAll(this.actions, this.itemDetails, this.itemAvailability);
     }
 }
