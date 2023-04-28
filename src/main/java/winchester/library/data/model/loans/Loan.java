@@ -3,7 +3,7 @@ package winchester.library.data.model.loans;
 import java.time.LocalDate;
 import java.time.temporal.ChronoUnit;
 import winchester.library.data.access.DatabaseEntity;
-import winchester.library.data.model.items.ItemType;
+import winchester.library.data.model.items.ItemFormat;
 import winchester.library.data.model.users.Customer;
 
 @DatabaseEntity(table = "loans")
@@ -11,7 +11,7 @@ public class Loan {
     private final long identifier;
     private final Customer customer;
     private final String loanedItemIdentifier;
-    private final ItemType loanedItemFormat;
+    private final ItemFormat loanedItemFormat;
     private final LocalDate loanDate;
     private LocalDate dueDate;
     private boolean returned;
@@ -39,7 +39,7 @@ public class Loan {
         return this.loanedItemIdentifier;
     }
 
-    public ItemType getLoanedItemFormat() {
+    public ItemFormat getLoanedItemFormat() {
         return this.loanedItemFormat;
     }
 
