@@ -8,7 +8,7 @@ import winchester.library.data.model.users.Customer;
 
 @DatabaseEntity(table = "loans")
 public class Loan {
-    private final int identifier;
+    private final long identifier;
     private final Customer customer;
     private final String loanedItemIdentifier;
     private final ItemType loanedItemFormat;
@@ -16,7 +16,7 @@ public class Loan {
     private LocalDate dueDate;
     private boolean returned;
 
-    public Loan(int identifier, Customer customer, String loanedItemIdentifier, ItemType loanedItemSubType, LocalDate loanDate,
+    public Loan(long identifier, Customer customer, String loanedItemIdentifier, ItemFormat loanedItemSubType, LocalDate loanDate,
                 LocalDate dueDate, boolean returned) {
         this.identifier = identifier;
         this.customer = customer;
@@ -27,7 +27,7 @@ public class Loan {
         this.returned = returned;
     }
 
-    public int getIdentifier() {
+    public long getIdentifier() {
         return this.identifier;
     }
 
