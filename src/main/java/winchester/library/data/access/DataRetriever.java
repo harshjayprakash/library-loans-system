@@ -37,10 +37,16 @@ public class DataRetriever {
                         .from("library.books", "library.item_copies")
                         .where("library.books.isbn = library.item_copies.item_id")
         ).orElse(null), ItemType.BOOK).orElse(new ArrayList<>());
+        ArrayList<Loan> loans = this.getLoans();
         for (Book book : books) {
             for (ItemStock stock : stocks) {
                 if (stock.getItemIdentifier().equals(book.getIsbn())) {
                     book.getStockAvailable().add(stock);
+                }
+            }
+            for (Loan loan : loans) {
+                if (loan.getLoanedItemIdentifier().equals(book.getIsbn())) {
+                    book.getLoans().addLoan(loan);
                 }
             }
         }
@@ -63,10 +69,16 @@ public class DataRetriever {
                        .from("library.films", "library.item_copies")
                        .where("library.films.film_id = library.item_copies.item_id")
         ).orElse(null), ItemType.FILM).orElse(new ArrayList<>());
+        ArrayList<Loan> loans = this.getLoans();
         for (Film film : films) {
             for (ItemStock stock : stocks) {
                 if (stock.getItemIdentifier().equals(film.getIdentifier())) {
                     film.getStockAvailable().add(stock);
+                }
+            }
+            for (Loan loan : loans) {
+                if (loan.getLoanedItemIdentifier().equals(film.getIdentifier())) {
+                    film.getLoans().addLoan(loan);
                 }
             }
         }
