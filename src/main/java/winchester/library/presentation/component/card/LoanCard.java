@@ -13,7 +13,7 @@ public final class LoanCard extends Card {
     private VBox loanInformation;
     private Label loanIdentifierLabel;
     private Label customerNameLabel;
-    private Loan referencedLoan;
+    private final Loan referencedLoan;
 
     public LoanCard(Loan loan) {
         super();
@@ -43,7 +43,7 @@ public final class LoanCard extends Card {
     @Override
     protected void bindEventHandlers() {
         this.viewDetailsLabel.addEventHandler(MouseEvent.MOUSE_CLICKED, event -> {
-            IndividualViewWindow individualItemView = new IndividualViewWindow(Views.INDIVIDUAL_ITEM);
+            IndividualViewWindow individualItemView = new IndividualViewWindow(Views.INDIVIDUAL_LOAN);
             individualItemView.show();
         });
     }
