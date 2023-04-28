@@ -24,6 +24,7 @@ create table `library`.`users` (
     primary key (`user_id`)
 );
 
+-- Names and Postcodes have been randomly generated. This is not real information.
 insert into `library`.`users`
 values (0, 0, 'Demo', 'Account', 'AB123CD'),
        (1, 3, 'Admin', 'Account', 'JI832HU'),
