@@ -276,3 +276,7 @@ create table `library`.`loans` (
     `returned`          tinyint       not null,
     primary key (`loan_id`)
 );
+
+insert into `library`.`loans`
+values (2023042810183091, 3, '2305002', 22, '2023-04-28', '2023-05-10', 0),
+       (2023042810192542, 13,'9781250313102', 12, '2023-04-27', '2023-05-27', 0);
