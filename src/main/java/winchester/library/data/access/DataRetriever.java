@@ -78,7 +78,7 @@ public class DataRetriever {
             }
             for (Loan loan : loans) {
                 if (loan.getLoanedItemIdentifier().equals(film.getIdentifier())) {
-                    film.getLoans().addLoan(loan);
+                    film.getLoansManager().addLoan(loan);
                 }
             }
         }
