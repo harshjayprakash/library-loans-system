@@ -28,7 +28,18 @@ create table `library`.`users` (
 insert into `library`.`users`
 values (0, 0, 'Demo', 'Account', 'AB123CD'),
        (1, 3, 'Admin', 'Account', 'JI832HU'),
-       (2, 2, 'Standard', 'Account', 'IU921ED');
+       (2, 2, 'Standard', 'Account', 'IU921ED'),
+       (3, 1, 'Axel', 'Vazquez', 'PA686EL'),
+       (4, 1, 'Alexa', 'Haley', 'ME104TB'),
+       (5, 1, 'Edward', 'Cooper', 'ME43NX'),
+       (6, 1, 'Stevie', 'Spence', 'DN40SU'),
+       (7, 1, 'Celine', 'Lynch', 'EH193GF'),
+       (8, 1, 'Aryan', 'Frazier', 'CF390NB'),
+       (9, 1, 'Keiran', 'Blanchard', 'HA11SZ'),
+       (10, 1, 'Kristen', 'Bray', 'LL198ED'),
+       (11, 1, 'John', 'Bridges', 'TW200SL'),
+       (12, 1, 'Olivia', 'French', 'DD109NR'),
+       (13, 1, 'Allan', 'Smith', 'KT151TL');
 
 create table `library`.`employees` (
     `employee_id`   int            not null,
