@@ -22,15 +22,6 @@ public enum DatabaseConstant {
         this.value = value;
     }
 
-    public int getIdentifier() {
-        return this.identifier;
-    }
-
-    @Override
-    public String toString() {
-        return this.value;
-    }
-
     public static DatabaseConstant getFromIdentifier(int identifier) {
         for (DatabaseConstant constant : DatabaseConstant.values()) {
             if (constant.identifier == identifier) {
@@ -38,5 +29,14 @@ public enum DatabaseConstant {
             }
         }
         return UNKNOWN_ERROR;
+    }
+
+    public int getIdentifier() {
+        return this.identifier;
+    }
+
+    @Override
+    public String toString() {
+        return this.value;
     }
 }

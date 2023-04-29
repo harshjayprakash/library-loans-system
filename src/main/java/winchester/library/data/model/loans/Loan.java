@@ -6,6 +6,9 @@ import winchester.library.data.access.DatabaseEntity;
 import winchester.library.data.model.items.ItemFormat;
 import winchester.library.data.model.users.Customer;
 
+/**
+ * A class to model the information of a loan.
+ */
 @DatabaseEntity(table = "loans")
 public class Loan {
     private final long identifier;

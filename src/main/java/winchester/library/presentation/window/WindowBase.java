@@ -9,7 +9,11 @@ import winchester.library.meta.Metadata;
 import winchester.library.presentation.style.ComponentStyler;
 import winchester.library.service.Logger;
 
+/**
+ * A base window class that provides the base components including the scene, layout and styling.
+ */
 public abstract class WindowBase extends Stage {
+
     protected Scene scene;
     protected BorderPane baseLayout;
 
@@ -18,6 +22,16 @@ public abstract class WindowBase extends Stage {
         this.initialiseScene();
         this.loadIcon();
     }
+
+    public void setTitleText(String text) {
+        this.setTitle("%s - %s".formatted(text, Metadata.getInstance().getProgramName()));
+    }
+
+    protected abstract void initialiseControls();
+
+    protected abstract void bindEventHandlers();
+
+    protected abstract void addComponentsToStage();
 
     private void initialiseScene() {
         this.baseLayout = new BorderPane();
@@ -39,14 +53,4 @@ public abstract class WindowBase extends Stage {
                     "Ensure the availability of the icon");
         }
     }
-
-    public void setTitleText(String text) {
-        this.setTitle("%s - %s".formatted(text, Metadata.getInstance().getProgramName()));
-    }
-
-    protected abstract void initialiseControls();
-
-    protected abstract void bindEventHandlers();
-
-    protected abstract void addComponentsToStage();
 }

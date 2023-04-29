@@ -3,6 +3,9 @@ package winchester.library.data.model.items;
 import java.util.Optional;
 import winchester.library.data.access.DatabaseEntity;
 
+/**
+ * An enumeration to represent the categories of items available.
+ */
 @DatabaseEntity(table = "item_types")
 public enum ItemType {
     BOOK(1, "Book"),
@@ -16,10 +19,6 @@ public enum ItemType {
         this.value = value;
     }
 
-    public int getIdentifier() {
-        return this.identifier;
-    }
-
     public static Optional<ItemType> fromIdentifier(int identifier) {
         for (ItemType type : ItemType.values()) {
             if (type.identifier == identifier) {
@@ -27,6 +26,10 @@ public enum ItemType {
             }
         }
         return Optional.empty();
+    }
+
+    public int getIdentifier() {
+        return this.identifier;
     }
 
     @Override

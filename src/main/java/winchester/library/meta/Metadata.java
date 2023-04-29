@@ -1,5 +1,8 @@
 package winchester.library.meta;
 
+/**
+ * A singleton class that stores program metadata information.
+ */
 public final class Metadata {
 
     private static Metadata instance = null;

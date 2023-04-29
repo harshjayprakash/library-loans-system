@@ -1,13 +1,14 @@
 package winchester.library.data.model.loans;
 
-import org.jetbrains.annotations.NotNull;
-
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Objects;
 import java.util.Optional;
 
+/**
+ * A class that offers an abstraction from handling an array of loans.
+ */
 public class LoansManager {
 
     private final ArrayList<Loan> loans;

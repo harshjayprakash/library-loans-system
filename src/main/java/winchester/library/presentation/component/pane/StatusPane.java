@@ -11,6 +11,9 @@ import winchester.library.presentation.style.ComponentStyler;
 import winchester.library.presentation.view.Views;
 import winchester.library.presentation.window.IndividualViewWindow;
 
+/**
+ * A class that provides the status bar at the bottom of the Main Window.
+ */
 public final class StatusPane extends BorderPane {
 
     private Label settingsLabel;
@@ -24,6 +27,11 @@ public final class StatusPane extends BorderPane {
         this.loadStylesheets();
         this.bindEventHandlers();
         this.addComponentsToPane();
+    }
+
+    public void setDatabaseConnected(boolean connected) {
+        this.databaseStatusLabel.setText(
+                connected ? DatabaseStatus.CONNECTED.toString() : DatabaseStatus.NOT_CONNECTED.toString());
     }
 
     private void initialiseControls() {
@@ -52,10 +60,5 @@ public final class StatusPane extends BorderPane {
     private void addComponentsToPane() {
         this.setLeft(this.settingsLabel);
         this.setRight(this.databaseStatusLabel);
-    }
-
-    public void setDatabaseConnected(boolean connected) {
-        this.databaseStatusLabel.setText(
-                connected ? DatabaseStatus.CONNECTED.toString() : DatabaseStatus.NOT_CONNECTED.toString());
     }
 }

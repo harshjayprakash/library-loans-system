@@ -44,6 +44,10 @@ public final class IndividualViewWindow extends WindowBase {
         this.baseLayout.setPadding(new Insets(15));
     }
 
+    public HeaderPane getHeaderPane() {
+        return this.header;
+    }
+
     @Override
     protected void initialiseControls() {
         this.header = new HeaderPane(this.windowContentView, Views.NONE);

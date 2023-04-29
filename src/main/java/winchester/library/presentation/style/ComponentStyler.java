@@ -4,6 +4,9 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import winchester.library.service.Logger;
 
+/**
+ * A class that provides abstraction to add stylesheets to a component.
+ */
 public final class ComponentStyler {
 
     private static ComponentStyler instance;

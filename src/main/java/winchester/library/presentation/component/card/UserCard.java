@@ -10,6 +10,9 @@ import winchester.library.data.model.users.UserType;
 import winchester.library.presentation.view.Views;
 import winchester.library.presentation.window.IndividualViewWindow;
 
+/**
+ * A class that provides a control to view any user type of the system.
+ */
 public final class UserCard extends Card {
 
     private VBox userDetails;
@@ -55,7 +58,7 @@ public final class UserCard extends Card {
         this.viewDetailsLabel.addEventHandler(MouseEvent.MOUSE_CLICKED, event -> {
             IndividualViewWindow individualCustomerView = new IndividualViewWindow(
                     switch (this.referencedUser.getType()) {
-                        case CUSTOMER -> Views.CUSTOMERS;
+                        case CUSTOMER -> Views.INDIVIDUAL_CUSTOMER;
                         case STANDARD, ADMINISTRATOR -> Views.INDIVIDUAL_EMPLOYEE;
                         default -> Views.NONE;
                     });

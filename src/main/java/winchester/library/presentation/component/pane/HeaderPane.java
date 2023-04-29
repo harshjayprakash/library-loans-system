@@ -6,6 +6,9 @@ import javafx.scene.layout.VBox;
 import winchester.library.presentation.style.ComponentStyler;
 import winchester.library.presentation.view.Views;
 
+/**
+ * A class that provides the header title text for a window.
+ */
 public final class HeaderPane extends VBox {
 
     private Views page;

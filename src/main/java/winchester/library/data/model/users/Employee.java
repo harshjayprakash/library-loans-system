@@ -3,6 +3,9 @@ package winchester.library.data.model.users;
 import winchester.library.data.access.DatabaseEntity;
 import winchester.library.data.model.loans.LoanManagement;
 
+/**
+ * A class to model an employee of the system.
+ */
 @DatabaseEntity(table = "employees")
 public class Employee extends User 
     implements LoanManagement {
@@ -17,6 +20,10 @@ public class Employee extends User
         this.username = username;
         this.password = password;
         this.status = status;
+    }
+
+    public static Employee castFrom(User user) {
+        return (Employee) user;
     }
 
     public String getUsername() {
@@ -54,10 +61,6 @@ public class Employee extends User
     @Override
     public UserType getType() {
         return UserType.STANDARD;
-    }
-
-    public static Employee castFrom(User user) {
-        return (Employee) user;
     }
 
     @Override

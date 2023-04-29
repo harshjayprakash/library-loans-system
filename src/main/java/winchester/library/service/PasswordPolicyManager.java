@@ -1,5 +1,8 @@
 package winchester.library.service;
 
+/**
+ * A class that checks password strength.
+ */
 public final class PasswordPolicyManager {
 
     public final String passwordRequirements;

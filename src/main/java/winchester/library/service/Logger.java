@@ -1,5 +1,8 @@
 package winchester.library.service;
 
+/**
+ * A class that provides an abstraction to output to the console.
+ */
 public final class Logger {
 
     private static Logger instance = null;

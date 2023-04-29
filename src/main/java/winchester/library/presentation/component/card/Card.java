@@ -6,6 +6,9 @@ import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.VBox;
 import winchester.library.presentation.style.ComponentStyler;
 
+/**
+ * A base card class that provides common components, layouts and styling.
+ */
 public abstract class Card extends BorderPane {
 
     protected VBox actions;
@@ -17,6 +20,14 @@ public abstract class Card extends BorderPane {
         this.loadStylesheets();
         this.initialiseAndAddDefaultComponents();
     }
+
+    protected abstract void initialiseLayouts();
+
+    protected abstract void initialiseControls();
+
+    protected abstract void bindEventHandlers();
+
+    protected abstract void addComponentsToCard();
 
     private void loadStylesheets() {
         ComponentStyler.getInstance().setStyle(this);
@@ -31,13 +42,4 @@ public abstract class Card extends BorderPane {
         this.actions.getChildren().add(this.viewDetailsLabel);
         this.setRight(this.actions);
     }
-
-    protected abstract void initialiseLayouts();
-
-    protected abstract void initialiseControls();
-
-    protected abstract void bindEventHandlers();
-
-    protected abstract void addComponentsToCard();
-
 }

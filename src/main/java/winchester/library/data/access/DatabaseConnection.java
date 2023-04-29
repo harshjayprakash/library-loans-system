@@ -10,26 +10,14 @@ import java.util.Optional;
 import winchester.library.service.Logger;
 
 /**
- * A class encapsulates the sql connection as well as handles any exceptions that may occur, which is written to the
- * standard error stream.
+ * A class that encapsulates the database connection separating each operation into callable functions that have
+ * exception handling, written to the standard error stream.
  */
 public class DatabaseConnection {
 
     private Connection connection;
 
     public DatabaseConnection() { }
-
-    private void loadDriver() {
-        try {
-            Class.forName("com.mysql.cj.jdbc.Driver");
-        }
-        catch (ClassNotFoundException exception) {
-            Logger.getInstance().PrintError(
-                    "Loading MySQL Driver",
-                    DatabaseConstant.DRIVER_NOT_FOUND.toString(),
-                    "Ensure the availability of the MySQL Connector Dependency");
-        }
-    }
 
     public void establish(DatabaseCredentials credentials) {
         try {
@@ -88,6 +76,18 @@ public class DatabaseConnection {
                     "Closing Database Connection",
                     DatabaseConstant.CONNECTION_CLOSE_ERROR.toString(),
                     "Ensure that the Connection is Active.");
+        }
+    }
+
+    private void loadDriver() {
+        try {
+            Class.forName("com.mysql.cj.jdbc.Driver");
+        }
+        catch (ClassNotFoundException exception) {
+            Logger.getInstance().PrintError(
+                    "Loading MySQL Driver",
+                    DatabaseConstant.DRIVER_NOT_FOUND.toString(),
+                    "Ensure the availability of the MySQL Connector Dependency");
         }
     }
 }

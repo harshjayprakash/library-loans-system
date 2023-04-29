@@ -2,6 +2,9 @@ package winchester.library.data.model.items;
 
 import winchester.library.data.access.DatabaseEntity;
 
+/**
+ * A class to represent the stock available for each form of item.
+ */
 @DatabaseEntity(table = "item_copies")
 public class ItemStock {
 

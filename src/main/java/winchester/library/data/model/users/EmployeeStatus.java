@@ -3,6 +3,9 @@ package winchester.library.data.model.users;
 import java.util.Optional;
 import winchester.library.data.access.DatabaseEntity;
 
+/**
+ * An enumeration to represent the integer values of employee status.
+ */
 @DatabaseEntity(table = "employee_status")
 public enum EmployeeStatus {
     DISABLED(-1, "Disabled"),
@@ -17,10 +20,6 @@ public enum EmployeeStatus {
         this.text = text;
     }
 
-    public int getIdentifier() {
-        return this.identifier;
-    }
-
     public static Optional<EmployeeStatus> fromIdentifier(int identifier) {
         for (EmployeeStatus status : EmployeeStatus.values()) {
             if (status.identifier == identifier) {
@@ -28,6 +27,10 @@ public enum EmployeeStatus {
             }
         }
         return Optional.empty();
+    }
+
+    public int getIdentifier() {
+        return this.identifier;
     }
 
     @Override

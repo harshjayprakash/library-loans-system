@@ -6,19 +6,12 @@ import java.sql.SQLException;
 import java.sql.SQLTimeoutException;
 
 /**
- * A singleton class that provides a way of testing the connection to get the current status.
+ * A class that provides an interface for testing the database connection credentials, providing a status.
  */
 public class DatabaseConnectionTester {
 
-    private static DatabaseConnectionTester instance;
+    public DatabaseConnectionTester() {
 
-    private DatabaseConnectionTester() { }
-
-    public static DatabaseConnectionTester getInstance() {
-        if (DatabaseConnectionTester.instance == null) {
-            DatabaseConnectionTester.instance = new DatabaseConnectionTester();
-        }
-        return DatabaseConnectionTester.instance;
     }
 
     public DatabaseConstant testDriver() {

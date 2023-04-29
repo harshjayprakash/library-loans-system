@@ -13,6 +13,9 @@ import winchester.library.data.model.items.ItemType;
 import winchester.library.presentation.view.Views;
 import winchester.library.presentation.window.IndividualViewWindow;
 
+/**
+ * A class that provide a control for displaying item information.
+ */
 public final class ItemCard extends Card {
 
     private ImageView itemImageView;

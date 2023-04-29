@@ -8,6 +8,9 @@ import winchester.library.data.model.loans.Loan;
 import winchester.library.presentation.view.Views;
 import winchester.library.presentation.window.IndividualViewWindow;
 
+/**
+ * A class that provides a control to view loan information.
+ */
 public final class LoanCard extends Card {
 
     private VBox loanInformation;

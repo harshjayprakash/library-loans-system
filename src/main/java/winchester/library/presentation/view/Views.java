@@ -1,5 +1,8 @@
 package winchester.library.presentation.view;
 
+/**
+ * An enumeration of all possible views that can be displayed, with a title and identifier (name converted to ascii).
+ */
 public enum Views {
     ADD_ITEM(599, "Add Item"),
     ADD_USER(615, "Add User"),

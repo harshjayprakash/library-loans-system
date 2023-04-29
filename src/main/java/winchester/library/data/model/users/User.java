@@ -2,6 +2,9 @@ package winchester.library.data.model.users;
 
 import winchester.library.data.access.DatabaseEntity;
 
+/**
+ * A base class to represent any user of the system.
+ */
 @DatabaseEntity(table = "users")
 public abstract class User {
 
@@ -37,6 +40,8 @@ public abstract class User {
         return this.postalCode;
     }
 
+    public abstract UserType getType();
+
     @Override
     public String toString() {
         return """
@@ -45,6 +50,4 @@ public abstract class User {
                 Postal Code: %s
                """.formatted(this.getFullName(), this.postalCode);
     }
-
-    public abstract UserType getType();
 }

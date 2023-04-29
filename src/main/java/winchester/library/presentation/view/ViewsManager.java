@@ -5,6 +5,9 @@ import winchester.library.data.model.items.Item;
 import winchester.library.data.model.users.Employee;
 import winchester.library.presentation.window.WindowBase;
 
+/**
+ * A class that provides an abstraction allowing the switching between views.
+ */
 public final class ViewsManager extends BorderPane {
 
     public ViewsManager() {

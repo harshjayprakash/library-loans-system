@@ -8,7 +8,8 @@ import winchester.library.presentation.component.pane.StatusPane;
 import winchester.library.presentation.view.NoneSidePaneView;
 import winchester.library.presentation.view.Views;
 import winchester.library.presentation.view.ViewsManager;
-import winchester.library.service.DatabaseInteraction;
+import winchester.library.service.DataPersistenceManager;
+import winchester.library.service.DatabaseConnectivityChecker;
 
 public final class MainWindow extends WindowBase {
 
@@ -31,7 +32,7 @@ public final class MainWindow extends WindowBase {
         this.sidePane = new SidePane(null);
         this.sidePane.setPrefWidth(150);
         this.statusPane = new StatusPane();
-        this.statusPane.setDatabaseConnected(DatabaseInteraction.getInstance().getDatabaseAvailable());
+        this.statusPane.setDatabaseConnected(DatabaseConnectivityChecker.getInstance().getDatabaseAvailable());
         this.viewsManager = new ViewsManager();
         this.viewsManager.setPadding(new Insets(20));
     }
@@ -42,7 +43,7 @@ public final class MainWindow extends WindowBase {
                 (value, toggle, newToggle) -> {
                     this.headerPane.setPageTitle(this.sidePane.getSelectedToggleAsView());
                     this.viewsManager.showView(this.sidePane.getSelectedToggleAsView(), this, null, null);
-                    this.statusPane.setDatabaseConnected(DatabaseInteraction.getInstance().getDatabaseAvailable());
+                    this.statusPane.setDatabaseConnected(DatabaseConnectivityChecker.getInstance().getDatabaseAvailable());
                     this.setTitleText(this.sidePane.getSelectedToggleAsView().toString());
                 });
         this.sidePane.getLogOutButton().addEventHandler(MouseEvent.MOUSE_CLICKED, event -> {

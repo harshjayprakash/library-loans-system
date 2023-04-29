@@ -1,5 +1,8 @@
 package winchester.library.data.model.users;
 
+/**
+ * A class to represent an administrator with higher privileges than a normal employee.
+ */
 public class Administrator extends Employee 
     implements UserManagement {
     

@@ -2,6 +2,9 @@ package winchester.library.presentation.alert;
 
 import javafx.scene.control.Alert;
 
+/**
+ * A factory class that abstracts the creation of alert message boxes.
+ */
 public final class AlertFactory {
 
     public static Alert createAlert(Alert.AlertType type, String headerText, String contextText) {

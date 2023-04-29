@@ -2,7 +2,7 @@ package winchester.library.data.access;
 
 /**
  * A singleton class that stores the credentials to connect to the database, providing mutators for the ability of
- * change the credentials
+ * changing the credentials
  */
 public class DatabaseCredentials {
 
@@ -11,7 +11,16 @@ public class DatabaseCredentials {
     private String username = "root";
     private String password = "dbpassword";
 
-    private DatabaseCredentials() { }
+    private DatabaseCredentials() {
+
+    }
+
+    public static DatabaseCredentials getInstance() {
+        if (DatabaseCredentials.instance == null) {
+            DatabaseCredentials.instance = new DatabaseCredentials();
+        }
+        return DatabaseCredentials.instance;
+    }
 
     public String getUrl() {
         return this.url;
@@ -36,12 +45,4 @@ public class DatabaseCredentials {
     public void setPassword(String password) {
         this.password = password;
     }
-
-    public static DatabaseCredentials getInstance() {
-        if (DatabaseCredentials.instance == null) {
-            DatabaseCredentials.instance = new DatabaseCredentials();
-        }
-        return DatabaseCredentials.instance;
-    }
-
 }

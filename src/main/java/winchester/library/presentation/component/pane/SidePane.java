@@ -15,6 +15,9 @@ import winchester.library.data.model.users.Employee;
 import winchester.library.presentation.style.ComponentStyler;
 import winchester.library.presentation.view.Views;
 
+/**
+ * A class that provides the sidebar operations for the Main Window.
+ */
 public final class SidePane extends VBox {
 
     private Label serviceLabel;
@@ -44,7 +47,27 @@ public final class SidePane extends VBox {
         this.addComponentsToPane();
     }
 
-    public void initialiseLayouts() {
+    public ToggleGroup getToggleGroup() {
+        return this.pageButtons;
+    }
+
+    public Button getLogOutButton() {
+        return this.logOutButton;
+    }
+
+    public Views getSelectedToggleAsView() {
+        if (this.pageButtons.getSelectedToggle() == null ) { return Views.NONE_WITH_SIDEBAR; }
+        return switch (((ToggleButton)this.pageButtons.getSelectedToggle()).getText()) {
+            case "Home" -> Views.HOME;
+            case "Inventory" -> Views.INVENTORY;
+            case "Customers" -> Views.CUSTOMERS;
+            case "Loans" -> Views.LOANS;
+            case "Users" -> Views.USERS;
+            default -> Views.NONE_WITH_SIDEBAR;
+        };
+    }
+
+    private void initialiseLayouts() {
         this.accountPane = new VBox();
         this.accountPane.setAlignment(Pos.BOTTOM_LEFT);
         this.accountPane.prefHeightProperty().bind(this.prefHeightProperty());
@@ -116,25 +139,5 @@ public final class SidePane extends VBox {
                 this.serviceLabel, this.privilegeModeLabel, this.homePageButton,
                 this.inventoryPageButton, this.customersPageButton, this.loansPageButton,
                 this.usersPageButton, this.accountPane);
-    }
-
-    public ToggleGroup getToggleGroup() {
-        return this.pageButtons;
-    }
-
-    public Button getLogOutButton() {
-        return this.logOutButton;
-    }
-
-    public Views getSelectedToggleAsView() {
-        if (this.pageButtons.getSelectedToggle() == null ) { return Views.NONE_WITH_SIDEBAR; }
-        return switch (((ToggleButton)this.pageButtons.getSelectedToggle()).getText()) {
-            case "Home" -> Views.HOME;
-            case "Inventory" -> Views.INVENTORY;
-            case "Customers" -> Views.CUSTOMERS;
-            case "Loans" -> Views.LOANS;
-            case "Users" -> Views.USERS;
-            default -> Views.NONE_WITH_SIDEBAR;
-        };
     }
 }

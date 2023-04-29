@@ -3,6 +3,9 @@ package winchester.library.data.model.items;
 import java.util.ArrayList;
 import winchester.library.data.model.loans.LoansManager;
 
+/**
+ * A base item class to represent the image, loans and stock available.
+ */
 public abstract class Item {
 
     protected ArrayList<ItemStock> stockAvailable;

@@ -4,6 +4,9 @@ import javafx.scene.layout.VBox;
 import winchester.library.presentation.style.ComponentStyler;
 import winchester.library.presentation.window.WindowBase;
 
+/**
+ * A base view class that provides the layout and access to the base window.
+ */
 public abstract class View extends VBox {
 
     protected final WindowBase parentWindow;
@@ -14,14 +17,14 @@ public abstract class View extends VBox {
         this.loadStylesheets();
     }
 
-    private void loadStylesheets() {
-        ComponentStyler.getInstance().setStyle(this);
-    }
-
     protected abstract void initialiseLayouts();
 
     protected abstract void initialiseControls();
 
     protected abstract void addComponentsToView();
+
+    private void loadStylesheets() {
+        ComponentStyler.getInstance().setStyle(this);
+    }
 
 }

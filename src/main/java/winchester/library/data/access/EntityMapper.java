@@ -22,9 +22,9 @@ import winchester.library.service.Logger;
  * A class that has the ability to map the returned ResultSet from the database connection to the correct list of
  * objects.
  */
-public class DataMapper {
+public class EntityMapper {
 
-    public DataMapper() { }
+    public EntityMapper() { }
 
     private <T> Optional<ArrayList<T>> mapToList(ResultSet data, Function<ResultSet, T> mapFunction) {
         ArrayList<T> entityList = new ArrayList<>();

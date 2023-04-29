@@ -4,15 +4,19 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import org.jetbrains.annotations.NotNull;
 import winchester.library.service.Logger;
 
+/**
+ * A class that exports item information to an external file.
+ */
 public class Exporter {
 
     public Exporter() {
 
     }
 
-    public boolean export(Exportable exportable) {
+    public boolean export(@NotNull Exportable exportable) {
         try {
             LocalDateTime dateTime = LocalDateTime.now();
             DateTimeFormatter dateTimeFormat = DateTimeFormatter.ofPattern("dd-MM-yyyy HH-mm-ss");

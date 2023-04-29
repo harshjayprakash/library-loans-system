@@ -1,7 +1,7 @@
 package winchester.library.data.access;
 
 /**
- * A set of values to help set up a sql query.
+ * A set of constant values that provide a format string to help set up a sql query.
  */
 public enum QueryType {
     GET("SELECT %s FROM %s;"),
