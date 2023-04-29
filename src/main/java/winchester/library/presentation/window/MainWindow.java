@@ -8,7 +8,6 @@ import winchester.library.presentation.component.pane.StatusPane;
 import winchester.library.presentation.view.NoneSidePaneView;
 import winchester.library.presentation.view.Views;
 import winchester.library.presentation.view.ViewsManager;
-import winchester.library.service.DataPersistenceManager;
 import winchester.library.service.DatabaseConnectivityChecker;
 
 public final class MainWindow extends WindowBase {
