@@ -1,7 +1,6 @@
 package winchester.library.presentation.window;
 
 import javafx.geometry.Insets;
-import javafx.stage.WindowEvent;
 import winchester.library.data.model.items.Item;
 import winchester.library.data.model.users.Employee;
 import winchester.library.presentation.component.pane.HeaderPane;
@@ -10,7 +9,6 @@ import winchester.library.presentation.view.ViewsManager;
 
 public final class IndividualViewWindow extends WindowBase {
 
-    private static int instanceCount = 0;
     private HeaderPane header;
     private ViewsManager viewsManager;
     private final Views windowContentView;
@@ -25,7 +23,6 @@ public final class IndividualViewWindow extends WindowBase {
         this.initialiseLayouts();
         this.initialiseControls();
         this.addComponentsToStage();
-        IndividualViewWindow.instanceCount += 1;
     }
 
     public IndividualViewWindow(Views windowContentView, Item item) {
@@ -52,7 +49,7 @@ public final class IndividualViewWindow extends WindowBase {
 
     @Override
     protected void bindEventHandlers() {
-        this.addEventHandler(WindowEvent.WINDOW_CLOSE_REQUEST, event -> IndividualViewWindow.instanceCount -= 1);
+
     }
 
     @Override
@@ -60,9 +57,5 @@ public final class IndividualViewWindow extends WindowBase {
         this.viewsManager.showView(this.windowContentView, this, this.employee, this.item);
         this.baseLayout.setTop(this.header);
         this.baseLayout.setCenter(this.viewsManager);
-    }
-
-    public static int getInstanceCount() {
-        return IndividualViewWindow.instanceCount;
     }
 }
