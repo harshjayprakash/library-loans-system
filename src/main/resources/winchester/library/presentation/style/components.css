@@ -1,41 +1,41 @@
 /* Control Styling: Buttons */
-#button-accent {
+.button-accent {
     -fx-color: -wl-colour-accent;
     -fx-background: -wl-colour-accent;
     -fx-background-color: -fx-shadow-highlight-color, -fx-outer-border, -fx-inner-border, -fx-body-color
 }
 
-#button-accent:hover {
+.button-accent:hover {
     -fx-color: -wl-colour-accent-lighter;
 }
 
-#button-accent:pressed {
+.button-accent:pressed {
     -fx-color: -wl-colour-accent-darker;
 }
 
 /* Control Styling: Toggle Buttons */
-#toggle-button {
+.toggle-button {
     -fx-font-size: 14px;
     -fx-background-color: -wl-colour-background-secondary;
     -fx-border-color: transparent transparent transparent transparent;
     -fx-border-width: 2px
 }
 
-#toggle-button:selected {
+.toggle-button:selected {
     -fx-background-color: -wl-colour-background-primary;
     -fx-border-color: transparent transparent transparent -wl-colour-accent;
     -fx-border-width: 2px;
 }
 
-#toggle-button:hover {
+.toggle-button:hover {
     -fx-underline: true;
 }
 
 /* Control Styling: Link Labels */
-#link-label {
+.link-label {
     -fx-text-fill: -wl-colour-accent;
     -fx-underline: true;
 }
-#link-label:hover {
+.link-label:hover {
     -fx-text-fill: -wl-colour-accent-lighter;
 }

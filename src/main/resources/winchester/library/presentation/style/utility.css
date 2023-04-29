@@ -1,17 +1,17 @@
-/* Utility Styling Identifier */
-#text-bold {
+/* Utility Styling */
+.text-bold {
     -fx-font-weight: bold;
 }
 
-#background-primary {
+.background-primary {
     -fx-background-color: -wl-colour-background-primary;
 }
 
-#background-secondary {
+.background-secondary {
     -fx-background-color: -wl-colour-background-secondary;
 }
 
-#background-secondary-border {
+.background-secondary-border {
     -fx-background-color: -wl-colour-background-secondary;
     -fx-border-color: lightgray;
     -fx-border-width: 1px;
