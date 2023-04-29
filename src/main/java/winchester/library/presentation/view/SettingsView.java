@@ -42,13 +42,13 @@ public final class SettingsView extends View {
     @Override
     protected void initialiseLayouts() {
         this.dataSourceSettingsPane = new VBox();
-        this.dataSourceSettingsPane.setId("background-secondary-border");
+        this.dataSourceSettingsPane.getStyleClass().add("background-secondary-border");
         this.dataSourceSettingsPane.setPadding(new Insets(15));
         this.fileExporterSettingsPane = new VBox();
-        this.fileExporterSettingsPane.setId("background-secondary-border");
+        this.fileExporterSettingsPane.getStyleClass().add("background-secondary-border");
         this.fileExporterSettingsPane.setPadding(new Insets(15));
         this.programMetadata = new VBox();
-        this.programMetadata.setId("background-secondary-border");
+        this.programMetadata.getStyleClass().add("background-secondary-border");
         this.programMetadata.setPadding(new Insets(15));
     }
 
@@ -57,7 +57,7 @@ public final class SettingsView extends View {
         this.descriptionLabel = new Label();
         this.descriptionLabel.setText("From here you can edit the program's configuration.");
         this.dataSourceTitleLabel = new Label();
-        this.dataSourceTitleLabel.setId("text-bold");
+        this.dataSourceTitleLabel.getStyleClass().add("text-bold");
         this.dataSourceTitleLabel.setText("Data Source");
         this.dataSourceUrlLabel = new Label();
         this.dataSourceUrlLabel.setText("Url: " + credentials.getUrl());
@@ -65,18 +65,18 @@ public final class SettingsView extends View {
         this.dataSourceStatusLabel.setText(
                 "Status: " + DatabaseConnectivityChecker.getInstance().getDatabaseStatus().toString());
         this.dataSourceEditCredentialsLinkLabel = new Label();
-        this.dataSourceEditCredentialsLinkLabel.setId("link-label");
+        this.dataSourceEditCredentialsLinkLabel.getStyleClass().add("link-label");
         this.dataSourceEditCredentialsLinkLabel.setText("Edit Data Source Credentials");
         this.fileExporterTitleLabel = new Label();
-        this.fileExporterTitleLabel.setId("text-bold");
+        this.fileExporterTitleLabel.getStyleClass().add("text-bold");
         this.fileExporterTitleLabel.setText("Exporter");
         this.fileExporterOutputPath = new Label();
         this.fileExporterOutputPath.setText("C:/Users/harsh/Cloud/Code/uow-library-loans/exports/");
         this.fileExporterEditOutputPath = new Label();
-        this.fileExporterEditOutputPath.setId("link-label");
+        this.fileExporterEditOutputPath.getStyleClass().add("link-label");
         this.fileExporterEditOutputPath.setText("Edit Export Path");
         this.programMetadataTitleLabel = new Label();
-        this.programMetadataTitleLabel.setId("text-bold");
+        this.programMetadataTitleLabel.getStyleClass().add("text-bold");
         this.programMetadataTitleLabel.setText("Program Information");
         this.programNameLabel = new Label();
         this.programNameLabel.setText(Metadata.getInstance().getProgramName());

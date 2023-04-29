@@ -26,13 +26,13 @@ public final class Banner extends VBox {
 
     private void initialiseLayouts() {
         this.setAlignment(Pos.CENTER_LEFT);
-        this.setId("background-secondary");
+        this.getStyleClass().add("background-secondary");
         this.setPadding(new Insets(15));
     }
 
     private void initialiseControls() {
         this.messageLabel = new Label();
-        this.messageLabel.setId("text-bold");
+        this.messageLabel.getStyleClass().add("text-bold");
         this.messageLabel.setText(this.message);
         this.messageDetailsLabel = new Label();
         this.messageDetailsLabel.setText(this.messageDetails);

@@ -28,10 +28,10 @@ public final class InventoryView extends View {
     @Override
     protected void initialiseLayouts() {
         this.itemsList = new VBox();
-        this.itemsList.setId("background-primary");
+        this.itemsList.getStyleClass().add("background-primary");
         this.itemsList.setSpacing(20);
         this.scrollPane = new ScrollPane();
-        this.scrollPane.setId("background-primary");
+        this.scrollPane.getStyleClass().add("background-primary");
         this.scrollPane.setFitToWidth(true);
     }
 

@@ -15,7 +15,7 @@ public abstract class Card extends BorderPane {
     protected Label viewDetailsLabel;
 
     public Card() {
-        this.setId("background-secondary-border");
+        this.getStyleClass().add("background-secondary-border");
         this.setPadding(new Insets(5));
         this.loadStylesheets();
         this.initialiseAndAddDefaultComponents();
@@ -37,7 +37,7 @@ public abstract class Card extends BorderPane {
         this.actions = new VBox();
         this.actions.setPadding(new Insets(10));
         this.viewDetailsLabel = new Label();
-        this.viewDetailsLabel.setId("link-label");
+        this.viewDetailsLabel.getStyleClass().add("link-label");
         this.viewDetailsLabel.setText("View Details");
         this.actions.getChildren().add(this.viewDetailsLabel);
         this.setRight(this.actions);

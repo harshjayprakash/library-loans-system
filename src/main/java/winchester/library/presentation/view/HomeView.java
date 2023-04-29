@@ -38,10 +38,10 @@ public final class HomeView extends View {
     protected void initialiseLayouts() {
         this.setSpacing(15);
         this.userPanel = new VBox();
-        this.userPanel.setId("background-secondary-border");
+        this.userPanel.getStyleClass().add("background-secondary-border");
         this.userPanel.setPadding(new Insets(10));
         this.inventoryPanel = new VBox();
-        this.inventoryPanel.setId("background-secondary-border");
+        this.inventoryPanel.getStyleClass().add("background-secondary-border");
         this.inventoryPanel.setPadding(new Insets(10));
     }
 
@@ -52,7 +52,7 @@ public final class HomeView extends View {
         this.userRoleLabel = new Label();
         this.userRoleLabel.setText(String.format("%s Account", this.currentEmployee.getType().toString()));
         this.changePasswordLinkLabel = new Label();
-        this.changePasswordLinkLabel.setId("link-label");
+        this.changePasswordLinkLabel.getStyleClass().add("link-label");
         this.changePasswordLinkLabel.setText("Change Password");
         this.inventoryCountLabel = new Label();
         this.inventoryCountLabel.setText(

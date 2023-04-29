@@ -28,7 +28,7 @@ public final class LoginView extends View {
         super(parentWindow, Views.LOGIN.toString());
         this.parentWindow.setWidth(440);
         this.parentWindow.setHeight(315);
-        this.setId("background-primary");
+        this.getStyleClass().add("background-primary");
         this.initialiseLayouts();
         this.initialiseControls();
         this.initialiseConstraints();
@@ -59,13 +59,13 @@ public final class LoginView extends View {
         this.passwordField = new PasswordField();
         this.databaseConfigurationLinkLabel = new Label();
         this.databaseConfigurationLinkLabel.setText("Configure Data Source");
-        this.databaseConfigurationLinkLabel.setId("link-label");
+        this.databaseConfigurationLinkLabel.getStyleClass().add("link-label");
         this.loginButton = new Button();
         this.loginButton.setText("Log In");
-        this.loginButton.setId("button-accent");
+        this.loginButton.getStyleClass().add("button-accent");
         this.registerButton = new Button();
         this.registerButton.setText("Register");
-        this.registerButton.setId("button-standard");
+        this.registerButton.getStyleClass().add("button-standard");
     }
 
     private void initialiseConstraints() {

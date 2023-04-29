@@ -59,10 +59,10 @@ public final class IndividualItemView extends View {
     protected void initialiseLayouts() {
         this.setSpacing(10);
         this.actions = new HBox();
-        this.actions.setId("background-secondary");
+        this.actions.getStyleClass().add("background-secondary");
         this.actions.setPadding(new Insets(10));
         this.itemDetails = new HBox();
-        this.itemDetails.setId("background-secondary-border");
+        this.itemDetails.getStyleClass().add("background-secondary-border");
         this.itemDetails.setPadding(new Insets(15));
         this.itemAvailability = new VBox();
         this.itemAvailability.setPadding(new Insets(15));
@@ -79,14 +79,14 @@ public final class IndividualItemView extends View {
                 this.referencedItem.getImageUrl(), this.itemImageViewWidth, this.itemImageViewHeight, false, false));
         this.itemInformation = new Text();
         this.itemInformation.setTextAlignment(TextAlignment.LEFT);
-        this.itemInformation.setId("background-secondary");
+        this.itemInformation.getStyleClass().add("background-secondary");
         this.itemInformation.setText(switch (this.referencedItem.getType()) {
             case BOOK -> Book.castFrom(this.referencedItem).toString();
             case FILM -> Film.castFrom(this.referencedItem).toString();
         });
         HBox.setMargin(this.itemImageView, new Insets(0, 15, 0, 0));
         this.itemAvailabilityTitleLabel = new Label();
-        this.itemAvailabilityTitleLabel.setId("text-bold");
+        this.itemAvailabilityTitleLabel.getStyleClass().add("text-bold");
         this.itemAvailabilityTitleLabel.setText("Item Availability");
         this.itemFormatLabel = new Label();
         this.itemFormatLabel.setText("Format");

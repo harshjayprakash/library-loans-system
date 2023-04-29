@@ -35,7 +35,7 @@ public abstract class WindowBase extends Stage {
 
     private void initialiseScene() {
         this.baseLayout = new BorderPane();
-        this.baseLayout.setId("background-primary");
+        this.baseLayout.getStyleClass().add("background-primary");
         this.scene = new Scene(this.baseLayout, 800, 600);
         ComponentStyler.getInstance().setStyle(this.scene);
         this.setScene(scene);

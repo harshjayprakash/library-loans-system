@@ -49,10 +49,10 @@ public final class RegisterView extends View {
 
     @Override
     protected void initialiseLayouts() {
-        this.setId("background-primary");
+        this.getStyleClass().add("background-primary");
         this.buttonLayout = new HBox();
         this.buttonLayout.setAlignment(Pos.CENTER_RIGHT);
-        this.buttonLayout.setId("background-primary");
+        this.buttonLayout.getStyleClass().add("background-primary");
         this.buttonLayout.setPadding(new Insets(15, 0, 0, 0));
     }
 
@@ -102,7 +102,7 @@ public final class RegisterView extends View {
         this.backButton = new Button();
         this.backButton.setText("Back");
         this.requestButton = new Button();
-        this.requestButton.setId("button-accent");
+        this.requestButton.getStyleClass().add("button-accent");
         this.requestButton.setText("Request Access");
         HBox.setMargin(this.requestButton, new Insets(0, 0, 0, 10));
     }

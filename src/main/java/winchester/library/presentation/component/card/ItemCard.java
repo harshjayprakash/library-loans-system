@@ -41,7 +41,7 @@ public final class ItemCard extends Card {
     @Override
     protected void initialiseLayouts() {
         this.itemInformation = new VBox();
-        this.itemInformation.setId("background-secondary");
+        this.itemInformation.getStyleClass().add("background-secondary");
         this.itemInformation.setPadding(new Insets(10));
     }
 

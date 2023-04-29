@@ -26,7 +26,7 @@ public final class NoneSidePaneView extends View {
     @Override
     protected void initialiseControls() {
         this.messageLabel = new Label();
-        this.messageLabel.setId("text-bold");
+        this.messageLabel.getStyleClass().add("text-bold");
         this.messageLabel.setText("No Content Shown.");
         this.informationLabel = new Label();
         this.informationLabel.setText("Please click on one of the views on the side.");

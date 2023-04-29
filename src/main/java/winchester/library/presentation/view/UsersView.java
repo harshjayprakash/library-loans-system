@@ -27,10 +27,10 @@ public final class UsersView extends View {
     @Override
     protected void initialiseLayouts() {
         this.employeeList = new VBox();
-        this.employeeList.setId("background-primary");
+        this.employeeList.getStyleClass().add("background-primary");
         this.employeeList.setSpacing(20);
         this.scrollPane = new ScrollPane();
-        this.scrollPane.setId("background-primary");
+        this.scrollPane.getStyleClass().add("background-primary");
         this.scrollPane.setFitToWidth(true);
     }
 

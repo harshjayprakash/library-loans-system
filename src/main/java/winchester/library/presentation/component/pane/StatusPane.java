@@ -22,7 +22,7 @@ public final class StatusPane extends BorderPane {
     public StatusPane() {
         super();
         this.setPadding(new Insets(5));
-        this.setId("background-secondary");
+        this.getStyleClass().add("background-secondary");
         this.initialiseControls();
         this.loadStylesheets();
         this.bindEventHandlers();
@@ -36,7 +36,7 @@ public final class StatusPane extends BorderPane {
 
     private void initialiseControls() {
         this.settingsLabel = new Label();
-        this.settingsLabel.setId("link-label");
+        this.settingsLabel.getStyleClass().add("link-label");
         this.settingsLabel.setPadding(new Insets(0, 0, 0, 15));
         this.settingsLabel.setText("Settings");
         this.databaseStatusLabel = new Label();

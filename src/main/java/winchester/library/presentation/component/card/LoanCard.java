@@ -30,14 +30,14 @@ public final class LoanCard extends Card {
     @Override
     protected void initialiseLayouts() {
         this.loanInformation = new VBox();
-        this.loanInformation.setId("background-secondary");
+        this.loanInformation.getStyleClass().add("background-secondary");
         this.loanInformation.setPadding(new Insets(10));
     }
 
     @Override
     protected void initialiseControls() {
         this.loanIdentifierLabel = new Label();
-        this.loanIdentifierLabel.setId("text-bold");
+        this.loanIdentifierLabel.getStyleClass().add("text-bold");
         this.loanIdentifierLabel.setText(String.valueOf(this.referencedLoan.getIdentifier()));
         this.customerNameLabel = new Label();
         this.customerNameLabel.setText(this.referencedLoan.getCustomer().getFullName());

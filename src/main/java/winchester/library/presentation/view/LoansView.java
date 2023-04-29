@@ -24,10 +24,10 @@ public final class LoansView extends View {
     @Override
     protected void initialiseLayouts() {
         this.loansList = new VBox();
-        this.loansList.setId("background-primary");
+        this.loansList.getStyleClass().add("background-primary");
         this.loansList.setSpacing(20);
         this.scrollPane = new ScrollPane();
-        this.scrollPane.setId("background-primary");
+        this.scrollPane.getStyleClass().add("background-primary");
         this.scrollPane.setFitToWidth(true);
     }
 

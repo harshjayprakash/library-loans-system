@@ -27,10 +27,10 @@ public final class CustomerView extends View {
     @Override
     protected void initialiseLayouts() {
         this.customerList = new VBox();
-        this.customerList.setId("background-primary");
+        this.customerList.getStyleClass().add("background-primary");
         this.customerList.setSpacing(20);
         this.scrollPane = new ScrollPane();
-        this.scrollPane.setId("background-primary");
+        this.scrollPane.getStyleClass().add("background-primary");
         this.scrollPane.setFitToWidth(true);
     }
 

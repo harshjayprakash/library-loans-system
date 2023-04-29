@@ -34,7 +34,7 @@ public final class UserCard extends Card {
     @Override
     protected void initialiseLayouts() {
         this.userDetails = new VBox();
-        this.userDetails.setId("background-secondary");
+        this.userDetails.getStyleClass().add("background-secondary");
         this.userDetails.setPadding(new Insets(10));
     }
 
