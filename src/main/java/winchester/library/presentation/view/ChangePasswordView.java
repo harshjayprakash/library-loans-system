@@ -11,7 +11,7 @@ import javafx.scene.layout.HBox;
 import winchester.library.data.model.users.Employee;
 import winchester.library.data.model.users.UserType;
 import winchester.library.presentation.window.WindowBase;
-import winchester.library.service.PasswordPolicyManager;
+import winchester.library.service.PasswordValidator;
 
 public final class ChangePasswordView extends View {
 
@@ -29,12 +29,12 @@ public final class ChangePasswordView extends View {
     private Button cancelButton;
     private Button changePasswordButton;
     private Employee currentEmployee;
-    private final PasswordPolicyManager passwordPolicyManager;
+    private final PasswordValidator passwordPolicyManager;
 
     public ChangePasswordView(WindowBase parentWindow, Employee employee) {
         super(parentWindow, Views.CHANGE_PASSWORD.toString());
         this.currentEmployee = employee;
-        this.passwordPolicyManager = new PasswordPolicyManager();
+        this.passwordPolicyManager = new PasswordValidator();
         this.initialiseLayouts();
         this.initialiseControls();
         this.bindEventHandlers();

@@ -12,7 +12,7 @@ import javafx.scene.layout.HBox;
 import winchester.library.data.model.users.UserType;
 import winchester.library.presentation.window.IndividualViewWindow;
 import winchester.library.presentation.window.WindowBase;
-import winchester.library.service.PasswordPolicyManager;
+import winchester.library.service.PasswordValidator;
 
 public final class RegisterView extends View {
 
@@ -87,7 +87,7 @@ public final class RegisterView extends View {
         this.passwordLabel.setText("Password: ");
         this.passwordDescriptionLabel = new Label();
         this.passwordDescriptionLabel.setPadding(new Insets(0, 0, 4, 0));
-        this.passwordDescriptionLabel.setText(new PasswordPolicyManager().getPasswordRequirements());
+        this.passwordDescriptionLabel.setText(new PasswordValidator().getPasswordRequirements());
         this.passwordField = new PasswordField();
         this.passwordConfirmationLabel = new Label();
         this.passwordConfirmationLabel.setPadding(new Insets(10, 0, 0, 0));
