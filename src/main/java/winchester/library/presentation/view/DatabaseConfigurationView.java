@@ -7,10 +7,10 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.HBox;
-import winchester.library.data.access.DatabaseConnectionTester;
 import winchester.library.data.access.DatabaseConstant;
 import winchester.library.data.access.DatabaseCredentials;
 import winchester.library.presentation.window.WindowBase;
+import winchester.library.service.DatabaseConnectivityChecker;
 
 public final class DatabaseConfigurationView extends View {
 
@@ -76,7 +76,8 @@ public final class DatabaseConfigurationView extends View {
     private void bindEventHandlers() {
         this.cancelButton.addEventHandler(MouseEvent.MOUSE_CLICKED, event -> this.parentWindow.close());
         this.saveAndTestButton.addEventHandler(MouseEvent.MOUSE_CLICKED, event -> {
-            DatabaseConstant testResult = DatabaseConnectionTester.getInstance().testCredentials(this.credentials);
+            DatabaseConstant testResult = DatabaseConnectivityChecker.getInstance().getDatabaseStatus(
+                    this.urlField.getText(), this.usernameField.getText(), this.passwordField.getText());
             if (testResult != DatabaseConstant.CONNECTION_SUCCESSFUL) {
                 return;
             }

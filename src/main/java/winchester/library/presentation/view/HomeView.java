@@ -9,7 +9,7 @@ import winchester.library.data.access.DemoAccount;
 import winchester.library.data.model.users.Employee;
 import winchester.library.presentation.window.IndividualViewWindow;
 import winchester.library.presentation.window.WindowBase;
-import winchester.library.service.DatabaseInteraction;
+import winchester.library.service.DataPersistenceManager;
 
 public final class HomeView extends View {
 
@@ -22,12 +22,12 @@ public final class HomeView extends View {
     private Label customerCountLabel;
     private Label loanCountLabel;
     private final Employee currentEmployee;
-    private final DatabaseInteraction databaseInteraction;
+    private final DataPersistenceManager dataPersistenceManager;
 
     public HomeView(WindowBase parentWindow, Employee currentEmployee) {
         super(parentWindow, Views.HOME.toString());
         this.currentEmployee = Objects.isNull(currentEmployee) ? DemoAccount.get() : currentEmployee;
-        this.databaseInteraction = DatabaseInteraction.getInstance();
+        this.dataPersistenceManager = DataPersistenceManager.getInstance();
         this.initialiseLayouts();
         this.initialiseControls();
         this.bindEventHandlers();
@@ -57,13 +57,13 @@ public final class HomeView extends View {
         this.inventoryCountLabel = new Label();
         this.inventoryCountLabel.setText(
                 String.format("Number of Items in Inventory: %d",
-                        databaseInteraction.getBooks().size() + databaseInteraction.getFilms().size()));
+                        dataPersistenceManager.getBooks().size() + dataPersistenceManager.getFilms().size()));
         this.customerCountLabel = new Label();
         this.customerCountLabel.setText(
-                String.format("Number of Customers: %d", databaseInteraction.getCustomers().size()));
+                String.format("Number of Customers: %d", dataPersistenceManager.getCustomers().size()));
         this.loanCountLabel = new Label();
         this.loanCountLabel.setText(
-                String.format("Number of Loans: %d", databaseInteraction.getLoans().size()));
+                String.format("Number of Loans: %d", dataPersistenceManager.getLoans().size()));
     }
 
     private void bindEventHandlers() {

@@ -8,7 +8,8 @@ import winchester.library.data.access.DatabaseCredentials;
 import winchester.library.meta.Metadata;
 import winchester.library.presentation.window.IndividualViewWindow;
 import winchester.library.presentation.window.WindowBase;
-import winchester.library.service.DatabaseInteraction;
+import winchester.library.service.DataPersistenceManager;
+import winchester.library.service.DatabaseConnectivityChecker;
 
 public final class SettingsView extends View {
 
@@ -62,7 +63,7 @@ public final class SettingsView extends View {
         this.dataSourceUrlLabel.setText("Url: " + credentials.getUrl());
         this.dataSourceStatusLabel = new Label();
         this.dataSourceStatusLabel.setText(
-                "Status: " + DatabaseInteraction.getInstance().getDatabaseStatus().toString());
+                "Status: " + DatabaseConnectivityChecker.getInstance().getDatabaseStatus().toString());
         this.dataSourceEditCredentialsLinkLabel = new Label();
         this.dataSourceEditCredentialsLinkLabel.setId("link-label");
         this.dataSourceEditCredentialsLinkLabel.setText("Edit Data Source Credentials");

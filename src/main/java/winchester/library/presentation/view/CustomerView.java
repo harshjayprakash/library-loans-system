@@ -7,7 +7,7 @@ import winchester.library.data.model.users.Customer;
 import winchester.library.presentation.component.Banner;
 import winchester.library.presentation.component.card.UserCard;
 import winchester.library.presentation.window.WindowBase;
-import winchester.library.service.DatabaseInteraction;
+import winchester.library.service.DataPersistenceManager;
 
 public final class CustomerView extends View {
 
@@ -36,7 +36,7 @@ public final class CustomerView extends View {
 
     @Override
     protected void initialiseControls() {
-        ArrayList<Customer> customers = DatabaseInteraction.getInstance().getCustomers();
+        ArrayList<Customer> customers = DataPersistenceManager.getInstance().getCustomers();
         if (customers.isEmpty()) {
             this.banner = new Banner(
                     "No Customers",

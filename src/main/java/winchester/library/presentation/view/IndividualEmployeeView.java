@@ -2,9 +2,9 @@ package winchester.library.presentation.view;
 
 import winchester.library.presentation.window.WindowBase;
 
-public class IndividualEmployee extends View {
+public class IndividualEmployeeView extends View {
 
-    public IndividualEmployee(WindowBase parentWindow) {
+    public IndividualEmployeeView(WindowBase parentWindow) {
         super(parentWindow, Views.INDIVIDUAL_EMPLOYEE.toString());
     }
 

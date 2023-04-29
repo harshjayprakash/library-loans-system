@@ -6,7 +6,7 @@ import javafx.scene.layout.VBox;
 import winchester.library.data.model.loans.Loan;
 import winchester.library.presentation.component.card.LoanCard;
 import winchester.library.presentation.window.WindowBase;
-import winchester.library.service.DatabaseInteraction;
+import winchester.library.service.DataPersistenceManager;
 
 public final class LoansView extends View {
 
@@ -33,7 +33,7 @@ public final class LoansView extends View {
 
     @Override
     protected void initialiseControls() {
-        ArrayList<Loan> loans = DatabaseInteraction.getInstance().getLoans();
+        ArrayList<Loan> loans = DataPersistenceManager.getInstance().getLoans();
         this.loanCards = new ArrayList<>();
         if (loans.isEmpty()) { return; }
         for (Loan loan : loans) {

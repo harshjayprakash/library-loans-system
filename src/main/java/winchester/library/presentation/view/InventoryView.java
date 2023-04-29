@@ -8,7 +8,7 @@ import winchester.library.data.model.items.Film;
 import winchester.library.presentation.component.Banner;
 import winchester.library.presentation.component.card.ItemCard;
 import winchester.library.presentation.window.WindowBase;
-import winchester.library.service.DatabaseInteraction;
+import winchester.library.service.DataPersistenceManager;
 
 public final class InventoryView extends View {
 
@@ -37,7 +37,7 @@ public final class InventoryView extends View {
 
     @Override
     protected void initialiseControls() {
-        ArrayList<Book> books = DatabaseInteraction.getInstance().getBooks();
+        ArrayList<Book> books = DataPersistenceManager.getInstance().getBooks();
         if (books.isEmpty()) {
             this.banner = new Banner(
                 "Data is not accessible", 
@@ -49,7 +49,7 @@ public final class InventoryView extends View {
         for (Book book : books) {
             this.items.add(new ItemCard(book));
         }
-        for (Film film : DatabaseInteraction.getInstance().getFilms()) {
+        for (Film film : DataPersistenceManager.getInstance().getFilms()) {
             this.items.add(new ItemCard(film));
         }
     }

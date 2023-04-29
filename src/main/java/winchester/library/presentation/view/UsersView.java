@@ -7,7 +7,7 @@ import winchester.library.data.model.users.Employee;
 import winchester.library.presentation.component.Banner;
 import winchester.library.presentation.component.card.UserCard;
 import winchester.library.presentation.window.WindowBase;
-import winchester.library.service.DatabaseInteraction;
+import winchester.library.service.DataPersistenceManager;
 
 public final class UsersView extends View {
 
@@ -36,7 +36,7 @@ public final class UsersView extends View {
 
     @Override
     protected void initialiseControls() {
-        ArrayList<Employee> employees = DatabaseInteraction.getInstance().getEmployees();
+        ArrayList<Employee> employees = DataPersistenceManager.getInstance().getEmployees();
         if (employees.isEmpty()) {
             this.banner = new Banner(
                     "No Employees",
