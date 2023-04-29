@@ -1,23 +1,18 @@
 package winchester.library.presentation.view;
 
 import java.util.ArrayList;
-
-import javafx.geometry.HPos;
 import javafx.geometry.Insets;
-import javafx.geometry.VPos;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
-import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
 import javafx.scene.text.TextAlignment;
 import winchester.library.data.model.items.*;
-import winchester.library.data.model.loans.Loan;
 import winchester.library.data.model.util.Exporter;
 import winchester.library.presentation.alert.AlertFactory;
 import winchester.library.presentation.window.WindowBase;
@@ -46,7 +41,7 @@ public final class IndividualItemView extends View {
     public IndividualItemView(WindowBase parentWindow, Item referencedItem) {
         super(parentWindow, Views.INDIVIDUAL_ITEM.toString());
         this.referencedItem = referencedItem;
-        this.itemImageViewWidth = 120;
+        this.itemImageViewWidth = 110;
         this.itemImageViewHeight = 150;
         this.exporter = new Exporter();
         this.initialiseLayouts();

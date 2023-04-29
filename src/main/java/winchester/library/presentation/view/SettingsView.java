@@ -8,7 +8,6 @@ import winchester.library.data.access.DatabaseCredentials;
 import winchester.library.meta.Metadata;
 import winchester.library.presentation.window.IndividualViewWindow;
 import winchester.library.presentation.window.WindowBase;
-import winchester.library.service.DataPersistenceManager;
 import winchester.library.service.DatabaseConnectivityChecker;
 
 public final class SettingsView extends View {
