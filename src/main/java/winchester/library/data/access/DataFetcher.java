@@ -77,14 +77,20 @@ public class DataFetcher {
         ).orElse(null), ItemType.FILM).orElse(new ArrayList<>());
         ArrayList<Loan> loans = this.getLoans();
         for (Film film : films) {
-            for (ItemStock stock : stocks) {
-                if (stock.getItemIdentifier().equals(film.getIdentifier())) {
-                    film.getStockAvailable().add(stock);
-                }
-            }
             for (Loan loan : loans) {
                 if (loan.getLoanedItemIdentifier().equals(film.getIdentifier())) {
                     film.getLoansManager().addLoan(loan);
+                }
+            }
+            for (ItemStock stock : stocks) {
+                for (Loan loan : film.getLoansManager().getLoans()) {
+                    if (stock.getItemIdentifier().equals(film.getIdentifier())) {
+                        if (!loan.getReturned() && loan.getLoanedItemFormat() == stock.getItemFormat()
+                                && loan.getLoanedItemIdentifier().equals(stock.getItemIdentifier())) {
+                            stock.setCopiesOnLoan(stock.getCopiesOnLoan() + 1);
+                        }
+                        film.getStockAvailable().add(stock);
+                    }
                 }
             }
         }
