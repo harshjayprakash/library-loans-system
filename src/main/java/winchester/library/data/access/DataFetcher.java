@@ -43,9 +43,12 @@ public class DataFetcher {
                 if (loan.getLoanedItemIdentifier().equals(book.getIsbn())) {
                     book.getLoansManager().addLoan(loan);
                 }
-                for (ItemStock stock : stocks) {
+            }
+            for (ItemStock stock : stocks) {
+                for (Loan loan : book.getLoansManager().getLoans()) {
                     if (stock.getItemIdentifier().equals(book.getIsbn())) {
-                        if (!loan.getReturned() && loan.getLoanedItemFormat() == stock.getItemFormat() && loan.getLoanedItemIdentifier().equals(stock.getItemIdentifier())) {
+                        if (!loan.getReturned() && loan.getLoanedItemFormat() == stock.getItemFormat()
+                                && loan.getLoanedItemIdentifier().equals(stock.getItemIdentifier())) {
                             stock.setCopiesOnLoan(stock.getCopiesOnLoan() + 1);
                         }
                         book.getStockAvailable().add(stock);
