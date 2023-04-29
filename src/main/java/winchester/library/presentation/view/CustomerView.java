@@ -38,10 +38,7 @@ public final class CustomerView extends View {
     protected void initialiseControls() {
         ArrayList<Customer> customers = DataPersistenceManager.getInstance().getCustomers();
         if (customers.isEmpty()) {
-            this.banner = new Banner(
-                    "No Customers",
-                    ""
-            );
+            this.banner = new Banner("No Customers", "");
             return;
         }
         this.customersCardList = new ArrayList<>();

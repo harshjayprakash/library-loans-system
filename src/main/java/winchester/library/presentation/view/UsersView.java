@@ -38,10 +38,7 @@ public final class UsersView extends View {
     protected void initialiseControls() {
         ArrayList<Employee> employees = DataPersistenceManager.getInstance().getEmployees();
         if (employees.isEmpty()) {
-            this.banner = new Banner(
-                    "No Employees",
-                    ""
-            );
+            this.banner = new Banner("No Employees", "");
             return;
         }
         this.customersCardList = new ArrayList<>();
