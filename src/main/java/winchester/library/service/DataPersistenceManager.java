@@ -2,12 +2,15 @@ package winchester.library.service;
 
 import java.util.ArrayList;
 import winchester.library.data.access.DataFetcher;
-import winchester.library.data.access.DatabaseCredentials;
+import winchester.library.data.access.DataWriter;
+import winchester.library.data.access.DatabaseConstant;
 import winchester.library.data.model.items.Book;
 import winchester.library.data.model.items.Film;
 import winchester.library.data.model.loans.Loan;
+import winchester.library.data.model.users.Administrator;
 import winchester.library.data.model.users.Customer;
 import winchester.library.data.model.users.Employee;
+import winchester.library.data.model.users.EmployeeStatus;
 
 /**
  * A class that provides an abstraction to the database operations for the graphical user interface.
@@ -15,12 +18,12 @@ import winchester.library.data.model.users.Employee;
 public final class DataPersistenceManager {
 
     private static DataPersistenceManager instance;
-    private final DatabaseCredentials credentials;
     private final DataFetcher dataRetriever;
+    private final DataWriter dataWriter;
 
     private DataPersistenceManager() {
-        this.credentials = DatabaseCredentials.getInstance();
         this.dataRetriever = new DataFetcher();
+        this.dataWriter = new DataWriter();
     }
 
     public static DataPersistenceManager getInstance() {
@@ -50,8 +53,12 @@ public final class DataPersistenceManager {
         return dataRetriever.getLoans();
     }
 
-    public void createNewEmployee(Employee employee) {
+    public boolean createEmployee(String firstName, String lastName, String postalCode, String username, String password) {
+        return dataWriter.insert(new Employee(new IdentifierGenerator().generateForUser(), firstName, lastName, postalCode, username, password, EmployeeStatus.NOT_APPROVED)) == DatabaseConstant.INSERTION_SUCCESSFUL;
+    }
 
+    public boolean createAdministrator(String firstName, String lastName, String postalCode, String username, String password) {
+        return dataWriter.insert(new Administrator(new IdentifierGenerator().generateForUser(), firstName, lastName, postalCode, username, password, EmployeeStatus.NOT_APPROVED)) == DatabaseConstant.INSERTION_SUCCESSFUL;
     }
 
 }
