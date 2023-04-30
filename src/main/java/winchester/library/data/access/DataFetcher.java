@@ -38,19 +38,19 @@ public class DataFetcher {
                         .where("library.books.isbn = library.item_copies.item_id")
         ).orElse(null), ItemType.BOOK).orElse(new ArrayList<>());
         ArrayList<Loan> loans = this.getLoans();
-        for (Book book : books) {
-            for (Loan loan : loans) {
-                if (loan.getLoanedItemIdentifier().equals(book.getIsbn())) {
-                    book.getLoansManager().addLoan(loan);
-                }
-            }
-            for (ItemStock stock : stocks) {
-                for (Loan loan : book.getLoansManager().getLoans()) {
-                    if (stock.getItemIdentifier().equals(book.getIsbn())) {
-                        if (!loan.getReturned() && loan.getLoanedItemFormat() == stock.getItemFormat()
-                                && loan.getLoanedItemIdentifier().equals(stock.getItemIdentifier())) {
-                            stock.setCopiesOnLoan(stock.getCopiesOnLoan() + 1);
-                        }
+        books.forEach(book -> {
+            loans.stream()
+                    .filter(loan -> loan.getLoanedItemIdentifier().equals(book.getIsbn()))
+                    .forEach(loan -> book.getLoansManager().addLoan(loan));
+            stocks.stream()
+                    .filter(stock -> stock.getItemIdentifier().equals(book.getIsbn()))
+                    .forEach(stock -> {
+                        long copiesOnLoan = loans.stream()
+                                .filter(loan -> !loan.getReturned()
+                                        && loan.getLoanedItemIdentifier().equals(stock.getItemIdentifier())
+                                        && loan.getLoanedItemFormat() == stock.getItemFormat())
+                                .count();
+                        stock.setCopiesOnLoan((int)copiesOnLoan);
                         book.getStockAvailable().add(stock);
                     }
                 }
@@ -76,24 +76,22 @@ public class DataFetcher {
                        .where("library.films.film_id = library.item_copies.item_id")
         ).orElse(null), ItemType.FILM).orElse(new ArrayList<>());
         ArrayList<Loan> loans = this.getLoans();
-        for (Film film : films) {
-            for (Loan loan : loans) {
-                if (loan.getLoanedItemIdentifier().equals(film.getIdentifier())) {
-                    film.getLoansManager().addLoan(loan);
-                }
-            }
-            for (ItemStock stock : stocks) {
-                for (Loan loan : film.getLoansManager().getLoans()) {
-                    if (stock.getItemIdentifier().equals(film.getIdentifier())) {
-                        if (!loan.getReturned() && loan.getLoanedItemFormat() == stock.getItemFormat()
-                                && loan.getLoanedItemIdentifier().equals(stock.getItemIdentifier())) {
-                            stock.setCopiesOnLoan(stock.getCopiesOnLoan() + 1);
-                        }
+        films.forEach(film -> {
+            loans.stream()
+                    .filter(loan -> loan.getLoanedItemIdentifier().equals(film.getIdentifier()))
+                    .forEach(loan -> film.getLoansManager().addLoan(loan));
+            stocks.stream()
+                    .filter(stock -> stock.getItemIdentifier().equals(film.getIdentifier()))
+                    .forEach(stock -> {
+                        long copiesOnLoan = loans.stream()
+                                .filter(loan -> !loan.getReturned()
+                                        && loan.getLoanedItemFormat() == stock.getItemFormat()
+                                        && loan.getLoanedItemIdentifier().equals(stock.getItemIdentifier()))
+                                .count();
+                        stock.setCopiesOnLoan((int)copiesOnLoan);
                         film.getStockAvailable().add(stock);
-                    }
-                }
-            }
-        }
+                    });
+        });
         connection.close();
         return films;
     }
