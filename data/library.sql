@@ -6,10 +6,10 @@ create table `library`.`user_types` (
     `user_type_id`   int            not null,
     `user_type`      varchar(255)   not null,
     primary key (`user_type_id`),
-    unique index `user_type_unique` (`user_type` asc) visible
+    unique (`user_type`)
 );
 
-insert into `library`.`user_types`
+insert into `library`.`user_types` (`user_type_id`, `user_type`)
 values (0, 'Demo'),
        (1, 'Customer'),
        (2, 'Standard'),
@@ -21,46 +21,32 @@ create table `library`.`users` (
     `first_name`     varchar(127)   not null,
     `last_name`      varchar(127)   not null,
     `postal_code`    varchar(10)    not null,
-    primary key (`user_id`)
+    primary key (`user_id`),
+    foreign key (`user_type_id`) references `user_types`(`user_type_id`)
 );
 
 -- Names and Postcodes have been randomly generated. This is not real information.
 insert into `library`.`users`
-values (0, 0, 'Demo', 'Account', 'AB123CD'),
-       (1, 3, 'Admin', 'Account', 'JI832HU'),
-       (2, 2, 'Standard', 'Account', 'IU921ED'),
-       (3, 1, 'Axel', 'Vazquez', 'PA686EL'),
-       (4, 1, 'Alexa', 'Haley', 'ME104TB'),
-       (5, 1, 'Edward', 'Cooper', 'ME43NX'),
-       (6, 1, 'Stevie', 'Spence', 'DN40SU'),
-       (7, 1, 'Celine', 'Lynch', 'EH193GF'),
-       (8, 1, 'Aryan', 'Frazier', 'CF390NB'),
-       (9, 1, 'Keiran', 'Blanchard', 'HA11SZ'),
-       (10, 1, 'Kristen', 'Bray', 'LL198ED'),
-       (11, 1, 'John', 'Bridges', 'TW200SL'),
-       (12, 1, 'Olivia', 'French', 'DD109NR'),
-       (13, 1, 'Allan', 'Smith', 'KT151TL');
-
-create table `library`.`employees` (
-    `employee_id`   int            not null,
-    `user_id`       int            not null,
-    `username`      varchar(255)   not null,
-    `password`      varchar(255)   not null,
-    `status_id`     int            not null,
-    primary key (`employee_id`),
-    unique index `username_unique` (`username` asc) visible
-);
-
-insert into `library`.`employees`
-values (0, 0, 'demo', 'password', 1),
-       (1, 1, 'admin', '6oUpZ6k$^iw4J&', 1),
-       (2, 2, 'user', 'SqpQPP&9jWHmr4g', 1);
+values (1, 0, 'Demo', 'Account', 'AB123CD'),
+       (2, 3, 'Admin', 'Account', 'JI832HU'),
+       (3, 2, 'Standard', 'Account', 'IU921ED'),
+       (4, 1, 'Axel', 'Vazquez', 'PA686EL'),
+       (5, 1, 'Alexa', 'Haley', 'ME104TB'),
+       (6, 1, 'Edward', 'Cooper', 'ME43NX'),
+       (7, 1, 'Stevie', 'Spence', 'DN40SU'),
+       (8, 1, 'Celine', 'Lynch', 'EH193GF'),
+       (9, 1, 'Aryan', 'Frazier', 'CF390NB'),
+       (10, 1, 'Keiran', 'Blanchard', 'HA11SZ'),
+       (11, 1, 'Kristen', 'Bray', 'LL198ED'),
+       (12, 1, 'John', 'Bridges', 'TW200SL'),
+       (13, 1, 'Olivia', 'French', 'DD109NR'),
+       (14, 1, 'Allan', 'Smith', 'KT151TL');
 
 create table `library`.`employee_status` (
     `status_id`   int            not null,
     `status`      varchar(255)   not null,
     primary key (`status_id`),
-    unique index `status_unique` (`status` asc) visible
+    unique (`status`)
 );
 
 insert into `library`.`employee_status`
@@ -68,11 +54,28 @@ values (-1, 'Disabled'),
        (0, 'Not Approved'),
        (1, 'Active');
 
+create table `library`.`employees` (
+    `employee_id`   int            not null   auto_increment,
+    `user_id`       int            not null,
+    `username`      varchar(255)   not null,
+    `password`      varchar(255)   not null,
+    `status_id`     int            not null,
+    primary key (`employee_id`),
+    foreign key (`user_id`) references `users`(`user_id`),
+    foreign key (`status_id`) references `employee_status`(`status_id`),
+    unique (`username`)
+);
+
+insert into `library`.`employees` (`user_id`, `username`, `password`, `status_id`)
+values (1, 'demo', 'password', 1),
+       (2, 'admin', '6oUpZ6k$^iw4J&', 1),
+       (3, 'user', 'SqpQPP&9jWHmr4g', 1);
+
 create table `library`.`item_types` (
     `item_type_id`   int            not null,
     `item_type`      varchar(255)   not null,
     primary key (`item_type_id`),
-    unique index `item_type_unique` (`item_type` asc) visible
+    unique (`item_type`)
 );
 
 insert into `library`.`item_types`
@@ -80,11 +83,12 @@ values (1, 'Books'),
        (2, 'Films');
 
 create table `library`.`item_subtypes` (
-    `item_subtype_id`   int            not null,
+    `item_subtype_id`    int            not null,
     `item_type_id`       int            not null,
     `item_subtype`       varchar(255)   not null,
     primary key (`item_subtype_id`),
-    unique index `item_subtype_unique` (`item_subtype` asc) visible
+    foreign key (`item_type_id`) references `item_types`(`item_type_id`),
+    unique (`item_subtype`)
 );
 
 insert into `library`.`item_subtypes`
@@ -215,66 +219,69 @@ values ('2305001',
         'https://resizing.flixster.com/j7Gfw41lUNEIJVdxdIcYttoAxxk=/fit-in/180x240/v2/https://flxt.tmsimg.com/assets/p16531609_p_v8_ac.jpg');
 
 create table `library`.`item_copies` (
-    `item_copies_id`     int           not null,
+    `item_copies_id`     int           not null   auto_increment,
     `item_id`            varchar(13)   not null,
     `item_subtype_id`    int           not null,
     `copies_available`   int           not null,
-    primary key (`item_copies_id`)
+    primary key (`item_copies_id`),
+    foreign key (`item_subtype_id`) references `item_subtypes`(`item_subtype_id`)
 );
 
-insert into `library`.`item_copies`
-values (1, '9780063021426', 11, 10),
-       (2, '9780063021426', 12, 10),
-       (3, '9780063021426', 13, 10),
-       (4, '9780063021426', 14, 10),
-       (5, '9781250855091', 11, 10),
-       (6, '9781250855091', 12, 10),
-       (7, '9781250855091', 13, 10),
-       (8, '9781250855091', 14, 10),
-       (9, '9781250313102', 11, 10),
-       (10, '9781250313102', 12, 10),
-       (11, '9781250313102', 13, 10),
-       (12, '9781250313102', 14, 10),
-       (13, '9781250888167', 11, 10),
-       (14, '9781250888167', 12, 10),
-       (15, '9781250888167', 13, 10),
-       (16, '9781250888167', 14, 10),
-       (17, '9781593767136', 11, 10),
-       (18, '9781593767136', 12, 10),
-       (19, '9781593767136', 13, 10),
-       (20, '9781593767136', 14, 10),
-       (21, '9781785632921', 11, 10),
-       (22, '9781785632921', 12, 10),
-       (23, '9781785632921', 13, 10),
-       (24, '9781785632921', 14, 10),
-       (25, '9780008477790', 11, 10),
-       (26, '9780008477790', 12, 10),
-       (27, '9780008477790', 13, 10),
-       (28, '9780008477790', 14, 10),
-       (29, '2305001', 21, 5),
-       (30, '2305001', 22, 5),
-       (31, '2305002', 21, 5),
-       (32, '2305002', 22, 5),
-       (33, '2305003', 21, 5),
-       (34, '2305003', 22, 5),
-       (35, '2305004', 21, 5),
-       (36, '2305004', 22, 5),
-       (37, '1912001', 21, 5),
-       (38, '1912001', 22, 5),
-       (39, '2207001', 21, 5),
-       (40, '2207001', 22, 5),
-       (41, '1905001', 21, 5),
-       (42, '1905001', 22, 5);
+insert into `library`.`item_copies` (`item_id`, `item_subtype_id`, `copies_available`)
+values ('9780063021426', 11, 10),
+       ('9780063021426', 12, 10),
+       ('9780063021426', 13, 10),
+       ('9780063021426', 14, 10),
+       ('9781250855091', 11, 10),
+       ('9781250855091', 12, 10),
+       ('9781250855091', 13, 10),
+       ('9781250855091', 14, 10),
+       ('9781250313102', 11, 10),
+       ('9781250313102', 12, 10),
+       ('9781250313102', 13, 10),
+       ('9781250313102', 14, 10),
+       ('9781250888167', 11, 10),
+       ('9781250888167', 12, 10),
+       ('9781250888167', 13, 10),
+       ('9781250888167', 14, 10),
+       ('9781593767136', 11, 10),
+       ('9781593767136', 12, 10),
+       ('9781593767136', 13, 10),
+       ('9781593767136', 14, 10),
+       ('9781785632921', 11, 10),
+       ('9781785632921', 12, 10),
+       ('9781785632921', 13, 10),
+       ('9781785632921', 14, 10),
+       ('9780008477790', 11, 10),
+       ('9780008477790', 12, 10),
+       ('9780008477790', 13, 10),
+       ('9780008477790', 14, 10),
+       ('2305001', 21, 5),
+       ('2305001', 22, 5),
+       ('2305002', 21, 5),
+       ('2305002', 22, 5),
+       ('2305003', 21, 5),
+       ('2305003', 22, 5),
+       ('2305004', 21, 5),
+       ('2305004', 22, 5),
+       ('1912001', 21, 5),
+       ('1912001', 22, 5),
+       ('2207001', 21, 5),
+       ('2207001', 22, 5),
+       ('1905001', 21, 5),
+       ('1905001', 22, 5);
 
 create table `library`.`loans` (
-    `loan_id`           bigint(16)    not null,
+    `loan_id`           bigint        not null,
     `customer_id`       int           not null,
     `item_id`           varchar(13)   not null,
     `item_subtype_id`   int           not null,
     `loan_date`         date          not null,
     `return_date`       date          not null,
     `returned`          tinyint       not null,
-    primary key (`loan_id`)
+    primary key (`loan_id`),
+    foreign key (`customer_id`) references `users`(`user_id`),
+    foreign key (`item_subtype_id`) references `item_subtypes`(`item_subtype_id`)
 );
 
 insert into `library`.`loans`
