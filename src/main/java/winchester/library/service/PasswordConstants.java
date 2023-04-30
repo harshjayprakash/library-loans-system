@@ -8,7 +8,8 @@ public enum PasswordConstants {
     DOES_NOT_CONTAIN_NUMBER(2, "does not contain a number"),
     DOES_NOT_CONTAIN_LETTER(3, "does not contain a letter"),
     DOES_NOT_CONTAIN_SPECIAL_CHARACTER(4, "does not contain a special character"),
-    DOES_NOT_MEET_ANY_REQUIREMENTS(10, "does not meet any of the requirements");
+    DOES_NOT_MATCH(5, "does not match"),
+    DOES_NOT_MEET_ANY_REQUIREMENTS(15, "does not meet any of the requirements");
 
 
     private final int identifier;
