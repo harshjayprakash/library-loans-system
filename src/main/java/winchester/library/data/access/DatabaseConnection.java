@@ -65,6 +65,32 @@ public class DatabaseConnection {
         return Optional.empty();
     }
 
+    public Optional<Integer> executeUpdate(QueryBuilder sql) {
+        try {
+            PreparedStatement statement = this.connection.prepareStatement(sql.toString());
+            return Optional.of(statement.executeUpdate());
+        }
+        catch (NullPointerException exception) {
+            Logger.getInstance().PrintError(
+                    "Executing an SQL Query",
+                    DatabaseConstant.CONNECTION_NOT_AVAILABLE.toString(),
+                    "Ensure that there is a Connection Available");
+        }
+        catch (SQLTimeoutException exception) {
+            Logger.getInstance().PrintError(
+                    "Executing an SQL Query",
+                    DatabaseConstant.CONNECTION_TIMEOUT.toString(),
+                    "Ensure that the Connection is Active");
+        }
+        catch (SQLException exception) {
+            Logger.getInstance().PrintError(
+                    "Executing an SQL Query",
+                    DatabaseConstant.DATABASE_NOT_ACCESSIBLE.toString(),
+                    "Ensure that the Connection is Active");
+        }
+        return Optional.empty();
+    }
+
     public void close() {
         try {
             if (this.connection != null) {
