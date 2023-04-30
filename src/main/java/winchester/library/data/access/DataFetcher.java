@@ -24,14 +24,14 @@ public class DataFetcher {
 
     public ArrayList<Book> getBooks() {
         DatabaseConnection connection = new DatabaseConnection();
-        connection.establish(credentials);
-        ArrayList<Book> books = entityMapper.mapAsBooks(connection.executeQuery(
+        connection.establish(this.credentials);
+        ArrayList<Book> books = this.entityMapper.mapAsBooks(connection.executeQuery(
                 QueryBuilder.createQuery(QueryType.ORDERED_GET)
                         .select("*")
                         .from("library.books")
                         .orderBy("title asc")
         ).orElse(null)).orElse(new ArrayList<>());
-        ArrayList<ItemStock> stocks = entityMapper.mapAsItemStock(connection.executeQuery(
+        ArrayList<ItemStock> stocks = this.entityMapper.mapAsItemStock(connection.executeQuery(
                 QueryBuilder.createQuery(QueryType.GET_AND_FILTER)
                         .select("isbn", "item_subtype_id", "copies_available")
                         .from("library.books", "library.item_copies")
@@ -52,24 +52,22 @@ public class DataFetcher {
                                 .count();
                         stock.setCopiesOnLoan((int)copiesOnLoan);
                         book.getStockAvailable().add(stock);
-                    }
-                }
-            }
-        }
+                    });
+        });
         connection.close();
         return books;
     }
 
     public ArrayList<Film> getFilms() {
         DatabaseConnection connection = new DatabaseConnection();
-        connection.establish(credentials);
-        ArrayList<Film> films = entityMapper.mapAsFilms(connection.executeQuery(
+        connection.establish(this.credentials);
+        ArrayList<Film> films = this.entityMapper.mapAsFilms(connection.executeQuery(
                 QueryBuilder.createQuery(QueryType.ORDERED_GET)
                         .select("*")
                         .from("library.films")
                         .orderBy("title asc")
         ).orElse(null)).orElse(new ArrayList<>());
-        ArrayList<ItemStock> stocks = entityMapper.mapAsItemStock(connection.executeQuery(
+        ArrayList<ItemStock> stocks = this.entityMapper.mapAsItemStock(connection.executeQuery(
                 QueryBuilder.createQuery(QueryType.GET_AND_FILTER)
                        .select("film_id", "item_subtype_id", "copies_available")
                        .from("library.films", "library.item_copies")
@@ -98,8 +96,8 @@ public class DataFetcher {
 
     public ArrayList<Customer> getCustomers() {
         DatabaseConnection connection = new DatabaseConnection();
-        connection.establish(credentials);
-        ArrayList<Customer> customers = entityMapper.mapAsCustomers(connection.executeQuery(
+        connection.establish(this.credentials);
+        ArrayList<Customer> customers = this.entityMapper.mapAsCustomers(connection.executeQuery(
                 QueryBuilder.createQuery(QueryType.GET_AND_FILTER)
                       .select("user_id", "first_name", "last_name", "postal_code")
                       .from("library.users", "library.user_types")
@@ -112,8 +110,8 @@ public class DataFetcher {
 
     public ArrayList<Employee> getEmployees() {
         DatabaseConnection connection = new DatabaseConnection();
-        connection.establish(credentials);
-        ArrayList<Employee> employees = entityMapper.mapAsEmployee(connection.executeQuery(
+        connection.establish(this.credentials);
+        ArrayList<Employee> employees = this.entityMapper.mapAsEmployee(connection.executeQuery(
                 QueryBuilder.createQuery(QueryType.ORDERED_GET_AND_FILTER)
                         .select("employee_id", "first_name", "last_name", "postal_code", "username", "password",
                                 "status_id")
@@ -129,8 +127,8 @@ public class DataFetcher {
 
     public ArrayList<Loan> getLoans() {
         DatabaseConnection connection = new DatabaseConnection();
-        connection.establish(credentials);
-        ArrayList<Loan> loans = entityMapper.mapAsLoans(connection.executeQuery(
+        connection.establish(this.credentials);
+        ArrayList<Loan> loans = this.entityMapper.mapAsLoans(connection.executeQuery(
                 QueryBuilder.createQuery(QueryType.ORDERED_GET_AND_FILTER)
                         .select("loan_id", "customer_id", "first_name", "last_name", "postal_code", "loans.item_id",
                                 "loans.item_subtype_id", "loan_date", "return_date", "returned")
