@@ -13,8 +13,10 @@ import java.util.function.Function;
  */
 public class DataWriter {
 
-    public DataWriter() {
+    private final DatabaseCredentials credentials;
 
+    public DataWriter() {
+        this.credentials = DatabaseCredentials.getInstance();
     }
 
     public void insert(Book book) {
