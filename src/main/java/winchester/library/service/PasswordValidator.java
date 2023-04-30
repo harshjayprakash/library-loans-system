@@ -1,7 +1,5 @@
 package winchester.library.service;
 
-import java.util.ArrayList;
-
 /**
  * A class that checks password strength.
  */
