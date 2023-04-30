@@ -1,18 +1,25 @@
 package winchester.library.presentation.view;
 
 import java.util.ArrayList;
+import javafx.geometry.HPos;
 import javafx.geometry.Insets;
+import javafx.geometry.VPos;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
+import javafx.scene.layout.Priority;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
 import javafx.scene.text.TextAlignment;
-import winchester.library.data.model.items.*;
+import winchester.library.data.model.items.Book;
+import winchester.library.data.model.items.Film;
+import winchester.library.data.model.items.Item;
+import winchester.library.data.model.items.ItemStock;
 import winchester.library.data.model.util.Exporter;
 import winchester.library.presentation.alert.AlertFactory;
 import winchester.library.presentation.window.WindowBase;
@@ -26,15 +33,16 @@ public final class IndividualItemView extends View {
     private final int itemImageViewHeight;
     private final int itemImageViewWidth;
     private Text itemInformation;
-    private VBox itemAvailability;
-    private Label itemAvailabilityTitleLabel;
+    private GridPane itemAvailability;
     private Label itemFormatLabel;
     private Label itemStockAvailableLabel;
     private Label itemOnLoanLabel;
     private ArrayList<Label> itemFormatLabelList;
     private ArrayList<Label> itemStockAvailableLLabelList;
-    private ArrayList<Label> itemsOnLoanLabelList;
-
+    private ArrayList<Label> itemOnLoanLabelList;
+    private VBox itemReturnDate;
+    private Label itemEarliestReturnTitleLabel;
+    private Label itemEarliestReturnLabel;
     private final Item referencedItem;
     private final Exporter exporter;
 
@@ -46,6 +54,7 @@ public final class IndividualItemView extends View {
         this.exporter = new Exporter();
         this.initialiseLayouts();
         this.initialiseControls();
+        this.initialiseConstraints();
         this.bindEventHandlers();
         this.addComponentsToView();
     }
@@ -59,8 +68,12 @@ public final class IndividualItemView extends View {
         this.itemDetails = new HBox();
         this.itemDetails.getStyleClass().add("background-secondary-border");
         this.itemDetails.setPadding(new Insets(15));
-        this.itemAvailability = new VBox();
+        this.itemAvailability = new GridPane();
+        this.itemAvailability.getStyleClass().add("background-secondary-border");
         this.itemAvailability.setPadding(new Insets(15));
+        this.itemReturnDate = new VBox();
+        this.itemReturnDate.getStyleClass().add("background-secondary-border");
+        this.itemReturnDate.setPadding(new Insets(15));
     }
 
     @Override
@@ -80,15 +93,50 @@ public final class IndividualItemView extends View {
             case FILM -> Film.castFrom(this.referencedItem).toString();
         });
         HBox.setMargin(this.itemImageView, new Insets(0, 15, 0, 0));
-        this.itemAvailabilityTitleLabel = new Label();
-        this.itemAvailabilityTitleLabel.getStyleClass().add("text-bold");
-        this.itemAvailabilityTitleLabel.setText("Item Availability");
         this.itemFormatLabel = new Label();
         this.itemFormatLabel.setText("Format");
         this.itemStockAvailableLabel = new Label();
         this.itemStockAvailableLabel.setText("Stock Available");
         this.itemOnLoanLabel = new Label();
         this.itemOnLoanLabel.setText("On Loan");
+        this.itemEarliestReturnTitleLabel = new Label();
+        this.itemEarliestReturnTitleLabel.getStyleClass().add("text-bold");
+        this.itemEarliestReturnTitleLabel.setText("Earliest Return Date");
+        this.itemEarliestReturnLabel = new Label();
+        this.itemEarliestReturnLabel.setText(
+                (this.referencedItem.getLoansManager().getEarliestReturnDate().isEmpty())
+                ? "None" : this.referencedItem.getLoansManager().getEarliestReturnDate().get().toString());
+        this.itemFormatLabelList = new ArrayList<>();
+        this.itemStockAvailableLLabelList = new ArrayList<>();
+        this.itemOnLoanLabelList = new ArrayList<>();
+        for (ItemStock stock : this.referencedItem.getStockAvailable()) {
+            this.itemFormatLabelList.add(new Label(stock.getItemFormat().toString()));
+            this.itemStockAvailableLLabelList.add(new Label(String.valueOf(stock.getCopiesAvailable())));
+            this.itemOnLoanLabelList.add(new Label(String.valueOf(stock.getCopiesOnLoan())));
+        }
+    }
+
+    private void initialiseConstraints() {
+        GridPane.setConstraints(
+                this.itemFormatLabel, 1, 1, 1, 1,
+                HPos.LEFT, VPos.CENTER, Priority.SOMETIMES, Priority.SOMETIMES, new Insets(3));
+        GridPane.setConstraints(
+                this.itemStockAvailableLabel, 2, 1, 1, 1,
+                HPos.LEFT, VPos.CENTER, Priority.SOMETIMES, Priority.SOMETIMES, new Insets(3));
+        GridPane.setConstraints(
+                this.itemOnLoanLabel, 3, 1, 1, 1,
+                HPos.LEFT, VPos.CENTER, Priority.SOMETIMES, Priority.SOMETIMES, new Insets(3));
+        for (int i = 0; i < this.referencedItem.getStockAvailable().size(); i++) {
+            GridPane.setConstraints(
+                    this.itemFormatLabelList.get(i), 1, i+2, 1, 1,
+                    HPos.LEFT, VPos.CENTER, Priority.SOMETIMES, Priority.SOMETIMES, new Insets(3));
+            GridPane.setConstraints(
+                    this.itemStockAvailableLLabelList.get(i), 2, i+2, 1, 1,
+                    HPos.LEFT, VPos.CENTER, Priority.SOMETIMES, Priority.SOMETIMES, new Insets(3));
+            GridPane.setConstraints(
+                    this.itemOnLoanLabelList.get(i), 3, i+2, 1, 1,
+                    HPos.LEFT, VPos.CENTER, Priority.SOMETIMES, Priority.SOMETIMES, new Insets(3));
+        }
     }
 
     private void bindEventHandlers() {
@@ -98,22 +146,28 @@ public final class IndividualItemView extends View {
                 case FILM -> exporter.export(Film.castFrom(this.referencedItem));
             };
             if (!exportResult) {
-                Alert exportError = AlertFactory.createAlert(
+                AlertFactory.createAlert(
                         Alert.AlertType.ERROR, "Failed to export item to file.",
-                        "Please ensure that the program has permissions to the file system.");
-                exportError.show();
+                        "Please ensure that the program has permissions to the file system.").show();
                 return;
             }
-            Alert exportSuccess = AlertFactory.createAlert(
-                    Alert.AlertType.INFORMATION, "Item exported successfully");
-            exportSuccess.show();
+            AlertFactory.createAlert(
+                    Alert.AlertType.INFORMATION, "Item exported successfully",
+                    String.format("The export can be found at %s", "the Project Directory Exports Folder")).show();
         });
     }
 
     @Override
     protected void addComponentsToView() {
+        this.itemReturnDate.getChildren().addAll(this.itemEarliestReturnTitleLabel, this.itemEarliestReturnLabel);
+        this.itemAvailability.getChildren().addAll(
+                this.itemFormatLabel, this.itemStockAvailableLabel,
+                this.itemOnLoanLabel);
+        this.itemAvailability.getChildren().addAll(this.itemFormatLabelList);
+        this.itemAvailability.getChildren().addAll(this.itemStockAvailableLLabelList);
+        this.itemAvailability.getChildren().addAll(this.itemOnLoanLabelList);
         this.actions.getChildren().addAll(this.exportToFileButton);
         this.itemDetails.getChildren().addAll(this.itemImageView, this.itemInformation);
-        this.getChildren().addAll(this.actions, this.itemDetails, this.itemAvailability);
+        this.getChildren().addAll(this.actions, this.itemDetails, this.itemAvailability, this.itemReturnDate);
     }
 }
