@@ -12,6 +12,8 @@ public enum DatabaseConstant {
     DRIVER_FOUND(3, "Driver Loaded Successfully"),
     DATABASE_NOT_ACCESSIBLE(7, "Error Accessing the Database"),
     DATA_NOT_ACCESSIBLE(8, "Error Accessing Data"),
+    INSERTION_ERROR(9, "Error Inserting into the Database"),
+    INSERTION_SUCCESSFUL(10, "Insertion Successful"),
     UNKNOWN_ERROR(10, "Error");
 
     private final int identifier;
