@@ -40,14 +40,5 @@ public abstract class User {
         return this.postalCode;
     }
 
-    public abstract UserType getType();
-
-    @Override
-    public String toString() {
-        return """
-                ::User
-                Name: %s
-                Postal Code: %s
-               """.formatted(this.getFullName(), this.postalCode);
-    }
+    public abstract UserType getType() ;
 }
