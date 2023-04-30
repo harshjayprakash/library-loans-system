@@ -49,18 +49,13 @@ public class QueryBuilder {
         return this;
     }
 
-    public QueryBuilder values(Employee... employees) {
-        this.values = convertToSingleString(employees);
+    public QueryBuilder values(String entity) {
+        this.values = entity;
         return this;
     }
 
-    public QueryBuilder values(Item... items) {
-        this.values = convertToSingleString(items);
-        return this;
-    }
-
-    public QueryBuilder values(Loan... loans) {
-        this.values = convertToSingleString(loans);
+    public QueryBuilder values(String... entities) {
+        this.values = convertToSingleString(entities, ", ");
         return this;
     }
     
@@ -71,18 +66,6 @@ public class QueryBuilder {
         }
         stringBuilder.delete(stringBuilder.length() - 2, stringBuilder.length());
         return stringBuilder.toString();
-    }
-
-    private String convertToSingleString(Employee[] employees) {
-        return null;
-    }
-
-    private String convertToSingleString(Item[] items) {
-        return null;
-    }
-
-    private String convertToSingleString(Loan[] loans) {
-        return null;
     }
 
     @Override
@@ -96,6 +79,8 @@ public class QueryBuilder {
                     this.type.getQueryFormat(), this.columns, this.tables, this.orderedColumns);
             case ORDERED_GET_AND_FILTER -> String.format(
                     this.type.getQueryFormat(), this.columns, this.tables, this.conditions, this.orderedColumns);
+            case INSERT_ONE -> String.format(
+                    this.type.getQueryFormat(), this.tables, this.values);
             default -> null;
         };
     }
