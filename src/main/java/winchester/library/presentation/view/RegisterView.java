@@ -2,17 +2,16 @@ package winchester.library.presentation.view;
 
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
-import javafx.scene.control.Button;
-import javafx.scene.control.ComboBox;
-import javafx.scene.control.Label;
-import javafx.scene.control.PasswordField;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.HBox;
 import winchester.library.data.model.users.UserType;
+import winchester.library.presentation.alert.AlertFactory;
 import winchester.library.presentation.window.IndividualViewWindow;
 import winchester.library.presentation.window.WindowBase;
+import winchester.library.service.DataPersistenceManager;
 import winchester.library.service.PasswordValidator;
+import winchester.library.service.UsernameValidator;
 
 public final class RegisterView extends View {
 
@@ -26,6 +25,7 @@ public final class RegisterView extends View {
     private Label passwordLabel;
     private Label passwordDescriptionLabel;
     private Label passwordConfirmationLabel;
+    private Label passwordConfirmationEqualCheckLabel;
     private Label accountTypeLabel;
     private TextField firstNameField;
     private TextField lastNameField;
@@ -93,6 +93,9 @@ public final class RegisterView extends View {
         this.passwordConfirmationLabel.setPadding(new Insets(10, 0, 0, 0));
         this.passwordConfirmationLabel.setText("Confirm Password: ");
         this.passwordConfirmationField = new PasswordField();
+        this.passwordConfirmationEqualCheckLabel = new Label();
+        this.passwordConfirmationEqualCheckLabel.setText("Passwords empty");
+        this.passwordConfirmationEqualCheckLabel.setPadding(new Insets(5, 0, 0, 0));
         this.accountTypeLabel = new Label();
         this.accountTypeLabel.setPadding(new Insets(10, 0, 0, 0));
         this.accountTypeLabel.setText("Account Type: ");
@@ -113,6 +116,46 @@ public final class RegisterView extends View {
             IndividualViewWindow loginView = new IndividualViewWindow(Views.LOGIN);
             loginView.show();
         });
+        this.passwordConfirmationField.textProperty().addListener((observable, oldValue, newValue) -> {
+            this.passwordConfirmationEqualCheckLabel.setText(
+                    (this.passwordField.getText().equals(this.passwordConfirmationField.getText()))
+                    ? "Passwords match" : "Passwords do not match");
+        });
+        this.requestButton.addEventHandler(MouseEvent.MOUSE_CLICKED, event -> {
+            PasswordValidator passwordValidator = new PasswordValidator();
+            UsernameValidator usernameValidator = new UsernameValidator();
+            if (!this.passwordField.getText().equals(this.passwordConfirmationField.getText())) {
+                AlertFactory.createAlert(Alert.AlertType.ERROR, "Passwords do not match").show();
+                return;
+            }
+            if (!passwordValidator.meetsAllRequirements(this.passwordField.getText())) {
+                AlertFactory.createAlert(
+                        Alert.AlertType.ERROR, "Passwords do not meet the specified requirements").show();
+                return;
+            }
+            if (usernameValidator.usernameExists(this.usernameField.getText())) {
+                AlertFactory.createAlert(
+                        Alert.AlertType.ERROR,
+                        "This username already exists in the system.", "Please choose another username").show();
+                return;
+            }
+            if (this.accountTypeComboBox.getValue().equals(UserType.STANDARD.toString())) {
+                DataPersistenceManager.getInstance().createEmployee(
+                        this.firstNameField.getText(),
+                        this.lastNameField.getText(),
+                        this.postalCodeField.getText(),
+                        this.usernameField.getText(),
+                        this.passwordField.getText());
+            }
+            else if (this.accountTypeComboBox.getValue().equals(UserType.ADMINISTRATOR.toString())) {
+                DataPersistenceManager.getInstance().createAdministrator(
+                        this.firstNameField.getText(),
+                        this.lastNameField.getText(),
+                        this.postalCodeField.getText(),
+                        this.usernameField.getText(),
+                        this.passwordField.getText());
+            }
+        });
     }
 
     @Override
@@ -122,8 +165,8 @@ public final class RegisterView extends View {
                 this.descriptionLabel, this.firstNameLabel, this.firstNameField, this.lastNameLabel, this.lastNameField,
                 this.postalCodeLabel, this.postalCodeField, this.usernameLabel, this.usernameDescriptionLabel,
                 this.usernameField, this.passwordLabel, this.passwordDescriptionLabel, this.passwordField,
-                this.passwordConfirmationLabel, this.passwordConfirmationField, this.accountTypeLabel,
-                this.accountTypeComboBox, this.buttonLayout);
+                this.passwordConfirmationLabel, this.passwordConfirmationField, this.passwordConfirmationEqualCheckLabel,
+                this.accountTypeLabel, this.accountTypeComboBox, this.buttonLayout);
     }
 
 }
