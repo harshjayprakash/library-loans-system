@@ -2,7 +2,12 @@ package winchester.library.presentation.view;
 
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
-import javafx.scene.control.*;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Button;
+import javafx.scene.control.ComboBox;
+import javafx.scene.control.Label;
+import javafx.scene.control.PasswordField;
+import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.HBox;
 import winchester.library.data.model.users.UserType;
@@ -39,7 +44,7 @@ public final class RegisterView extends View {
 
     public RegisterView(WindowBase parentWindow) {
         super(parentWindow, Views.REGISTER.toString());
-        this.parentWindow.setHeight(750);
+        this.parentWindow.setHeight(770);
         this.parentWindow.setWidth(500);
         this.initialiseLayouts();
         this.initialiseControls();
@@ -124,37 +129,39 @@ public final class RegisterView extends View {
         this.requestButton.addEventHandler(MouseEvent.MOUSE_CLICKED, event -> {
             PasswordValidator passwordValidator = new PasswordValidator();
             UsernameValidator usernameValidator = new UsernameValidator();
+            if (this.blankFieldExists()) {
+                AlertFactory.createAlert(Alert.AlertType.ERROR, "Form is not complete",
+                        "Please ensure that all fields have been completed.").show();
+                return;
+            }
             if (!this.passwordField.getText().equals(this.passwordConfirmationField.getText())) {
                 AlertFactory.createAlert(Alert.AlertType.ERROR, "Passwords do not match").show();
                 return;
             }
             if (!passwordValidator.meetsAllRequirements(this.passwordField.getText())) {
-                AlertFactory.createAlert(
-                        Alert.AlertType.ERROR, "Passwords do not meet the specified requirements").show();
+                AlertFactory.createAlert(Alert.AlertType.ERROR,
+                        "Passwords do not meet the specified requirements").show();
                 return;
             }
             if (usernameValidator.usernameExists(this.usernameField.getText())) {
-                AlertFactory.createAlert(
-                        Alert.AlertType.ERROR,
+                AlertFactory.createAlert(Alert.AlertType.ERROR,
                         "This username already exists in the system.", "Please choose another username").show();
                 return;
             }
-            if (this.accountTypeComboBox.getValue().equals(UserType.STANDARD.toString())) {
-                DataPersistenceManager.getInstance().createEmployee(
-                        this.firstNameField.getText(),
-                        this.lastNameField.getText(),
-                        this.postalCodeField.getText(),
-                        this.usernameField.getText(),
-                        this.passwordField.getText());
-            }
-            else if (this.accountTypeComboBox.getValue().equals(UserType.ADMINISTRATOR.toString())) {
-                DataPersistenceManager.getInstance().createAdministrator(
-                        this.firstNameField.getText(),
-                        this.lastNameField.getText(),
-                        this.postalCodeField.getText(),
-                        this.usernameField.getText(),
-                        this.passwordField.getText());
-            }
+            DataPersistenceManager.getInstance().createUser(
+                    (this.accountTypeComboBox.getValue().equals(UserType.ADMINISTRATOR.toString()))
+                            ? UserType.ADMINISTRATOR : UserType.STANDARD,
+                    this.firstNameField.getText(),
+                    this.lastNameField.getText(),
+                    this.postalCodeField.getText(),
+                    this.usernameField.getText(),
+                    this.passwordField.getText());
+            AlertFactory.createAlert(Alert.AlertType.INFORMATION, "Thank you for registering",
+                    "An administrator will need to approve your account before you can use it.\n"
+                    +"Thank you for your patience").show();
+            this.parentWindow.close();
+            IndividualViewWindow loginView = new IndividualViewWindow(Views.LOGIN);
+            loginView.show();
         });
     }
 
@@ -167,6 +174,13 @@ public final class RegisterView extends View {
                 this.usernameField, this.passwordLabel, this.passwordDescriptionLabel, this.passwordField,
                 this.passwordConfirmationLabel, this.passwordConfirmationField, this.passwordConfirmationEqualCheckLabel,
                 this.accountTypeLabel, this.accountTypeComboBox, this.buttonLayout);
+    }
+
+    private boolean blankFieldExists() {
+        return this.firstNameField.getText().isBlank() || this.lastNameField.getText().isBlank()
+                || this.postalCodeField.getText().isBlank() || this.usernameField.getText().isBlank()
+                || this.passwordField.getText().isBlank() || this.passwordConfirmationField.getText().isBlank()
+                || this.accountTypeComboBox.getValue().isBlank();
     }
 
 }
