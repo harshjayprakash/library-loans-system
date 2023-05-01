@@ -59,11 +59,6 @@ public class Employee extends User implements LoanManagement {
     }
 
     @Override
-    public UserType getType() {
-        return UserType.STANDARD;
-    }
-
-    @Override
     public void loanItem() {
 
     }
