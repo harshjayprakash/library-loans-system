@@ -2,6 +2,7 @@ package winchester.library.presentation.view;
 
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
@@ -9,6 +10,7 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.HBox;
 import winchester.library.data.access.DatabaseConstant;
 import winchester.library.data.access.DatabaseCredentials;
+import winchester.library.presentation.alert.AlertFactory;
 import winchester.library.presentation.window.WindowBase;
 import winchester.library.service.DatabaseConnectivityChecker;
 
@@ -79,11 +81,19 @@ public final class DatabaseConfigurationView extends View {
             DatabaseConstant testResult = DatabaseConnectivityChecker.getInstance().getDatabaseStatus(
                     this.urlField.getText(), this.usernameField.getText(), this.passwordField.getText());
             if (testResult != DatabaseConstant.CONNECTION_SUCCESSFUL) {
+                AlertFactory.createAlert(Alert.AlertType.WARNING,
+                        "Failed to connect to data source", """
+                                Please ensure the details are correct.
+
+                                The credentials will be reset to their defaults.
+                                """).show();
                 return;
             }
             this.credentials.setUrl(this.urlField.getText());
             this.credentials.setUsername(this.usernameField.getText());
             this.credentials.setPassword(this.passwordField.getText());
+            AlertFactory.createAlert(Alert.AlertType.INFORMATION, "Connection to data source was successful",
+                    "The credentials will be changed for this session.").show();
             this.parentWindow.close();
         });
     }
