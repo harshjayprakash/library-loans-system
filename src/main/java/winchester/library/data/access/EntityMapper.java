@@ -16,6 +16,7 @@ import winchester.library.data.model.loans.Loan;
 import winchester.library.data.model.users.Customer;
 import winchester.library.data.model.users.Employee;
 import winchester.library.data.model.users.EmployeeStatus;
+import winchester.library.data.model.users.UserType;
 import winchester.library.service.Logger;
 
 /**
