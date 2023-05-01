@@ -12,14 +12,16 @@ public final class IndividualViewWindow extends WindowBase {
     private HeaderPane header;
     private ViewsManager viewsManager;
     private final Views windowContentView;
-    private final Employee employee;
     private final Item item;
+    private Employee employee;
+    private Loan loan;
 
     public IndividualViewWindow(Views windowContentView, Employee employee, Item item) {
         super();
         this.windowContentView = windowContentView;
         this.employee = employee;
         this.item = item;
+        this.loan = loan;
         this.initialiseLayouts();
         this.initialiseControls();
         this.addComponentsToStage();
