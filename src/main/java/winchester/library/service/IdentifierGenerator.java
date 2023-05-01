@@ -13,9 +13,10 @@ public class IdentifierGenerator {
     public int generateForUser() {
         ArrayList<Employee> employees = DataPersistenceManager.getInstance().getEmployees();
         ArrayList<Customer> customers = DataPersistenceManager.getInstance().getCustomers();
-        Employee lastEmployee = employees.get(employees.size() - 1);
-        Customer lastCustomer = customers.get(customers.size() - 1);
-        return Math.max(lastCustomer.getIdentifier(), lastEmployee.getIdentifier()) + 1;
+        int newIdentifier = 0;
+        for (Employee employee : employees) { newIdentifier = Math.max(newIdentifier, employee.getIdentifier()); }
+        for (Customer customer: customers) { newIdentifier = Math.max(newIdentifier, customer.getIdentifier()); }
+        return ++newIdentifier;
     }
 
 }
