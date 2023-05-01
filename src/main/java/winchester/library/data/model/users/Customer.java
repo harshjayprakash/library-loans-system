@@ -14,6 +14,7 @@ public class Customer extends User  {
 
     public Customer(int identifier, String firstName, String lastName, String postalCode) {
         super(identifier, firstName, lastName, postalCode);
+        this.type = UserType.CUSTOMER;
         this.overdueFeesPence = 0;
         this.loansManager = new LoansManager();
     }
