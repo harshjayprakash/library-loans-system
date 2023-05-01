@@ -144,8 +144,10 @@ public class EntityMapper {
         return this.mapToList(data, result -> {
             try {
                 return new Employee(
-                        result.getInt("employee_id"), result.getString("first_name"), result.getString("last_name"),
-                        result.getString("postal_code"), result.getString("username"), result.getString("password"),
+                        result.getInt("user_id"),
+                        UserType.fromIdentifier(result.getInt("user_type_id")).orElse(UserType.STANDARD),
+                        result.getString("first_name"), result.getString("last_name"), result.getString("postal_code"),
+                        result.getString("username"), result.getString("password"),
                         EmployeeStatus.fromIdentifier(result.getInt("status_id")).orElse(EmployeeStatus.DISABLED));
             }
             catch (SQLException exception) {
