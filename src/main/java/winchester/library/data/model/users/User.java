@@ -12,6 +12,7 @@ public abstract class User {
     private final String firstName;
     private final String lastName;
     private final String postalCode;
+    protected UserType type;
 
     public User(int identifier, String firstName, String lastName, String postalCode) {
         this.identifier = identifier;
@@ -40,5 +41,17 @@ public abstract class User {
         return this.postalCode;
     }
 
-    public abstract UserType getType() ;
+    public UserType getType() {
+        return this.type;
+    }
+
+    @Override
+    public String toString() {
+        return String.format(
+                """
+                First Name : %s
+                Last Name : %s
+                Postal Code : %s
+                """, this.firstName, this.lastName, this.postalCode);
+    }
 }
