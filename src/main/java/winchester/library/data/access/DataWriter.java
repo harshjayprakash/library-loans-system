@@ -15,18 +15,6 @@ public class DataWriter {
         this.credentials = DatabaseCredentials.getInstance();
     }
 
-    public void insert(Book book) {
-
-    }
-
-    public void insert(Film film) {
-
-    }
-
-    public void insert(Customer customer) {
-
-    }
-
     public DatabaseConstant insert(Employee employee) {
         DatabaseConnection connection = new DatabaseConnection();
         connection.establish(this.credentials);
