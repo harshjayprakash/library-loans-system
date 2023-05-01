@@ -1,5 +1,6 @@
 package winchester.library.data.model.users;
 
+import java.util.Optional;
 import winchester.library.data.access.DatabaseEntity;
 
 /**
@@ -18,6 +19,15 @@ public enum UserType {
     UserType(int identifier, String text) {
         this.identifier = identifier;
         this.text = text;
+    }
+
+    public static Optional<UserType> fromIdentifier(int identifier) {
+        for (UserType type : UserType.values()) {
+            if (type.identifier == identifier) {
+                return Optional.of(type);
+            }
+        }
+        return Optional.empty();
     }
 
     public int getIdentifier() {
