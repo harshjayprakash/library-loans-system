@@ -2,6 +2,7 @@ package winchester.library.presentation.view;
 
 import javafx.scene.layout.BorderPane;
 import winchester.library.data.model.items.Item;
+import winchester.library.data.model.loans.Loan;
 import winchester.library.data.model.users.Employee;
 import winchester.library.presentation.window.WindowBase;
 
@@ -14,7 +15,7 @@ public final class ViewsManager extends BorderPane {
         super();
     }
 
-    public void showView(Views view, WindowBase parentWindow, Employee employee, Item item) {
+    public void showView(Views view, WindowBase parentWindow, Employee employee, Item item, Loan loan) {
         this.setCenter(null);
         this.setCenter(
                 switch (view) {
@@ -32,7 +33,7 @@ public final class ViewsManager extends BorderPane {
                     case LOANING_ITEMS -> new LoaningItemView(parentWindow);
                     case CHANGE_PASSWORD -> new ChangePasswordView(parentWindow, employee);
                     case INDIVIDUAL_ITEM -> new IndividualItemView(parentWindow, item);
-                    case INDIVIDUAL_LOAN -> new IndividualLoanView(parentWindow);
+                    case INDIVIDUAL_LOAN -> new IndividualLoanView(parentWindow, loan);
                     case NONE_WITH_SIDEBAR -> new NoneSidePaneView(parentWindow);
                     case INDIVIDUAL_CUSTOMER -> new IndividualCustomerView(parentWindow);
                     case INDIVIDUAL_EMPLOYEE -> new IndividualEmployeeView(parentWindow);
