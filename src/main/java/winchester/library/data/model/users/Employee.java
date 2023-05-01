@@ -7,16 +7,16 @@ import winchester.library.data.model.loans.LoanManagement;
  * A class to model an employee of the system.
  */
 @DatabaseEntity(table = "employees")
-public class Employee extends User 
-    implements LoanManagement {
+public class Employee extends User implements LoanManagement {
     
     private final String username;
     private String password;
     private EmployeeStatus status;
 
-    public Employee(int identifier, String firstName, String lastName, String postalCode, String username,
+    public Employee(int identifier, UserType type, String firstName, String lastName, String postalCode, String username,
                     String password, EmployeeStatus status) {
         super(identifier, firstName, lastName, postalCode);
+        this.type = type;
         this.username = username;
         this.password = password;
         this.status = status;
