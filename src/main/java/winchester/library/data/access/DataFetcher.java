@@ -113,12 +113,12 @@ public class DataFetcher {
         connection.establish(this.credentials);
         ArrayList<Employee> employees = this.entityMapper.mapAsEmployee(connection.executeQuery(
                 QueryBuilder.createQuery(QueryType.ORDERED_GET_AND_FILTER)
-                        .select("employee_id", "first_name", "last_name", "postal_code", "username", "password",
+                        .select("users.user_id", "users.user_type_id", "first_name", "last_name", "postal_code", "username", "password",
                                 "status_id")
                         .from("library.users", "library.employees", "library.user_types")
-                        .where("library.users.user_type_id = library.user_types.user_type_id",
-                                "and library.users.user_id = library.employees.employee_id",
-                                "and library.user_types.user_type <> 'Customer'")
+                        .where("library.users.user_id = library.employees.user_id",
+                                "and library.user_types.user_type_id = library.users.user_type_id",
+                                "and library.user_types.user_type_id <> 1")
                         .orderBy("first_name asc", "last_name asc")
         ).orElse(null)).orElse(new ArrayList<>());
         connection.close();
