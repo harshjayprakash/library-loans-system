@@ -39,18 +39,21 @@ public class EntityMapper {
         }
         catch (NullPointerException exception) {
             Logger.getInstance().PrintError(
+                    this.getClass().getName(),
                     "Mapping Data to an Array",
                     DatabaseConstant.DATA_NOT_ACCESSIBLE.toString(),
                     "Ensure that the Result Set Contains Data");
         }
         catch (SQLException exception) {
             Logger.getInstance().PrintError(
+                    this.getClass().getName(),
                     "Mapping Data to an Array",
                     DatabaseConstant.DATABASE_NOT_ACCESSIBLE.toString(),
                     "Ensure there is an Active Connection to the Database");
         }
         catch (Exception exception) {
             Logger.getInstance().PrintError(
+                    this.getClass().getName(),
                     "Mapping Data to an Array",
                     DatabaseConstant.UNKNOWN_ERROR.toString() + ": " + exception.getMessage(),
                     "^ Please find a solution to the above error");
@@ -68,6 +71,7 @@ public class EntityMapper {
             }
             catch (SQLException exception) {
                 Logger.getInstance().PrintError(
+                        this.getClass().getName(),
                         "Mapping an Entity to Specified Class",
                         DatabaseConstant.DATA_NOT_ACCESSIBLE.toString(),
                         "Ensure that the column specified is valid");
@@ -86,6 +90,7 @@ public class EntityMapper {
             }
             catch (SQLException exception) {
                 Logger.getInstance().PrintError(
+                        this.getClass().getName(),
                         "Mapping an Entity to Specified Class",
                         DatabaseConstant.DATA_NOT_ACCESSIBLE.toString(),
                         "Ensure that the column specified is valid");
@@ -103,6 +108,7 @@ public class EntityMapper {
             }
             catch (SQLException exception) {
                 Logger.getInstance().PrintError(
+                        this.getClass().getName(),
                         "Mapping an Entity to Specified Class",
                         DatabaseConstant.DATA_NOT_ACCESSIBLE.toString(),
                         "Ensure that the column specified is valid");
@@ -125,6 +131,7 @@ public class EntityMapper {
             }
             catch (SQLException exception) {
                 Logger.getInstance().PrintError(
+                        this.getClass().getName(),
                         "Mapping an Entity to Specified Class",
                         DatabaseConstant.DATA_NOT_ACCESSIBLE.toString(),
                         "Ensure that the column specified is valid");
@@ -143,6 +150,7 @@ public class EntityMapper {
             }
             catch (SQLException exception) {
                 Logger.getInstance().PrintError(
+                        this.getClass().getName(),
                         "Mapping an Entity to Specified Class",
                         DatabaseConstant.DATA_NOT_ACCESSIBLE.toString(),
                         "Ensure that the column specified is valid");
@@ -164,12 +172,14 @@ public class EntityMapper {
             }
             catch (DateTimeParseException ignored) {
                 Logger.getInstance().PrintError(
+                        this.getClass().getName(),
                         "Mapping Entity to Loans Class",
                         "Invalid Data Format",
                         "Ensure that the dates are in a logical format (year-month-day)");
             }
             catch (SQLException exception) {
                 Logger.getInstance().PrintError(
+                        this.getClass().getName(),
                         "Mapping an Entity to Specified Class",
                         DatabaseConstant.DATA_NOT_ACCESSIBLE.toString(),
                         "Ensure that the column specified is valid");

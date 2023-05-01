@@ -34,6 +34,7 @@ public class Exporter {
         }
         catch (IOException exception) {
             Logger.getInstance().PrintError(
+                    this.getClass().getName(),
                     "Writing entity to text file",
                     "Error creating and opening a file",
                     "Ensure that the export directory exists");

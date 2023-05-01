@@ -27,12 +27,14 @@ public class DatabaseConnection {
         }
         catch (SQLTimeoutException exception) {
             Logger.getInstance().PrintError(
+                    this.getClass().getName(),
                     "Establishing Database Connection",
                     DatabaseConstant.CONNECTION_TIMEOUT.toString(),
                     "Ensure that the Connection is Active");
         }
         catch (SQLException exception) {
             Logger.getInstance().PrintError(
+                    this.getClass().getName(),
                     "Establishing Database Connection",
                     DatabaseConstant.DATABASE_NOT_ACCESSIBLE.toString(),
                     "Ensure that the credentials provided are correct");
@@ -46,18 +48,21 @@ public class DatabaseConnection {
         }
         catch (NullPointerException exception) {
             Logger.getInstance().PrintError(
+                    this.getClass().getName(),
                     "Executing an SQL Query",
                     DatabaseConstant.CONNECTION_NOT_AVAILABLE.toString(),
                     "Ensure that there is a Connection Available");
         }
         catch (SQLTimeoutException exception) {
             Logger.getInstance().PrintError(
+                    this.getClass().getName(),
                     "Executing an SQL Query",
                     DatabaseConstant.CONNECTION_TIMEOUT.toString(),
                     "Ensure that the Connection is Active");
         }
         catch (SQLException exception) {
             Logger.getInstance().PrintError(
+                    this.getClass().getName(),
                     "Executing an SQL Query",
                     DatabaseConstant.DATABASE_NOT_ACCESSIBLE.toString(),
                     "Ensure that the Connection is Active");
@@ -72,18 +77,21 @@ public class DatabaseConnection {
         }
         catch (NullPointerException exception) {
             Logger.getInstance().PrintError(
+                    this.getClass().getName(),
                     "Executing an SQL Query",
                     DatabaseConstant.CONNECTION_NOT_AVAILABLE.toString(),
                     "Ensure that there is a Connection Available");
         }
         catch (SQLTimeoutException exception) {
             Logger.getInstance().PrintError(
+                    this.getClass().getName(),
                     "Executing an SQL Query",
                     DatabaseConstant.CONNECTION_TIMEOUT.toString(),
                     "Ensure that the Connection is Active");
         }
         catch (SQLException exception) {
             Logger.getInstance().PrintError(
+                    this.getClass().getName(),
                     "Executing an SQL Query",
                     DatabaseConstant.DATABASE_NOT_ACCESSIBLE.toString(),
                     "Ensure that the Connection is Active");
@@ -99,6 +107,7 @@ public class DatabaseConnection {
         }
         catch (SQLException exception) {
             Logger.getInstance().PrintError(
+                    this.getClass().getName(),
                     "Closing Database Connection",
                     DatabaseConstant.CONNECTION_CLOSE_ERROR.toString(),
                     "Ensure that the Connection is Active.");
@@ -111,6 +120,7 @@ public class DatabaseConnection {
         }
         catch (ClassNotFoundException exception) {
             Logger.getInstance().PrintError(
+                    this.getClass().getName(),
                     "Loading MySQL Driver",
                     DatabaseConstant.DRIVER_NOT_FOUND.toString(),
                     "Ensure the availability of the MySQL Connector Dependency");

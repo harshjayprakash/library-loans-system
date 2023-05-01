@@ -33,6 +33,7 @@ public final class StylesheetRegistry {
         }
         catch (NullPointerException exception) {
             Logger.getInstance().PrintError(
+                    this.getClass().getName(),
                     String.format("Loading Stylesheet '%s'", path),
                     "Stylesheet Not Found",
                     "Ensure availability of stylesheet");
