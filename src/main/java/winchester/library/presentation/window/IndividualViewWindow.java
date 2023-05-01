@@ -37,7 +37,11 @@ public final class IndividualViewWindow extends WindowBase {
     }
 
     public IndividualViewWindow(Views windowContentView, Employee employee) {
-        this(windowContentView, employee, null);
+        this(windowContentView, employee, null, null);
+    }
+
+    public IndividualViewWindow(Views windowContentView, Loan loan) {
+        this(windowContentView, null, null, loan);
     }
 
     public IndividualViewWindow(Views windowContentView) {
