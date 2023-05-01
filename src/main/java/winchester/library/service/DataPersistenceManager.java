@@ -11,6 +11,7 @@ import winchester.library.data.model.users.Administrator;
 import winchester.library.data.model.users.Customer;
 import winchester.library.data.model.users.Employee;
 import winchester.library.data.model.users.EmployeeStatus;
+import winchester.library.data.model.users.UserType;
 
 /**
  * A class that provides an abstraction to the database operations for the graphical user interface.
