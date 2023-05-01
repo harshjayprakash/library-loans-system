@@ -47,7 +47,7 @@ public class DataWriter {
         Optional<Integer> userInsertResult = connection.executeUpdate(
                 QueryBuilder.createQuery(QueryType.INSERT_ONE)
                         .insertInto("library.users")
-                        .values(String.format("(%d, %d, %s, %s, %s)",
+                        .values(String.format("(%d, %d, '%s', '%s', '%s')",
                                 administrator.getIdentifier(), administrator.getType().getIdentifier(), administrator.getFirstName(),
                                 administrator.getLastName(), administrator.getPostalCode())));
         if (userInsertResult.isEmpty()) {
@@ -56,7 +56,7 @@ public class DataWriter {
         Optional<Integer> employeeInsertResult = connection.executeUpdate(
                 QueryBuilder.createQuery(QueryType.INSERT_ONE)
                         .insertInto("library.employees (user_id, username, password, status_id)")
-                        .values(String.format("(%d, %s, %s, %d)",
+                        .values(String.format("(%d, '%s', '%s', %d)",
                                 administrator.getIdentifier(), administrator.getUsername(), administrator.getPassword(),
                                 administrator.getStatus().getIdentifier()))
         );
