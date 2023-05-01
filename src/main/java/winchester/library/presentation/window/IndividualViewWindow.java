@@ -2,6 +2,7 @@ package winchester.library.presentation.window;
 
 import javafx.geometry.Insets;
 import winchester.library.data.model.items.Item;
+import winchester.library.data.model.loans.Loan;
 import winchester.library.data.model.users.Employee;
 import winchester.library.presentation.component.pane.HeaderPane;
 import winchester.library.presentation.view.Views;
@@ -16,7 +17,7 @@ public final class IndividualViewWindow extends WindowBase {
     private Employee employee;
     private Loan loan;
 
-    public IndividualViewWindow(Views windowContentView, Employee employee, Item item) {
+    public IndividualViewWindow(Views windowContentView, Employee employee, Item item, Loan loan) {
         super();
         this.windowContentView = windowContentView;
         this.employee = employee;
@@ -27,8 +28,12 @@ public final class IndividualViewWindow extends WindowBase {
         this.addComponentsToStage();
     }
 
+    public IndividualViewWindow(Views windowContentView, Employee employee, Item item) {
+        this(windowContentView, employee, item, null);
+    }
+
     public IndividualViewWindow(Views windowContentView, Item item) {
-        this(windowContentView, null, item);
+        this(windowContentView, null, item, null);
     }
 
     public IndividualViewWindow(Views windowContentView, Employee employee) {
@@ -36,7 +41,11 @@ public final class IndividualViewWindow extends WindowBase {
     }
 
     public IndividualViewWindow(Views windowContentView) {
-        this(windowContentView, null, null);
+        this(windowContentView, null, null, null);
+    }
+
+    public HeaderPane getHeader() {
+        return this.header;
     }
 
     private void initialiseLayouts() {
@@ -56,7 +65,7 @@ public final class IndividualViewWindow extends WindowBase {
 
     @Override
     protected void addComponentsToStage() {
-        this.viewsManager.showView(this.windowContentView, this, this.employee, this.item);
+        this.viewsManager.showView(this.windowContentView, this, this.employee, this.item, this.loan);
         this.baseLayout.setTop(this.header);
         this.baseLayout.setCenter(this.viewsManager);
     }
