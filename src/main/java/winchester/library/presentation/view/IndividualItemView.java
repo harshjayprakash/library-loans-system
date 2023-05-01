@@ -117,25 +117,23 @@ public final class IndividualItemView extends View {
     }
 
     private void initialiseConstraints() {
-        GridPane.setConstraints(
-                this.itemFormatLabel, 1, 1, 1, 1,
-                HPos.LEFT, VPos.CENTER, Priority.SOMETIMES, Priority.SOMETIMES, new Insets(3));
-        GridPane.setConstraints(
-                this.itemStockAvailableLabel, 2, 1, 1, 1,
-                HPos.LEFT, VPos.CENTER, Priority.SOMETIMES, Priority.SOMETIMES, new Insets(3));
-        GridPane.setConstraints(
-                this.itemOnLoanLabel, 3, 1, 1, 1,
-                HPos.LEFT, VPos.CENTER, Priority.SOMETIMES, Priority.SOMETIMES, new Insets(3));
+        HPos horizontalAlign = HPos.LEFT;
+        VPos verticalAlign = VPos.CENTER;
+        Priority resizePriority = Priority.SOMETIMES;
+        Insets padding = new Insets(3);
+        GridPane.setConstraints(this.itemFormatLabel, 1, 1, 1, 1,
+                horizontalAlign, verticalAlign, resizePriority, resizePriority, padding);
+        GridPane.setConstraints(this.itemStockAvailableLabel, 2, 1, 1, 1,
+                horizontalAlign, verticalAlign, resizePriority, resizePriority, padding);
+        GridPane.setConstraints(this.itemOnLoanLabel, 3, 1, 1, 1,
+                horizontalAlign, verticalAlign, resizePriority, resizePriority, padding);
         for (int i = 0; i < this.referencedItem.getStockAvailable().size(); i++) {
-            GridPane.setConstraints(
-                    this.itemFormatLabelList.get(i), 1, i+2, 1, 1,
-                    HPos.LEFT, VPos.CENTER, Priority.SOMETIMES, Priority.SOMETIMES, new Insets(3));
-            GridPane.setConstraints(
-                    this.itemStockAvailableLLabelList.get(i), 2, i+2, 1, 1,
-                    HPos.LEFT, VPos.CENTER, Priority.SOMETIMES, Priority.SOMETIMES, new Insets(3));
-            GridPane.setConstraints(
-                    this.itemOnLoanLabelList.get(i), 3, i+2, 1, 1,
-                    HPos.LEFT, VPos.CENTER, Priority.SOMETIMES, Priority.SOMETIMES, new Insets(3));
+            GridPane.setConstraints(this.itemFormatLabelList.get(i), 1, i+2, 1, 1,
+                    horizontalAlign, verticalAlign, resizePriority, resizePriority, padding);
+            GridPane.setConstraints(this.itemStockAvailableLLabelList.get(i), 2, i+2, 1, 1,
+                    horizontalAlign, verticalAlign, resizePriority, resizePriority, padding);
+            GridPane.setConstraints(this.itemOnLoanLabelList.get(i), 3, i+2, 1, 1,
+                    horizontalAlign, verticalAlign, resizePriority, resizePriority, padding);
         }
     }
 
