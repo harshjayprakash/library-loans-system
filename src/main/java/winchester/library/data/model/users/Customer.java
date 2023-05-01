@@ -48,9 +48,4 @@ public class Customer extends User  {
                 Loans: null
                """.formatted(super.toString(), this.getType().toString(), this.getOverdueFeesAsPounds());
     }
-
-    @Override
-    public UserType getType() {
-        return UserType.CUSTOMER;
-    }
 }

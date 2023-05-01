@@ -17,11 +17,6 @@ public class Administrator extends Employee implements UserManagement {
     }
 
     @Override
-    public UserType getType() {
-        return UserType.ADMINISTRATOR;
-    }
-
-    @Override
     public void addUser() {
 
     }
