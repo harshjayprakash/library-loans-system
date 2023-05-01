@@ -12,4 +12,17 @@ public class Searcher {
 
     }
 
+    public Item searchItemFromIdentifier(String identifier) {
+        AtomicReference<Item> searchedItem = new AtomicReference<>();
+        DataPersistenceManager.getInstance().getBooks()
+                .stream()
+                .filter(book -> book.getIsbn().equals(identifier))
+                .forEach(searchedItem::set);
+        DataPersistenceManager.getInstance().getFilms()
+                .stream()
+                .filter(film -> film.getIdentifier().equals(identifier))
+                .forEach(searchedItem::set);
+        return searchedItem.get();
+    }
+
 }
