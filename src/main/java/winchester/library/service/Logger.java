@@ -7,9 +7,11 @@ public final class Logger {
 
     private static Logger instance = null;
     private boolean enabled;
+    private boolean whereEnabled;
 
     private Logger() {
         this.enabled = true;
+        this.whereEnabled = false;
     }
 
     public static Logger getInstance() {
