@@ -37,10 +37,10 @@ public final class Logger {
         if (!this.isEnabled()) { return; }
         System.err.printf(
                 """
-                Context: %s
+                %sContext: %s
                 Problem: %s
                 Solution: %s%n
-                """, context, problem, solution);
+                """, (this.whereEnabled) ? String.format("Where: %s%n", where) : "", context, problem, solution);
     }
 
 }
