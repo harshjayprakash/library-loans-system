@@ -29,7 +29,11 @@ public final class Logger {
         this.enabled = enabled;
     }
 
-    public void PrintError(String context, String problem, String solution) {
+    public void setWhereEnabled(boolean enabled) {
+        this.whereEnabled = enabled;
+    }
+
+    public void PrintError(String where, String context, String problem, String solution) {
         if (!this.isEnabled()) { return; }
         System.err.printf(
                 """
