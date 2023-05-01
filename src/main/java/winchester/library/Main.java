@@ -15,6 +15,7 @@ public final class Main extends Application {
     @Override
     public void start(Stage stage) {
         Logger.getInstance().setEnabled(true);
+        Logger.getInstance().setWhereEnabled(true);
         StylesheetRegistry.getInstance().addMultipleStylesheets(
                 "/winchester/library/presentation/style/base.css",
                 "/winchester/library/presentation/style/components.css",
