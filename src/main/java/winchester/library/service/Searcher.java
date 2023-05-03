@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.concurrent.atomic.AtomicReference;
 import winchester.library.data.model.items.Item;
 import winchester.library.data.model.users.Customer;
+import winchester.library.data.model.users.Employee;
 
 /**
  * A class that searches through lists of entities.
@@ -35,6 +36,15 @@ public class Searcher {
             }
         }
         return customers;
+    }
+
+    public ArrayList<Employee> searchEmployees(String name) {
+        ArrayList<Employee> employees = new ArrayList<>();
+        DataPersistenceManager.getInstance().getEmployees()
+                .stream()
+                .filter(employee -> employee.getFullName().contains(name))
+                .forEach(employees::add);
+        return employees;
     }
 
 }
