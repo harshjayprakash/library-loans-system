@@ -5,8 +5,8 @@ import javafx.scene.control.ScrollPane;
 import javafx.scene.layout.VBox;
 import winchester.library.data.model.items.Book;
 import winchester.library.data.model.items.Film;
-import winchester.library.presentation.component.Banner;
 import winchester.library.presentation.component.card.ItemCard;
+import winchester.library.presentation.component.pane.BannerPane;
 import winchester.library.presentation.window.WindowBase;
 import winchester.library.service.DataPersistenceManager;
 
@@ -15,7 +15,7 @@ public final class InventoryView extends View {
     private ScrollPane scrollPane;
     private VBox itemsList;
     private ArrayList<ItemCard> items;
-    private Banner banner;
+    private BannerPane banner;
 
     public InventoryView(WindowBase parentWindow) {
         super(parentWindow, Views.INVENTORY.toString());
@@ -39,7 +39,7 @@ public final class InventoryView extends View {
     protected void initialiseControls() {
         ArrayList<Book> books = DataPersistenceManager.getInstance().getBooks();
         if (books.isEmpty()) {
-            this.banner = new Banner(
+            this.banner = new BannerPane(
                 "Data is not accessible", 
                 "Please check the database configuration by clicking on the database status on the bottom right hand "
                 + "corner.");
