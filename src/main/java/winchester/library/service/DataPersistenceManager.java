@@ -60,7 +60,10 @@ public final class DataPersistenceManager {
             case ADMINISTRATOR -> dataWriter.insert(new Administrator(new IdentifierGenerator().generateForUser(), firstName, lastName, postalCode, username, password, EmployeeStatus.NOT_APPROVED));
             default -> DatabaseConstant.INSERTION_ERROR;
         } == DatabaseConstant.INSERTION_SUCCESSFUL;
+    }
 
+    public boolean createCustomer(String firstName, String lastName, String postalCode) {
+        return dataWriter.insert(new Customer(new IdentifierGenerator().generateForUser(), firstName, lastName, postalCode)) == DatabaseConstant.INSERTION_SUCCESSFUL;
     }
 
 }
