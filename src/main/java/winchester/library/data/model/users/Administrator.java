@@ -5,9 +5,9 @@ package winchester.library.data.model.users;
  */
 public class Administrator extends Employee implements UserManagement {
     
-    public Administrator(int identifier, UserType type, String firstName, String lastName, String postalCode, String username,
+    public Administrator(int identifier, String firstName, String lastName, String postalCode, String username,
                          String password, EmployeeStatus status) {
-        super(identifier, type, firstName, lastName, postalCode, username, password, status);
+        super(identifier, firstName, lastName, postalCode, username, password, status);
         this.type = UserType.ADMINISTRATOR;
     }
 
@@ -17,17 +17,12 @@ public class Administrator extends Employee implements UserManagement {
     }
 
     @Override
-    public void addUser() {
-
+    public void approveUser(Employee employee) {
+        employee.setStatus(EmployeeStatus.ACTIVE);
     }
 
     @Override
-    public void removeUser() {
-
-    }
-
-    @Override
-    public void approveUser() {
-
+    public void disableUser(Employee employee) {
+        employee.setStatus(EmployeeStatus.DISABLED);
     }
 }
