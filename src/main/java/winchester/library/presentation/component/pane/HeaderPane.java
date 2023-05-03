@@ -12,20 +12,15 @@ import winchester.library.presentation.view.Views;
 public final class HeaderPane extends VBox {
 
     private Views page;
-    private Views parentPage;
     private Label pageLabel;
-    private Label parentPageLabel;
 
-    public HeaderPane(Views page, Views parentPage) {
+    public HeaderPane(Views page) {
         super();
         this.page = page;
-        this.parentPage = parentPage;
-        this.getStyleClass().add("background-primary");
-        ComponentStyler.getInstance().setStyle(this);
-        this.setPadding(new Insets(0, 0, 10, 0));
-        this.initialiseControls();
-        this.addControlsToPane();
-        this.updateLabels();
+        this.initialiseLayout();
+        this.initialiseControl();
+        this.addControlToPane();
+        this.updateLabel();
     }
 
     public Views getPageTitle() {
@@ -34,34 +29,26 @@ public final class HeaderPane extends VBox {
 
     public void setPageTitle(Views page) {
         this.page = page;
-        this.updateLabels();
+        this.updateLabel();
     }
 
-    public Views getParentPageTitle() {
-        return this.parentPage;
+    private void initialiseLayout() {
+        ComponentStyler.getInstance().setStyle(this);
+        this.getStyleClass().add("background-primary");
+        this.setPadding(new Insets(0, 0, 10, 0));
     }
 
-    public void setParentPageLabel(Views parentPage) {
-        this.parentPage = parentPage;
-        this.updateLabels();
-    }
-
-    private void initialiseControls() {
+    private void initialiseControl() {
         this.pageLabel = new Label();
         this.pageLabel.setText(this.page.toString());
         this.pageLabel.setId("header__page-label");
-        this.parentPageLabel = new Label();
-        this.parentPageLabel.setText(this.parentPageLabel.toString());
     }
 
-    private void addControlsToPane() {
+    private void addControlToPane() {
         this.getChildren().add(this.pageLabel);
-        if (parentPage.toString().equals(Views.NONE.toString())) { return; }
-        this.getChildren().add(this.parentPageLabel);
     }
 
-    private void updateLabels() {
+    private void updateLabel() {
         this.pageLabel.setText(this.page.toString());
-        this.parentPageLabel.setText(this.parentPageLabel.toString());
     }
 }
