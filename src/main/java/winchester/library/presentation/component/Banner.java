@@ -8,6 +8,7 @@ import javafx.scene.layout.VBox;
 /**
  * A class that provides a control to display a message on a window.
  */
+@Deprecated
 public final class Banner extends VBox {
 
     private final String message;
