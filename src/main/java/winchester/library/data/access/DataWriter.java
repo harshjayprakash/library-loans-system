@@ -2,6 +2,7 @@ package winchester.library.data.access;
 
 import java.util.Optional;
 import winchester.library.data.model.users.Administrator;
+import winchester.library.data.model.users.Customer;
 import winchester.library.data.model.users.Employee;
 
 /**
@@ -61,6 +62,22 @@ public class DataWriter {
                                 administrator.getStatus().getIdentifier()))
         );
         if (employeeInsertResult.isEmpty()) {
+            return DatabaseConstant.INSERTION_ERROR;
+        }
+        connection.close();
+        return DatabaseConstant.INSERTION_SUCCESSFUL;
+    }
+
+    public DatabaseConstant insert(Customer customer) {
+        DatabaseConnection connection = new DatabaseConnection();
+        connection.establish(this.credentials);
+        Optional<Integer> userInsertResult = connection.executeUpdate(
+                QueryBuilder.createQuery(QueryType.INSERT_ONE)
+                        .insertInto("library.users")
+                        .values(String.format("(%d, %d, '%s', '%s', '%s')",
+                                customer.getIdentifier(), customer.getType().getIdentifier(), customer.getFirstName(),
+                                customer.getLastName(), customer.getPostalCode())));
+        if (userInsertResult.isEmpty()) {
             return DatabaseConstant.INSERTION_ERROR;
         }
         connection.close();
