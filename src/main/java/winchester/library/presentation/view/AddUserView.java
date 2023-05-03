@@ -2,12 +2,15 @@ package winchester.library.presentation.view;
 
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.HBox;
+import winchester.library.presentation.alert.AlertFactory;
 import winchester.library.presentation.window.WindowBase;
+import winchester.library.service.DataPersistenceManager;
 
 public final class AddUserView extends View {
 
@@ -24,6 +27,8 @@ public final class AddUserView extends View {
 
     public AddUserView(WindowBase parentWindow) {
         super(parentWindow, Views.ADD_USER.toString());
+        this.parentWindow.setWidth(400);
+        this.parentWindow.setHeight(350);
         this.initialiseLayouts();
         this.initialiseControls();
         this.bindEventHandlers();
@@ -58,6 +63,7 @@ public final class AddUserView extends View {
         this.cancelButton.setText("Cancel");
         this.createButton = new Button();
         this.createButton.setText("Create");
+        this.createButton.getStyleClass().add("button-accent");
     }
 
     private void bindEventHandlers() {
@@ -65,7 +71,19 @@ public final class AddUserView extends View {
             this.parentWindow.close();
         });
         this.createButton.addEventHandler(MouseEvent.MOUSE_CLICKED, event -> {
-
+            if (this.firstNameField.getText().isBlank() && this.lastNameField.getText().isBlank()
+                    && this.postalCodeField.getText().isBlank()) {
+                AlertFactory.createAlert(Alert.AlertType.ERROR, "Form is not complete.",
+                        "Please ensure that all fields have been filled out.").show();
+                return;
+            }
+            boolean success = DataPersistenceManager.getInstance().createCustomer(
+                    this.firstNameField.getText(), this.lastNameField.getText(), this.postalCodeField.getText());
+            if (!success) {
+                AlertFactory.createAlert(Alert.AlertType.ERROR, "Failed to create new customer.").show();
+                return;
+            }
+            AlertFactory.createAlert(Alert.AlertType.INFORMATION, "Successfully created new customer.").show();
         });
     }
 
