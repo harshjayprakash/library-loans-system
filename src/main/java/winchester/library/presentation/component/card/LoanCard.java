@@ -46,7 +46,8 @@ public final class LoanCard extends Card {
     @Override
     protected void bindEventHandlers() {
         this.viewDetailsLabel.addEventHandler(MouseEvent.MOUSE_CLICKED, event -> {
-            IndividualViewWindow individualItemView = new IndividualViewWindow(Views.INDIVIDUAL_LOAN, this.referencedLoan);
+            IndividualViewWindow individualItemView = new IndividualViewWindow(
+                    Views.INDIVIDUAL_LOAN, this.referencedLoan);
             individualItemView.show();
         });
     }
