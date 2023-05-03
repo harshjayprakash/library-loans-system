@@ -4,9 +4,14 @@ import javafx.geometry.Insets;
 import javafx.scene.control.Label;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.VBox;
+import winchester.library.data.model.items.Book;
+import winchester.library.data.model.items.Film;
+import winchester.library.data.model.items.Item;
+import winchester.library.data.model.items.ItemType;
 import winchester.library.data.model.loans.Loan;
 import winchester.library.presentation.view.Views;
 import winchester.library.presentation.window.IndividualViewWindow;
+import winchester.library.service.Searcher;
 
 /**
  * A class that provides a control to view loan information.
@@ -16,6 +21,9 @@ public final class LoanCard extends Card {
     private VBox loanInformation;
     private Label loanIdentifierLabel;
     private Label customerNameLabel;
+    private Label itemTitleLabel;
+    private Label itemFormatLabel;
+    private Label itemReturnDueLabel;
     private final Loan referencedLoan;
 
     public LoanCard(Loan loan) {
@@ -39,8 +47,22 @@ public final class LoanCard extends Card {
         this.loanIdentifierLabel = new Label();
         this.loanIdentifierLabel.getStyleClass().add("text-bold");
         this.loanIdentifierLabel.setText(String.valueOf(this.referencedLoan.getIdentifier()));
+        this.itemTitleLabel = new Label();
+        Item referencedItem = new Searcher().searchItemFromIdentifier(this.referencedLoan.getLoanedItemIdentifier());
+        if (referencedItem.getType() == ItemType.BOOK) {
+            this.itemTitleLabel.setText(String.format("Title : %s", Book.castFrom(referencedItem).getTitle()));
+        }
+        else if (referencedItem.getType() == ItemType.FILM) {
+            this.itemTitleLabel.setText(String.format("Title : %s", Film.castFrom(referencedItem).getTitle()));
+        }
+        this.itemFormatLabel = new Label();
+        this.itemFormatLabel.setText(
+                String.format("Format : %s", this.referencedLoan.getLoanedItemFormat().toString()));
+        this.itemReturnDueLabel = new Label();
+        this.itemReturnDueLabel.setText(String.format("Due Date : %s", this.referencedLoan.getDueDate().toString()));
         this.customerNameLabel = new Label();
-        this.customerNameLabel.setText(this.referencedLoan.getCustomer().getFullName());
+        this.customerNameLabel.setText(
+                String.format("Customer : %s", this.referencedLoan.getCustomer().getFullName()));
     }
 
     @Override
@@ -54,7 +76,8 @@ public final class LoanCard extends Card {
 
     @Override
     protected void addComponentsToCard() {
-        this.loanInformation.getChildren().addAll(this.loanIdentifierLabel, this.customerNameLabel);
+        this.loanInformation.getChildren().addAll(this.loanIdentifierLabel, this.customerNameLabel, this.itemTitleLabel,
+                this.itemFormatLabel, this.itemReturnDueLabel);
         this.setCenter(this.loanInformation);
     }
 }
