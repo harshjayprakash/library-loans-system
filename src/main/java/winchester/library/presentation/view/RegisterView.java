@@ -148,7 +148,7 @@ public final class RegisterView extends View {
                         "This username already exists in the system.", "Please choose another username").show();
                 return;
             }
-            DataPersistenceManager.getInstance().createUser(
+            boolean success = DataPersistenceManager.getInstance().createUser(
                     (this.accountTypeComboBox.getValue().equals(UserType.ADMINISTRATOR.toString()))
                             ? UserType.ADMINISTRATOR : UserType.STANDARD,
                     this.firstNameField.getText(),
@@ -156,6 +156,11 @@ public final class RegisterView extends View {
                     this.postalCodeField.getText(),
                     this.usernameField.getText(),
                     this.passwordField.getText());
+            if (!success) {
+                AlertFactory.createAlert(Alert.AlertType.ERROR, "Failed to register user to the system",
+                        "Please check your connection and try again.").show();
+                return;
+            }
             AlertFactory.createAlert(Alert.AlertType.INFORMATION, "Thank you for registering",
                     "An administrator will need to approve your account before you can use it.\n"
                     +"Thank you for your patience").show();
