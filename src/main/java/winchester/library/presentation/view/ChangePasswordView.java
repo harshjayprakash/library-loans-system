@@ -34,6 +34,8 @@ public final class ChangePasswordView extends View {
     public ChangePasswordView(WindowBase parentWindow, Employee employee) {
         super(parentWindow, Views.CHANGE_PASSWORD.toString());
         this.currentEmployee = employee;
+        this.parentWindow.setWidth(500);
+        this.parentWindow.setHeight(520);
         this.passwordPolicyManager = new PasswordValidator();
         this.initialiseLayouts();
         this.initialiseControls();
@@ -79,6 +81,7 @@ public final class ChangePasswordView extends View {
         this.cancelButton.setText("Cancel");
         this.changePasswordButton = new Button();
         this.changePasswordButton.setText("Change Password");
+        this.changePasswordButton.getStyleClass().add("button-accent");
         HBox.setMargin(this.changePasswordButton, new Insets(0, 0, 0, 10));
     }
 
