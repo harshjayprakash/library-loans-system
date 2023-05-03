@@ -30,11 +30,10 @@ public class Searcher {
 
     public ArrayList<Customer> searchCustomers(String name) {
         ArrayList<Customer> customers = new ArrayList<>();
-        for (Customer customer : DataPersistenceManager.getInstance().getCustomers()) {
-            if (customer.getFullName().contains(name)) {
-                customers.add(customer);
-            }
-        }
+        DataPersistenceManager.getInstance().getCustomers()
+                .stream()
+                .filter(customer -> customer.getFullName().toLowerCase().contains(name.toLowerCase()))
+                .forEach(customers::add);
         return customers;
     }
 
