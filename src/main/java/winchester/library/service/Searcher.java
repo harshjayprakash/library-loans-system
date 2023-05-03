@@ -41,7 +41,7 @@ public class Searcher {
         ArrayList<Employee> employees = new ArrayList<>();
         DataPersistenceManager.getInstance().getEmployees()
                 .stream()
-                .filter(employee -> employee.getFullName().contains(name))
+                .filter(employee -> employee.getFullName().toLowerCase().contains(name.toLowerCase()))
                 .forEach(employees::add);
         return employees;
     }
