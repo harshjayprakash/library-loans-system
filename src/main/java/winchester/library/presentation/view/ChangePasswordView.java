@@ -28,7 +28,7 @@ public final class ChangePasswordView extends View {
     private PasswordField confirmNewPasswordField;
     private Button cancelButton;
     private Button changePasswordButton;
-    private Employee currentEmployee;
+    private final Employee currentEmployee;
     private final PasswordValidator passwordPolicyManager;
 
     public ChangePasswordView(WindowBase parentWindow, Employee employee) {
