@@ -1,9 +1,5 @@
 package winchester.library.data.access;
 
-import winchester.library.data.model.items.Item;
-import winchester.library.data.model.loans.Loan;
-import winchester.library.data.model.users.Employee;
-
 /**
  * A combination of a factory and builder to create a sql query.
  */
