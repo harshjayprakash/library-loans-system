@@ -56,8 +56,8 @@ public final class DataPersistenceManager {
 
     public boolean createUser(UserType userType, String firstName, String lastName, String postalCode, String username, String password) {
         return switch (userType) {
-            case STANDARD -> dataWriter.insert(new Employee(new IdentifierGenerator().generateForUser(), userType, firstName, lastName, postalCode, username, password, EmployeeStatus.NOT_APPROVED));
-            case ADMINISTRATOR -> dataWriter.insert(new Administrator(new IdentifierGenerator().generateForUser(), userType, firstName, lastName, postalCode, username, password, EmployeeStatus.NOT_APPROVED));
+            case STANDARD -> dataWriter.insert(new Employee(new IdentifierGenerator().generateForUser(), firstName, lastName, postalCode, username, password, EmployeeStatus.NOT_APPROVED));
+            case ADMINISTRATOR -> dataWriter.insert(new Administrator(new IdentifierGenerator().generateForUser(), firstName, lastName, postalCode, username, password, EmployeeStatus.NOT_APPROVED));
             default -> DatabaseConstant.INSERTION_ERROR;
         } == DatabaseConstant.INSERTION_SUCCESSFUL;
 
