@@ -15,7 +15,6 @@ public final class UserCard extends Card {
 
     private VBox userDetails;
     private Label nameLabel;
-    private Label usernameLabel;
     private Label accountTypeLabel;
     private Label accountStatusLabel;
     private User referencedUser;
@@ -41,8 +40,6 @@ public final class UserCard extends Card {
         this.nameLabel = new Label();
         this.nameLabel.setText(this.referencedUser.getFullName());
         if (this.referencedUser.getType() != UserType.CUSTOMER) {
-            this.usernameLabel = new Label();
-            this.usernameLabel.setText(Employee.castFrom(this.referencedUser).getUsername());
             this.accountTypeLabel = new Label();
             this.accountTypeLabel.setText("Account Type: " + this.referencedUser.getType().toString());
             this.accountStatusLabel = new Label();
@@ -69,7 +66,7 @@ public final class UserCard extends Card {
     protected void addComponentsToCard() {
         this.userDetails.getChildren().add(this.nameLabel);
         if (this.referencedUser.getType() != UserType.CUSTOMER) {
-            this.userDetails.getChildren().addAll(this.usernameLabel, this.accountTypeLabel, this.accountStatusLabel);
+            this.userDetails.getChildren().addAll(this.accountTypeLabel, this.accountStatusLabel);
         }
         this.setCenter(this.userDetails);
     }
