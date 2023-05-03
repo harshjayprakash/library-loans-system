@@ -4,9 +4,7 @@ import javafx.geometry.Insets;
 import javafx.scene.control.Label;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.VBox;
-import winchester.library.data.model.users.Employee;
-import winchester.library.data.model.users.User;
-import winchester.library.data.model.users.UserType;
+import winchester.library.data.model.users.*;
 import winchester.library.presentation.view.Views;
 import winchester.library.presentation.window.IndividualViewWindow;
 
@@ -61,7 +59,8 @@ public final class UserCard extends Card {
                         case CUSTOMER -> Views.INDIVIDUAL_CUSTOMER;
                         case STANDARD, ADMINISTRATOR -> Views.INDIVIDUAL_EMPLOYEE;
                         default -> Views.NONE;
-                    });
+                    },
+                    this.referencedUser);
             individualCustomerView.show();
         });
     }
