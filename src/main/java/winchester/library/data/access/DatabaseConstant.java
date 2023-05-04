@@ -19,11 +19,22 @@ public enum DatabaseConstant {
     private final int identifier;
     private final String value;
 
+    /**
+     * A constructor that allows extra information to be stored in this enumeration such as an identifier and string
+     * value.
+     * @param identifier a message identifier to refer to.
+     * @param value a string version of the enumeration constant.
+     */
     DatabaseConstant(int identifier, String value) {
         this.identifier = identifier;
         this.value = value;
     }
 
+    /**
+     * A static method that allows the ability to get the enumeration constant from the identifier.
+     * @param identifier the identifier to find the DatabaseConstant enumeration
+     * @return the DatabaseConstant equivalent to the inputted identifier.
+     */
     public static DatabaseConstant getFromIdentifier(int identifier) {
         for (DatabaseConstant constant : DatabaseConstant.values()) {
             if (constant.identifier == identifier) {
@@ -33,10 +44,18 @@ public enum DatabaseConstant {
         return UNKNOWN_ERROR;
     }
 
+    /**
+     * An accessor to retrieve the identifier.
+     * @return the DatabaseConstant identifier.
+     */
     public int getIdentifier() {
         return this.identifier;
     }
 
+    /**
+     * An accessor to retrieve the string value of the constant.
+     * @return the string value of the DatabaseConstant.
+     */
     @Override
     public String toString() {
         return this.value;
