@@ -11,14 +11,22 @@ import winchester.library.service.Logger;
 
 /**
  * A class that encapsulates the database connection separating each operation into callable functions that have
- * exception handling, written to the standard error stream.
+ * exception handling, written to the standard error stream. This class cannot be extended due to being marked as final.
  */
-public class DatabaseConnection {
+public final class DatabaseConnection {
 
     private Connection connection;
 
+    /**
+     * The default constructor.
+     */
     public DatabaseConnection() { }
 
+    /**
+     * This method creates a connection to the database based on the credentials provided. It handles the
+     * SQLTimeoutException and SQLException, printing a message to the standard error stream.
+     * @param credentials takes in the database credentials in the form of the DatabaseCredentials class.
+     */
     public void establish(DatabaseCredentials credentials) {
         try {
             this.loadDriver();
@@ -41,6 +49,13 @@ public class DatabaseConnection {
         }
     }
 
+    /**
+     * This method runs a sql query to get information from a data source. It handles the NullPointerException,
+     * SQLTimeoutException and SQLException printing an error to the standard error stream.
+     * @param sql a sql statement in the form of the QueryBuilder class.
+     * @return an optional version of the ResultSet interface that contains the data fetched from the database or empty
+     * if an exception has been thrown.
+     */
     public Optional<ResultSet> executeQuery(QueryBuilder sql) {
         try {
             PreparedStatement statement = this.connection.prepareStatement(sql.toString());
@@ -70,6 +85,13 @@ public class DatabaseConnection {
         return Optional.empty();
     }
 
+    /**
+     * This method runs a sql query to update or add records to the data source.It handles the NullPointerException,
+     * SQLTimeoutException and SQLException printing an error to the standard error stream
+     * @param sql a sql statement in the form of the QueryBuilder class.
+     * @return an optional integer that is either the row count or 0 if the statement returns nothing. An optional of
+     * empty is returned if an exception is thrown.
+     */
     public Optional<Integer> executeUpdate(QueryBuilder sql) {
         try {
             PreparedStatement statement = this.connection.prepareStatement(sql.toString());
@@ -99,6 +121,10 @@ public class DatabaseConnection {
         return Optional.empty();
     }
 
+    /**
+     * This method closes the connection to the data source, handing an SQLException by printing to the standard error
+     * stream.
+     */
     public void close() {
         try {
             if (this.connection != null) {
@@ -114,6 +140,9 @@ public class DatabaseConnection {
         }
     }
 
+    /**
+     * This method loads the JDBC MySQL driver.
+     */
     private void loadDriver() {
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
