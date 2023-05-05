@@ -9,6 +9,10 @@ import winchester.library.data.model.users.UserType;
  */
 @Deprecated
 public class DemoAccount {
+    /**
+     * A static accessor get a new instance of a demo employee.
+     * @return an employee instance.
+     */
     public static Employee get() {
         return new Employee(0, "Demo", "Account", "AB123CD", "Username", "Password", EmployeeStatus.ACTIVE);
     }
