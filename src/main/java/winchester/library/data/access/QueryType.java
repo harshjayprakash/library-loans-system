@@ -15,10 +15,18 @@ public enum QueryType {
 
     private final String queryFormat;
 
+    /**
+     * A constructor to provide additional information to the enumeration values such as the sql format string.
+     * @param queryFormat the query format for each constant.
+     */
     QueryType(String queryFormat) {
         this.queryFormat = queryFormat;
     }
 
+    /**
+     * An accessor for the query format specified as a string.
+     * @return the query format.
+     */
     public String getQueryFormat() {
         return this.queryFormat;
     }
