@@ -18,11 +18,21 @@ public enum ItemFormat {
     private final int identifier;
     private final String value;
 
+    /**
+     * A constructor to provide more information such as an identifier and a string value.
+     * @param identifier an identifier that can be referred to.
+     * @param value a string value of the constant.
+     */
     ItemFormat(int identifier, String value) {
         this.identifier = identifier;
         this.value = value;
     }
 
+    /**
+     * A method to find the ItemFormat constant based on the identifier.
+     * @param identifier the identifier of the ItemFormat to be found.
+     * @return an optional of ItemFormat if it corresponds to a constant or empty if not.
+     */
     public static Optional<ItemFormat> fromIdentifier(int identifier) {
         for (ItemFormat format : ItemFormat.values()) {
             if (format.identifier == identifier) {
@@ -32,10 +42,18 @@ public enum ItemFormat {
         return Optional.empty();
     }
 
+    /**
+     * An accessor to retrieve the identifier of the ItemFormat constant.
+     * @return the identifier of the ItemFormat constant.
+     */
     public int getIdentifier() {
         return this.identifier;
     }
 
+    /**
+     * An accessor to retrieve the corresponding string value assigned to the ItemFormat.
+     * @return the string value associated to the constant.
+     */
     @Override
     public String toString() {
         return this.value;
