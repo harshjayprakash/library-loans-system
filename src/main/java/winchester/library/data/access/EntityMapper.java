@@ -13,7 +13,11 @@ import winchester.library.data.model.items.ItemFormat;
 import winchester.library.data.model.items.ItemStock;
 import winchester.library.data.model.items.ItemType;
 import winchester.library.data.model.loans.Loan;
-import winchester.library.data.model.users.*;
+import winchester.library.data.model.users.Administrator;
+import winchester.library.data.model.users.Customer;
+import winchester.library.data.model.users.Employee;
+import winchester.library.data.model.users.EmployeeStatus;
+import winchester.library.data.model.users.UserType;
 import winchester.library.service.Logger;
 
 /**
@@ -22,8 +26,18 @@ import winchester.library.service.Logger;
  */
 public class EntityMapper {
 
+    /**
+     * The default constructor
+     */
     public EntityMapper() { }
 
+    /**
+     * A private method to take the mapped data and add it to an ArrayList of type T.
+     * @param data the ResultSet from the database operation.
+     * @param mapFunction a function that has the functionality of mapping a single record to a class of type T.
+     * @return an optional array list of the type specified as type T or empty if an exception is thrown.
+     * @param <T> a generic type that is specified when used.
+     */
     private <T> Optional<ArrayList<T>> mapToList(ResultSet data, Function<ResultSet, T> mapFunction) {
         ArrayList<T> entityList = new ArrayList<>();
         try {
@@ -59,6 +73,11 @@ public class EntityMapper {
         return Optional.empty();
     }
 
+    /**
+     * A method to retrieve a mapped list of the Book class.
+     * @param data the ResultSet from the database operation.
+     * @return an optional array list of books or empty if an exception has been thrown.
+     */
     public Optional<ArrayList<Book>> mapAsBooks(ResultSet data) {
         return this.mapToList(data, result -> {
             try {
@@ -78,6 +97,11 @@ public class EntityMapper {
         });
     }
 
+    /**
+     * A method to retrieve a mapped list of the Film class.
+     * @param data the ResultSet from the database operation.
+     * @return an optional array list of films or empty if an exception has been thrown.
+     */
     public Optional<ArrayList<Film>> mapAsFilms(ResultSet data) {
         return this.mapToList(data, result -> {
             try {
@@ -97,6 +121,11 @@ public class EntityMapper {
         });
     }
 
+    /**
+     * A method to retrieve a mapped list of the Customer class.
+     * @param data the ResultSet from the database operation.
+     * @return an optional array list of customers or empty if an exception has been thrown.
+     */
     public Optional<ArrayList<Customer>> mapAsCustomers(ResultSet data) {
         return this.mapToList(data, result -> {
             try {
@@ -115,6 +144,11 @@ public class EntityMapper {
         });
     }
 
+    /**
+     * A method to retrieve a mapped list of the ItemStock class.
+     * @param data the ResultSet from the database operation.
+     * @return an optional array list of the item stock or empty if an exception has been thrown.
+     */
     public Optional<ArrayList<ItemStock>> mapAsItemStock(ResultSet data, ItemType type) {
         return this.mapToList(data, result -> {
             try {
@@ -138,6 +172,11 @@ public class EntityMapper {
         });
     }
 
+    /**
+     * A method to retrieve a mapped list of the Employee class.
+     * @param data the ResultSet from the database operation.
+     * @return an optional array list of employees or empty if an exception has been thrown.
+     */
     public Optional<ArrayList<Employee>> mapAsEmployee(ResultSet data) {
         return this.mapToList(data, result -> {
             try {
@@ -163,6 +202,11 @@ public class EntityMapper {
         });
     }
 
+    /**
+     * A method to retrieve a mapped list of the Loan class.
+     * @param data the ResultSet from the database operation.
+     * @return an optional array list of loans or empty if an exception has been thrown.
+     */
     public Optional<ArrayList<Loan>> mapAsLoans(ResultSet data) {
         return this.mapToList(data, result -> {
             try {
