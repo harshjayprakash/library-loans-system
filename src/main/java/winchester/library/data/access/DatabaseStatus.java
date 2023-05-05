@@ -10,15 +10,29 @@ public enum DatabaseStatus {
     private final int identifier;
     private final String value;
 
+    /**
+     * A constructor that allows extra information to be stored in this enumeration such as an identifier and string
+     * value.
+     * @param identifier the identifier.
+     * @param value an equivalent string value.
+     */
     DatabaseStatus(int identifier, String value) {
         this.identifier = identifier;
         this.value = value;
     }
 
+    /**
+     * An accessor that retrieves the identifier corresponding to the constant.
+     * @return the identifier corresponding to the constant.
+     */
     public int getIdentifier() {
         return this.identifier;
     }
 
+    /**
+     * An accessor that retrieves the string value assigned to the constant
+     * @return the string value corresponding to the constant.
+     */
     @Override
     public String toString() {
         return this.value;
