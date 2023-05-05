@@ -10,18 +10,27 @@ import winchester.library.data.model.users.Customer;
 import winchester.library.data.model.users.Employee;
 
 /**
- * A class that abstracts the database connection and operations to get the list of entities.
+ * A class that abstracts the database connection and operations to get the list of entities. This class has been marked
+ * as final to prevent extension.
  */
-public class DataFetcher {
+public final class DataFetcher {
 
     private final DatabaseCredentials credentials;
     private final EntityMapper entityMapper;
 
+    /**
+     * The default constructor to get the credentials from the DatabaseCredentials class and initialise the
+     * EntityMapper.
+     */
     public DataFetcher() {
         this.credentials = DatabaseCredentials.getInstance();
         this.entityMapper = new EntityMapper();
     }
 
+    /**
+     * A method that fetches the books from the data source and map the data to the Book class.
+     * @return an array list of books.
+     */
     public ArrayList<Book> getBooks() {
         DatabaseConnection connection = new DatabaseConnection();
         connection.establish(this.credentials);
@@ -58,6 +67,10 @@ public class DataFetcher {
         return books;
     }
 
+    /**
+     * A method that fetches the films from the data source and map the data to the Film class.
+     * @return an array list of films
+     */
     public ArrayList<Film> getFilms() {
         DatabaseConnection connection = new DatabaseConnection();
         connection.establish(this.credentials);
@@ -94,6 +107,10 @@ public class DataFetcher {
         return films;
     }
 
+    /**
+     * A method that fetches the customers from the data source and map the data to the Customer class.
+     * @return an array list of customers.
+     */
     public ArrayList<Customer> getCustomers() {
         DatabaseConnection connection = new DatabaseConnection();
         connection.establish(this.credentials);
@@ -108,13 +125,17 @@ public class DataFetcher {
         return customers;
     }
 
+    /**
+     * A method that fetches the employees from the data source and map the data to the Employees class.
+     * @return an array list of employees
+     */
     public ArrayList<Employee> getEmployees() {
         DatabaseConnection connection = new DatabaseConnection();
         connection.establish(this.credentials);
         ArrayList<Employee> employees = this.entityMapper.mapAsEmployee(connection.executeQuery(
                 QueryBuilder.createQuery(QueryType.ORDERED_GET_AND_FILTER)
-                        .select("users.user_id", "users.user_type_id", "first_name", "last_name", "postal_code", "username", "password",
-                                "status_id")
+                        .select("users.user_id", "users.user_type_id", "first_name", "last_name", "postal_code",
+                                "username", "password", "status_id")
                         .from("library.users", "library.employees", "library.user_types")
                         .where("library.users.user_id = library.employees.user_id",
                                 "and library.user_types.user_type_id = library.users.user_type_id",
@@ -125,6 +146,10 @@ public class DataFetcher {
         return employees;
     }
 
+    /**
+     * A method that fetches the loans from the data source and map the data to the Loan class.
+     * @return an array list of loans.
+     */
     public ArrayList<Loan> getLoans() {
         DatabaseConnection connection = new DatabaseConnection();
         connection.establish(this.credentials);
