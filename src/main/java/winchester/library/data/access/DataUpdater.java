@@ -5,6 +5,9 @@ package winchester.library.data.access;
  */
 public class DataUpdater {
 
+    /**
+     * The default constructor.
+     */
     public DataUpdater() {
 
     }
