@@ -109,6 +109,16 @@ public class QueryBuilder {
         return this;
     }
 
+    public QueryBuilder update(String table) {
+        this.tables = table;
+        return this;
+    }
+
+    public QueryBuilder set(String... columns) {
+        this.columns = convertToSingleString(columns, ", ");
+        return this;
+    }
+
     /**
      * A method that concatenate the set of strings specified.
      * @param tokens the list of strings to be concatenated.
@@ -141,6 +151,10 @@ public class QueryBuilder {
                     this.type.getQueryFormat(), this.columns, this.tables, this.conditions, this.orderedColumns);
             case INSERT_ONE -> String.format(
                     this.type.getQueryFormat(), this.tables, this.values);
+            case UPDATE -> String.format(
+                    this.type.getQueryFormat(), this.tables, this.columns);
+            case UPDATE_AND_FILTER -> String.format(
+                    this.type.getQueryFormat(), this.tables, this.columns, this.conditions);
             default -> null;
         };
     }
