@@ -36,10 +36,6 @@ public final class SidePane extends VBox {
     public SidePane(Employee employee) {
         super();
         this.currentEmployee = Objects.isNull(employee) ? DemoAccount.get() : employee;
-        this.setPadding(new Insets(0, 0, 0, 20));
-        this.setSpacing(5);
-        this.setFillWidth(true);
-        this.getStyleClass().add("background-secondary");
         this.initialiseLayouts();
         this.initialiseControls();
         this.initialiseConstraints();
@@ -68,6 +64,10 @@ public final class SidePane extends VBox {
     }
 
     private void initialiseLayouts() {
+        this.setPadding(new Insets(0, 0, 0, 20));
+        this.setSpacing(5);
+        this.setFillWidth(true);
+        this.getStyleClass().add("background-secondary");
         this.accountPane = new VBox();
         this.accountPane.setAlignment(Pos.BOTTOM_LEFT);
         this.accountPane.prefHeightProperty().bind(this.prefHeightProperty());
