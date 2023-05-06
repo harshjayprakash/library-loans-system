@@ -4,7 +4,6 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
-import org.jetbrains.annotations.NotNull;
 import winchester.library.service.Logger;
 
 /**
