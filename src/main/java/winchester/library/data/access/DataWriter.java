@@ -1,7 +1,7 @@
 package winchester.library.data.access;
 
 import java.util.Optional;
-import winchester.library.data.model.users.Administrator;
+import winchester.library.data.model.loans.Loan;
 import winchester.library.data.model.users.Customer;
 import winchester.library.data.model.users.Employee;
 
