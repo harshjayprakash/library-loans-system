@@ -10,7 +10,7 @@ public abstract class AlertFactory {
     public static Alert createAlert(Alert.AlertType type, String headerText, String contextText) {
         Alert alert = new Alert(type);
         alert.setHeaderText(headerText);
-        alert.setContentText(contextText);
+        alert.setContentText(contentText);
         return alert;
     }
 
