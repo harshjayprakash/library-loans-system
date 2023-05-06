@@ -60,7 +60,7 @@ public final class DataFetcher {
                                         && loan.getLoanedItemFormat() == stock.getItemFormat())
                                 .count();
                         stock.setCopiesOnLoan((int)copiesOnLoan);
-                        book.getStockAvailable().add(stock);
+                        book.getStockAvailable().addItemStock(stock);
                     });
         });
         connection.close();
@@ -100,7 +100,7 @@ public final class DataFetcher {
                                         && loan.getLoanedItemIdentifier().equals(stock.getItemIdentifier()))
                                 .count();
                         stock.setCopiesOnLoan((int)copiesOnLoan);
-                        film.getStockAvailable().add(stock);
+                        film.getStockAvailable().addItemStock(stock);
                     });
         });
         connection.close();
