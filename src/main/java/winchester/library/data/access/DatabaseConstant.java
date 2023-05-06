@@ -14,6 +14,8 @@ public enum DatabaseConstant {
     DATA_NOT_ACCESSIBLE(8, "Error Accessing Data"),
     INSERTION_ERROR(9, "Error Inserting into the Database"),
     INSERTION_SUCCESSFUL(10, "Insertion Successful"),
+    UPDATE_ERROR(11, "Update Error"),
+    UPDATE_SUCCESSFUL(12, "Update Successful"),
     UNKNOWN_ERROR(10, "Error");
 
     private final int identifier;
