@@ -10,8 +10,7 @@ create table `library`.`user_types` (
 );
 
 insert into `library`.`user_types` (`user_type_id`, `user_type`)
-values (0, 'Demo'),
-       (1, 'Customer'),
+values (1, 'Customer'),
        (2, 'Standard'),
        (3, 'Administrator');
 
@@ -27,9 +26,9 @@ create table `library`.`users` (
 
 -- Names and Postcodes have been randomly generated. This is not real information.
 insert into `library`.`users`
-values (1, 0, 'Demo', 'Account', 'AB123CD'),
-       (2, 3, 'Admin', 'Account', 'JI832HU'),
-       (3, 2, 'Standard', 'Account', 'IU921ED'),
+values (1, 3, 'Mark', 'Harrison', 'AB123CD'),
+       (2, 2, 'Chris', 'Adams', 'JI832HU'),
+       (3, 2, 'Dominic', 'Mccann', 'IU921ED'),
        (4, 1, 'Axel', 'Vazquez', 'PA686EL'),
        (5, 1, 'Alexa', 'Haley', 'ME104TB'),
        (6, 1, 'Edward', 'Cooper', 'ME43NX'),
@@ -55,21 +54,25 @@ values (-1, 'Disabled'),
        (1, 'Active');
 
 create table `library`.`employees` (
-    `employee_id`   int            not null   auto_increment,
-    `user_id`       int            not null,
-    `username`      varchar(255)   not null,
-    `password`      varchar(255)   not null,
-    `status_id`     int            not null,
+    `employee_id`       int            not null   auto_increment,
+    `user_id`           int            not null,
+    `username`          varchar(255)   not null,
+    `hashed_password`   varchar(255)   not null,
+    `status_id`         int            not null,
     primary key (`employee_id`),
     foreign key (`user_id`) references `users`(`user_id`),
     foreign key (`status_id`) references `employee_status`(`status_id`),
     unique (`username`)
 );
 
-insert into `library`.`employees` (`user_id`, `username`, `password`, `status_id`)
-values (1, 'demo', 'password', 1),
-       (2, 'admin', '6oUpZ6k$^iw4J&', 1),
-       (3, 'user', 'SqpQPP&9jWHmr4g', 1);
+-- Actual Passwords
+--    mark.harrison  (wcJczEr36UqEF$)
+--    chris.adams    (BUL4cF#GV&$p@z)
+--    dominic.mccann (fv5YPaJec*TUb&)
+insert into `library`.`employees` (`user_id`, `username`, `hashed_password`, `status_id`)
+values (1, 'mark.harrison', '-1758678750', 1),
+       (2, 'chris.adams', '1804305048', 1),
+       (3, 'dominic.mccann', '1614910380', 1);
 
 create table `library`.`item_types` (
     `item_type_id`   int            not null,
@@ -272,7 +275,7 @@ values ('9780063021426', 11, 10),
        ('1905001', 22, 5);
 
 create table `library`.`loans` (
-    `loan_id`           bigint        not null,
+    `loan_id`           bigint        not null auto_increment,
     `customer_id`       int           not null,
     `item_id`           varchar(13)   not null,
     `item_subtype_id`   int           not null,
@@ -284,6 +287,6 @@ create table `library`.`loans` (
     foreign key (`item_subtype_id`) references `item_subtypes`(`item_subtype_id`)
 );
 
-insert into `library`.`loans`
-values (2023042810183091, 4, '2305002', 22, '2023-04-28', '2023-05-10', 0),
-       (2023042810192542, 14,'9781250313102', 12, '2023-04-27', '2023-05-27', 0);
+insert into `library`.`loans` (customer_id, item_id, item_subtype_id, loan_date, return_date, returned)
+values (4, '2305002', 22, '2023-04-28', '2023-05-10', 0),
+       (14,'9781250313102', 12, '2023-04-27', '2023-05-27', 0);
