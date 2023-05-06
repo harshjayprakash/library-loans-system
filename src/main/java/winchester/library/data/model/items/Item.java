@@ -8,7 +8,7 @@ import winchester.library.data.model.loans.LoansManager;
  */
 public abstract class Item {
 
-    protected ArrayList<ItemStock> stockAvailable;
+    protected ItemStockManager stockAvailable;
     protected LoansManager loans;
     protected String imageUrl;
 
@@ -16,7 +16,7 @@ public abstract class Item {
      * The default constructor for the Item class, initialising the stock available and loans manager.
      */
     public Item() {
-        this.stockAvailable = new ArrayList<>();
+        this.stockAvailable = new ItemStockManager();
         this.loans = new LoansManager();
     }
 
@@ -24,7 +24,7 @@ public abstract class Item {
      * An accessor to retrieve the stock available.
      * @return an array list of the item stock available.
      */
-    public ArrayList<ItemStock> getStockAvailable() {
+    public ItemStockManager getStockAvailable() {
         return this.stockAvailable;
     }
 
