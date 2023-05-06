@@ -9,15 +9,15 @@ import winchester.library.data.access.DatabaseEntity;
 public class Employee extends User {
     
     private final String username;
-    private String password;
+    private String hashedPassword;
     private EmployeeStatus status;
 
     public Employee(int identifier, String firstName, String lastName, String postalCode, String username,
-                    String password, EmployeeStatus status) {
+                    String hashedPassword, EmployeeStatus status) {
         super(identifier, firstName, lastName, postalCode);
         this.type = UserType.STANDARD;
         this.username = username;
-        this.password = password;
+        this.hashedPassword = hashedPassword;
         this.status = status;
     }
 
@@ -29,12 +29,12 @@ public class Employee extends User {
         return this.username;
     }
 
-    public String getPassword() {
-        return this.password;
+    public String getHashedPassword() {
+        return this.hashedPassword;
     }
 
-    public void setPassword(String password) {
-        this.password = password;
+    public void setHashedPassword(String hashedPassword) {
+        this.hashedPassword = hashedPassword;
     }
 
     public EmployeeStatus getStatus() {
