@@ -109,7 +109,7 @@ public final class IndividualItemView extends View {
         this.itemFormatLabelList = new ArrayList<>();
         this.itemStockAvailableLLabelList = new ArrayList<>();
         this.itemOnLoanLabelList = new ArrayList<>();
-        for (ItemStock stock : this.referencedItem.getStockAvailable()) {
+        for (ItemStock stock : this.referencedItem.getStockAvailable().getItemStock()) {
             this.itemFormatLabelList.add(new Label(stock.getItemFormat().toString()));
             this.itemStockAvailableLLabelList.add(new Label(String.valueOf(stock.getCopiesAvailable())));
             this.itemOnLoanLabelList.add(new Label(String.valueOf(stock.getCopiesOnLoan())));
@@ -127,7 +127,7 @@ public final class IndividualItemView extends View {
                 horizontalAlign, verticalAlign, resizePriority, resizePriority, padding);
         GridPane.setConstraints(this.itemOnLoanLabel, 3, 1, 1, 1,
                 horizontalAlign, verticalAlign, resizePriority, resizePriority, padding);
-        for (int i = 0; i < this.referencedItem.getStockAvailable().size(); i++) {
+        for (int i = 0; i < this.referencedItem.getStockAvailable().getItemStock().size(); i++) {
             GridPane.setConstraints(this.itemFormatLabelList.get(i), 1, i+2, 1, 1,
                     horizontalAlign, verticalAlign, resizePriority, resizePriority, padding);
             GridPane.setConstraints(this.itemStockAvailableLLabelList.get(i), 2, i+2, 1, 1,
