@@ -73,4 +73,27 @@ public class DataWriter {
         return DatabaseConstant.INSERTION_SUCCESSFUL;
     }
 
+    /**
+     * A method to insert a loan into the data source.
+     * @param loan the loan to be inserted.
+     * @return a DatabaseConstant enumeration of either INSERTION_ERROR if the operation failed or if the operation
+     * succeeded returns it returns INSERTION_SUCCESSFUL.
+     */
+    public DatabaseConstant insert(Loan loan) {
+        DatabaseConnection connection = new DatabaseConnection();
+        connection.establish(this.credentials);
+        Optional<Integer> loanInsertResult = connection.executeUpdate(
+                QueryBuilder.createQuery(QueryType.INSERT_ONE)
+                        .insertInto("library.loans (customer_id, item_id, item_subtype_id, loan_date, return_date, returned)")
+                        .values(String.format("(%d,'%s', %d, '%s', '%s', %d)",
+                                loan.getCustomer().getIdentifier(), loan.getLoanedItemIdentifier(),
+                                loan.getLoanedItemFormat().getIdentifier(), loan.getLoanDate().toString(),
+                                loan.getDueDate().toString(), (loan.getReturned()) ? 1 : 0)));
+        if (loanInsertResult.isEmpty()) {
+            return DatabaseConstant.INSERTION_ERROR;
+        }
+        connection.close();
+        return DatabaseConstant.INSERTION_SUCCESSFUL;
+    }
+
 }
