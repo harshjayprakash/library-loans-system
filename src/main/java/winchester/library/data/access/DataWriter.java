@@ -41,7 +41,7 @@ public class DataWriter {
                 QueryBuilder.createQuery(QueryType.INSERT_ONE)
                         .insertInto("library.employees (user_id, username, password, status_id)")
                         .values(String.format("(%d, '%s', '%s', %d)",
-                                employee.getIdentifier(), employee.getUsername(), employee.getPassword(),
+                                employee.getIdentifier(), employee.getUsername(), employee.getHashedPassword(),
                                 employee.getStatus().getIdentifier()))
         );
         if (employeeInsertResult.isEmpty()) {
