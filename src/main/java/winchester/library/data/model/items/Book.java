@@ -117,7 +117,7 @@ public class Book extends Item implements Exportable {
     @Override
     public String export() {
         StringBuilder itemCopies = new StringBuilder();
-        for (ItemStock stock : this.getStockAvailable()) {
+        for (ItemStock stock : this.getStockAvailable().getItemStock()) {
             itemCopies.append(stock.toString());
         }
         return String.format(
