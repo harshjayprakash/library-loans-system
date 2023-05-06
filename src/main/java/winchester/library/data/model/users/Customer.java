@@ -10,13 +10,11 @@ import winchester.library.data.model.loans.LoansManager;
 public class Customer extends User  {
     
     private int overdueFeesPence;
-    private final LoansManager loansManager;
 
     public Customer(int identifier, String firstName, String lastName, String postalCode) {
         super(identifier, firstName, lastName, postalCode);
         this.type = UserType.CUSTOMER;
         this.overdueFeesPence = 0;
-        this.loansManager = new LoansManager();
     }
 
     public static Customer castFrom(User user) {
