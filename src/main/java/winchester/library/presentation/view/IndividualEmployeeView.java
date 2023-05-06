@@ -2,13 +2,17 @@ package winchester.library.presentation.view;
 
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import winchester.library.data.model.users.Employee;
 import winchester.library.data.model.users.EmployeeStatus;
+import winchester.library.presentation.alert.AlertFactory;
 import winchester.library.presentation.window.WindowBase;
+import winchester.library.service.DataPersistenceManager;
 
 public class IndividualEmployeeView extends View {
 
@@ -24,6 +28,7 @@ public class IndividualEmployeeView extends View {
         this.referencedEmployee = employee;
         this.initialiseLayouts();
         this.initialiseControls();
+        this.bindEventHandlers();
         this.addComponentsToView();
     }
 
@@ -49,7 +54,22 @@ public class IndividualEmployeeView extends View {
         this.employeeApproveButton.setText("Approve");
         this.employeeApproveButton.setDisable(this.referencedEmployee.getStatus() != EmployeeStatus.NOT_APPROVED);
         this.employeeSetStatusButton = new Button();
-        this.employeeSetStatusButton.setText("Enable");
+        this.employeeSetStatusButton.setText(
+                switch (this.referencedEmployee.getStatus()) {
+                    case ACTIVE -> "Disable Account";
+                    case DISABLED, NOT_APPROVED -> "Enable Account";
+                });
+    }
+
+    private void bindEventHandlers() {
+        this.employeeApproveButton.addEventHandler(MouseEvent.MOUSE_CLICKED, event -> {
+            boolean result = DataPersistenceManager.getInstance().approveEmployee(this.referencedEmployee);
+            if (!result) {
+                AlertFactory.createAlert(Alert.AlertType.ERROR, "Failed to approve employee").show();
+                return;
+            }
+            this.employeeApproveButton.setDisable(true);
+        });
     }
 
     @Override
