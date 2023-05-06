@@ -4,12 +4,20 @@ import java.util.ArrayList;
 import winchester.library.data.model.users.Customer;
 import winchester.library.data.model.users.Employee;
 
+/**
+ * A class to generate identifiers for entities.
+ */
 public class IdentifierGenerator {
 
-    public IdentifierGenerator() {
+    /**
+     * The default constructor.
+     */
+    public IdentifierGenerator() { }
 
-    }
-
+    /**
+     * A method to generate a new user's identifier for the data source without conflicts.
+     * @return the new identifier.
+     */
     public int generateForUser() {
         ArrayList<Employee> employees = DataPersistenceManager.getInstance().getEmployees();
         ArrayList<Customer> customers = DataPersistenceManager.getInstance().getCustomers();

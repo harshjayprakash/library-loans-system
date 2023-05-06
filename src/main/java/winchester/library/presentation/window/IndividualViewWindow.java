@@ -8,6 +8,9 @@ import winchester.library.presentation.component.pane.HeaderPane;
 import winchester.library.presentation.view.Views;
 import winchester.library.presentation.view.ViewsManager;
 
+/**
+ * A class to provide a window that display an individual view.
+ */
 public final class IndividualViewWindow extends WindowBase {
 
     private HeaderPane header;
@@ -17,6 +20,13 @@ public final class IndividualViewWindow extends WindowBase {
     private Loan loan;
     private User user;
 
+    /**
+     * The main constructor for the IndividualViewWindow.
+     * @param windowContentView the view to be shown.
+     * @param user the user to be passed through to the view.
+     * @param item the item to be passed through to the view.
+     * @param loan the loan to be passed through to the view.
+     */
     public IndividualViewWindow(Views windowContentView, User user, Item item, Loan loan) {
         super();
         this.windowContentView = windowContentView;
@@ -28,37 +38,60 @@ public final class IndividualViewWindow extends WindowBase {
         this.addComponentsToStage();
     }
 
+    /**
+     * An overloaded constructor for the IndividualViewWindow.
+     * @param windowContentView the view to be shown.
+     */
     public IndividualViewWindow(Views windowContentView) {
         this(windowContentView, null, null, null);
     }
 
+    /**
+     * An overloaded constructor for the IndividualViewWindow.
+     * @param windowContentView the view to be shown.
+     * @param user the user to be passed through to the view.
+     */
     public IndividualViewWindow(Views windowContentView, User user) {
         this(windowContentView, user, null, null);
     }
 
+    /**
+     * An overloaded constructor for the IndividualViewWindow.
+     * @param windowContentView the view to be shown.
+     * @param item the item to be passed through to the view.
+     */
     public IndividualViewWindow(Views windowContentView, Item item) {
         this(windowContentView, null, item, null);
     }
 
+    /**
+     * An overloaded constructor for the IndividualViewWindow.
+     * @param windowContentView the view to be shown.
+     * @param loan the loan to be passed through to the view.
+     */
     public IndividualViewWindow(Views windowContentView, Loan loan) {
         this(windowContentView, null, null, loan);
     }
 
+    /**
+     * A method to initialise layouts of the window.
+     */
     private void initialiseLayouts() {
         this.baseLayout.setPadding(new Insets(15));
     }
 
+    /**
+     * A method to initialise any controls used within the window.
+     */
     @Override
     protected void initialiseControls() {
         this.header = new HeaderPane(this.windowContentView);
         this.viewsManager = new ViewsManager();
     }
 
-    @Override
-    protected void bindEventHandlers() {
-
-    }
-
+    /**
+     * A method to add any components to the window (stage).
+     */
     @Override
     protected void addComponentsToStage() {
         this.viewsManager.showView(this.windowContentView, this, this.user, this.item, this.loan);

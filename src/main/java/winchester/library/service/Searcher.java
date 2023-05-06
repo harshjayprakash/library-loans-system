@@ -11,10 +11,16 @@ import winchester.library.data.model.users.Employee;
  */
 public class Searcher {
 
-    public Searcher() {
+    /**
+     * The default constructor.
+     */
+    public Searcher() { }
 
-    }
-
+    /**
+     * A method to search for an Item from the identifier.
+     * @param identifier the identifier of the item.
+     * @return the instance of the item based on the given identifier.
+     */
     public Item searchItemFromIdentifier(String identifier) {
         AtomicReference<Item> searchedItem = new AtomicReference<>();
         DataPersistenceManager.getInstance().getBooks()
@@ -28,6 +34,11 @@ public class Searcher {
         return searchedItem.get();
     }
 
+    /**
+     * A method to search for a customer based on full name.
+     * @param name the name to search.
+     * @return an array list of customers that fit the criteria of the search.
+     */
     public ArrayList<Customer> searchCustomers(String name) {
         ArrayList<Customer> customers = new ArrayList<>();
         DataPersistenceManager.getInstance().getCustomers()
@@ -37,6 +48,11 @@ public class Searcher {
         return customers;
     }
 
+    /**
+     * A method to search for an employee based on full name.
+     * @param name the name to search.
+     * @return an array list of employees that fit the criteria of the search.
+     */
     public ArrayList<Employee> searchEmployees(String name) {
         ArrayList<Employee> employees = new ArrayList<>();
         DataPersistenceManager.getInstance().getEmployees()

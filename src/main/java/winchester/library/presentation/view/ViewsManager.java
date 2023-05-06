@@ -13,10 +13,21 @@ import winchester.library.presentation.window.WindowBase;
  */
 public final class ViewsManager extends BorderPane {
 
+    /**
+     * The default constructor.
+     */
     public ViewsManager() {
         super();
     }
 
+    /**
+     * A method to specify the view to be shown.
+     * @param view the view to be shown
+     * @param parentWindow the parent window that view can have access to.
+     * @param user the user that view can have access to.
+     * @param item the item that view can have access to.
+     * @param loan the loan that view can have access to.
+     */
     public void showView(Views view, WindowBase parentWindow, User user, Item item, Loan loan) {
         this.setCenter(null);
         this.setCenter(
@@ -32,7 +43,7 @@ public final class ViewsManager extends BorderPane {
                     case ADD_USER -> new AddUserView(parentWindow);
                     case CUSTOMERS -> new CustomerView(parentWindow);
                     case INVENTORY -> new InventoryView(parentWindow);
-                    case LOANING_ITEMS -> new LoaningItemView(parentWindow);
+                    case LOANING_ITEMS -> new LoaningItemView(parentWindow, Customer.castFrom(user));
                     case CHANGE_PASSWORD -> new ChangePasswordView(parentWindow, Employee.castFrom(user));
                     case INDIVIDUAL_ITEM -> new IndividualItemView(parentWindow, item);
                     case INDIVIDUAL_LOAN -> new IndividualLoanView(parentWindow, loan);

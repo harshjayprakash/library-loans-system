@@ -11,11 +11,17 @@ import winchester.library.service.Logger;
  */
 public class Exporter {
 
-    public Exporter() {
+    /**
+     * The default constructor.
+     */
+    public Exporter() { }
 
-    }
-
-    public boolean export(@NotNull Exportable exportable) {
+    /**
+     * A method that exports an entity to an external file.
+     * @param exportable a class that implements the Exportable interface that is to be exported.
+     * @return a boolean value whether the operation was successful.
+     */
+    public boolean export(Exportable exportable) {
         try {
             LocalDateTime dateTime = LocalDateTime.now();
             DateTimeFormatter dateTimeFormat = DateTimeFormatter.ofPattern("dd-MM-yyyy HH-mm-ss");

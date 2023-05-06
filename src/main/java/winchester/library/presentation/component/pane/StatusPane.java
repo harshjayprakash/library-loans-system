@@ -19,21 +19,38 @@ public final class StatusPane extends BorderPane {
     private Label settingsLabel;
     private Label databaseStatusLabel;
 
+    /**
+     * The default constructor for the StatusPane component.
+     */
     public StatusPane() {
         super();
-        this.setPadding(new Insets(5));
-        this.getStyleClass().add("background-secondary");
+        this.initialiseLayout();
         this.initialiseControls();
         this.loadStylesheets();
         this.bindEventHandlers();
         this.addComponentsToPane();
     }
 
+    /**
+     * A mutator to set the database status.
+     * @param connected whether the program is connected to the database.
+     */
     public void setDatabaseConnected(boolean connected) {
         this.databaseStatusLabel.setText(
                 connected ? DatabaseStatus.CONNECTED.toString() : DatabaseStatus.NOT_CONNECTED.toString());
     }
 
+    /**
+     * A method to initialise the layout of the component.
+     */
+    private void initialiseLayout() {
+        this.setPadding(new Insets(5));
+        this.getStyleClass().add("background-secondary");
+    }
+
+    /**
+     * A method to initialise controls of the component.
+     */
     private void initialiseControls() {
         this.settingsLabel = new Label();
         this.settingsLabel.getStyleClass().add("link-label");
@@ -46,10 +63,16 @@ public final class StatusPane extends BorderPane {
         this.databaseStatusLabel.setTextAlignment(TextAlignment.RIGHT);
     }
 
+    /**
+     * A method to load the stylesheet to style the components.
+     */
     private void loadStylesheets() {
         ComponentStyler.getInstance().setStyle(this);
     }
 
+    /**
+     * A method to add and bind event handlers to components.
+     */
     private void bindEventHandlers() {
         this.settingsLabel.addEventHandler(MouseEvent.MOUSE_CLICKED, event -> {
             IndividualViewWindow settingsView = new IndividualViewWindow(Views.SETTINGS);
@@ -57,6 +80,9 @@ public final class StatusPane extends BorderPane {
         });
     }
 
+    /**
+     * A method to add the components to the status pane.
+     */
     private void addComponentsToPane() {
         this.setLeft(this.settingsLabel);
         this.setRight(this.databaseStatusLabel);

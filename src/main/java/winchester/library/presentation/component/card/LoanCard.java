@@ -26,6 +26,10 @@ public final class LoanCard extends Card {
     private Label itemReturnDueLabel;
     private final Loan referencedLoan;
 
+    /**
+     * The default constructor to create the LoanCard component.
+     * @param loan the loan that will be referenced.
+     */
     public LoanCard(Loan loan) {
         super();
         this.referencedLoan = loan;
@@ -35,6 +39,9 @@ public final class LoanCard extends Card {
         this.addComponentsToCard();
     }
 
+    /**
+     * A method to initialise the layouts that will be used within the card component.
+     */
     @Override
     protected void initialiseLayouts() {
         this.loanInformation = new VBox();
@@ -42,6 +49,9 @@ public final class LoanCard extends Card {
         this.loanInformation.setPadding(new Insets(10));
     }
 
+    /**
+     * A method to initialise the controls that will be shown within the card component.
+     */
     @Override
     protected void initialiseControls() {
         this.loanIdentifierLabel = new Label();
@@ -65,6 +75,9 @@ public final class LoanCard extends Card {
                 String.format("Customer : %s", this.referencedLoan.getCustomer().getFullName()));
     }
 
+    /**
+     * A method to add event handlers to any controls.
+     */
     @Override
     protected void bindEventHandlers() {
         this.viewDetailsLabel.addEventHandler(MouseEvent.MOUSE_CLICKED, event -> {
@@ -74,6 +87,9 @@ public final class LoanCard extends Card {
         });
     }
 
+    /**
+     * A method to add any layouts and controls initialised to the card.
+     */
     @Override
     protected void addComponentsToCard() {
         this.loanInformation.getChildren().addAll(this.loanIdentifierLabel, this.customerNameLabel, this.itemTitleLabel,

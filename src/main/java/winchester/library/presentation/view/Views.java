@@ -27,15 +27,28 @@ public enum Views {
     private final int identifier;
     private final String value;
 
+    /**
+     * A constructor to specify additional information for each constant, such as an identifier and string value.
+     * @param identifier the identifier that can be referred to.
+     * @param value the string value of the constant.
+     */
     Views(int identifier, String value) {
         this.identifier = identifier;
         this.value = value;
     }
 
+    /**
+     * An accessor to retrieve the identifier corresponding to the constant.
+     * @return the identifier corresponding to the constant.
+     */
     public int getIdentifier() {
         return this.identifier;
     }
 
+    /**
+     * An accessor to retrieve the string value associated to the constant.
+     * @return the string value corresponding to the constant.
+     */
     @Override
     public String toString() {
         return this.value;

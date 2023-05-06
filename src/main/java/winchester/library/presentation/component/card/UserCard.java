@@ -4,7 +4,9 @@ import javafx.geometry.Insets;
 import javafx.scene.control.Label;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.VBox;
-import winchester.library.data.model.users.*;
+import winchester.library.data.model.users.Employee;
+import winchester.library.data.model.users.User;
+import winchester.library.data.model.users.UserType;
 import winchester.library.presentation.view.Views;
 import winchester.library.presentation.window.IndividualViewWindow;
 
@@ -19,6 +21,10 @@ public final class UserCard extends Card {
     private Label accountStatusLabel;
     private User referencedUser;
 
+    /**
+     * The default constructor for the UserCard.
+     * @param user the user that will be referenced to display the information.
+     */
     public UserCard(User user) {
         super();
         this.referencedUser = user;
@@ -28,6 +34,9 @@ public final class UserCard extends Card {
         this.addComponentsToCard();
     }
 
+    /**
+     * A method to initialise the layouts that will be used within the card component.
+     */
     @Override
     protected void initialiseLayouts() {
         this.userDetails = new VBox();
@@ -35,6 +44,9 @@ public final class UserCard extends Card {
         this.userDetails.setPadding(new Insets(10));
     }
 
+    /**
+     * A method to initialise the controls that will be shown within the card component.
+     */
     @Override
     protected void initialiseControls() {
         this.nameLabel = new Label();
@@ -48,6 +60,9 @@ public final class UserCard extends Card {
         }
     }
 
+    /**
+     * A method to add event handlers to any controls.
+     */
     @Override
     protected void bindEventHandlers() {
         this.viewDetailsLabel.addEventHandler(MouseEvent.MOUSE_CLICKED, event -> {
@@ -62,6 +77,9 @@ public final class UserCard extends Card {
         });
     }
 
+    /**
+     * A method to add any layouts and controls initialised to the card.
+     */
     @Override
     protected void addComponentsToCard() {
         this.userDetails.getChildren().add(this.nameLabel);

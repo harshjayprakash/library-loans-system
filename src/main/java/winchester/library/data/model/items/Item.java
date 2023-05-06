@@ -13,7 +13,7 @@ public abstract class Item {
     protected String imageUrl;
 
     /**
-     * The default constructor for the Item class, initialising the stock available and loans manager.
+     * The default constructor for the Item class, initialising the stock and loans manager.
      */
     public Item() {
         this.stockAvailable = new ItemStockManager();
@@ -22,7 +22,7 @@ public abstract class Item {
 
     /**
      * An accessor to retrieve the stock available.
-     * @return an array list of the item stock available.
+     * @return the item stock available.
      */
     public ItemStockManager getStockAvailable() {
         return this.stockAvailable;

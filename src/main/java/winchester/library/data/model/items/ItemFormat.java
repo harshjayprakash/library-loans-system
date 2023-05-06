@@ -43,6 +43,20 @@ public enum ItemFormat {
     }
 
     /**
+     * A method to find the ItemFormat constant based on the string value.
+     * @param value the string value of the ItemFormat to be found.
+     * @return an optional of ItemFormat if the value corresponds to a constant or empty if not.
+     */
+    public static Optional<ItemFormat> fromString(String value) {
+        for (ItemFormat format : ItemFormat.values()) {
+            if (format.value.equals(value)) {
+                return Optional.of(format);
+            }
+        }
+        return Optional.empty();
+    }
+
+    /**
      * An accessor to retrieve the identifier of the ItemFormat constant.
      * @return the identifier of the ItemFormat constant.
      */

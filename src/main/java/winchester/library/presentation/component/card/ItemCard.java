@@ -27,6 +27,10 @@ public final class ItemCard extends Card {
     private Label itemCategoryLabel;
     private Item referencedItem;
 
+    /**
+     * The default constructor for the ItemCard class.
+     * @param item the item that will be referenced to display details.
+     */
     public ItemCard(Item item) {
         super();
         this.referencedItem = item;
@@ -38,6 +42,9 @@ public final class ItemCard extends Card {
         this.addComponentsToCard();
     }
 
+    /**
+     * A method to initialise the layouts that will be used within the card component.
+     */
     @Override
     protected void initialiseLayouts() {
         this.itemInformation = new VBox();
@@ -45,6 +52,9 @@ public final class ItemCard extends Card {
         this.itemInformation.setPadding(new Insets(10));
     }
 
+    /**
+     * A method to initialise the controls that will be shown within the card component.
+     */
     @Override
     protected void initialiseControls() {
         this.itemImageView = new ImageView();
@@ -68,6 +78,9 @@ public final class ItemCard extends Card {
         }
     }
 
+    /**
+     * A method to add event handlers to any controls.
+     */
     @Override
     protected void bindEventHandlers() {
         this.viewDetailsLabel.addEventHandler(MouseEvent.MOUSE_CLICKED, event -> {
@@ -77,6 +90,9 @@ public final class ItemCard extends Card {
         });
     }
 
+    /**
+     * A method to add any layouts and controls initialised to the card.
+     */
     @Override
     protected void addComponentsToCard() {
         this.itemInformation.getChildren().addAll(this.itemNameLabel, this.itemCreatorLabel, this.itemCategoryLabel);

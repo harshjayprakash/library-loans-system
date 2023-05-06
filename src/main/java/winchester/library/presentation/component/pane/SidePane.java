@@ -33,6 +33,10 @@ public final class SidePane extends VBox {
     private Button logOutButton;
     private final Employee currentEmployee;
 
+    /**
+     * The default constructor for the SidePane component.
+     * @param employee the employee that will be referenced.
+     */
     public SidePane(Employee employee) {
         super();
         this.currentEmployee = Objects.isNull(employee) ? DemoAccount.get() : employee;
@@ -43,14 +47,26 @@ public final class SidePane extends VBox {
         this.addComponentsToPane();
     }
 
+    /**
+     * An accessor that retrieves the toggle group of the toggle buttons.
+     * @return the toggle group of the toggle buttons.
+     */
     public ToggleGroup getToggleGroup() {
         return this.pageButtons;
     }
 
+    /**
+     * An accessor that retrieves the logout button.
+     * @return the logout button.
+     */
     public Button getLogOutButton() {
         return this.logOutButton;
     }
 
+    /**
+     * An accessor that retrieves the selected toggle button as the Views enumeration constant.
+     * @return a Views enumeration constant.
+     */
     public Views getSelectedToggleAsView() {
         if (this.pageButtons.getSelectedToggle() == null ) { return Views.NONE_WITH_SIDEBAR; }
         return switch (((ToggleButton)this.pageButtons.getSelectedToggle()).getText()) {
@@ -63,6 +79,9 @@ public final class SidePane extends VBox {
         };
     }
 
+    /**
+     * A method to initialise the layouts within the component.
+     */
     private void initialiseLayouts() {
         this.setPadding(new Insets(0, 0, 0, 20));
         this.setSpacing(5);
@@ -73,6 +92,9 @@ public final class SidePane extends VBox {
         this.accountPane.prefHeightProperty().bind(this.prefHeightProperty());
     }
 
+    /**
+     * A method to initialise the controls within the component.
+     */
     private void initialiseControls() {
         this.serviceLabel = new Label();
         this.serviceLabel.getStyleClass().add("text-bold");
@@ -121,6 +143,9 @@ public final class SidePane extends VBox {
         this.logOutButton.setText("Log Out");
     }
 
+    /**
+     * A method to initialise the constraints for margins and resizing.
+     */
     private void initialiseConstraints() {
         for (Node child : this.getChildren()) {
             VBox.setVgrow(child, Priority.NEVER);
@@ -129,10 +154,16 @@ public final class SidePane extends VBox {
         VBox.setMargin(this.logOutButton, new Insets(10, 0, 10, 0));
     }
 
+    /**
+     * A method to load the stylesheets with the component.
+     */
     private void loadStylesheets() {
         ComponentStyler.getInstance().setStyle(this);
     }
 
+    /**
+     * A method to add the components to the side pane.
+     */
     private void addComponentsToPane() {
         this.accountPane.getChildren().addAll(this.currentUserLabel, this.logOutButton);
         this.getChildren().addAll(

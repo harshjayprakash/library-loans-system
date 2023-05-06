@@ -17,22 +17,36 @@ public abstract class WindowBase extends Stage {
     protected Scene scene;
     protected BorderPane baseLayout;
 
+    /**
+     * The constructor for the WindowBase class.
+     */
     public WindowBase() {
         super();
         this.initialiseScene();
         this.loadIcon();
     }
 
+    /**
+     * a mutator to set the title of the window with the program's name.
+     * @param text the new window title.
+     */
     public void setTitleText(String text) {
         this.setTitle("%s - %s".formatted(text, Metadata.getInstance().getProgramName()));
     }
 
+    /**
+     * An abstract method to initialise controls within the window.
+     */
     protected abstract void initialiseControls();
 
-    protected abstract void bindEventHandlers();
-
+    /**
+     * An abstract method to add components to the window.
+     */
     protected abstract void addComponentsToStage();
 
+    /**
+     * A method to initialise and style the scene.
+     */
     private void initialiseScene() {
         this.baseLayout = new BorderPane();
         this.baseLayout.getStyleClass().add("background-primary");
@@ -41,6 +55,9 @@ public abstract class WindowBase extends Stage {
         this.setScene(scene);
     }
 
+    /**
+     * A method to load the program icon.
+     */
     private void loadIcon() {
         try {
             this.getIcons().add(new Image(Objects.requireNonNull(
