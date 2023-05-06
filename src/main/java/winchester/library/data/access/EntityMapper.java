@@ -183,11 +183,13 @@ public class EntityMapper {
                 return switch (UserType.fromIdentifier(result.getInt("user_type_id")).orElse(UserType.STANDARD)) {
                     default -> new Employee(result.getInt("user_id"),
                             result.getString("first_name"), result.getString("last_name"),
-                            result.getString("postal_code"), result.getString("username"), result.getString("password"),
+                            result.getString("postal_code"), result.getString("username"),
+                            result.getString("hashed_password"),
                             EmployeeStatus.fromIdentifier(result.getInt("status_id")).orElse(EmployeeStatus.DISABLED));
                     case ADMINISTRATOR, STANDARD -> new Administrator(result.getInt("user_id"),
                             result.getString("first_name"), result.getString("last_name"),
-                            result.getString("postal_code"), result.getString("username"), result.getString("password"),
+                            result.getString("postal_code"), result.getString("username"),
+                            result.getString("hashed_password"),
                             EmployeeStatus.fromIdentifier(result.getInt("status_id")).orElse(EmployeeStatus.DISABLED));
                 };
             }
