@@ -48,6 +48,7 @@ public abstract class Item {
      * A mutator to assign the image of the item.
      * @param url the image url of the item cover.
      */
+    @SuppressWarnings("unused")
     public void setImageUrl(String url) {
         this.imageUrl = url;
     }
