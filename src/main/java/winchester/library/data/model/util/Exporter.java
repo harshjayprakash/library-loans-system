@@ -24,7 +24,7 @@ public class Exporter {
     public boolean export(Exportable exportable) {
         try {
             LocalDateTime dateTime = LocalDateTime.now();
-            DateTimeFormatter dateTimeFormat = DateTimeFormatter.ofPattern("dd-MM-yyyy HH-mm-ss");
+            DateTimeFormatter dateTimeFormat = DateTimeFormatter.ofPattern("yyyy-MM-dd HH-mm-ss");
             FileWriter exportFile = new FileWriter(
                     String.format("exports/%s WL Export.txt", dateTime.format(dateTimeFormat)));
             exportFile.write(String.format(
@@ -43,6 +43,7 @@ public class Exporter {
                     "Writing entity to text file",
                     "Error creating and opening a file",
                     "Ensure that the export directory exists");
+            return false;
         }
         return true;
     }

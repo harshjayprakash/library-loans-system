@@ -16,9 +16,9 @@ public final class IndividualViewWindow extends WindowBase {
     private HeaderPane header;
     private ViewsManager viewsManager;
     private final Views windowContentView;
-    private Item item;
-    private Loan loan;
-    private User user;
+    private final Item item;
+    private final Loan loan;
+    private final User user;
 
     /**
      * The main constructor for the IndividualViewWindow.

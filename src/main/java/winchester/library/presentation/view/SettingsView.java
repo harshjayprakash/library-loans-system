@@ -10,6 +10,9 @@ import winchester.library.presentation.window.IndividualViewWindow;
 import winchester.library.presentation.window.WindowBase;
 import winchester.library.service.DatabaseConnectivityChecker;
 
+/**
+ * A view to view program information and change the program's configuration.
+ */
 public final class SettingsView extends View {
 
     private VBox dataSourceSettingsPane;
@@ -21,13 +24,16 @@ public final class SettingsView extends View {
     private VBox fileExporterSettingsPane;
     private Label fileExporterTitleLabel;
     private Label fileExporterOutputPath;
-    private Label fileExporterEditOutputPath;
     private VBox programMetadata;
     private Label programMetadataTitleLabel;
     private Label programNameLabel;
     private Label programVersionLabel;
     private final DatabaseCredentials credentials;
 
+    /**
+     * The default constructor that passes the parent window.
+     * @param parentWindow the parent window that the view can access.
+     */
     public SettingsView(WindowBase parentWindow) {
         super(parentWindow, Views.SETTINGS.toString());
         this.credentials = DatabaseCredentials.getInstance();
@@ -38,6 +44,9 @@ public final class SettingsView extends View {
         this.addComponentsToView();
     }
 
+    /**
+     * A method to initialise any layouts used within the view.
+     */
     @Override
     protected void initialiseLayouts() {
         this.dataSourceSettingsPane = new VBox();
@@ -51,6 +60,9 @@ public final class SettingsView extends View {
         this.programMetadata.setPadding(new Insets(15));
     }
 
+    /**
+     * A method to initialise any controls used within the view.
+     */
     @Override
     protected void initialiseControls() {
         this.descriptionLabel = new Label();
@@ -70,10 +82,7 @@ public final class SettingsView extends View {
         this.fileExporterTitleLabel.getStyleClass().add("text-bold");
         this.fileExporterTitleLabel.setText("Exporter");
         this.fileExporterOutputPath = new Label();
-        this.fileExporterOutputPath.setText("C:/Users/harsh/Cloud/Code/uow-library-loans/exports/");
-        this.fileExporterEditOutputPath = new Label();
-        this.fileExporterEditOutputPath.getStyleClass().add("link-label");
-        this.fileExporterEditOutputPath.setText("Edit Export Path");
+        this.fileExporterOutputPath.setText("./exports/");
         this.programMetadataTitleLabel = new Label();
         this.programMetadataTitleLabel.getStyleClass().add("text-bold");
         this.programMetadataTitleLabel.setText("Program Information");
@@ -83,25 +92,34 @@ public final class SettingsView extends View {
         this.programVersionLabel.setText(Metadata.getInstance().getProgramVersionNumber());
     }
 
+    /**
+     * A method to bind and add event handlers to components.
+     */
     private void bindEventHandlers() {
-        this.dataSourceEditCredentialsLinkLabel.addEventHandler(MouseEvent.MOUSE_CLICKED, event -> {
-            IndividualViewWindow databaseConfigurationView = new IndividualViewWindow(Views.DATABASE_CONFIGURATION);
-            databaseConfigurationView.show();
-        });
+        this.dataSourceEditCredentialsLinkLabel.addEventHandler(MouseEvent.MOUSE_CLICKED, event ->
+                this.startDatabaseConfigurationWindow());
     }
 
+    /**
+     * A method to add components to the view.
+     */
     @Override
     protected void addComponentsToView() {
-        this.dataSourceSettingsPane.getChildren().addAll(
-                this.dataSourceTitleLabel, this.dataSourceUrlLabel, this.dataSourceStatusLabel,
-                this.dataSourceEditCredentialsLinkLabel);
-        this.fileExporterSettingsPane.getChildren().addAll(
-                this.fileExporterTitleLabel, this.fileExporterOutputPath, this.fileExporterEditOutputPath);
-        this.programMetadata.getChildren().addAll(
-                this.programMetadataTitleLabel, this.programNameLabel, this.programVersionLabel);
-        this.getChildren().addAll(
-                this.descriptionLabel, this.dataSourceSettingsPane, this.fileExporterSettingsPane,
+        this.dataSourceSettingsPane.getChildren().addAll(this.dataSourceTitleLabel, this.dataSourceUrlLabel,
+                this.dataSourceStatusLabel, this.dataSourceEditCredentialsLinkLabel);
+        this.fileExporterSettingsPane.getChildren().addAll(this.fileExporterTitleLabel, this.fileExporterOutputPath);
+        this.programMetadata.getChildren().addAll(this.programMetadataTitleLabel, this.programNameLabel,
+                this.programVersionLabel);
+        this.getChildren().addAll(this.descriptionLabel, this.dataSourceSettingsPane, this.fileExporterSettingsPane,
                 this.programMetadata);
+    }
+
+    /**
+     * A method to start a window with the database configuration view.
+     */
+    private void startDatabaseConfigurationWindow() {
+        IndividualViewWindow databaseConfigurationView = new IndividualViewWindow(Views.DATABASE_CONFIGURATION);
+        databaseConfigurationView.show();
     }
 
 }

@@ -1,5 +1,7 @@
 package winchester.library.service;
 
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import winchester.library.data.model.users.Customer;
 import winchester.library.data.model.users.Employee;
@@ -25,6 +27,16 @@ public class IdentifierGenerator {
         for (Employee employee : employees) { newIdentifier = Math.max(newIdentifier, employee.getIdentifier()); }
         for (Customer customer: customers) { newIdentifier = Math.max(newIdentifier, customer.getIdentifier()); }
         return ++newIdentifier;
+    }
+
+    /**
+     * A method to generate a new identifier for a film based on the time.
+     * @return the new identifier.
+     */
+    public String generateForFilm() {
+        LocalDateTime localDateTime = LocalDateTime.now();
+        DateTimeFormatter dateTimeFormatter = DateTimeFormatter.ofPattern("yyMMddHHmmss");
+        return localDateTime.format(dateTimeFormatter);
     }
 
 }

@@ -74,10 +74,7 @@ public final class StatusPane extends BorderPane {
      * A method to add and bind event handlers to components.
      */
     private void bindEventHandlers() {
-        this.settingsLabel.addEventHandler(MouseEvent.MOUSE_CLICKED, event -> {
-            IndividualViewWindow settingsView = new IndividualViewWindow(Views.SETTINGS);
-            settingsView.show();
-        });
+        this.settingsLabel.addEventHandler(MouseEvent.MOUSE_CLICKED, event -> this.startSettingsWindow());
     }
 
     /**
@@ -86,5 +83,13 @@ public final class StatusPane extends BorderPane {
     private void addComponentsToPane() {
         this.setLeft(this.settingsLabel);
         this.setRight(this.databaseStatusLabel);
+    }
+
+    /**
+     * A method to start a window with the settings view.
+     */
+    private void startSettingsWindow() {
+        IndividualViewWindow settingsView = new IndividualViewWindow(Views.SETTINGS);
+        settingsView.show();
     }
 }

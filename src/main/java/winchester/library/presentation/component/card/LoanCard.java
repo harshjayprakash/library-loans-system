@@ -80,11 +80,7 @@ public final class LoanCard extends Card {
      */
     @Override
     protected void bindEventHandlers() {
-        this.viewDetailsLabel.addEventHandler(MouseEvent.MOUSE_CLICKED, event -> {
-            IndividualViewWindow individualItemView = new IndividualViewWindow(
-                    Views.INDIVIDUAL_LOAN, this.referencedLoan);
-            individualItemView.show();
-        });
+        this.viewDetailsLabel.addEventHandler(MouseEvent.MOUSE_CLICKED, event -> this.startIndividualItemWindow());
     }
 
     /**
@@ -95,5 +91,13 @@ public final class LoanCard extends Card {
         this.loanInformation.getChildren().addAll(this.loanIdentifierLabel, this.customerNameLabel, this.itemTitleLabel,
                 this.itemFormatLabel, this.itemReturnDueLabel);
         this.setCenter(this.loanInformation);
+    }
+
+    /**
+     * A method to start a window with the individual item view.
+     */
+    private void startIndividualItemWindow() {
+        IndividualViewWindow individualItemView = new IndividualViewWindow(Views.INDIVIDUAL_LOAN, this.referencedLoan);
+        individualItemView.show();
     }
 }

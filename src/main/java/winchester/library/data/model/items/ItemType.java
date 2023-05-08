@@ -1,12 +1,10 @@
 package winchester.library.data.model.items;
 
 import java.util.Optional;
-import winchester.library.data.access.DatabaseEntity;
 
 /**
  * An enumeration to represent the categories of items available.
  */
-@DatabaseEntity(table = "item_types")
 public enum ItemType {
     BOOK(1, "Book"),
     FILM(2, "Film");

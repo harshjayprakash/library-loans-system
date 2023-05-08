@@ -24,6 +24,9 @@ import winchester.library.data.model.util.Exporter;
 import winchester.library.presentation.alert.AlertFactory;
 import winchester.library.presentation.window.WindowBase;
 
+/**
+ * A view that shown all the item about the given item.
+ */
 public final class IndividualItemView extends View {
 
     private HBox actions;
@@ -46,6 +49,11 @@ public final class IndividualItemView extends View {
     private final Item referencedItem;
     private final Exporter exporter;
 
+    /**
+     * The default constructor that passes the parent window and the item to be shown.
+     * @param parentWindow the parent window that the view can access.
+     * @param referencedItem the item to be referenced.
+     */
     public IndividualItemView(WindowBase parentWindow, Item referencedItem) {
         super(parentWindow, Views.INDIVIDUAL_ITEM.toString());
         this.referencedItem = referencedItem;
@@ -59,6 +67,9 @@ public final class IndividualItemView extends View {
         this.addComponentsToView();
     }
 
+    /**
+     * A method to initialise any layouts used within the view.
+     */
     @Override
     protected void initialiseLayouts() {
         this.setSpacing(10);
@@ -76,6 +87,9 @@ public final class IndividualItemView extends View {
         this.itemReturnDate.setPadding(new Insets(15));
     }
 
+    /**
+     * A method to initialise any controls used within the view.
+     */
     @Override
     protected void initialiseControls() {
         this.exportToFileButton = new Button();
@@ -137,24 +151,16 @@ public final class IndividualItemView extends View {
         }
     }
 
+    /**
+     * A method to bind and add event handlers to components.
+     */
     private void bindEventHandlers() {
-        this.exportToFileButton.addEventHandler(MouseEvent.MOUSE_CLICKED, event -> {
-            boolean exportResult = switch (this.referencedItem.getType()) {
-                case BOOK -> exporter.export(Book.castFrom(this.referencedItem));
-                case FILM -> exporter.export(Film.castFrom(this.referencedItem));
-            };
-            if (!exportResult) {
-                AlertFactory.createAlert(
-                        Alert.AlertType.ERROR, "Failed to export item to file.",
-                        "Please ensure that the program has permissions to the file system.").show();
-                return;
-            }
-            AlertFactory.createAlert(
-                    Alert.AlertType.INFORMATION, "Item exported successfully",
-                    String.format("The export can be found at %s", "the Project Directory Exports Folder")).show();
-        });
+        this.exportToFileButton.addEventHandler(MouseEvent.MOUSE_CLICKED, event -> this.exportToFile());
     }
 
+    /**
+     * A method to add components to the view.
+     */
     @Override
     protected void addComponentsToView() {
         this.itemReturnDate.getChildren().addAll(this.itemEarliestReturnTitleLabel, this.itemEarliestReturnLabel);
@@ -167,5 +173,24 @@ public final class IndividualItemView extends View {
         this.actions.getChildren().addAll(this.exportToFileButton);
         this.itemDetails.getChildren().addAll(this.itemImageView, this.itemInformation);
         this.getChildren().addAll(this.actions, this.itemDetails, this.itemAvailability, this.itemReturnDate);
+    }
+
+    /**
+     * A method to export the referenced item to an external file.
+     */
+    private void exportToFile() {
+        boolean exportResult = switch (this.referencedItem.getType()) {
+            case BOOK -> exporter.export(Book.castFrom(this.referencedItem));
+            case FILM -> exporter.export(Film.castFrom(this.referencedItem));
+        };
+        if (!exportResult) {
+            AlertFactory.createAlert(
+                    Alert.AlertType.ERROR, "Failed to export item to file.",
+                    "Please ensure that the program has permissions to the file system.").show();
+            return;
+        }
+        AlertFactory.createAlert(
+                Alert.AlertType.INFORMATION, "Item exported successfully",
+                String.format("The export can be found at %s", "the Project Directory Exports Folder")).show();
     }
 }

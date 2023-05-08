@@ -21,6 +21,7 @@ public final class SearchPane extends HBox {
         super();
         this.initialiseLayout();
         this.initialiseControls();
+        this.bindEventHandlers();
         this.addComponentsToPane();
     }
 
@@ -58,6 +59,14 @@ public final class SearchPane extends HBox {
         this.searchButton = new Button();
         this.searchButton.setText("Search");
         this.searchField = new TextField();
+    }
+
+    /**
+     * A method to add and bind event handlers.
+     */
+    private void bindEventHandlers() {
+        this.searchField.textProperty().addListener((observable, oldValue, newValue) ->
+            this.searchButton.setText((newValue.isBlank()) ? "Clear Search" : "Search"));
     }
 
     /**

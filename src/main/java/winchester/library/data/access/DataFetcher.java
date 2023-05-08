@@ -135,7 +135,7 @@ public final class DataFetcher {
         ArrayList<Employee> employees = this.entityMapper.mapAsEmployee(connection.executeQuery(
                 QueryBuilder.createQuery(QueryType.ORDERED_GET_AND_FILTER)
                         .select("users.user_id", "users.user_type_id", "first_name", "last_name", "postal_code",
-                                "username", "password", "status_id")
+                                "username", "hashed_password", "status_id")
                         .from("library.users", "library.employees", "library.user_types")
                         .where("library.users.user_id = library.employees.user_id",
                                 "and library.user_types.user_type_id = library.users.user_type_id",

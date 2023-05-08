@@ -12,6 +12,9 @@ import winchester.library.presentation.alert.AlertFactory;
 import winchester.library.presentation.window.WindowBase;
 import winchester.library.service.DataPersistenceManager;
 
+/**
+ * A view that allows the adding of customers to the data source.
+ */
 public final class AddUserView extends View {
 
     private Label descriptionLabel;
@@ -25,6 +28,10 @@ public final class AddUserView extends View {
     private Button cancelButton;
     private Button createButton;
 
+    /**
+     * The default constructor that passes the parent window.
+     * @param parentWindow the parent window that the view can access.
+     */
     public AddUserView(WindowBase parentWindow) {
         super(parentWindow, Views.ADD_USER.toString());
         this.parentWindow.setWidth(400);
@@ -35,6 +42,9 @@ public final class AddUserView extends View {
         this.addComponentsToView();
     }
 
+    /**
+     * A method to initialise any layouts used within the view.
+     */
     @Override
     protected void initialiseLayouts() {
         this.actionButtonsLayout = new HBox();
@@ -43,6 +53,9 @@ public final class AddUserView extends View {
         this.actionButtonsLayout.setPadding(new Insets(10, 0, 0, 0));
     }
 
+    /**
+     * A method to initialise any controls used within the view.
+     */
     @Override
     protected void initialiseControls() {
         this.descriptionLabel = new Label();
@@ -66,31 +79,40 @@ public final class AddUserView extends View {
         this.createButton.getStyleClass().add("button-accent");
     }
 
+    /**
+     * A method to bind and add event handlers to components.
+     */
     private void bindEventHandlers() {
-        this.cancelButton.addEventHandler(MouseEvent.MOUSE_CLICKED, event -> {
-            this.parentWindow.close();
-        });
-        this.createButton.addEventHandler(MouseEvent.MOUSE_CLICKED, event -> {
-            if (this.firstNameField.getText().isBlank() && this.lastNameField.getText().isBlank()
-                    && this.postalCodeField.getText().isBlank()) {
-                AlertFactory.createAlert(Alert.AlertType.ERROR, "Form is not complete.",
-                        "Please ensure that all fields have been filled out.").show();
-                return;
-            }
-            boolean success = DataPersistenceManager.getInstance().createCustomer(
-                    this.firstNameField.getText(), this.lastNameField.getText(), this.postalCodeField.getText());
-            if (!success) {
-                AlertFactory.createAlert(Alert.AlertType.ERROR, "Failed to create new customer.").show();
-                return;
-            }
-            AlertFactory.createAlert(Alert.AlertType.INFORMATION, "Successfully created new customer.").show();
-        });
+        this.cancelButton.addEventHandler(MouseEvent.MOUSE_CLICKED, event -> this.parentWindow.close());
+        this.createButton.addEventHandler(MouseEvent.MOUSE_CLICKED, event -> this.createCustomer());
     }
 
+    /**
+     * A method to add components to the view.
+     */
     @Override
     protected void addComponentsToView() {
         this.actionButtonsLayout.getChildren().addAll(this.cancelButton, this.createButton);
-        this.getChildren().addAll(this.descriptionLabel, this.firstNameLabel, this.firstNameField, this.lastNameLabel, this.lastNameField,
-                this.postalCodeLabel, this.postalCodeField, this.actionButtonsLayout);
+        this.getChildren().addAll(this.descriptionLabel, this.firstNameLabel, this.firstNameField, this.lastNameLabel,
+                this.lastNameField, this.postalCodeLabel, this.postalCodeField, this.actionButtonsLayout);
+    }
+
+    /**
+     * A method to create a customer and add it to the data source.
+     */
+    private void createCustomer() {
+        if (this.firstNameField.getText().isBlank() && this.lastNameField.getText().isBlank()
+                && this.postalCodeField.getText().isBlank()) {
+            AlertFactory.createAlert(Alert.AlertType.ERROR, "Form is not complete.",
+                    "Please ensure that all fields have been filled out.").show();
+            return;
+        }
+        boolean success = DataPersistenceManager.getInstance().createCustomer(
+                this.firstNameField.getText(), this.lastNameField.getText(), this.postalCodeField.getText());
+        if (!success) {
+            AlertFactory.createAlert(Alert.AlertType.ERROR, "Failed to create new customer.").show();
+            return;
+        }
+        AlertFactory.createAlert(Alert.AlertType.INFORMATION, "Successfully created new customer.").show();
     }
 }

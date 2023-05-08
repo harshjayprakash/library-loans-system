@@ -51,7 +51,7 @@ public class Searcher {
     /**
      * A method to search for an employee based on full name.
      * @param name the name to search.
-     * @return an array list of employees that fit the criteria of the search.
+     * @return an array list of employees that fits the criteria of the search.
      */
     public ArrayList<Employee> searchEmployees(String name) {
         ArrayList<Employee> employees = new ArrayList<>();
@@ -60,6 +60,24 @@ public class Searcher {
                 .filter(employee -> employee.getFullName().toLowerCase().contains(name.toLowerCase()))
                 .forEach(employees::add);
         return employees;
+    }
+
+    /**
+     * A method to search for an item based on its name.
+     * @param name the name to search.
+     * @return an array list items that fits the criteria of the search.
+     */
+    public ArrayList<Item> searchItems(String name) {
+        ArrayList<Item> items = new ArrayList<>();
+        DataPersistenceManager.getInstance().getBooks()
+                .stream()
+                .filter(book -> book.getTitle().toLowerCase().contains(name.toLowerCase()))
+                .forEach(items::add);
+        DataPersistenceManager.getInstance().getFilms()
+                .stream()
+                .filter(film -> film.getTitle().toLowerCase().contains(name.toLowerCase()))
+                .forEach(items::add);
+        return items;
     }
 
 }

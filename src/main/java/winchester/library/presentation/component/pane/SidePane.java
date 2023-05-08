@@ -1,6 +1,5 @@
 package winchester.library.presentation.component.pane;
 
-import java.util.Objects;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Node;
@@ -10,8 +9,8 @@ import javafx.scene.control.ToggleButton;
 import javafx.scene.control.ToggleGroup;
 import javafx.scene.layout.Priority;
 import javafx.scene.layout.VBox;
-import winchester.library.data.access.DemoAccount;
 import winchester.library.data.model.users.Employee;
+import winchester.library.data.model.users.UserType;
 import winchester.library.presentation.style.ComponentStyler;
 import winchester.library.presentation.view.Views;
 
@@ -39,7 +38,7 @@ public final class SidePane extends VBox {
      */
     public SidePane(Employee employee) {
         super();
-        this.currentEmployee = Objects.isNull(employee) ? DemoAccount.get() : employee;
+        this.currentEmployee = employee;
         this.initialiseLayouts();
         this.initialiseControls();
         this.initialiseConstraints();
@@ -168,7 +167,10 @@ public final class SidePane extends VBox {
         this.accountPane.getChildren().addAll(this.currentUserLabel, this.logOutButton);
         this.getChildren().addAll(
                 this.serviceLabel, this.privilegeModeLabel, this.homePageButton,
-                this.inventoryPageButton, this.customersPageButton, this.loansPageButton,
-                this.usersPageButton, this.accountPane);
+                this.inventoryPageButton, this.customersPageButton, this.loansPageButton);
+        if (this.currentEmployee.getType() == UserType.ADMINISTRATOR) {
+            this.getChildren().add(this.usersPageButton);
+        }
+        this.getChildren().add(this.accountPane);
     }
 }

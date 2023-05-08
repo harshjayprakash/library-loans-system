@@ -26,11 +26,11 @@ public class ItemToLoanCard extends Card {
     private VBox itemInformationLayout;
     private Text itemInformation;
     private Label addLoanLinkLabel;
-    private Customer referencedCustomer;
-    private Item referencedItem;
     private Label itemFormatLabel;
     private Label itemStockAvailable;
     private ComboBox<String> itemFormatOptionsComboBox;
+    private final Customer referencedCustomer;
+    private final Item referencedItem;
 
     /**
      * The default constructor for the ItemToLoan class.
@@ -91,21 +91,9 @@ public class ItemToLoanCard extends Card {
      */
     @Override
     protected void bindEventHandlers() {
-        this.itemFormatOptionsComboBox.valueProperty().addListener((options, oldValue, newValue) -> {
-            ItemStock itemStock = this.referencedItem.getStockAvailable().getItemStockFromItemFormat(
-                    ItemFormat.fromString(newValue).orElse(null)).orElse(null);
-            if (itemStock == null) { return; }
-            this.addLoanLinkLabel.setDisable(itemStock.getCopiesOnLoan() == itemStock.getCopiesAvailable());
-            this.itemStockAvailable.setText(String.format(
-                    "Stock Available: %d", (itemStock.getCopiesAvailable() - itemStock.getCopiesOnLoan())));
-        });
-        this.addLoanLinkLabel.addEventHandler(MouseEvent.MOUSE_CLICKED, event -> {
-            if (this.getFormatChosen().isEmpty()) {
-                AlertFactory.createAlert(Alert.AlertType.ERROR, "Please choose a format to loan out").show();
-                return;
-            }
-            DataPersistenceManager.getInstance().createLoan(this.referencedItem, this.getFormatChosen().get(), this.referencedCustomer);
-        });
+        this.itemFormatOptionsComboBox.valueProperty().addListener((options, oldValue, newValue) ->
+                this.displayStockAvailableForFormat(newValue));
+        this.addLoanLinkLabel.addEventHandler(MouseEvent.MOUSE_CLICKED, event -> this.loanItem());
     }
 
     /**
@@ -133,5 +121,34 @@ public class ItemToLoanCard extends Card {
             }
         }
         return Optional.empty();
+    }
+
+    /**
+     * A method to display the stock available for the given item and format.
+     */
+    private void displayStockAvailableForFormat(String comboboxValue) {
+        ItemStock itemStock = this.referencedItem.getStockAvailable().getItemStockFromItemFormat(
+                ItemFormat.fromString(comboboxValue).orElse(null)).orElse(null);
+        if (itemStock == null) { return; }
+        this.addLoanLinkLabel.setDisable(itemStock.getCopiesOnLoan() == itemStock.getCopiesAvailable());
+        this.itemStockAvailable.setText(String.format(
+                "Stock Available: %d", (itemStock.getCopiesAvailable() - itemStock.getCopiesOnLoan())));
+    }
+
+    /**
+     * A method to loan out the given item, checking the chosen format.
+     */
+    private void loanItem() {
+        if (this.getFormatChosen().isEmpty()) {
+            AlertFactory.createAlert(Alert.AlertType.ERROR, "Please choose a format to loan out").show();
+            return;
+        }
+        boolean success = DataPersistenceManager.getInstance().createLoan(
+                this.referencedItem, this.getFormatChosen().get(), this.referencedCustomer);
+        if (!success) {
+            AlertFactory.createAlert(Alert.AlertType.ERROR, "Failed to loan item out").show();
+            return;
+        }
+        AlertFactory.createAlert(Alert.AlertType.INFORMATION, "Item successfully loan out.");
     }
 }

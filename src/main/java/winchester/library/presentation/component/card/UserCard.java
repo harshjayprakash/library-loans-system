@@ -19,7 +19,7 @@ public final class UserCard extends Card {
     private Label nameLabel;
     private Label accountTypeLabel;
     private Label accountStatusLabel;
-    private User referencedUser;
+    private final User referencedUser;
 
     /**
      * The default constructor for the UserCard.
@@ -65,16 +65,7 @@ public final class UserCard extends Card {
      */
     @Override
     protected void bindEventHandlers() {
-        this.viewDetailsLabel.addEventHandler(MouseEvent.MOUSE_CLICKED, event -> {
-            IndividualViewWindow individualCustomerView = new IndividualViewWindow(
-                    switch (this.referencedUser.getType()) {
-                        case CUSTOMER -> Views.INDIVIDUAL_CUSTOMER;
-                        case STANDARD, ADMINISTRATOR -> Views.INDIVIDUAL_EMPLOYEE;
-                        default -> Views.NONE;
-                    },
-                    this.referencedUser);
-            individualCustomerView.show();
-        });
+        this.viewDetailsLabel.addEventHandler(MouseEvent.MOUSE_CLICKED, event -> this.startIndividualUserView());
     }
 
     /**
@@ -87,6 +78,19 @@ public final class UserCard extends Card {
             this.userDetails.getChildren().addAll(this.accountTypeLabel, this.accountStatusLabel);
         }
         this.setCenter(this.userDetails);
+    }
+
+    /**
+     * A method to start a window with individual customer or employee view, given the user's type.
+     */
+    private void startIndividualUserView() {
+        IndividualViewWindow individualCustomerView = new IndividualViewWindow(
+                switch (this.referencedUser.getType()) {
+                    case CUSTOMER -> Views.INDIVIDUAL_CUSTOMER;
+                    case STANDARD, ADMINISTRATOR -> Views.INDIVIDUAL_EMPLOYEE;
+                },
+                this.referencedUser);
+        individualCustomerView.show();
     }
 
 }

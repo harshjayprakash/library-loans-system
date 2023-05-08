@@ -2,16 +2,21 @@ package winchester.library.presentation.view;
 
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.PasswordField;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.HBox;
+import winchester.library.data.model.users.Employee;
+import winchester.library.presentation.alert.AlertFactory;
 import winchester.library.presentation.window.IndividualViewWindow;
 import winchester.library.presentation.window.MainWindow;
 import winchester.library.presentation.window.WindowBase;
+import winchester.library.service.CredentialsChecker;
 
+import java.util.Optional;
+
+/**
+ * A view that provides a login system.
+ */
 public final class LoginView extends View {
 
     private HBox buttonLayout;
@@ -24,6 +29,10 @@ public final class LoginView extends View {
     private Button loginButton;
     private Button registerButton;
 
+    /**
+     * The default constructor that passes the parent window.
+     * @param parentWindow the parent window that the view can access.
+     */
     public LoginView(WindowBase parentWindow) {
         super(parentWindow, Views.LOGIN.toString());
         this.parentWindow.setWidth(440);
@@ -36,6 +45,9 @@ public final class LoginView extends View {
         this.addComponentsToView();
     }
 
+    /**
+     * A method to initialise any layouts used within the view.
+     */
     @Override
     protected void initialiseLayouts() {
         this.buttonLayout = new HBox();
@@ -43,6 +55,9 @@ public final class LoginView extends View {
         this.buttonLayout.setPadding(new Insets(15, 0, 0, 0));
     }
 
+    /**
+     * A method to initialise any controls used within the view.
+     */
     @Override
     protected void initialiseControls() {
         this.descriptionLabel = new Label();
@@ -73,23 +88,19 @@ public final class LoginView extends View {
         HBox.setMargin(this.registerButton, new Insets(0, 0, 0, 20));
     }
 
+    /**
+     * A method to bind and add event handlers to components.
+     */
     private void bindEventHandlers() {
-        this.loginButton.addEventHandler(MouseEvent.MOUSE_CLICKED, event -> {
-            this.parentWindow.close();
-            MainWindow mainWindow = new MainWindow();
-            mainWindow.show();
-        });
-        this.registerButton.addEventHandler(MouseEvent.MOUSE_CLICKED, event -> {
-            this.parentWindow.close();
-            IndividualViewWindow registerView = new IndividualViewWindow(Views.REGISTER);
-            registerView.show();
-        });
-        this.databaseConfigurationLinkLabel.addEventHandler(MouseEvent.MOUSE_CLICKED, event -> {
-            IndividualViewWindow databaseConfigView = new IndividualViewWindow(Views.DATABASE_CONFIGURATION);
-            databaseConfigView.show();
-        });
+        this.loginButton.addEventHandler(MouseEvent.MOUSE_CLICKED, event -> this.checkCredentials());
+        this.registerButton.addEventHandler(MouseEvent.MOUSE_CLICKED, event -> this.closeAndStartRegisterWindow());
+        this.databaseConfigurationLinkLabel.addEventHandler(MouseEvent.MOUSE_CLICKED, event ->
+                this.startDatabaseConfigurationWindow());
     }
 
+    /**
+     * A method to add components to the view.
+     */
     @Override
     protected void addComponentsToView() {
         this.buttonLayout.getChildren().addAll(
@@ -97,5 +108,43 @@ public final class LoginView extends View {
         this.getChildren().addAll(
                 this.descriptionLabel, this.usernameLabel, this.usernameField, this.passwordLabel,
                 this.passwordField, this.buttonLayout);
+    }
+
+    private void checkCredentials() {
+        Optional<Employee> employee = new CredentialsChecker().AreCredentialsCorrect(
+                this.usernameField.getText(),
+                String.valueOf(this.passwordField.getText().hashCode()));
+        if (employee.isEmpty()) {
+            AlertFactory.createAlert(Alert.AlertType.ERROR, "Failed to login",
+                    "Please check your credentials and try again").show();
+            return;
+        }
+        closeAndStartMainWindow(employee.get());
+    }
+
+    /**
+     * A method to close the current window and start the main window.
+     */
+    private void closeAndStartMainWindow(Employee employee) {
+        this.parentWindow.close();
+        MainWindow mainWindow = new MainWindow(employee);
+        mainWindow.show();
+    }
+
+    /**
+     * A method to close the current window and start a window with the register view.
+     */
+    private void closeAndStartRegisterWindow() {
+        this.parentWindow.close();
+        IndividualViewWindow registerView = new IndividualViewWindow(Views.REGISTER);
+        registerView.show();
+    }
+
+    /**
+     * A method to start a window with the database configuration view.
+     */
+    private void startDatabaseConfigurationWindow() {
+        IndividualViewWindow databaseConfigView = new IndividualViewWindow(Views.DATABASE_CONFIGURATION);
+        databaseConfigView.show();
     }
 }

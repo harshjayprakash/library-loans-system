@@ -2,6 +2,8 @@
 
 > A project that demonstrates the use of the Object-Orientated Paradigm as well as the ability of implementing a database.
 
+For instructions on how verify functionality on JetBrains IntelliJ IDEA, please visit [`functionality_verification.md`](functionality_verification.md).
+
 ## 1. Application Information
 
 Below shows the application's package structure
@@ -33,10 +35,19 @@ winchester/library
 This application uses the Maven build tool, which both IntelliJ IDEA and Microsoft Visual Studio Code have good support for.
 Please make sure that Maven is able to download sources and documentation required before proceeding to run the application.
 
-Please ensure that you have the MySQL Server (MariaDB if you are on linux) so that the data provided, in the data folder, can be imported. This folder includes an export from the MySQL Workshop. If this fails the sql queries to create the database have also been provided in `data/library.sql`.
+Please ensure that you have the MySQL Server (MariaDB if you are on linux) so that the data provided, in the data folder, 
+can be imported. This folder includes an export from the MySQL Workshop. If this fails the sql queries to create the database 
+have also been provided in `data/library.sql`.
 
+## 3 Limitations and Known Issues
 
-## 3 Additional Information
+A program is never perfect at its job.
+* Loading the Inventory takes a while due to the images loading from the internet.
+* The search filter can only be cleared when the search text is empty.
+* Refreshing the UI after a change requires restarting the specific window.
+* Accidentally closing the Main Window will require the program to be restarted.
+
+## 4 Additional Information
 
 ```
 Java            := 'Adoptium OpenJDK 17'

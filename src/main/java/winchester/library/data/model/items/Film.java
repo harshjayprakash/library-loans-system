@@ -1,15 +1,13 @@
 package winchester.library.data.model.items;
 
-import winchester.library.data.access.DatabaseEntity;
 import winchester.library.data.model.util.Exportable;
 
 /**
  * A class that models the film entity.
  */
-@DatabaseEntity(table = "films")
 public class Film extends Item implements Exportable {
 
-    public final String identifier;
+    private final String identifier;
     private final String title;
     private final String director;
     private final int releaseYear;
@@ -35,6 +33,7 @@ public class Film extends Item implements Exportable {
         this.distributor = distributor;
         this.durationMinutes = durationMinutes;
         this.imageUrl = imageUrl;
+        this.overdueFeePence = 70;
     }
 
     /**
@@ -157,7 +156,7 @@ public class Film extends Item implements Exportable {
                 %s
                 
                 Earliest Return : %s
-                """, this.toString(), itemCopies.toString(),
+                """, this, itemCopies,
                 (this.getLoansManager().getEarliestReturnDate().isEmpty())
                         ? "None" : this.getLoansManager().getEarliestReturnDate().get());
     }

@@ -1,14 +1,11 @@
 package winchester.library.data.model.users;
 
 import java.util.Optional;
-import winchester.library.data.access.DatabaseEntity;
 
 /**
  * An enumeration to represent the types of users modelled within the system.
  */
-@DatabaseEntity(table = "user_types")
 public enum UserType {
-    DEMO(0, "Demo"),
     CUSTOMER(1, "Customer"),
     STANDARD(2, "Standard"),
     ADMINISTRATOR(3, "Administrator");

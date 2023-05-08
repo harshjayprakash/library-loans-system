@@ -18,7 +18,8 @@
     -fx-font-size: 14px;
     -fx-background-color: -wl-colour-background-secondary;
     -fx-border-color: transparent transparent transparent transparent;
-    -fx-border-width: 2px
+    -fx-border-width: 2px;
+    -fx-underline: true;
 }
 
 .toggle-button:selected {

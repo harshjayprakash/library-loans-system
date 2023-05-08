@@ -1,12 +1,10 @@
 package winchester.library.data.model.users;
 
 import java.util.Optional;
-import winchester.library.data.access.DatabaseEntity;
 
 /**
  * An enumeration to represent the integer values of employee status.
  */
-@DatabaseEntity(table = "employee_status")
 public enum EmployeeStatus {
     DISABLED(-1, "Disabled"),
     NOT_APPROVED(0, "Not Approved"),

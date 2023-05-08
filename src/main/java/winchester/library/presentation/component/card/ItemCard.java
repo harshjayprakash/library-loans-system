@@ -12,6 +12,7 @@ import winchester.library.data.model.items.Item;
 import winchester.library.data.model.items.ItemType;
 import winchester.library.presentation.view.Views;
 import winchester.library.presentation.window.IndividualViewWindow;
+import winchester.library.service.Logger;
 
 /**
  * A class that provide a control for displaying item information.
@@ -25,7 +26,7 @@ public final class ItemCard extends Card {
     private Label itemNameLabel;
     private Label itemCreatorLabel;
     private Label itemCategoryLabel;
-    private Item referencedItem;
+    private final Item referencedItem;
 
     /**
      * The default constructor for the ItemCard class.
@@ -60,8 +61,24 @@ public final class ItemCard extends Card {
         this.itemImageView = new ImageView();
         this.itemImageView.setFitWidth(this.itemImageViewWidth);
         this.itemImageView.setFitHeight(this.itemImageViewHeight);
-        this.itemImageView.setImage(new Image(
-                this.referencedItem.getImageUrl(), this.itemImageViewWidth, this.itemImageViewHeight, false, false));
+        try {
+            this.itemImageView.setImage(new Image(
+                    this.referencedItem.getImageUrl(), this.itemImageViewWidth, this.itemImageViewHeight, false, false));
+        }
+        catch (NullPointerException exception) {
+            Logger.getInstance().PrintError(
+                    this.getClass().getName(),
+                    "Loading Item Image",
+                    "Url is not available",
+                    "Please ensure that the url provided is valid");
+        }
+        catch (IllegalArgumentException exception) {
+            Logger.getInstance().PrintError(
+                    this.getClass().getName(),
+                    "Loading Item Image",
+                    "Url is not available or unsupported image type",
+                    "Please ensure that the url is valid has a standard image format such as png or jpeg");
+        }
         this.itemNameLabel = new Label();
         this.itemCreatorLabel = new Label();
         this.itemCategoryLabel = new Label();
@@ -83,11 +100,7 @@ public final class ItemCard extends Card {
      */
     @Override
     protected void bindEventHandlers() {
-        this.viewDetailsLabel.addEventHandler(MouseEvent.MOUSE_CLICKED, event -> {
-            IndividualViewWindow individualItemView = new IndividualViewWindow(
-                    Views.INDIVIDUAL_ITEM, this.referencedItem);
-            individualItemView.show();
-        });
+        this.viewDetailsLabel.addEventHandler(MouseEvent.MOUSE_CLICKED, event -> this.startIndividualItemWindow());
     }
 
     /**
@@ -98,6 +111,14 @@ public final class ItemCard extends Card {
         this.itemInformation.getChildren().addAll(this.itemNameLabel, this.itemCreatorLabel, this.itemCategoryLabel);
         this.setLeft(this.itemImageView);
         this.setCenter(this.itemInformation);
+    }
+
+    /**
+     * A method to start a window with the individual item view.
+     */
+    private void startIndividualItemWindow() {
+        IndividualViewWindow individualItemView = new IndividualViewWindow(Views.INDIVIDUAL_ITEM, this.referencedItem);
+        individualItemView.show();
     }
 
 }

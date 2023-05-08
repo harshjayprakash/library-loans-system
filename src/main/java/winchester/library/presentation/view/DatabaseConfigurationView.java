@@ -14,6 +14,9 @@ import winchester.library.presentation.alert.AlertFactory;
 import winchester.library.presentation.window.WindowBase;
 import winchester.library.service.DatabaseConnectivityChecker;
 
+/**
+ * A view that allows the setting of data source credentials.
+ */
 public final class DatabaseConfigurationView extends View {
 
     private final DatabaseCredentials credentials;
@@ -28,6 +31,10 @@ public final class DatabaseConfigurationView extends View {
     private Button cancelButton;
     private Button saveAndTestButton;
 
+    /**
+     * The default constructor that passes the parent window.
+     * @param parentWindow the parent window that the view can access.
+     */
     public DatabaseConfigurationView(WindowBase parentWindow) {
         super(parentWindow, Views.DATABASE_CONFIGURATION.toString());
         this.parentWindow.setWidth(550);
@@ -39,6 +46,9 @@ public final class DatabaseConfigurationView extends View {
         this.addComponentsToView();
     }
 
+    /**
+     * A method to initialise any layouts used within the view.
+     */
     @Override
     protected void initialiseLayouts() {
         this.buttonLayout = new HBox();
@@ -46,6 +56,9 @@ public final class DatabaseConfigurationView extends View {
         this.buttonLayout.setPadding(new Insets(15, 0, 0, 0));
     }
 
+    /**
+     * A method to initialise any controls used within the view.
+     */
     @Override
     protected void initialiseControls() {
         this.descriptionLabel = new Label();
@@ -75,35 +88,46 @@ public final class DatabaseConfigurationView extends View {
         HBox.setMargin(this.saveAndTestButton, new Insets(0, 0, 0, 10));
     }
 
+    /**
+     * A method to bind and add event handlers to components.
+     */
     private void bindEventHandlers() {
         this.cancelButton.addEventHandler(MouseEvent.MOUSE_CLICKED, event -> this.parentWindow.close());
-        this.saveAndTestButton.addEventHandler(MouseEvent.MOUSE_CLICKED, event -> {
-            DatabaseConstant testResult = DatabaseConnectivityChecker.getInstance().getDatabaseStatus(
-                    this.urlField.getText(), this.usernameField.getText(), this.passwordField.getText());
-            if (testResult != DatabaseConstant.CONNECTION_SUCCESSFUL) {
-                AlertFactory.createAlert(Alert.AlertType.WARNING,
-                        "Failed to connect to data source", """
-                                Please ensure the details are correct.
-
-                                The credentials will be reset to their defaults.
-                                """).show();
-                return;
-            }
-            this.credentials.setUrl(this.urlField.getText());
-            this.credentials.setUsername(this.usernameField.getText());
-            this.credentials.setPassword(this.passwordField.getText());
-            AlertFactory.createAlert(Alert.AlertType.INFORMATION, "Connection to data source was successful",
-                    "The credentials will be changed for this session.").show();
-            this.parentWindow.close();
-        });
+        this.saveAndTestButton.addEventHandler(MouseEvent.MOUSE_CLICKED, event -> this.testAndSaveNewConnection());
     }
 
+    /**
+     * A method to add components to the view.
+     */
     @Override
     protected void addComponentsToView() {
         this.buttonLayout.getChildren().addAll(this.cancelButton, this.saveAndTestButton);
         this.getChildren().addAll(
             this.descriptionLabel, this.urlLabel, this.urlField, this.usernameLabel, this.usernameField, 
             this.passwordLabel, this.passwordField, this.buttonLayout);
+    }
+
+    /**
+     * A method to test the new data source credentials, saving them if a connection is successful.
+     */
+    private void testAndSaveNewConnection() {
+        DatabaseConstant testResult = DatabaseConnectivityChecker.getInstance().getDatabaseStatus(
+                this.urlField.getText(), this.usernameField.getText(), this.passwordField.getText());
+        if (testResult != DatabaseConstant.CONNECTION_SUCCESSFUL) {
+            AlertFactory.createAlert(Alert.AlertType.WARNING,
+                    "Failed to connect to data source", """
+                                Please ensure the details are correct.
+
+                                The credentials will be reset to their defaults.
+                                """).show();
+            return;
+        }
+        this.credentials.setUrl(this.urlField.getText());
+        this.credentials.setUsername(this.usernameField.getText());
+        this.credentials.setPassword(this.passwordField.getText());
+        AlertFactory.createAlert(Alert.AlertType.INFORMATION, "Connection to data source was successful",
+                "The credentials will be changed for this session.").show();
+        this.parentWindow.close();
     }
 
 }

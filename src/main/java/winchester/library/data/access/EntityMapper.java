@@ -13,7 +13,6 @@ import winchester.library.data.model.items.ItemFormat;
 import winchester.library.data.model.items.ItemStock;
 import winchester.library.data.model.items.ItemType;
 import winchester.library.data.model.loans.Loan;
-import winchester.library.data.model.users.Administrator;
 import winchester.library.data.model.users.Customer;
 import winchester.library.data.model.users.Employee;
 import winchester.library.data.model.users.EmployeeStatus;
@@ -67,7 +66,7 @@ public class EntityMapper {
             Logger.getInstance().PrintError(
                     this.getClass().getName(),
                     "Mapping Data to an Array",
-                    DatabaseConstant.UNKNOWN_ERROR.toString() + ": " + exception.getMessage(),
+                    DatabaseConstant.UNKNOWN_ERROR + ": " + exception.getMessage(),
                     "^ Please find a solution to the above error");
         }
         return Optional.empty();
@@ -180,18 +179,12 @@ public class EntityMapper {
     public Optional<ArrayList<Employee>> mapAsEmployee(ResultSet data) {
         return this.mapToList(data, result -> {
             try {
-                return switch (UserType.fromIdentifier(result.getInt("user_type_id")).orElse(UserType.STANDARD)) {
-                    default -> new Employee(result.getInt("user_id"),
+                return new Employee(result.getInt("user_id"),
+                            UserType.fromIdentifier(result.getInt("user_type_id")).orElse(UserType.STANDARD),
                             result.getString("first_name"), result.getString("last_name"),
                             result.getString("postal_code"), result.getString("username"),
                             result.getString("hashed_password"),
                             EmployeeStatus.fromIdentifier(result.getInt("status_id")).orElse(EmployeeStatus.DISABLED));
-                    case ADMINISTRATOR, STANDARD -> new Administrator(result.getInt("user_id"),
-                            result.getString("first_name"), result.getString("last_name"),
-                            result.getString("postal_code"), result.getString("username"),
-                            result.getString("hashed_password"),
-                            EmployeeStatus.fromIdentifier(result.getInt("status_id")).orElse(EmployeeStatus.DISABLED));
-                };
             }
             catch (SQLException exception) {
                 Logger.getInstance().PrintError(

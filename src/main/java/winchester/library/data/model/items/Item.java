@@ -1,6 +1,5 @@
 package winchester.library.data.model.items;
 
-import java.util.ArrayList;
 import winchester.library.data.model.loans.LoansManager;
 
 /**
@@ -8,9 +7,10 @@ import winchester.library.data.model.loans.LoansManager;
  */
 public abstract class Item {
 
-    protected ItemStockManager stockAvailable;
-    protected LoansManager loans;
+    protected final ItemStockManager stockAvailable;
+    protected final LoansManager loans;
     protected String imageUrl;
+    protected int overdueFeePence;
 
     /**
      * The default constructor for the Item class, initialising the stock and loans manager.
@@ -50,6 +50,14 @@ public abstract class Item {
      */
     public void setImageUrl(String url) {
         this.imageUrl = url;
+    }
+
+    /**
+     * An accessor to retrieve the overdue fee in pence.
+     * @return overdue fee in pence.
+     */
+    public int getOverdueFeePence() {
+        return this.overdueFeePence;
     }
 
     /**

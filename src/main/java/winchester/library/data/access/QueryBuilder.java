@@ -155,7 +155,6 @@ public class QueryBuilder {
                     this.type.getQueryFormat(), this.tables, this.columns);
             case UPDATE_AND_FILTER -> String.format(
                     this.type.getQueryFormat(), this.tables, this.columns, this.conditions);
-            default -> null;
         };
     }
 

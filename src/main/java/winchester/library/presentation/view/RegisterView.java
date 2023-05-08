@@ -18,6 +18,9 @@ import winchester.library.service.DataPersistenceManager;
 import winchester.library.service.PasswordValidator;
 import winchester.library.service.UsernameValidator;
 
+/**
+ * A view to be able to register an employee on to the system.
+ */
 public final class RegisterView extends View {
 
     private HBox buttonLayout;
@@ -42,6 +45,10 @@ public final class RegisterView extends View {
     private Button backButton;
     private Button requestButton;
 
+    /**
+     * The default constructor that passes the parent window.
+     * @param parentWindow the parent window that the view can access.
+     */
     public RegisterView(WindowBase parentWindow) {
         super(parentWindow, Views.REGISTER.toString());
         this.parentWindow.setHeight(770);
@@ -52,6 +59,9 @@ public final class RegisterView extends View {
         this.addComponentsToView();
     }
 
+    /**
+     * A method to initialise any layouts used within the view.
+     */
     @Override
     protected void initialiseLayouts() {
         this.getStyleClass().add("background-primary");
@@ -61,6 +71,9 @@ public final class RegisterView extends View {
         this.buttonLayout.setPadding(new Insets(15, 0, 0, 0));
     }
 
+    /**
+     * A method to initialise any controls used within the view.
+     */
     @Override
     protected void initialiseControls() {
         this.descriptionLabel = new Label();
@@ -115,61 +128,19 @@ public final class RegisterView extends View {
         HBox.setMargin(this.requestButton, new Insets(0, 0, 0, 10));
     }
 
+    /**
+     * A method to bind and add event handlers to components.
+     */
     private void bindEventHandlers() {
-        this.backButton.addEventHandler(MouseEvent.MOUSE_CLICKED, event -> {
-            this.parentWindow.close();
-            IndividualViewWindow loginView = new IndividualViewWindow(Views.LOGIN);
-            loginView.show();
-        });
-        this.passwordConfirmationField.textProperty().addListener((observable, oldValue, newValue) -> {
-            this.passwordConfirmationEqualCheckLabel.setText(
-                    (this.passwordField.getText().equals(this.passwordConfirmationField.getText()))
-                    ? "Passwords match" : "Passwords do not match");
-        });
-        this.requestButton.addEventHandler(MouseEvent.MOUSE_CLICKED, event -> {
-            PasswordValidator passwordValidator = new PasswordValidator();
-            UsernameValidator usernameValidator = new UsernameValidator();
-            if (this.blankFieldExists()) {
-                AlertFactory.createAlert(Alert.AlertType.ERROR, "Form is not complete",
-                        "Please ensure that all fields have been completed.").show();
-                return;
-            }
-            if (!this.passwordField.getText().equals(this.passwordConfirmationField.getText())) {
-                AlertFactory.createAlert(Alert.AlertType.ERROR, "Passwords do not match").show();
-                return;
-            }
-            if (!passwordValidator.meetsAllRequirements(this.passwordField.getText())) {
-                AlertFactory.createAlert(Alert.AlertType.ERROR,
-                        "Passwords do not meet the specified requirements").show();
-                return;
-            }
-            if (usernameValidator.usernameExists(this.usernameField.getText())) {
-                AlertFactory.createAlert(Alert.AlertType.ERROR,
-                        "This username already exists in the system.", "Please choose another username").show();
-                return;
-            }
-            boolean success = DataPersistenceManager.getInstance().createUser(
-                    (this.accountTypeComboBox.getValue().equals(UserType.ADMINISTRATOR.toString()))
-                            ? UserType.ADMINISTRATOR : UserType.STANDARD,
-                    this.firstNameField.getText(),
-                    this.lastNameField.getText(),
-                    this.postalCodeField.getText(),
-                    this.usernameField.getText(),
-                    this.passwordField.getText());
-            if (!success) {
-                AlertFactory.createAlert(Alert.AlertType.ERROR, "Failed to register user to the system",
-                        "Please check your connection and try again.").show();
-                return;
-            }
-            AlertFactory.createAlert(Alert.AlertType.INFORMATION, "Thank you for registering",
-                    "An administrator will need to approve your account before you can use it.\n"
-                    +"Thank you for your patience").show();
-            this.parentWindow.close();
-            IndividualViewWindow loginView = new IndividualViewWindow(Views.LOGIN);
-            loginView.show();
-        });
+        this.backButton.addEventHandler(MouseEvent.MOUSE_CLICKED, event -> this.closeAndStartLoginWindow());
+        this.passwordConfirmationField.textProperty().addListener((observable, oldValue, newValue) ->
+                this.checkIfPasswordsMatch());
+        this.requestButton.addEventHandler(MouseEvent.MOUSE_CLICKED, event -> this.createEmployee());
     }
 
+    /**
+     * A method to add components to the view.
+     */
     @Override
     protected void addComponentsToView() {
         this.buttonLayout.getChildren().addAll(this.backButton, this.requestButton);
@@ -186,6 +157,71 @@ public final class RegisterView extends View {
                 || this.postalCodeField.getText().isBlank() || this.usernameField.getText().isBlank()
                 || this.passwordField.getText().isBlank() || this.passwordConfirmationField.getText().isBlank()
                 || this.accountTypeComboBox.getValue().isBlank();
+    }
+
+    /**
+     * A method to close the current window and start a window with the login view.
+     */
+    private void closeAndStartLoginWindow() {
+        this.parentWindow.close();
+        IndividualViewWindow loginView = new IndividualViewWindow(Views.LOGIN);
+        loginView.show();
+    }
+
+    /**
+     * A method to check if the passwords entered match.
+     */
+    private void checkIfPasswordsMatch() {
+        this.passwordConfirmationEqualCheckLabel.setText(
+                (this.passwordField.getText().equals(this.passwordConfirmationField.getText()))
+                        ? "Passwords match" : "Passwords do not match");
+    }
+
+    /**
+     * A method to create an employee, checking all the fields and requirements before proceeding to sync it to the
+     * data source.
+     */
+    private void createEmployee() {
+        PasswordValidator passwordValidator = new PasswordValidator();
+        UsernameValidator usernameValidator = new UsernameValidator();
+        if (this.blankFieldExists()) {
+            AlertFactory.createAlert(Alert.AlertType.ERROR, "Form is not complete",
+                    "Please ensure that all fields have been completed.").show();
+            return;
+        }
+        if (!this.passwordField.getText().equals(this.passwordConfirmationField.getText())) {
+            AlertFactory.createAlert(Alert.AlertType.ERROR, "Passwords do not match").show();
+            return;
+        }
+        if (!passwordValidator.meetsAllRequirements(this.passwordField.getText())) {
+            AlertFactory.createAlert(Alert.AlertType.ERROR,
+                    "Passwords do not meet the specified requirements").show();
+            return;
+        }
+        if (usernameValidator.usernameExists(this.usernameField.getText())) {
+            AlertFactory.createAlert(Alert.AlertType.ERROR,
+                    "This username already exists in the system.", "Please choose another username").show();
+            return;
+        }
+        boolean success = DataPersistenceManager.getInstance().createUser(
+                (this.accountTypeComboBox.getValue().equals(UserType.ADMINISTRATOR.toString()))
+                        ? UserType.ADMINISTRATOR : UserType.STANDARD,
+                this.firstNameField.getText(),
+                this.lastNameField.getText(),
+                this.postalCodeField.getText(),
+                this.usernameField.getText(),
+                String.valueOf(this.passwordField.getText().hashCode()));
+        if (!success) {
+            AlertFactory.createAlert(Alert.AlertType.ERROR, "Failed to register user to the system",
+                    "Please check your connection and try again.").show();
+            return;
+        }
+        AlertFactory.createAlert(Alert.AlertType.INFORMATION, "Thank you for registering",
+                "An administrator will need to approve your account before you can use it.\n"
+                        +"Thank you for your patience").show();
+        this.parentWindow.close();
+        IndividualViewWindow loginView = new IndividualViewWindow(Views.LOGIN);
+        loginView.show();
     }
 
 }

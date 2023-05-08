@@ -1,12 +1,10 @@
 package winchester.library.data.model.items;
 
-import winchester.library.data.access.DatabaseEntity;
 import winchester.library.data.model.util.Exportable;
 
 /**
  * A class that models a book entity.
  */
-@DatabaseEntity(table = "books")
 public class Book extends Item implements Exportable {
 
     private final String isbn;
@@ -32,6 +30,7 @@ public class Book extends Item implements Exportable {
         this.publicationYear = publicationYear;
         this.publisher = publisher;
         this.imageUrl = imageUrl;
+        this.overdueFeePence = 50;
     }
 
     /**
@@ -128,7 +127,7 @@ public class Book extends Item implements Exportable {
                 %s
                 
                 Earliest Return : %s
-                """, this.toString(), itemCopies.toString(),
+                """, this, itemCopies,
                 (this.getLoansManager().getEarliestReturnDate().isEmpty())
                         ? "None" : this.getLoansManager().getEarliestReturnDate().get());
     }

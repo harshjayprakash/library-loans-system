@@ -11,7 +11,6 @@ import winchester.library.data.model.items.Film;
 import winchester.library.data.model.items.Item;
 import winchester.library.data.model.items.ItemFormat;
 import winchester.library.data.model.loans.Loan;
-import winchester.library.data.model.users.Administrator;
 import winchester.library.data.model.users.Customer;
 import winchester.library.data.model.users.Employee;
 import winchester.library.data.model.users.EmployeeStatus;
@@ -68,7 +67,17 @@ public final class DataPersistenceManager {
      * @return an array list of customers.
      */
     public ArrayList<Customer> getCustomers() {
-        return dataRetriever.getCustomers();
+        ArrayList<Customer> customers = dataRetriever.getCustomers();
+        ArrayList<Loan> loans = dataRetriever.getLoans();
+        Searcher searcher = new Searcher();
+        customers.forEach(customer ->
+            loans.stream()
+                    .filter(loan -> loan.getCustomer().getIdentifier() == customer.getIdentifier()
+                            && !loan.getReturned() && loan.calculateDaysRemaining() < 0)
+                    .forEach(loan -> customer.setOverdueFees((int)
+                            Math.abs(loan.calculateDaysRemaining())
+                            * searcher.searchItemFromIdentifier(loan.getLoanedItemIdentifier()).getOverdueFeePence())));
+        return customers;
     }
 
     /**
@@ -100,10 +109,9 @@ public final class DataPersistenceManager {
     public boolean createUser(UserType userType, String firstName, String lastName, String postalCode, String username,
                               String password) {
         return switch (userType) {
-            case STANDARD -> dataWriter.insert(new Employee(new IdentifierGenerator().generateForUser(),
-                    firstName, lastName, postalCode, username, password, EmployeeStatus.NOT_APPROVED));
-            case ADMINISTRATOR -> dataWriter.insert(new Administrator(new IdentifierGenerator().generateForUser(),
-                    firstName, lastName, postalCode, username, password, EmployeeStatus.NOT_APPROVED));
+            case STANDARD, ADMINISTRATOR -> dataWriter.insert(new Employee(new IdentifierGenerator().generateForUser(),
+                    userType, firstName, lastName, postalCode, username, password,
+                    EmployeeStatus.NOT_APPROVED));
             default -> DatabaseConstant.INSERTION_ERROR;
         } == DatabaseConstant.INSERTION_SUCCESSFUL;
     }
@@ -162,6 +170,51 @@ public final class DataPersistenceManager {
      */
     public boolean enableEmployee(Employee employee) {
         return dataUpdater.updateEmployeeStatus(employee, EmployeeStatus.ACTIVE) == DatabaseConstant.UPDATE_SUCCESSFUL;
+    }
+
+    /**
+     * A method to mark a loan as returned, syncing it to the data source.
+     * @param loan the loan to be returned.
+     * @return true if the operation was successful.
+     */
+    public boolean returnItem(Loan loan) {
+        return dataUpdater.returnLoan(loan) == DatabaseConstant.UPDATE_SUCCESSFUL;
+    }
+
+    /**
+     * A method to update the amount of days the item can be taken out for.
+     * @param loan the loan to be extended.
+     * @return true if the operation was successful.
+     */
+    public boolean extendLoan(Loan loan) {
+        return dataUpdater.updateDueDateOnLoan(loan) == DatabaseConstant.UPDATE_SUCCESSFUL;
+    }
+
+    /**
+     * A method to create a new film entity and add it to the data source.
+     * @param film the film to be added.
+     * @return true if the operation was successful.
+     */
+    public boolean createFilm(Film film) {
+        return dataWriter.insert(film) == DatabaseConstant.INSERTION_SUCCESSFUL;
+    }
+
+    /**
+     * A method to create a new book and add it to the data source.
+     * @param book the book to be added.
+     * @return true if the operation was successful.
+     */
+    public boolean createBook(Book book) {
+        return dataWriter.insert(book) == DatabaseConstant.INSERTION_SUCCESSFUL;
+    }
+
+    /**
+     * A method to update the employee's password, syncing it to the data source.
+     * @param employee the employee to be updated.
+     * @return true if the operation was successful.
+     */
+    public boolean updatePassword(Employee employee) {
+        return dataUpdater.updateEmployeePassword(employee) == DatabaseConstant.UPDATE_SUCCESSFUL;
     }
 
 }

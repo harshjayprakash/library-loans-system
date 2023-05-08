@@ -8,7 +8,7 @@ class BookTest {
     Book testBook;
 
     BookTest() {
-        this.testBook = new Book(
+        testBook = new Book(
                 "9780063021426",
                 "Babel: An Arcane History",
                 "R.F. Kuang",

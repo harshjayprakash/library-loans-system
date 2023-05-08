@@ -1,13 +1,13 @@
 package winchester.library;
 
 import javafx.application.Application;
+import javafx.scene.control.Alert;
 import javafx.stage.Stage;
-import winchester.library.data.model.users.Administrator;
-import winchester.library.data.model.users.Employee;
-import winchester.library.data.model.users.EmployeeStatus;
+import winchester.library.presentation.alert.AlertFactory;
 import winchester.library.presentation.style.StylesheetRegistry;
 import winchester.library.presentation.view.Views;
 import winchester.library.presentation.window.IndividualViewWindow;
+import winchester.library.service.DatabaseConnectivityChecker;
 import winchester.library.service.Logger;
 
 /**
@@ -27,12 +27,19 @@ public final class Main extends Application {
     @Override
     public void start(Stage stage) {
         Logger.getInstance().setEnabled(true);
-        Logger.getInstance().setWhereEnabled(true);
+        Logger.getInstance().setWhereEnabled(false);
         StylesheetRegistry.getInstance().addMultipleStylesheets(
                 "/winchester/library/presentation/style/base.css",
                 "/winchester/library/presentation/style/components.css",
                 "/winchester/library/presentation/style/misc.css",
                 "/winchester/library/presentation/style/utility.css");
+        if (!DatabaseConnectivityChecker.getInstance().isDriverAvailable()) {
+            AlertFactory.createAlert(Alert.AlertType.ERROR, "Cannot find database driver.").show();
+        }
+        if (!DatabaseConnectivityChecker.getInstance().getDatabaseAvailable()) {
+            AlertFactory.createAlert(Alert.AlertType.ERROR, "Cannot connect to database.",
+                    "Ensure that the credentials are correct.").show();
+        }
         IndividualViewWindow loginWindow = new IndividualViewWindow(Views.LOGIN);
         loginWindow.show();
     }
@@ -42,9 +49,6 @@ public final class Main extends Application {
      * @param args - Any arguments specified when running the application.
      */
     public static void main(String[] args) {
-        System.out.println("Mark Harrison  " + "wcJczEr36UqEF$".hashCode());
-        System.out.println("Chris Adams  " + "BUL4cF#GV&$p@z".hashCode());
-        System.out.println("Dominic Mccann  " + "fv5YPaJec*TUb&".hashCode());
         Main.launch(args);
     }
 

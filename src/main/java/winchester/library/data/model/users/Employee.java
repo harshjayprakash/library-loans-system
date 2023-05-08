@@ -1,21 +1,18 @@
 package winchester.library.data.model.users;
 
-import winchester.library.data.access.DatabaseEntity;
-
 /**
  * A class to model an employee of the system.
  */
-@DatabaseEntity(table = "employees")
 public class Employee extends User {
     
     private final String username;
     private String hashedPassword;
     private EmployeeStatus status;
 
-    public Employee(int identifier, String firstName, String lastName, String postalCode, String username,
+    public Employee(int identifier, UserType type, String firstName, String lastName, String postalCode, String username,
                     String hashedPassword, EmployeeStatus status) {
         super(identifier, firstName, lastName, postalCode);
-        this.type = UserType.STANDARD;
+        this.type = type;
         this.username = username;
         this.hashedPassword = hashedPassword;
         this.status = status;

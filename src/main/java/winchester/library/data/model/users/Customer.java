@@ -1,9 +1,5 @@
 package winchester.library.data.model.users;
 
-import java.util.ArrayList;
-import winchester.library.data.model.loans.Loan;
-import winchester.library.data.model.loans.LoansManager;
-
 /**
  * A class to model a customer that will be loaning items.
  */
@@ -55,18 +51,5 @@ public class Customer extends User  {
      */
     public void setOverdueFees(int feesPence) {
         this.overdueFeesPence = feesPence;
-    }
-
-    /**
-     * Returns a string of the customer's information.
-     * @return a string of the customer's information.
-     */
-    @Override
-    public String toString() {
-        return """
-               %s
-               Type: %s
-               Overdue Fees: £%.2f
-               """.formatted(super.toString(), this.getType().toString(), this.getOverdueFeesAsPounds());
     }
 }

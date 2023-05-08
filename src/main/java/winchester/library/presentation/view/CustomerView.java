@@ -16,6 +16,9 @@ import winchester.library.presentation.window.WindowBase;
 import winchester.library.service.DataPersistenceManager;
 import winchester.library.service.Searcher;
 
+/**
+ * A view that displays a list of all the customers registered.
+ */
 public final class CustomerView extends View {
 
     private ActionPane actionsLayout;
@@ -26,6 +29,10 @@ public final class CustomerView extends View {
     private ArrayList<UserCard> customersCardList;
     private Button addCustomerButton;
 
+    /**
+     * The default constructor that passes the parent window.
+     * @param parentWindow the parent window that the view can access.
+     */
     public CustomerView(WindowBase parentWindow) {
         super(parentWindow, Views.CUSTOMERS.toString());
         this.initialiseLayouts();
@@ -34,6 +41,9 @@ public final class CustomerView extends View {
         this.addComponentsToView();
     }
 
+    /**
+     * A method to initialise any layouts used within the view.
+     */
     @Override
     protected void initialiseLayouts() {
         this.setSpacing(20);
@@ -46,6 +56,9 @@ public final class CustomerView extends View {
         this.scrollPane.setFitToWidth(true);
     }
 
+    /**
+     * A method to initialise any controls used within the view.
+     */
     @Override
     protected void initialiseControls() {
         this.addCustomerButton = new Button();
@@ -55,6 +68,9 @@ public final class CustomerView extends View {
         this.initialiseCustomerCardControls();
     }
 
+    /**
+     * A method to initialise all the cards that will be displaying the customers.
+     */
     private void initialiseCustomerCardControls() {
         ArrayList<Customer> customers = DataPersistenceManager.getInstance().getCustomers();
         if (customers.isEmpty()) {
@@ -64,21 +80,17 @@ public final class CustomerView extends View {
         customers.forEach(customer -> this.customersCardList.add(new UserCard(customer)));
     }
 
+    /**
+     * A method to bind and add event handlers to components.
+     */
     private void bindEventHandlers() {
-        this.search.getSearchButton().addEventHandler(MouseEvent.MOUSE_CLICKED, event -> {
-            Searcher searcher = new Searcher();
-            this.customerList.getChildren().clear();
-            this.customersCardList.clear();
-            searcher.searchCustomers(this.search.getSearchText()).forEach(
-                    customer -> this.customersCardList.add(new UserCard(customer)));
-            this.customersCardList.forEach(card -> this.customerList.getChildren().add(card));
-        });
-        this.addCustomerButton.addEventHandler(MouseEvent.MOUSE_CLICKED, event -> {
-            IndividualViewWindow addUserView = new IndividualViewWindow(Views.ADD_USER);
-            addUserView.show();
-        });
+        this.search.getSearchButton().addEventHandler(MouseEvent.MOUSE_CLICKED, event -> this.updateCardsList());
+        this.addCustomerButton.addEventHandler(MouseEvent.MOUSE_CLICKED, event -> this.startAddCustomerWindow());
     }
 
+    /**
+     * A method to add components to the view.
+     */
     @Override
     protected void addComponentsToView() {
         if (this.banner != null) {
@@ -90,5 +102,25 @@ public final class CustomerView extends View {
         this.customersCardList.forEach(card -> this.customerList.getChildren().add(card));
         this.scrollPane.setContent(this.customerList);
         this.getChildren().addAll(this.actionsLayout, this.scrollPane);
+    }
+
+    /**
+     * A method to update the cards list shown based on the search.
+     */
+    private void updateCardsList() {
+        Searcher searcher = new Searcher();
+        this.customerList.getChildren().clear();
+        this.customersCardList.clear();
+        searcher.searchCustomers(this.search.getSearchText()).forEach(
+                customer -> this.customersCardList.add(new UserCard(customer)));
+        this.customersCardList.forEach(card -> this.customerList.getChildren().add(card));
+    }
+
+    /**
+     * A method to start a window with the add users view.
+     */
+    private void startAddCustomerWindow() {
+        IndividualViewWindow addUserView = new IndividualViewWindow(Views.ADD_USER);
+        addUserView.show();
     }
 }

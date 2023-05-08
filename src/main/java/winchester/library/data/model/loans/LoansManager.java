@@ -3,7 +3,6 @@ package winchester.library.data.model.loans;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Collections;
-import java.util.Objects;
 import java.util.Optional;
 
 /**

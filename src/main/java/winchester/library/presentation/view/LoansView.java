@@ -8,12 +8,19 @@ import winchester.library.presentation.component.card.LoanCard;
 import winchester.library.presentation.window.WindowBase;
 import winchester.library.service.DataPersistenceManager;
 
+/**
+ * A view to list all the loans.
+ */
 public final class LoansView extends View {
 
     private VBox loansList;
     private ScrollPane scrollPane;
     private ArrayList<LoanCard> loanCards;
 
+    /**
+     * The default constructor that passes the parent window.
+     * @param parentWindow the parent window that the view can access.
+     */
     public LoansView(WindowBase parentWindow) {
         super(parentWindow, Views.LOANS.toString());
         this.initialiseLayouts();
@@ -21,6 +28,9 @@ public final class LoansView extends View {
         this.addComponentsToView();
     }
 
+    /**
+     * A method to initialise any layouts used within the view.
+     */
     @Override
     protected void initialiseLayouts() {
         this.loansList = new VBox();
@@ -31,6 +41,9 @@ public final class LoansView extends View {
         this.scrollPane.setFitToWidth(true);
     }
 
+    /**
+     * A method to initialise any controls used within the view.
+     */
     @Override
     protected void initialiseControls() {
         ArrayList<Loan> loans = DataPersistenceManager.getInstance().getLoans();
@@ -41,6 +54,9 @@ public final class LoansView extends View {
         }
     }
 
+    /**
+     * A method to add components to the view.
+     */
     @Override
     protected void addComponentsToView() {
         for (LoanCard card : this.loanCards) {

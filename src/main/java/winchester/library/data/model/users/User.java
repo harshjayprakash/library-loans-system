@@ -1,11 +1,8 @@
 package winchester.library.data.model.users;
 
-import winchester.library.data.access.DatabaseEntity;
-
 /**
  * A base class to represent any user of the system.
  */
-@DatabaseEntity(table = "users")
 public abstract class User {
 
     private final int identifier;

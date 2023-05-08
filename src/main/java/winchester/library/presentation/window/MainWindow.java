@@ -2,6 +2,7 @@ package winchester.library.presentation.window;
 
 import javafx.geometry.Insets;
 import javafx.scene.input.MouseEvent;
+import winchester.library.data.model.users.Employee;
 import winchester.library.presentation.component.pane.HeaderPane;
 import winchester.library.presentation.component.pane.SidePane;
 import winchester.library.presentation.component.pane.StatusPane;
@@ -20,13 +21,15 @@ public final class MainWindow extends WindowBase {
     private SidePane sidePane;
     private StatusPane statusPane;
     private ViewsManager viewsManager;
+    private final Employee currentEmployee;
 
     /**
      * A constructor for the MainWindow.
      */
-    public MainWindow() {
+    public MainWindow(Employee currentEmployee) {
         super();
         this.setTitleText("Main Window");
+        this.currentEmployee = currentEmployee;
         this.initialiseControls();
         this.bindEventHandlers();
         this.addComponentsToStage();
@@ -38,7 +41,7 @@ public final class MainWindow extends WindowBase {
     @Override
     protected void initialiseControls() {
         this.headerPane = new HeaderPane(Views.NONE_WITH_SIDEBAR);
-        this.sidePane = new SidePane(null);
+        this.sidePane = new SidePane(this.currentEmployee);
         this.sidePane.setPrefWidth(150);
         this.statusPane = new StatusPane();
         this.statusPane.setDatabaseConnected(DatabaseConnectivityChecker.getInstance().getDatabaseAvailable());
@@ -51,13 +54,7 @@ public final class MainWindow extends WindowBase {
      */
     private void bindEventHandlers() {
         this.sidePane.getToggleGroup().selectedToggleProperty().addListener(
-                (value, toggle, newToggle) -> {
-                    this.headerPane.setPageTitle(this.sidePane.getSelectedToggleAsView());
-                    this.viewsManager.showView(this.sidePane.getSelectedToggleAsView(), this, null, null, null);
-                    this.statusPane.setDatabaseConnected(
-                            DatabaseConnectivityChecker.getInstance().getDatabaseAvailable());
-                    this.setTitleText(this.sidePane.getSelectedToggleAsView().toString());
-                });
+                (value, toggle, newToggle) -> this.handleUpdate());
         this.sidePane.getLogOutButton().addEventHandler(MouseEvent.MOUSE_CLICKED, event -> {
             this.close();
             IndividualViewWindow loginView = new IndividualViewWindow(Views.LOGIN);
@@ -75,5 +72,16 @@ public final class MainWindow extends WindowBase {
         this.baseLayout.setCenter(this.viewsManager);
         this.viewsManager.setTop(this.headerPane);
         this.viewsManager.setCenter(new NoneSidePaneView(this));
+    }
+
+    /**
+     * A method to update the component content shown within the window.
+     */
+    private void handleUpdate() {
+        this.headerPane.setPageTitle(this.sidePane.getSelectedToggleAsView());
+        this.viewsManager.showView(this.sidePane.getSelectedToggleAsView(), this, this.currentEmployee, null, null);
+        this.statusPane.setDatabaseConnected(
+                DatabaseConnectivityChecker.getInstance().getDatabaseAvailable());
+        this.setTitleText(this.sidePane.getSelectedToggleAsView().toString());
     }
 }

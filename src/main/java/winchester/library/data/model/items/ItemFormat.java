@@ -1,12 +1,10 @@
 package winchester.library.data.model.items;
 
 import java.util.Optional;
-import winchester.library.data.access.DatabaseEntity;
 
 /**
  * An enumeration to represent all the different forms that the items are available in.
  */
-@DatabaseEntity(table = "item_subtypes")
 public enum ItemFormat {
     AUDIO_BOOK(11, "Audio Book"),
     PHYSICAL_BOOK(12, "Physical Book"),
