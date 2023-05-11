@@ -44,7 +44,7 @@ public class DatabaseConnectivityChecker {
      * A method check whether the availability of the database based on the credentials.
      * @return a boolean if the database is connected successfully.
      */
-    public boolean getDatabaseAvailable() {
+    public boolean isDatabaseAvailable() {
         return connectionTester.testCredentials(credentials) == DatabaseConstant.CONNECTION_SUCCESSFUL;
     }
 

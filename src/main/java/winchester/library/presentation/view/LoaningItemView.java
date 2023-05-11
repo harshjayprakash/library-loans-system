@@ -1,6 +1,7 @@
 package winchester.library.presentation.view;
 
 import java.util.ArrayList;
+import javafx.scene.control.Button;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.VBox;
@@ -21,6 +22,7 @@ public final class LoaningItemView extends View {
     private SearchPane search;
     private ArrayList<ItemToLoanCard> loaningItemCardsList;
     private ScrollPane scrollPane;
+    private Button refreshButton;
     private VBox loaningItemsList;
     private final Customer referencedCustomer;
 
@@ -59,6 +61,8 @@ public final class LoaningItemView extends View {
     @Override
     protected void initialiseControls() {
         this.search = new SearchPane();
+        this.refreshButton = new Button();
+        this.refreshButton.setText("Refresh");
         this.loaningItemCardsList = new ArrayList<>();
         DataPersistenceManager.getInstance().getBooks().forEach(
                 book -> this.loaningItemCardsList.add(new ItemToLoanCard(book, this.referencedCustomer)));
@@ -71,6 +75,7 @@ public final class LoaningItemView extends View {
      */
     private void bindEventHandlers() {
         this.search.getSearchButton().addEventHandler(MouseEvent.MOUSE_CLICKED, event -> this.updateCardsList());
+        this.refreshButton.addEventHandler(MouseEvent.MOUSE_CLICKED, event -> this.updateCardsList());
     }
 
     /**
@@ -80,6 +85,7 @@ public final class LoaningItemView extends View {
     protected void addComponentsToView() {
         this.loaningItemsList.getChildren().addAll(this.loaningItemCardsList);
         this.scrollPane.setContent(this.loaningItemsList);
+        this.actionPane.getLeftControls().getChildren().add(refreshButton);
         this.actionPane.getRightControls().getChildren().add(this.search);
         this.getChildren().addAll(this.actionPane, this.scrollPane);
     }

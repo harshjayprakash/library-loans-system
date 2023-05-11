@@ -2,6 +2,7 @@ package winchester.library.presentation.alert;
 
 import javafx.scene.control.Alert;
 import javafx.scene.control.ButtonType;
+import winchester.library.presentation.style.ComponentStyler;
 
 /**
  * An abstract factory class that abstracts the creation of alert message boxes.
@@ -19,6 +20,7 @@ public abstract class AlertFactory {
         Alert alert = new Alert(type);
         alert.setHeaderText(headerText);
         alert.setContentText(contentText);
+        ComponentStyler.getInstance().setStyle(alert.getDialogPane());
         return alert;
     }
 
@@ -31,6 +33,7 @@ public abstract class AlertFactory {
     public static Alert createAlert(Alert.AlertType type, String headerText) {
         Alert alert = new Alert(type);
         alert.setHeaderText(headerText);
+        ComponentStyler.getInstance().setStyle(alert.getDialogPane());
         return alert;
     }
 
@@ -46,6 +49,7 @@ public abstract class AlertFactory {
                                     ButtonType... buttonTypes) {
         Alert alert = new Alert(type, contentText, buttonTypes);
         alert.setHeaderText(headerText);
+        ComponentStyler.getInstance().setStyle(alert.getDialogPane());
         return alert;
     }
 

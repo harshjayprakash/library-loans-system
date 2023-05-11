@@ -1,5 +1,6 @@
 package winchester.library.presentation.component.pane;
 
+import java.util.Optional;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Node;
@@ -75,6 +76,22 @@ public final class SidePane extends VBox {
             case "Loans" -> Views.LOANS;
             case "Users" -> Views.USERS;
             default -> Views.NONE_WITH_SIDEBAR;
+        };
+    }
+
+    /**
+     * An accessor that retrieves a specific toggle button based on value.
+     * @param value the string value of the toggle button.
+     * @return an optional toggle button or empty if not found.
+     */
+    public Optional<ToggleButton> getToggleButton(String value) {
+        return switch (value) {
+            case "Home" -> Optional.of(homePageButton);
+            case "Inventory" -> Optional.of(inventoryPageButton);
+            case "Customers" -> Optional.of(customersPageButton);
+            case "Loans" -> Optional.of(loansPageButton);
+            case "Users" -> Optional.of(usersPageButton);
+            default -> Optional.empty();
         };
     }
 

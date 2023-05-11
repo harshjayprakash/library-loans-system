@@ -140,7 +140,7 @@ public final class DataPersistenceManager {
             case BOOK -> dataWriter.insert(new Loan(0, customer, Book.castFrom(item).getIsbn(), format,
                     LocalDate.now(), LocalDate.now().plusDays(30), false));
             case FILM -> dataWriter.insert(new Loan(0, customer, Film.castFrom(item).getIdentifier(), format,
-                    LocalDate.now(), LocalDate.now().plusDays(10), false));
+                    LocalDate.now(), LocalDate.now().plusDays(7), false));
         } == DatabaseConstant.INSERTION_SUCCESSFUL;
     }
 

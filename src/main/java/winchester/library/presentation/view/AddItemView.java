@@ -23,6 +23,7 @@ import winchester.library.presentation.alert.AlertFactory;
 import winchester.library.presentation.window.WindowBase;
 import winchester.library.service.DataPersistenceManager;
 import winchester.library.service.IdentifierGenerator;
+import winchester.library.service.ItemValidator;
 import winchester.library.service.Logger;
 
 /**
@@ -327,6 +328,18 @@ public final class AddItemView extends View {
                     "Parsing text as an integer",
                     "Failed to parse string as number",
                     "Please ensure that a valid number is entered");
+            AlertFactory.createAlert(Alert.AlertType.WARNING, "Failed to add item",
+                    "Please ensure that the data provided is in the correct fields.").show();
+            return;
+        }
+        ItemValidator itemValidator = new ItemValidator();
+        if (!itemValidator.validIsbn(book.getIsbn())) {
+            AlertFactory.createAlert(Alert.AlertType.ERROR, "Failed to create book",
+                    "The isbn number is not in the correct format. It must be 13 digits.").show();
+            return;
+        }
+        if (itemValidator.isbnExists(book.getIsbn())) {
+            AlertFactory.createAlert(Alert.AlertType.ERROR, "This item isbn already exists").show();
             return;
         }
         boolean success = DataPersistenceManager.getInstance().createBook(book);
@@ -335,6 +348,7 @@ public final class AddItemView extends View {
             return;
         }
         AlertFactory.createAlert(Alert.AlertType.INFORMATION, "Book successfully created").show();
+        this.parentWindow.close();
     }
 
     /**
@@ -366,6 +380,14 @@ public final class AddItemView extends View {
                     "Parsing text as an integer",
                     "Failed to parse string as number",
                     "Please ensure that a valid number is entered");
+            AlertFactory.createAlert(Alert.AlertType.WARNING, "Failed to add item",
+                    "Please ensure that the data provided is in the correct fields.").show();
+            return;
+        }
+        ItemValidator itemValidator = new ItemValidator();
+        if (itemValidator.filmExists(film)) {
+            AlertFactory.createAlert(Alert.AlertType.ERROR, "Failed to create film",
+                    "This film already exists").show();
             return;
         }
         boolean success = DataPersistenceManager.getInstance().createFilm(film);
@@ -374,5 +396,6 @@ public final class AddItemView extends View {
             return;
         }
         AlertFactory.createAlert(Alert.AlertType.INFORMATION, "Film successfully created").show();
+        this.parentWindow.close();
     }
 }

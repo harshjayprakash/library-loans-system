@@ -70,7 +70,7 @@ public class CustomerLoanCard extends Card {
         this.itemFormatLabel = new Label();
         this.itemFormatLabel.setText("Format: " + this.referencedLoan.getLoanedItemFormat().toString());
         this.itemLoanDateLabel = new Label();
-        this.itemLoanDateLabel.setText("Loaned On:" + this.referencedLoan.getLoanDate().toString());
+        this.itemLoanDateLabel.setText("Loaned On: " + this.referencedLoan.getLoanDate().toString());
         this.itemDueDateLabel = new Label();
         this.itemDueDateLabel.setText("Due On: " + this.referencedLoan.getDueDate().toString());
         this.itemReturnLinkLabel = new Label();
@@ -112,6 +112,9 @@ public class CustomerLoanCard extends Card {
                 return;
             }
             AlertFactory.createAlert(Alert.AlertType.INFORMATION, "Item has been returned").show();
+            this.itemReturnLinkLabel.setDisable(true);
+            this.itemReturnLinkLabel.setText("Returned");
+            this.referencedLoan.setReturned(true);
         }
         else if (optionalButtonType.get() == ButtonType.NO) {
             AlertFactory.createAlert(Alert.AlertType.INFORMATION, "Item return has been cancelled").show();

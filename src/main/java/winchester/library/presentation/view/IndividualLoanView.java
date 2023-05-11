@@ -82,6 +82,7 @@ public final class IndividualLoanView extends View {
     protected void initialiseControls() {
         this.extendLoanButton = new Button();
         this.extendLoanButton.setText("Extend loan by 7 days");
+        if (this.referencedLoan.getReturned()) { this.extendLoanButton.setDisable(true); }
         this.loanIdentifierLabel = new Label();
         this.loanIdentifierLabel.getStyleClass().add("text-bold");
         this.loanIdentifierLabel.setText(String.format("Loan Id : %d", this.referencedLoan.getIdentifier()));
@@ -91,7 +92,9 @@ public final class IndividualLoanView extends View {
         this.overdueTitleLabel = new Label();
         this.overdueTitleLabel.setText("Days Left");
         this.overdueDayCount = new Label();
-        this.overdueDayCount.setText(String.format("%d day(s)", this.referencedLoan.calculateDaysRemaining()));
+        this.overdueDayCount.setText(
+                (this.referencedLoan.getReturned())
+                        ? "Returned" : String.format("%d day(s)", this.referencedLoan.calculateDaysRemaining()));
         this.returnDateTitleLabel = new Label();
         this.returnDateTitleLabel.setText("Return Date");
         this.returnDateLabel = new Label();

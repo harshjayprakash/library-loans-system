@@ -5,10 +5,10 @@ package winchester.library.data.model.users;
  */
 public abstract class User {
 
-    private final int identifier;
-    private final String firstName;
-    private final String lastName;
-    private final String postalCode;
+    protected final int identifier;
+    protected final String firstName;
+    protected final String lastName;
+    protected final String postalCode;
     protected UserType type;
 
     /**

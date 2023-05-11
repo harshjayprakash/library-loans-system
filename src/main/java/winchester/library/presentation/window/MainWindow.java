@@ -1,15 +1,18 @@
 package winchester.library.presentation.window;
 
 import javafx.geometry.Insets;
+import javafx.scene.control.ToggleButton;
 import javafx.scene.input.MouseEvent;
 import winchester.library.data.model.users.Employee;
 import winchester.library.presentation.component.pane.HeaderPane;
 import winchester.library.presentation.component.pane.SidePane;
 import winchester.library.presentation.component.pane.StatusPane;
-import winchester.library.presentation.view.NoneSidePaneView;
+import winchester.library.presentation.view.HomeView;
 import winchester.library.presentation.view.Views;
 import winchester.library.presentation.view.ViewsManager;
 import winchester.library.service.DatabaseConnectivityChecker;
+
+import java.util.Optional;
 
 /**
  * A class that provides the implementation of the Main Window that the user will be interacting with.
@@ -40,11 +43,13 @@ public final class MainWindow extends WindowBase {
      */
     @Override
     protected void initialiseControls() {
-        this.headerPane = new HeaderPane(Views.NONE_WITH_SIDEBAR);
+        this.headerPane = new HeaderPane(Views.HOME);
         this.sidePane = new SidePane(this.currentEmployee);
         this.sidePane.setPrefWidth(150);
+        Optional<ToggleButton> defaultSelectedButton = this.sidePane.getToggleButton(Views.HOME.toString());
+        defaultSelectedButton.ifPresent(toggleButton -> toggleButton.setSelected(true));
         this.statusPane = new StatusPane();
-        this.statusPane.setDatabaseConnected(DatabaseConnectivityChecker.getInstance().getDatabaseAvailable());
+        this.statusPane.setDatabaseConnected(DatabaseConnectivityChecker.getInstance().isDatabaseAvailable());
         this.viewsManager = new ViewsManager();
         this.viewsManager.setPadding(new Insets(20));
     }
@@ -71,7 +76,7 @@ public final class MainWindow extends WindowBase {
         this.baseLayout.setBottom(this.statusPane);
         this.baseLayout.setCenter(this.viewsManager);
         this.viewsManager.setTop(this.headerPane);
-        this.viewsManager.setCenter(new NoneSidePaneView(this));
+        this.viewsManager.setCenter(new HomeView(this, this.currentEmployee));
     }
 
     /**
@@ -81,7 +86,7 @@ public final class MainWindow extends WindowBase {
         this.headerPane.setPageTitle(this.sidePane.getSelectedToggleAsView());
         this.viewsManager.showView(this.sidePane.getSelectedToggleAsView(), this, this.currentEmployee, null, null);
         this.statusPane.setDatabaseConnected(
-                DatabaseConnectivityChecker.getInstance().getDatabaseAvailable());
+                DatabaseConnectivityChecker.getInstance().isDatabaseAvailable());
         this.setTitleText(this.sidePane.getSelectedToggleAsView().toString());
     }
 }

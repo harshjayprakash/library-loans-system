@@ -36,7 +36,7 @@ public final class Main extends Application {
         if (!DatabaseConnectivityChecker.getInstance().isDriverAvailable()) {
             AlertFactory.createAlert(Alert.AlertType.ERROR, "Cannot find database driver.").show();
         }
-        if (!DatabaseConnectivityChecker.getInstance().getDatabaseAvailable()) {
+        if (!DatabaseConnectivityChecker.getInstance().isDatabaseAvailable()) {
             AlertFactory.createAlert(Alert.AlertType.ERROR, "Cannot connect to database.",
                     "Ensure that the credentials are correct.").show();
         }

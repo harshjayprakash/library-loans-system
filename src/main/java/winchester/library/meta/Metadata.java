@@ -13,8 +13,8 @@ public final class Metadata {
      * A private constructor that initialises the attributes.
      */
     private Metadata() {
-        this.programName = "Winchester Library Services Technical Preview";
-        this.programVersion = "Version 1.0.2";
+        this.programName = "Winchester Library Services";
+        this.programVersion = "Version 1.0.2 SC1";
     }
 
     /**

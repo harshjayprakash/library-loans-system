@@ -149,6 +149,6 @@ public class ItemToLoanCard extends Card {
             AlertFactory.createAlert(Alert.AlertType.ERROR, "Failed to loan item out").show();
             return;
         }
-        AlertFactory.createAlert(Alert.AlertType.INFORMATION, "Item successfully loan out.");
+        AlertFactory.createAlert(Alert.AlertType.INFORMATION, "Item successfully loan out.").show();
     }
 }

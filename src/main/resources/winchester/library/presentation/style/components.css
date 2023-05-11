@@ -40,3 +40,19 @@
 .link-label:hover {
     -fx-text-fill: -wl-colour-accent-lighter;
 }
+
+/* Control Styling: Alerts */
+.dialog-pane {
+    -fx-font-size: 14px;
+    -fx-background-color: white;
+}
+
+.dialog-pane:header .header-panel .label {
+    -fx-font-size: 14px;
+    -fx-font-weight: bold;
+}
+
+.dialog-pane > .button-bar,
+.dialog-pane:header .header-panel {
+    -fx-background-color: white;
+}

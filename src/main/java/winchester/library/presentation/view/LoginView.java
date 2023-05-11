@@ -111,6 +111,11 @@ public final class LoginView extends View {
     }
 
     private void checkCredentials() {
+        if (this.usernameField.getText().isBlank() && this.passwordField.getText().isBlank()) {
+            AlertFactory.createAlert(Alert.AlertType.ERROR, "Failed to login",
+                    "There are no credentials entered. Please enter your username and password and try again.").show();
+            return;
+        }
         Optional<Employee> employee = new CredentialsChecker().AreCredentialsCorrect(
                 this.usernameField.getText(),
                 String.valueOf(this.passwordField.getText().hashCode()));

@@ -26,6 +26,7 @@ public final class IndividualCustomerView extends View {
     private Text customerInformation;
     private Label customerOverduePrice;
     private Button addLoansButton;
+    private Button refreshButton;
     private ScrollPane customerLoansLayoutScrollPane;
     private VBox customerLoansLayout;
     private ArrayList<CustomerLoanCard> customerLoanCardsList;
@@ -76,6 +77,8 @@ public final class IndividualCustomerView extends View {
                 String.format("Overdue Fees: £%.2f", this.referencedCustomer.getOverdueFeesAsPounds()));
         this.addLoansButton = new Button();
         this.addLoansButton.setText("Add Loans");
+        this.refreshButton = new Button();
+        this.refreshButton.setText("Refresh");
         this.customerLoanCardsList = new ArrayList<>();
         ArrayList<Loan> loans = DataPersistenceManager.getInstance().getLoans();
         if (loans.isEmpty()) { return; }
@@ -90,6 +93,7 @@ public final class IndividualCustomerView extends View {
      */
     private void bindEventHandlers() {
         this.addLoansButton.addEventHandler(MouseEvent.MOUSE_CLICKED, event -> this.startLoaningItemsWindow());
+        this.refreshButton.addEventHandler(MouseEvent.MOUSE_CLICKED, event -> this.updateLoans());
     }
 
     /**
@@ -98,7 +102,7 @@ public final class IndividualCustomerView extends View {
     @Override
     protected void addComponentsToView() {
         this.customerLoansLayout.getChildren().addAll(this.customerLoanCardsList);
-        this.actionsLayout.getLeftControls().getChildren().add(this.addLoansButton);
+        this.actionsLayout.getLeftControls().getChildren().addAll(this.addLoansButton, this.refreshButton);
         this.customerInformationLayout.getChildren().addAll(this.customerInformation, this.customerOverduePrice);
         this.customerLoansLayoutScrollPane.setContent(this.customerLoansLayout);
         this.getChildren().addAll(this.actionsLayout, this.customerInformationLayout,
@@ -111,6 +115,21 @@ public final class IndividualCustomerView extends View {
     private void startLoaningItemsWindow() {
         IndividualViewWindow loaningView = new IndividualViewWindow(Views.LOANING_ITEMS, this.referencedCustomer);
         loaningView.show();
+    }
+
+    /**
+     * A method to refresh the loans shown in the view.
+     */
+    private void updateLoans() {
+        this.customerLoanCardsList.clear();
+        this.customerLoansLayout.getChildren().clear();
+        ArrayList<Loan> loans = DataPersistenceManager.getInstance().getLoans();
+        if (loans.isEmpty()) { return; }
+        loans.stream()
+                .filter(loan -> loan.getCustomer().getIdentifier() == this.referencedCustomer.getIdentifier()
+                        && !loan.getReturned())
+                .forEach(loan -> this.customerLoanCardsList.add(new CustomerLoanCard(loan)));
+        this.customerLoansLayout.getChildren().addAll(this.customerLoanCardsList);
     }
 
 }

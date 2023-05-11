@@ -8,7 +8,7 @@ class EmployeeTest {
     Employee testEmployee;
 
     EmployeeTest() {
-        testEmployee = new Employee(3, "Mark", "Harrison", "JI320DE", "mark.harrison",
+        testEmployee = new Employee(3, UserType.STANDARD, "Mark", "Harrison", "JI320DE", "mark.harrison",
                     "1216985755", EmployeeStatus.NOT_APPROVED);
     }
 
