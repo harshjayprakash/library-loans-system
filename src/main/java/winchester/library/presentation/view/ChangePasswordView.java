@@ -40,7 +40,8 @@ public final class ChangePasswordView extends View {
      * @param employee the referenced employee.
      */
     public ChangePasswordView(WindowBase parentWindow, Employee employee) {
-        super(parentWindow, Views.CHANGE_PASSWORD.toString());
+        super(parentWindow, Views.CHANGE_PASSWORD + " for " + employee.getFullName());
+        this.parentWindow.setHeaderText(Views.CHANGE_PASSWORD + " for " + employee.getFullName());
         this.currentEmployee = employee;
         this.parentWindow.setWidth(500);
         this.parentWindow.setHeight(520);
