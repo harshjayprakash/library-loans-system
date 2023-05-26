@@ -42,7 +42,7 @@ public class DataWriter {
         }
         Optional<Integer> employeeInsertResult = connection.executeUpdate(
                 QueryBuilder.createQuery(QueryType.INSERT_ONE)
-                        .insertInto("library.employees (user_id, username, password, status_id)")
+                        .insertInto("library.employees (user_id, username, hashed_password, status_id)")
                         .values(String.format("(%d, '%s', '%s', %d)",
                                 employee.getIdentifier(), employee.getUsername(), employee.getHashedPassword(),
                                 employee.getStatus().getIdentifier()))
