@@ -25,8 +25,9 @@ public class IdentifierGenerator {
         ArrayList<Customer> customers = DataPersistenceManager.getInstance().getCustomers();
         int newIdentifier = 0;
         for (Employee employee : employees) { newIdentifier = Math.max(newIdentifier, employee.getIdentifier()); }
-        for (Customer customer: customers) { newIdentifier = Math.max(newIdentifier, customer.getIdentifier()); }
-        return ++newIdentifier;
+        for (Customer customer : customers) { newIdentifier = Math.max(newIdentifier, customer.getIdentifier()); }
+        newIdentifier += 2;
+        return newIdentifier;
     }
 
     /**
