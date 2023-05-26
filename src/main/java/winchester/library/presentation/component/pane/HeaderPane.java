@@ -31,7 +31,6 @@ public final class HeaderPane extends VBox {
      * An accessor to retrieve the page title.
      * @return the page title as the Views enumeration.
      */
-    @SuppressWarnings("unused")
     public Views getPageTitle() {
         return this.page;
     }
