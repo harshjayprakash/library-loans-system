@@ -38,7 +38,8 @@ public final class IndividualCustomerView extends View {
      * @param customer the referenced customer.
      */
     public IndividualCustomerView(WindowBase parentWindow, Customer customer) {
-        super(parentWindow, Views.INDIVIDUAL_CUSTOMER.toString());
+        super(parentWindow, Views.INDIVIDUAL_CUSTOMER + " for " + customer.getFullName());
+        this.parentWindow.setHeaderText(Views.INDIVIDUAL_CUSTOMER + " View for " + customer.getFullName());
         this.referencedCustomer = customer;
         this.initialiseLayouts();
         this.initialiseControls();

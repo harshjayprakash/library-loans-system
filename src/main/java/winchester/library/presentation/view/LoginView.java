@@ -6,6 +6,7 @@ import javafx.scene.control.*;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.HBox;
 import winchester.library.data.model.users.Employee;
+import winchester.library.data.model.users.EmployeeStatus;
 import winchester.library.presentation.alert.AlertFactory;
 import winchester.library.presentation.window.IndividualViewWindow;
 import winchester.library.presentation.window.MainWindow;
@@ -122,6 +123,11 @@ public final class LoginView extends View {
         if (employee.isEmpty()) {
             AlertFactory.createAlert(Alert.AlertType.ERROR, "Failed to login",
                     "Please check your credentials and try again").show();
+            return;
+        }
+        if (employee.get().getStatus() == EmployeeStatus.NOT_APPROVED) {
+            AlertFactory.createAlert(Alert.AlertType.ERROR, "Failed to login",
+                    "This account needs to be approved by an administrator.").show();
             return;
         }
         closeAndStartMainWindow(employee.get());

@@ -19,7 +19,7 @@ public final class PasswordValidator {
                 - be at least %d characters long
                 - contain a number (0-9)
                 - contain a letter (A-Z, a-z)
-                - contain a special character (. , : @ # £ $ & * ! ? < > SPACE)
+                - contain a special character (. , : @ # £ $ & * ! ? < > %% ^ SPACE)
                 """, this.passwordLength);
     }
 
@@ -85,13 +85,19 @@ public final class PasswordValidator {
      */
     public boolean meetsSpecialCharacterRequirements(String password) {
         for (char character : password.toCharArray()) {
-            if (switch (character) {
-                case '.', ',', ':', '@', '#', '£', '$', '&', '*', '!', '?', '<', '>', ' ' -> true;
-                default -> false;
-            }) {
+            if (this.isSpecialCharacter(character)) {
                 return true;
             }
         }
         return false;
+    }
+
+    /**
+     * A method to check if a character is considered special.
+     * @param character the character to be checked.
+     * @return true if the character is special.
+     */
+    private boolean isSpecialCharacter(char character) {
+        return ".,:@#£$%^&*!<> ".indexOf(character) != -1;
     }
 }

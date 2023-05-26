@@ -32,7 +32,8 @@ public final class LoaningItemView extends View {
      * @param customer the customer referenced.
      */
     public LoaningItemView(WindowBase parentWindow, Customer customer) {
-        super(parentWindow, Views.LOANING_ITEMS.toString());
+        super(parentWindow, Views.LOANING_ITEMS + "for " + customer.getFullName());
+        this.parentWindow.setHeaderText(Views.LOANING_ITEMS + " for " + customer.getFullName());
         this.referencedCustomer = customer;
         this.initialiseLayouts();
         this.initialiseControls();

@@ -74,6 +74,15 @@ public final class IndividualViewWindow extends WindowBase {
     }
 
     /**
+     * A method to set the text of the header pane object.
+     * @param text the text to be shown.
+     */
+    @Override
+    public void setHeaderText(String text) {
+        this.header.setPageTitle(text);
+    }
+
+    /**
      * A method to initialise layouts of the window.
      */
     private void initialiseLayouts() {

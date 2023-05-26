@@ -8,6 +8,7 @@ import winchester.library.presentation.style.StylesheetRegistry;
 import winchester.library.presentation.view.Views;
 import winchester.library.presentation.window.IndividualViewWindow;
 import winchester.library.service.DatabaseConnectivityChecker;
+import winchester.library.service.IdentifierGenerator;
 import winchester.library.service.Logger;
 
 /**
@@ -28,6 +29,7 @@ public final class Main extends Application {
     public void start(Stage stage) {
         Logger.getInstance().setEnabled(true);
         Logger.getInstance().setWhereEnabled(false);
+        System.out.println(new IdentifierGenerator().generateForUser());
         StylesheetRegistry.getInstance().addMultipleStylesheets(
                 "/winchester/library/presentation/style/base.css",
                 "/winchester/library/presentation/style/components.css",

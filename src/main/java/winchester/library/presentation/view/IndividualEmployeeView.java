@@ -32,7 +32,8 @@ public class IndividualEmployeeView extends View {
      * @param employee the referenced employee.
      */
     public IndividualEmployeeView(WindowBase parentWindow, Employee employee) {
-        super(parentWindow, Views.INDIVIDUAL_EMPLOYEE.toString());
+        super(parentWindow, Views.INDIVIDUAL_EMPLOYEE + " View for " + employee.getFullName());
+        this.parentWindow.setHeaderText(Views.INDIVIDUAL_EMPLOYEE + " View for " + employee.getFullName());
         this.referencedEmployee = employee;
         this.initialiseLayouts();
         this.initialiseControls();

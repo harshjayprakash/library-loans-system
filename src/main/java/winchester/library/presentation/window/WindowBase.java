@@ -35,6 +35,12 @@ public abstract class WindowBase extends Stage {
     }
 
     /**
+     * An abstract method to set the text of the header object.
+     * @param text the text to be shown.
+     */
+    public abstract void setHeaderText(String text);
+
+    /**
      * An abstract method to initialise controls within the window.
      */
     protected abstract void initialiseControls();
