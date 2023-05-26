@@ -46,6 +46,14 @@ public final class HeaderPane extends VBox {
     }
 
     /**
+     * A mutator to set the page title and update the label shown.
+     * @param text the text to be shown.
+     */
+    public void setPageTitle(String text) {
+        this.pageLabel.setText(text);
+    }
+
+    /**
      * A method to initialise the layout within the component.
      */
     private void initialiseLayout() {
