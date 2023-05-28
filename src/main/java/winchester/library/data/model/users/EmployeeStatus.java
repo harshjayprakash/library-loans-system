@@ -6,8 +6,19 @@ import java.util.Optional;
  * An enumeration to represent the integer values of employee status.
  */
 public enum EmployeeStatus {
+    /**
+     * Represents an employee that has a disabled account.
+     */
     DISABLED(-1, "Disabled"),
+
+    /**
+     * Represents an employee that is not approved.
+     */
     NOT_APPROVED(0, "Not Approved"),
+
+    /**
+     * Represents an employee that has an active account.
+     */
     ACTIVE(1, "Active");
 
     private final int identifier;
