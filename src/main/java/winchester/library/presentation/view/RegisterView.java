@@ -190,17 +190,21 @@ public final class RegisterView extends View {
             return;
         }
         if (!this.passwordField.getText().equals(this.passwordConfirmationField.getText())) {
-            AlertFactory.createAlert(Alert.AlertType.ERROR, "Passwords do not match").show();
+            AlertFactory.createAlert(Alert.AlertType.ERROR, "Passwords do not match.").show();
+            return;
+        }
+        if (!passwordValidator.meetsLengthRequirement(this.passwordField.getText())) {
+            AlertFactory.createAlert(Alert.AlertType.ERROR, "Password length requirement has not been met.").show();
             return;
         }
         if (!passwordValidator.meetsAllRequirements(this.passwordField.getText())) {
             AlertFactory.createAlert(Alert.AlertType.ERROR,
-                    "Passwords do not meet the specified requirements").show();
+                    "Passwords do not meet the specified requirements.").show();
             return;
         }
         if (usernameValidator.usernameExists(this.usernameField.getText())) {
             AlertFactory.createAlert(Alert.AlertType.ERROR,
-                    "This username already exists in the system.", "Please choose another username").show();
+                    "This username already exists in the system.", "Please choose another username.").show();
             return;
         }
         boolean success = DataPersistenceManager.getInstance().createUser(
