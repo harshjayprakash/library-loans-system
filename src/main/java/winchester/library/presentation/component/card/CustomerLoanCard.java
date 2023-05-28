@@ -103,7 +103,7 @@ public class CustomerLoanCard extends Card {
      */
     private void returnItem() {
         Alert messageConfirmation = AlertFactory.createAlert(Alert.AlertType.CONFIRMATION, "Return this item",
-                "Item Title: " + this.itemTitleLabel.getText(), ButtonType.YES, ButtonType.NO);
+                "Item Title: " + this.itemTitleLabel.getText(), ButtonType.NO, ButtonType.YES);
         Optional<ButtonType> optionalButtonType = messageConfirmation.showAndWait();
         if (optionalButtonType.isEmpty()) { return; }
         if (optionalButtonType.get() == ButtonType.YES) {
