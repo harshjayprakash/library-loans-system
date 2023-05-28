@@ -6,8 +6,19 @@ import java.util.Optional;
  * An enumeration to represent the types of users modelled within the system.
  */
 public enum UserType {
+    /**
+     * Represents the customer user type.
+     */
     CUSTOMER(1, "Customer"),
+
+    /**
+     * Represents a standard employee user type.
+     */
     STANDARD(2, "Standard"),
+
+    /**
+     * Represents an administrator user type.
+     */
     ADMINISTRATOR(3, "Administrator");
 
     private final int identifier;
