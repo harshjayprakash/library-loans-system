@@ -27,8 +27,7 @@ public final class NoneSidePaneView extends View {
     /**
      * A method to initialise any layouts used within the view.
      */
-    @Override
-    protected void initialiseLayouts() {
+    private void initialiseLayouts() {
         this.setAlignment(Pos.CENTER);
         this.setPadding(new Insets(15));
     }
@@ -36,8 +35,7 @@ public final class NoneSidePaneView extends View {
     /**
      * A method to initialise any controls used within the view.
      */
-    @Override
-    protected void initialiseControls() {
+    private void initialiseControls() {
         this.messageLabel = new Label();
         this.messageLabel.getStyleClass().add("text-bold");
         this.messageLabel.setText("No Content Shown.");
@@ -48,8 +46,7 @@ public final class NoneSidePaneView extends View {
     /**
      * A method to add components to the view.
      */
-    @Override
-    protected void addComponentsToView() {
+    private void addComponentsToView() {
         this.getChildren().addAll(this.messageLabel, this.informationLabel);
     }
 }

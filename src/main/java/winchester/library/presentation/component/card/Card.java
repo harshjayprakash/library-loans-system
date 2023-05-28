@@ -25,26 +25,6 @@ public abstract class Card extends BorderPane {
     }
 
     /**
-     * An abstract method to initialise layouts within the component.
-     */
-    protected abstract void initialiseLayouts();
-
-    /**
-     * An abstract method to initialise controls within the component.
-     */
-    protected abstract void initialiseControls();
-
-    /**
-     * An abstract method to add any event handlers or actions to any of the components.
-     */
-    protected abstract void bindEventHandlers();
-
-    /**
-     * An abstract method to add any controls or layouts onto the component.
-     */
-    protected abstract void addComponentsToCard();
-
-    /**
      * Loads and sets the stylesheet for this component.
      */
     private void loadStylesheets() {

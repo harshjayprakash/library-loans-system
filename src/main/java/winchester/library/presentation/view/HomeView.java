@@ -43,8 +43,7 @@ public final class HomeView extends View {
     /**
      * A method to initialise any layouts used within the view.
      */
-    @Override
-    protected void initialiseLayouts() {
+    private void initialiseLayouts() {
         this.setSpacing(15);
         this.userPanel = new VBox();
         this.userPanel.getStyleClass().add("background-secondary-border");
@@ -57,8 +56,7 @@ public final class HomeView extends View {
     /**
      * A method to initialise any controls used within the view.
      */
-    @Override
-    protected void initialiseControls() {
+    private void initialiseControls() {
         this.userLabel = new Label();
         this.userLabel.setText(this.currentEmployee.getFullName());
         this.userRoleLabel = new Label();
@@ -88,8 +86,7 @@ public final class HomeView extends View {
     /**
      * A method to add components to the view.
      */
-    @Override
-    protected void addComponentsToView() {
+    private void addComponentsToView() {
         this.userPanel.getChildren().addAll(this.userLabel, this.userRoleLabel, this.changePasswordLinkLabel);
         this.inventoryPanel.getChildren().addAll(
                 this.inventoryCountLabel, this.customerCountLabel, this.loanCountLabel);

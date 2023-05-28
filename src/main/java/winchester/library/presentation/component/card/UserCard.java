@@ -37,8 +37,7 @@ public final class UserCard extends Card {
     /**
      * A method to initialise the layouts that will be used within the card component.
      */
-    @Override
-    protected void initialiseLayouts() {
+    private void initialiseLayouts() {
         this.userDetails = new VBox();
         this.userDetails.getStyleClass().add("background-secondary");
         this.userDetails.setPadding(new Insets(10));
@@ -47,8 +46,7 @@ public final class UserCard extends Card {
     /**
      * A method to initialise the controls that will be shown within the card component.
      */
-    @Override
-    protected void initialiseControls() {
+    private void initialiseControls() {
         this.nameLabel = new Label();
         this.nameLabel.setText(this.referencedUser.getFullName());
         if (this.referencedUser.getType() != UserType.CUSTOMER) {
@@ -63,16 +61,14 @@ public final class UserCard extends Card {
     /**
      * A method to add event handlers to any controls.
      */
-    @Override
-    protected void bindEventHandlers() {
+    private void bindEventHandlers() {
         this.viewDetailsLabel.addEventHandler(MouseEvent.MOUSE_CLICKED, event -> this.startIndividualUserView());
     }
 
     /**
      * A method to add any layouts and controls initialised to the card.
      */
-    @Override
-    protected void addComponentsToCard() {
+    private void addComponentsToCard() {
         this.userDetails.getChildren().add(this.nameLabel);
         if (this.referencedUser.getType() != UserType.CUSTOMER) {
             this.userDetails.getChildren().addAll(this.accountTypeLabel, this.accountStatusLabel);

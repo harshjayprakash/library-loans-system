@@ -47,8 +47,7 @@ public final class SettingsView extends View {
     /**
      * A method to initialise any layouts used within the view.
      */
-    @Override
-    protected void initialiseLayouts() {
+    private void initialiseLayouts() {
         this.dataSourceSettingsPane = new VBox();
         this.dataSourceSettingsPane.getStyleClass().add("background-secondary-border");
         this.dataSourceSettingsPane.setPadding(new Insets(15));
@@ -63,8 +62,7 @@ public final class SettingsView extends View {
     /**
      * A method to initialise any controls used within the view.
      */
-    @Override
-    protected void initialiseControls() {
+    private void initialiseControls() {
         this.descriptionLabel = new Label();
         this.descriptionLabel.setText("From here you can edit the program's configuration.");
         this.dataSourceTitleLabel = new Label();
@@ -103,8 +101,7 @@ public final class SettingsView extends View {
     /**
      * A method to add components to the view.
      */
-    @Override
-    protected void addComponentsToView() {
+    private void addComponentsToView() {
         this.dataSourceSettingsPane.getChildren().addAll(this.dataSourceTitleLabel, this.dataSourceUrlLabel,
                 this.dataSourceStatusLabel, this.dataSourceEditCredentialsLinkLabel);
         this.fileExporterSettingsPane.getChildren().addAll(this.fileExporterTitleLabel, this.fileExporterOutputPath);

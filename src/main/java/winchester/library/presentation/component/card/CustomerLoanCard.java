@@ -48,8 +48,7 @@ public class CustomerLoanCard extends Card {
     /**
      * A method to initialise any layouts used within the card.
      */
-    @Override
-    protected void initialiseLayouts() {
+    private void initialiseLayouts() {
         this.setPadding(new Insets(10));
         this.actions.setSpacing(10);
         this.loanInformation = new VBox();
@@ -59,8 +58,7 @@ public class CustomerLoanCard extends Card {
     /**
      * A method initialise any controls used within the card.
      */
-    @Override
-    protected void initialiseControls() {
+    private void initialiseControls() {
         this.itemTitleLabel = new Label();
         this.itemTitleLabel.setText(
                 switch(this.referencedItem.getType()) {
@@ -81,8 +79,7 @@ public class CustomerLoanCard extends Card {
     /**
      * A method to bind and add event handlers to controls.
      */
-    @Override
-    protected void bindEventHandlers() {
+    private void bindEventHandlers() {
         this.itemReturnLinkLabel.addEventHandler(MouseEvent.MOUSE_CLICKED, event -> this.returnItem());
         this.viewDetailsLabel.addEventHandler(MouseEvent.MOUSE_CLICKED, event -> this.startIndividualLoansWindow());
     }
@@ -90,8 +87,7 @@ public class CustomerLoanCard extends Card {
     /**
      * A method to add the components to the card.
      */
-    @Override
-    protected void addComponentsToCard() {
+    private void addComponentsToCard() {
         this.actions.getChildren().add(this.itemReturnLinkLabel);
         this.loanInformation.getChildren().addAll(this.itemTitleLabel, this.itemFormatLabel, this.itemLoanDateLabel,
                 this.itemDueDateLabel);

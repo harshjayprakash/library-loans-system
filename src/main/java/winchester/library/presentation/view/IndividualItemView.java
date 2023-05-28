@@ -70,8 +70,7 @@ public final class IndividualItemView extends View {
     /**
      * A method to initialise any layouts used within the view.
      */
-    @Override
-    protected void initialiseLayouts() {
+    private void initialiseLayouts() {
         this.setSpacing(10);
         this.actions = new HBox();
         this.actions.getStyleClass().add("background-secondary");
@@ -90,8 +89,7 @@ public final class IndividualItemView extends View {
     /**
      * A method to initialise any controls used within the view.
      */
-    @Override
-    protected void initialiseControls() {
+    private void initialiseControls() {
         this.exportToFileButton = new Button();
         this.exportToFileButton.setText("Export to File");
         this.itemImageView = new ImageView();
@@ -130,6 +128,9 @@ public final class IndividualItemView extends View {
         }
     }
 
+    /**
+     * A method to initialise components constraints.
+     */
     private void initialiseConstraints() {
         HPos horizontalAlign = HPos.LEFT;
         VPos verticalAlign = VPos.CENTER;
@@ -161,8 +162,7 @@ public final class IndividualItemView extends View {
     /**
      * A method to add components to the view.
      */
-    @Override
-    protected void addComponentsToView() {
+    private void addComponentsToView() {
         this.itemReturnDate.getChildren().addAll(this.itemEarliestReturnTitleLabel, this.itemEarliestReturnLabel);
         this.itemAvailability.getChildren().addAll(
                 this.itemFormatLabel, this.itemStockAvailableLabel,

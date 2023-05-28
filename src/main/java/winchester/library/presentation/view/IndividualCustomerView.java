@@ -50,8 +50,7 @@ public final class IndividualCustomerView extends View {
     /**
      * A method to initialise any layouts used within the view.
      */
-    @Override
-    protected void initialiseLayouts() {
+    private void initialiseLayouts() {
         this.setSpacing(10);
         this.actionsLayout = new ActionPane();
         this.customerInformationLayout = new VBox();
@@ -69,8 +68,7 @@ public final class IndividualCustomerView extends View {
     /**
      * A method to initialise any controls used within the view.
      */
-    @Override
-    protected void initialiseControls() {
+    private void initialiseControls() {
         this.customerInformation = new Text();
         this.customerInformation.setText(this.referencedCustomer.toString());
         this.customerOverduePrice = new Label();
@@ -100,8 +98,7 @@ public final class IndividualCustomerView extends View {
     /**
      * A method to add components to the view.
      */
-    @Override
-    protected void addComponentsToView() {
+    private void addComponentsToView() {
         this.customerLoansLayout.getChildren().addAll(this.customerLoanCardsList);
         this.actionsLayout.getLeftControls().getChildren().addAll(this.addLoansButton, this.refreshButton);
         this.customerInformationLayout.getChildren().addAll(this.customerInformation, this.customerOverduePrice);

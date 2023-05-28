@@ -45,8 +45,7 @@ public final class InventoryView extends View {
     /**
      * A method to initialise any layouts used within the view.
      */
-    @Override
-    protected void initialiseLayouts() {
+    private void initialiseLayouts() {
         this.itemsList = new VBox();
         this.itemsList.getStyleClass().add("background-primary");
         this.itemsList.setSpacing(20);
@@ -58,8 +57,7 @@ public final class InventoryView extends View {
     /**
      * A method to initialise any controls used within the view.
      */
-    @Override
-    protected void initialiseControls() {
+    private void initialiseControls() {
         this.search = new SearchPane();
         this.actions = new ActionPane();
         this.addItemsButton = new Button();
@@ -94,8 +92,7 @@ public final class InventoryView extends View {
     /**
      * A method to add components to the view.
      */
-    @Override
-    protected void addComponentsToView() {
+    private void addComponentsToView() {
         if (this.banner != null) {
             this.getChildren().add(this.banner);
             return;

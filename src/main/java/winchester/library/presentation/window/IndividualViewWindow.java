@@ -92,8 +92,7 @@ public final class IndividualViewWindow extends WindowBase {
     /**
      * A method to initialise any controls used within the window.
      */
-    @Override
-    protected void initialiseControls() {
+    private void initialiseControls() {
         this.header = new HeaderPane(this.windowContentView);
         this.viewsManager = new ViewsManager();
     }
@@ -101,8 +100,7 @@ public final class IndividualViewWindow extends WindowBase {
     /**
      * A method to add any components to the window (stage).
      */
-    @Override
-    protected void addComponentsToStage() {
+    private void addComponentsToStage() {
         this.viewsManager.showView(this.windowContentView, this, this.user, this.item, this.loan);
         this.baseLayout.setTop(this.header);
         this.baseLayout.setCenter(this.viewsManager);

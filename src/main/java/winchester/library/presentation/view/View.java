@@ -23,21 +23,6 @@ public abstract class View extends VBox {
     }
 
     /**
-     * An abstract method to initialise layouts for the view.
-     */
-    protected abstract void initialiseLayouts();
-
-    /**
-     * An abstract method to initialise controls for the view.
-     */
-    protected abstract void initialiseControls();
-
-    /**
-     * An abstract method to add the components to the view.
-     */
-    protected abstract void addComponentsToView();
-
-    /**
      * A method to load stylesheets to style the view.
      */
     private void loadStylesheets() {

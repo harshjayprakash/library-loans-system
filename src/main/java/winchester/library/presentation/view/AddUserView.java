@@ -45,8 +45,7 @@ public final class AddUserView extends View {
     /**
      * A method to initialise any layouts used within the view.
      */
-    @Override
-    protected void initialiseLayouts() {
+    private void initialiseLayouts() {
         this.actionButtonsLayout = new HBox();
         this.actionButtonsLayout.setAlignment(Pos.CENTER_RIGHT);
         this.actionButtonsLayout.setSpacing(10);
@@ -56,8 +55,7 @@ public final class AddUserView extends View {
     /**
      * A method to initialise any controls used within the view.
      */
-    @Override
-    protected void initialiseControls() {
+    private void initialiseControls() {
         this.descriptionLabel = new Label();
         this.descriptionLabel.setText("Please enter the details of the new customer.");
         this.descriptionLabel.setPadding(new Insets(0, 0, 10, 0));
@@ -90,8 +88,7 @@ public final class AddUserView extends View {
     /**
      * A method to add components to the view.
      */
-    @Override
-    protected void addComponentsToView() {
+    private void addComponentsToView() {
         this.actionButtonsLayout.getChildren().addAll(this.cancelButton, this.createButton);
         this.getChildren().addAll(this.descriptionLabel, this.firstNameLabel, this.firstNameField, this.lastNameLabel,
                 this.lastNameField, this.postalCodeLabel, this.postalCodeField, this.actionButtonsLayout);

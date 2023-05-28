@@ -31,8 +31,7 @@ public final class LoansView extends View {
     /**
      * A method to initialise any layouts used within the view.
      */
-    @Override
-    protected void initialiseLayouts() {
+    private void initialiseLayouts() {
         this.loansList = new VBox();
         this.loansList.getStyleClass().add("background-primary");
         this.loansList.setSpacing(20);
@@ -44,8 +43,7 @@ public final class LoansView extends View {
     /**
      * A method to initialise any controls used within the view.
      */
-    @Override
-    protected void initialiseControls() {
+    private void initialiseControls() {
         ArrayList<Loan> loans = DataPersistenceManager.getInstance().getLoans();
         this.loanCards = new ArrayList<>();
         if (loans.isEmpty()) { return; }
@@ -57,8 +55,7 @@ public final class LoansView extends View {
     /**
      * A method to add components to the view.
      */
-    @Override
-    protected void addComponentsToView() {
+    private void addComponentsToView() {
         for (LoanCard card : this.loanCards) {
             this.loansList.getChildren().add(card);
         }

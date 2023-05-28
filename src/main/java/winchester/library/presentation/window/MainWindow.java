@@ -54,8 +54,7 @@ public final class MainWindow extends WindowBase {
     /**
      * A method to initialise controls for the main window.
      */
-    @Override
-    protected void initialiseControls() {
+    private void initialiseControls() {
         this.headerPane = new HeaderPane(Views.HOME);
         this.sidePane = new SidePane(this.currentEmployee);
         this.sidePane.setPrefWidth(150);
@@ -87,8 +86,7 @@ public final class MainWindow extends WindowBase {
     /**
      * A method to add components to the window (stage).
      */
-    @Override
-    protected void addComponentsToStage() {
+    private void addComponentsToStage() {
         this.baseLayout.setLeft(this.sidePane);
         this.baseLayout.setBottom(this.statusPane);
         this.baseLayout.setCenter(this.viewsManager);

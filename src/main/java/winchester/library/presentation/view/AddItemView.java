@@ -92,8 +92,7 @@ public final class AddItemView extends View {
     /**
      * A method to initialise layouts used within this view.
      */
-    @Override
-    protected void initialiseLayouts() {
+    private void initialiseLayouts() {
         this.tabPaneLayout = new TabPane();
         this.tabPaneLayout.setTabClosingPolicy(TabPane.TabClosingPolicy.UNAVAILABLE);
         this.tabPaneLayout.getStyleClass().add("background-primary");
@@ -113,8 +112,7 @@ public final class AddItemView extends View {
     /**
      * A method to initialise controls used within the view.
      */
-    @Override
-    protected void initialiseControls() {
+    private void initialiseControls() {
         this.descriptionLabel = new Label();
         this.descriptionLabel.setText("Please fill in the information of the new item, choosing the type.");
         this.itemTitleLabel = new Label();
@@ -243,8 +241,7 @@ public final class AddItemView extends View {
     /**
      * A method to add components to the view.
      */
-    @Override
-    protected void addComponentsToView() {
+    private void addComponentsToView() {
         this.bookButtonLayout.getChildren().add(this.createBookItemButton);
         this.filmButtonLayout.getChildren().add(this.createFilmItemButton);
         this.filmTabLayout.getChildren().addAll(this.filmDirectorLabel, this.filmDirectorField,

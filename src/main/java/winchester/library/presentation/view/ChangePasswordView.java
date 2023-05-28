@@ -59,8 +59,7 @@ public final class ChangePasswordView extends View {
     /**
      * A method to initialise any layouts used within the view.
      */
-    @Override
-    protected void initialiseLayouts() {
+    private void initialiseLayouts() {
         this.actionButtons = new HBox();
         this.actionButtons.setAlignment(Pos.CENTER_RIGHT);
         this.actionButtons.setPadding(new Insets(15, 0, 0, 0));
@@ -69,8 +68,7 @@ public final class ChangePasswordView extends View {
     /**
      * A method to initialise any controls used within the view.
      */
-    @Override
-    protected void initialiseControls() {
+    private void initialiseControls() {
         this.descriptionLabel = new Label();
         this.descriptionLabel.setText("Please enter your previous password and your new password");
         this.currentUserLabel = new Label();
@@ -119,8 +117,7 @@ public final class ChangePasswordView extends View {
     /**
      * A method to add components to the view.
      */
-    @Override
-    protected void addComponentsToView() {
+    private void addComponentsToView() {
         this.actionButtons.getChildren().addAll(this.cancelButton, this.changePasswordButton);
         this.getChildren().addAll(
                 this.descriptionLabel, this.currentUserLabel, this.currentUserField, this.currentPasswordLabel,

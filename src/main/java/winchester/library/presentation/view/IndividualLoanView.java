@@ -56,8 +56,7 @@ public final class IndividualLoanView extends View {
     /**
      * A method to initialise any layouts used within the view.
      */
-    @Override
-    protected void initialiseLayouts() {
+    private void initialiseLayouts() {
         this.setSpacing(10);
         this.loanActionsLayout = new HBox();
         this.loanActionsLayout.getStyleClass().add("background-secondary-border");
@@ -78,8 +77,7 @@ public final class IndividualLoanView extends View {
     /**
      * A method to initialise any controls used within the view.
      */
-    @Override
-    protected void initialiseControls() {
+    private void initialiseControls() {
         this.extendLoanButton = new Button();
         this.extendLoanButton.setText("Extend loan by 7 days");
         if (this.referencedLoan.getReturned()) { this.extendLoanButton.setDisable(true); }
@@ -103,6 +101,9 @@ public final class IndividualLoanView extends View {
         this.customerInformation.setText(this.referencedLoan.getCustomer().toString());
     }
 
+    /**
+     * A method to initialise constraints for components.
+     */
     private void initialiseConstraints() {
         GridPane.setConstraints(this.overdueTitleLabel, 1, 1, 1, 1,
                 HPos.LEFT, VPos.CENTER, Priority.SOMETIMES, Priority.SOMETIMES, new Insets(3));
@@ -124,8 +125,7 @@ public final class IndividualLoanView extends View {
     /**
      * A method to add components to the view.
      */
-    @Override
-    protected void addComponentsToView() {
+    private void addComponentsToView() {
         this.loanActionsLayout.getChildren().add(this.extendLoanButton);
         this.loanInformationLayout.getChildren().addAll(this.loanIdentifierLabel, this.loanItemInformation);
         this.loanDurationLayout.getChildren().addAll(this.overdueTitleLabel, this.overdueDayCount,

@@ -52,8 +52,7 @@ public final class LoginView extends View {
     /**
      * A method to initialise any layouts used within the view.
      */
-    @Override
-    protected void initialiseLayouts() {
+    private void initialiseLayouts() {
         this.buttonLayout = new HBox();
         this.buttonLayout.setAlignment(Pos.CENTER_RIGHT);
         this.buttonLayout.setPadding(new Insets(15, 0, 0, 0));
@@ -62,8 +61,7 @@ public final class LoginView extends View {
     /**
      * A method to initialise any controls used within the view.
      */
-    @Override
-    protected void initialiseControls() {
+    private void initialiseControls() {
         this.descriptionLabel = new Label();
         this.descriptionLabel.setText(
                 "Please enter your credentials to login.\n"
@@ -87,6 +85,9 @@ public final class LoginView extends View {
         this.registerButton.getStyleClass().add("button-standard");
     }
 
+    /**
+     * A method to initialise constraints to components.
+     */
     private void initialiseConstraints() {
         HBox.setMargin(this.loginButton, new Insets(0, 0, 0, 10));
         HBox.setMargin(this.registerButton, new Insets(0, 0, 0, 20));
@@ -105,8 +106,7 @@ public final class LoginView extends View {
     /**
      * A method to add components to the view.
      */
-    @Override
-    protected void addComponentsToView() {
+    private void addComponentsToView() {
         this.buttonLayout.getChildren().addAll(
                 this.databaseConfigurationLinkLabel, this.registerButton, this.loginButton);
         this.getChildren().addAll(

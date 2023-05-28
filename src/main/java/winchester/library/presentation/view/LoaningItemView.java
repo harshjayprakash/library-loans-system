@@ -44,8 +44,7 @@ public final class LoaningItemView extends View {
     /**
      * A method to initialise any layouts used within the view.
      */
-    @Override
-    protected void initialiseLayouts() {
+    private void initialiseLayouts() {
         this.setSpacing(20);
         this.actionPane = new ActionPane();
         this.scrollPane = new ScrollPane();
@@ -59,8 +58,7 @@ public final class LoaningItemView extends View {
     /**
      * A method to initialise any controls used within the view.
      */
-    @Override
-    protected void initialiseControls() {
+    private void initialiseControls() {
         this.search = new SearchPane();
         this.refreshButton = new Button();
         this.refreshButton.setText("Refresh");
@@ -82,8 +80,7 @@ public final class LoaningItemView extends View {
     /**
      * A method to add components to the view.
      */
-    @Override
-    protected void addComponentsToView() {
+    private void addComponentsToView() {
         this.loaningItemsList.getChildren().addAll(this.loaningItemCardsList);
         this.scrollPane.setContent(this.loaningItemsList);
         this.actionPane.getLeftControls().getChildren().add(refreshButton);

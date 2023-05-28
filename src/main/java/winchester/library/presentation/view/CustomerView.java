@@ -43,8 +43,7 @@ public final class CustomerView extends View {
     /**
      * A method to initialise any layouts used within the view.
      */
-    @Override
-    protected void initialiseLayouts() {
+    private void initialiseLayouts() {
         this.setSpacing(20);
         this.actionsLayout = new ActionPane();
         this.customerList = new VBox();
@@ -58,8 +57,7 @@ public final class CustomerView extends View {
     /**
      * A method to initialise any controls used within the view.
      */
-    @Override
-    protected void initialiseControls() {
+    private void initialiseControls() {
         this.addCustomerButton = new Button();
         this.addCustomerButton.setText("Add Customer");
         this.search = new SearchPane();
@@ -90,8 +88,7 @@ public final class CustomerView extends View {
     /**
      * A method to add components to the view.
      */
-    @Override
-    protected void addComponentsToView() {
+    private void addComponentsToView() {
         if (this.banner != null) {
             this.getChildren().add(this.banner);
             return;

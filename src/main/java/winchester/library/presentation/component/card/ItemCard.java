@@ -46,8 +46,7 @@ public final class ItemCard extends Card {
     /**
      * A method to initialise the layouts that will be used within the card component.
      */
-    @Override
-    protected void initialiseLayouts() {
+    private void initialiseLayouts() {
         this.itemInformation = new VBox();
         this.itemInformation.getStyleClass().add("background-secondary");
         this.itemInformation.setPadding(new Insets(10));
@@ -56,8 +55,7 @@ public final class ItemCard extends Card {
     /**
      * A method to initialise the controls that will be shown within the card component.
      */
-    @Override
-    protected void initialiseControls() {
+    private void initialiseControls() {
         this.itemImageView = new ImageView();
         this.itemImageView.setFitWidth(this.itemImageViewWidth);
         this.itemImageView.setFitHeight(this.itemImageViewHeight);
@@ -98,16 +96,14 @@ public final class ItemCard extends Card {
     /**
      * A method to add event handlers to any controls.
      */
-    @Override
-    protected void bindEventHandlers() {
+    private void bindEventHandlers() {
         this.viewDetailsLabel.addEventHandler(MouseEvent.MOUSE_CLICKED, event -> this.startIndividualItemWindow());
     }
 
     /**
      * A method to add any layouts and controls initialised to the card.
      */
-    @Override
-    protected void addComponentsToCard() {
+    private void addComponentsToCard() {
         this.itemInformation.getChildren().addAll(this.itemNameLabel, this.itemCreatorLabel, this.itemCategoryLabel);
         this.setLeft(this.itemImageView);
         this.setCenter(this.itemInformation);

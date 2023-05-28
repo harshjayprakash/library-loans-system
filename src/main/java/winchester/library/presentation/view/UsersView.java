@@ -41,8 +41,7 @@ public final class UsersView extends View {
     /**
      * A method to initialise any layouts used within the view.
      */
-    @Override
-    protected void initialiseLayouts() {
+    private void initialiseLayouts() {
         this.actionsLayout = new ActionPane();
         this.employeeList = new VBox();
         this.employeeList.getStyleClass().add("background-primary");
@@ -55,8 +54,7 @@ public final class UsersView extends View {
     /**
      * A method to initialise any controls used within the view.
      */
-    @Override
-    protected void initialiseControls() {
+    private void initialiseControls() {
         this.search = new SearchPane();
         this.initialiseUserCards();
     }
@@ -84,8 +82,7 @@ public final class UsersView extends View {
     /**
      * A method to add components to the view.
      */
-    @Override
-    protected void addComponentsToView() {
+    private void addComponentsToView() {
         if (this.banner != null) {
             this.getChildren().add(this.banner);
             return;

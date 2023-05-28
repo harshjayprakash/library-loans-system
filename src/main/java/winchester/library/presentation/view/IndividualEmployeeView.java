@@ -44,8 +44,7 @@ public class IndividualEmployeeView extends View {
     /**
      * A method to initialise any layouts used within the view.
      */
-    @Override
-    protected void initialiseLayouts() {
+    private void initialiseLayouts() {
         this.setSpacing(10);
         this.employeeActionsLayout = new HBox();
         this.employeeActionsLayout.getStyleClass().add("background-secondary-border");
@@ -61,8 +60,7 @@ public class IndividualEmployeeView extends View {
     /**
      * A method to initialise any controls used within the view.
      */
-    @Override
-    protected void initialiseControls() {
+    private void initialiseControls() {
         this.employeeInformation = new Label();
         this.employeeInformation.setText(this.referencedEmployee.toString());
         this.employeeApproveButton = new Button();
@@ -88,8 +86,7 @@ public class IndividualEmployeeView extends View {
     /**
      * A method to add components to the view.
      */
-    @Override
-    protected void addComponentsToView() {
+    private void addComponentsToView() {
         this.employeeActionsLayout.getChildren().addAll(this.employeeApproveButton, this.employeeSetStatusButton);
         this.employeeInformationLayout.getChildren().add(this.employeeInformation);
         this.getChildren().addAll(this.employeeActionsLayout, this.employeeInformationLayout);

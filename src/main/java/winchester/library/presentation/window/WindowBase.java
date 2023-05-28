@@ -41,16 +41,6 @@ public abstract class WindowBase extends Stage {
     public abstract void setHeaderText(String text);
 
     /**
-     * An abstract method to initialise controls within the window.
-     */
-    protected abstract void initialiseControls();
-
-    /**
-     * An abstract method to add components to the window.
-     */
-    protected abstract void addComponentsToStage();
-
-    /**
      * A method to initialise and style the scene.
      */
     private void initialiseScene() {

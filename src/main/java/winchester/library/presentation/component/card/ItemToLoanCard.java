@@ -50,8 +50,7 @@ public class ItemToLoanCard extends Card {
     /**
      * A method to initialise the layouts that will be used within the card component.
      */
-    @Override
-    protected void initialiseLayouts() {
+    private void initialiseLayouts() {
         this.actions.setSpacing(20);
         this.itemInformationLayout = new VBox();
         this.itemInformationLayout.setPadding(new Insets(10));
@@ -60,8 +59,7 @@ public class ItemToLoanCard extends Card {
     /**
      * A method to initialise the controls that will be shown within the card component.
      */
-    @Override
-    protected void initialiseControls() {
+    private void initialiseControls() {
         this.itemInformation = new Text();
         this.addLoanLinkLabel = new Label();
         this.addLoanLinkLabel.getStyleClass().add("link-label");
@@ -89,8 +87,7 @@ public class ItemToLoanCard extends Card {
     /**
      * A method to add event handlers to any controls.
      */
-    @Override
-    protected void bindEventHandlers() {
+    private void bindEventHandlers() {
         this.itemFormatOptionsComboBox.valueProperty().addListener((options, oldValue, newValue) ->
                 this.displayStockAvailableForFormat(newValue));
         this.addLoanLinkLabel.addEventHandler(MouseEvent.MOUSE_CLICKED, event -> this.loanItem());
@@ -99,8 +96,7 @@ public class ItemToLoanCard extends Card {
     /**
      * A method to add any layouts and controls initialised to the card.
      */
-    @Override
-    protected void addComponentsToCard() {
+    private void addComponentsToCard() {
         this.actions.getChildren().clear();
         this.actions.getChildren().addAll(this.itemFormatLabel, this.itemFormatOptionsComboBox, this.itemStockAvailable,
                 this.addLoanLinkLabel);

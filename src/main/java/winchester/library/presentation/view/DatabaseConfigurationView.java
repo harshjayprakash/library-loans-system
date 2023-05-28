@@ -49,8 +49,7 @@ public final class DatabaseConfigurationView extends View {
     /**
      * A method to initialise any layouts used within the view.
      */
-    @Override
-    protected void initialiseLayouts() {
+    private void initialiseLayouts() {
         this.buttonLayout = new HBox();
         this.buttonLayout.setAlignment(Pos.CENTER_RIGHT);
         this.buttonLayout.setPadding(new Insets(15, 0, 0, 0));
@@ -59,8 +58,7 @@ public final class DatabaseConfigurationView extends View {
     /**
      * A method to initialise any controls used within the view.
      */
-    @Override
-    protected void initialiseControls() {
+    private void initialiseControls() {
         this.descriptionLabel = new Label();
         this.descriptionLabel.setText(
             "Setting database connection information can stop the program from functioning."
@@ -99,8 +97,7 @@ public final class DatabaseConfigurationView extends View {
     /**
      * A method to add components to the view.
      */
-    @Override
-    protected void addComponentsToView() {
+    private void addComponentsToView() {
         this.buttonLayout.getChildren().addAll(this.cancelButton, this.saveAndTestButton);
         this.getChildren().addAll(
             this.descriptionLabel, this.urlLabel, this.urlField, this.usernameLabel, this.usernameField, 

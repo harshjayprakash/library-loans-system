@@ -62,8 +62,7 @@ public final class RegisterView extends View {
     /**
      * A method to initialise any layouts used within the view.
      */
-    @Override
-    protected void initialiseLayouts() {
+    private void initialiseLayouts() {
         this.getStyleClass().add("background-primary");
         this.buttonLayout = new HBox();
         this.buttonLayout.setAlignment(Pos.CENTER_RIGHT);
@@ -74,8 +73,7 @@ public final class RegisterView extends View {
     /**
      * A method to initialise any controls used within the view.
      */
-    @Override
-    protected void initialiseControls() {
+    private void initialiseControls() {
         this.descriptionLabel = new Label();
         this.descriptionLabel.setPadding(new Insets(0, 0, 10, 0));
         this.descriptionLabel.setText(
@@ -141,8 +139,7 @@ public final class RegisterView extends View {
     /**
      * A method to add components to the view.
      */
-    @Override
-    protected void addComponentsToView() {
+    private void addComponentsToView() {
         this.buttonLayout.getChildren().addAll(this.backButton, this.requestButton);
         this.getChildren().addAll(
                 this.descriptionLabel, this.firstNameLabel, this.firstNameField, this.lastNameLabel, this.lastNameField,
