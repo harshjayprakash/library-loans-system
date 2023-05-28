@@ -28,6 +28,7 @@ public final class MainWindow extends WindowBase {
 
     /**
      * A constructor for the MainWindow.
+     * @param currentEmployee the current logged in employee.
      */
     public MainWindow(Employee currentEmployee) {
         super();
