@@ -109,11 +109,21 @@ public class QueryBuilder {
         return this;
     }
 
+    /**
+     * A method to create the update part of the sql query.
+     * @param table the table to be updated.
+     * @return the current instance of the QueryType class to allow the chaining of methods.
+     */
     public QueryBuilder update(String table) {
         this.tables = table;
         return this;
     }
 
+    /**
+     * A method to create the set part of the sql query.
+     * @param columns the columns and values to be set.
+     * @return the current instance of the QueryType class to allow the chaining of methods.
+     */
     public QueryBuilder set(String... columns) {
         this.columns = convertToSingleString(columns, ", ");
         return this;
