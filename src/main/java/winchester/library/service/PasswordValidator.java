@@ -5,7 +5,7 @@ package winchester.library.service;
  */
 public final class PasswordValidator {
 
-    public final String passwordRequirements;
+    private final String passwordRequirements;
     private final int passwordLength;
 
     /**
