@@ -6,7 +6,14 @@ import java.util.Optional;
  * An enumeration to represent the categories of items available.
  */
 public enum ItemType {
+    /**
+     * Represent the book item type.
+     */
     BOOK(1, "Book"),
+
+    /**
+     * Represents the film item type.
+     */
     FILM(2, "Film");
 
     private final int identifier;
