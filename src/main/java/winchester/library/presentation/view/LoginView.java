@@ -1,8 +1,13 @@
 package winchester.library.presentation.view;
 
+import java.util.Optional;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
-import javafx.scene.control.*;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Button;
+import javafx.scene.control.Label;
+import javafx.scene.control.PasswordField;
+import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.HBox;
 import winchester.library.data.model.users.Employee;
@@ -12,8 +17,6 @@ import winchester.library.presentation.window.IndividualViewWindow;
 import winchester.library.presentation.window.MainWindow;
 import winchester.library.presentation.window.WindowBase;
 import winchester.library.service.CredentialsChecker;
-
-import java.util.Optional;
 
 /**
  * A view that provides a login system.
