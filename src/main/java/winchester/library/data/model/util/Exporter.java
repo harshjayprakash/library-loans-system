@@ -24,10 +24,10 @@ public class Exporter {
     public boolean export(Exportable exportable) {
         try {
             LocalDateTime dateTime = LocalDateTime.now();
-            DateTimeFormatter filedateTimeFormat = DateTimeFormatter.ofPattern("yyyy-MM-dd HHmmss");
-            DateTimeFormatter displaydateTimeFormat = DateTimeFormatter.ofPattern("HH:mm:ss dd/MM/yyyy");
+            DateTimeFormatter fileDateTimeFormat = DateTimeFormatter.ofPattern("yyyy-MM-dd HHmmss");
+            DateTimeFormatter displayDateTimeFormat = DateTimeFormatter.ofPattern("HH:mm:ss dd/MM/yyyy");
             FileWriter exportFile = new FileWriter(
-                    String.format("exports/%s WL Export.txt", dateTime.format(filedateTimeFormat)));
+                    String.format("exports/%s WL Export.txt", dateTime.format(fileDateTimeFormat)));
             exportFile.write(String.format(
                             """
                             --- Winchester Library Services ---
@@ -35,7 +35,7 @@ public class Exporter {
                             
                             %s
                             
-                            """, dateTime.format(displaydateTimeFormat), exportable.export()));
+                            """, dateTime.format(displayDateTimeFormat), exportable.export()));
             exportFile.close();
         }
         catch (IOException exception) {
