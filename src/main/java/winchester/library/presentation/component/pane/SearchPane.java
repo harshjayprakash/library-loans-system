@@ -4,6 +4,7 @@ import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.HBox;
 
 /**
@@ -67,6 +68,7 @@ public final class SearchPane extends HBox {
     private void bindEventHandlers() {
         this.searchField.textProperty().addListener((observable, oldValue, newValue) ->
             this.searchButton.setText((newValue.isBlank()) ? "Clear Search" : "Search"));
+        this.searchButton.addEventHandler(MouseEvent.MOUSE_CLICKED, event -> this.searchButton.setText("Search"));
     }
 
     /**
