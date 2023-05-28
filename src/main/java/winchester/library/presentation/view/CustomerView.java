@@ -1,7 +1,6 @@
 package winchester.library.presentation.view;
 
 import java.util.ArrayList;
-
 import javafx.scene.control.Button;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.input.MouseEvent;
