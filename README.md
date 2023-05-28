@@ -2,8 +2,6 @@
 
 > A project that demonstrates the use of the Object-Orientated Paradigm as well as the ability of implementing a database.
 
-For instructions on how verify functionality on JetBrains IntelliJ IDEA, please visit [`functionality_verification.md`](functionality_verification.md).
-
 ## 1. Application Information
 
 Below shows the application's package structure
