@@ -19,7 +19,7 @@ create table `library`.`users` (
     `user_type_id`   int            not null,
     `first_name`     varchar(127)   not null,
     `last_name`      varchar(127)   not null,
-    `postal_code`    varchar(10)    not null,
+    `postal_code`    varchar(45)    not null,
     primary key (`user_id`),
     foreign key (`user_type_id`) references `user_types`(`user_type_id`)
 );
