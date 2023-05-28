@@ -133,6 +133,11 @@ public final class LoginView extends View {
                     "This account needs to be approved by an administrator.").show();
             return;
         }
+        if (employee.get().getStatus() == EmployeeStatus.DISABLED) {
+            AlertFactory.createAlert(Alert.AlertType.WARNING, "Failed to login",
+                    "This account has been disabled. Please contact an administrator to re-enable your account").show();
+            return;
+        }
         closeAndStartMainWindow(employee.get());
     }
 
