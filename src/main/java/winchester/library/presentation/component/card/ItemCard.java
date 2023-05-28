@@ -63,7 +63,7 @@ public final class ItemCard extends Card {
         this.itemImageView.setFitHeight(this.itemImageViewHeight);
         try {
             this.itemImageView.setImage(new Image(
-                    this.referencedItem.getImageUrl(), this.itemImageViewWidth, this.itemImageViewHeight, false, false));
+                    this.referencedItem.getImageUrl(), this.itemImageViewWidth, this.itemImageViewHeight, false, true));
         }
         catch (NullPointerException exception) {
             Logger.getInstance().PrintError(
