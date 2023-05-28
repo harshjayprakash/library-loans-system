@@ -4,7 +4,14 @@ package winchester.library.data.access;
  * A set of constant values to provide an easy way to show whether the program is connected to the database.
  */
 public enum DatabaseStatus {
+    /**
+     * Represents that the database is connected.
+     */
     CONNECTED(1, "Connected to data source"),
+
+    /**
+     * Represents that the database connection failed.
+     */
     NOT_CONNECTED(2, "Data source not found");
 
     private final int identifier;
