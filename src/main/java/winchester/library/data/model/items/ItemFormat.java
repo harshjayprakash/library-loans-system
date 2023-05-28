@@ -6,11 +6,34 @@ import java.util.Optional;
  * An enumeration to represent all the different forms that the items are available in.
  */
 public enum ItemFormat {
+    /**
+     * Represents the audiobook item format.
+     */
     AUDIO_BOOK(11, "Audio Book"),
+
+    /**
+     * Represents the physical book item format.
+     */
     PHYSICAL_BOOK(12, "Physical Book"),
+
+    /**
+     * Represents the large print book item format.
+     */
     LARGE_PRINT_BOOK(13, "Large Print Book"),
+
+    /**
+     * Represents the electronic book item format.
+     */
     ELECTRONIC_BOOK(14, "Electronic Book"),
+
+    /**
+     * Represents the DVD item format.
+     */
     DVD_FILM(21, "DVD"),
+
+    /**
+     * Represents the Blu-ray item format.
+     */
     BLU_RAY_FILM(22, "Blu-Ray");
 
     private final int identifier;
