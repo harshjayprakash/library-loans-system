@@ -146,6 +146,7 @@ public class EntityMapper {
     /**
      * A method to retrieve a mapped list of the ItemStock class.
      * @param data the ResultSet from the database operation.
+     * @param type the item type associated with the stock.
      * @return an optional array list of the item stock or empty if an exception has been thrown.
      */
     public Optional<ArrayList<ItemStock>> mapAsItemStock(ResultSet data, ItemType type) {
