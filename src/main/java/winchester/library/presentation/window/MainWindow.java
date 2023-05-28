@@ -1,9 +1,12 @@
 package winchester.library.presentation.window;
 
 import javafx.geometry.Insets;
+import javafx.scene.control.Alert;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.ToggleButton;
 import javafx.scene.input.MouseEvent;
 import winchester.library.data.model.users.Employee;
+import winchester.library.presentation.alert.AlertFactory;
 import winchester.library.presentation.component.pane.HeaderPane;
 import winchester.library.presentation.component.pane.SidePane;
 import winchester.library.presentation.component.pane.StatusPane;
@@ -71,6 +74,10 @@ public final class MainWindow extends WindowBase {
         this.sidePane.getToggleGroup().selectedToggleProperty().addListener(
                 (value, toggle, newToggle) -> this.handleUpdate());
         this.sidePane.getLogOutButton().addEventHandler(MouseEvent.MOUSE_CLICKED, event -> {
+            Optional<ButtonType> result = AlertFactory.createAlert(
+                    Alert.AlertType.CONFIRMATION, "Log Out?", "", ButtonType.NO, ButtonType.YES).showAndWait();
+            if (result.isEmpty()) { return; }
+            if (result.get() == ButtonType.NO) { return; }
             this.close();
             IndividualViewWindow loginView = new IndividualViewWindow(Views.LOGIN);
             loginView.show();
