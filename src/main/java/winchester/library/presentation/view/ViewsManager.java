@@ -33,7 +33,6 @@ public final class ViewsManager extends BorderPane {
         this.setCenter(
                 switch (view) {
                     case HOME -> new HomeView(parentWindow, Employee.castFrom(user));
-                    case NONE -> new NoneView(parentWindow);
                     case LOANS -> new LoansView(parentWindow);
                     case LOGIN -> new LoginView(parentWindow);
                     case USERS -> new UsersView(parentWindow);
