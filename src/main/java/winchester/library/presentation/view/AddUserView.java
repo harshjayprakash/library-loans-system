@@ -114,5 +114,6 @@ public final class AddUserView extends View {
             return;
         }
         AlertFactory.createAlert(Alert.AlertType.INFORMATION, "Successfully created new customer.").show();
+        this.parentWindow.close();
     }
 }
