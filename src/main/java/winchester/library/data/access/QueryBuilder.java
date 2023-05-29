@@ -13,7 +13,7 @@ package winchester.library.data.access;
  *          .toString();
  * </code></pre>
  */
-public class QueryBuilder {
+public final class QueryBuilder {
 
     private String tables;
     private String columns;

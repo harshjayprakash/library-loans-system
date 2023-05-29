@@ -5,7 +5,7 @@ import winchester.library.data.model.users.Employee;
 /**
  * A class that check if a username is valid.
  */
-public class UsernameValidator {
+public final class UsernameValidator {
 
     /**
      * The default constructor.

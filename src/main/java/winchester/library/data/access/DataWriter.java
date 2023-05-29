@@ -11,7 +11,7 @@ import winchester.library.data.model.users.Employee;
 /**
  * A class that abstracts the method of creating a new record within the database.
  */
-public class DataWriter {
+public final class DataWriter {
 
     private final DatabaseCredentials credentials;
 

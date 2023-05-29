@@ -6,7 +6,7 @@ import winchester.library.data.model.items.Film;
 /**
  * A class to check item information.
  */
-public class ItemValidator {
+public final class ItemValidator {
 
     /**
      * The default constructor

@@ -21,7 +21,7 @@ import winchester.library.service.DataPersistenceManager;
 /**
  * A class that provides a control to display item information and the ability to loan a specific format.
  */
-public class ItemToLoanCard extends Card {
+public final class ItemToLoanCard extends Card {
 
     private VBox itemInformationLayout;
     private Text itemInformation;

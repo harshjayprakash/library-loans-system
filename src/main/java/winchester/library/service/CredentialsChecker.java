@@ -6,7 +6,7 @@ import winchester.library.data.model.users.Employee;
 /**
  * A class to check login credentials.
  */
-public class CredentialsChecker {
+public final class CredentialsChecker {
 
     /**
      * The default constructor.

@@ -9,7 +9,7 @@ import winchester.library.data.model.users.EmployeeStatus;
 /**
  * A class that abstracts the method of updating a record within the database.
  */
-public class DataUpdater {
+public final class DataUpdater {
 
     private final DatabaseCredentials credentials;
 

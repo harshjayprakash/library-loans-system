@@ -9,7 +9,7 @@ import winchester.library.data.model.users.Employee;
 /**
  * A class to generate identifiers for entities.
  */
-public class IdentifierGenerator {
+public final class IdentifierGenerator {
 
     /**
      * The default constructor.

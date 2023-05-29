@@ -20,7 +20,7 @@ import winchester.library.service.Searcher;
 /**
  * A class that provides a control to loan out an item to a customer, specifying the format.
  */
-public class CustomerLoanCard extends Card {
+public final class CustomerLoanCard extends Card {
 
     private VBox loanInformation;
     private Label itemTitleLabel;

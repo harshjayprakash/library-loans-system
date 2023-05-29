@@ -23,7 +23,7 @@ import winchester.library.service.Logger;
  * A class that has the ability to map the returned ResultSet from the database connection to the correct list of
  * objects.
  */
-public class EntityMapper {
+public final class EntityMapper {
 
     /**
      * The default constructor

@@ -7,7 +7,7 @@ import winchester.library.data.access.DatabaseCredentials;
 /**
  * A singleton class that provides an abstraction to checking the database status for the graphical user interface.
  */
-public class DatabaseConnectivityChecker {
+public final class DatabaseConnectivityChecker {
 
     private static DatabaseConnectivityChecker instance = null;
     private final DatabaseConnectionTester connectionTester;

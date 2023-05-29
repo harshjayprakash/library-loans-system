@@ -8,7 +8,7 @@ import javafx.scene.layout.HBox;
  * A class that provides an abstraction for the styling and handling controls in the left and right in the BorderPane
  * layout.
  */
-public class ActionPane extends BorderPane {
+public final class ActionPane extends BorderPane {
 
     HBox leftControls;
     HBox rightControls;

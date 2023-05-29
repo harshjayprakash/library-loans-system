@@ -9,7 +9,7 @@ import winchester.library.data.model.users.Employee;
 /**
  * A class that searches through lists of entities.
  */
-public class Searcher {
+public final class Searcher {
 
     /**
      * The default constructor.
