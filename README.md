@@ -34,8 +34,7 @@ This application uses the Maven build tool, which both IntelliJ IDEA and Microso
 Please make sure that Maven is able to download sources and documentation required before proceeding to run the application.
 
 Please ensure that you have the MySQL Server (MariaDB if you are on linux) so that the data provided, in the data folder, 
-can be imported. This folder includes an export from the MySQL Workshop. If this fails the sql queries to create the database 
-have also been provided in `data/library.sql`.
+can be imported. The sql queries to create the database have also been provided in `data/library.sql`.
 
 ## 3 Limitations and Known Issues
 
