@@ -151,7 +151,7 @@ public final class ChangePasswordView extends View {
             AlertFactory.createAlert(Alert.AlertType.ERROR, "Please ensure that all fields are filled in").show();
             return;
         }
-        if (this.confirmNewPasswordField.getText().equals(this.newPasswordField.getText())) {
+        if (!this.confirmNewPasswordField.getText().equals(this.newPasswordField.getText())) {
             AlertFactory.createAlert(Alert.AlertType.ERROR, "New passwords do not match").show();
             return;
         }
