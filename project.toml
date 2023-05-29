@@ -14,7 +14,6 @@ source_dir = "src/main/java/**"
 resources_dir = "src/main/resources/**"
 test_dir = "test/java/**"
 build_dir = "target"
-docs_dir = "docs"
 program_exports = "exports"
 
 [git]
