@@ -1,42 +1,29 @@
-[java]
-jdk = "openjdk 17.0.6 lts"
-organisation = "adoptium eclipse temurin"
+[Project]
+Name = "Library Loans System"
+For = "BSc (Hons) Computer Science: BS2202 Object Orientated Software Development"
+Description = ""
+Version = "1.0.2.1259"
+Entrypoint = "winchester.library.Main.main"
+Language = "Java ^17 LTS"
+Build = "Maven"
 
-[build]
-tool = "maven"
+[Git]
+Initialised = "Public from November 2023"
 
-[editors]
-jetbrains = [ "intellij idea community", "fleet",]
-microsoft = [ "visual studio code",]
+[Structure]
+Source = ["src/main/java/**.java"]
+Assets = ["src/main/resources/**"]
+Tests = ["test/java/**"]
 
-[structure]
-source_dir = "src/main/java/**"
-resources_dir = "src/main/resources/**"
-test_dir = "test/java/**"
-build_dir = "target"
-program_exports = "exports"
+[Output]
+Build = "target"
+Exports = "exports"
 
-[git]
-visibility = "private"
+[Database]
+Type = "MySQL"
+Data = "data/library.sql"
 
-[database]
-type = "mysql"
-driver = "com.mysql.cj.jdbc.Driver"
-url = "jdbc:mysql://localhost:3306/library"
-username = "root"
-password = "dbpassword"
-
-[dependencies]
-openjfx = "17.0.2"
-mysql_connector = "8.0.32"
-junit = "5.9.1"
-
-[project]
-name = "Library Loans System"
-main_function = "winchester.library.Main.main"
-
-[project.version]
-major = 1
-minor = 0
-revision = 2
-build = 1259
+[Dependencies]
+JavaFX = "17.0.2"
+MySQL-Connector = "8.0.32"
+JUnit = "5.9.1"
