@@ -1,56 +1,35 @@
 # Library Loans System
 
-> A project that demonstrates the use of the Object-Orientated Paradigm as well as the ability of implementing a database.
+> A library loaning system that demonstrates the use of object orientated principles as well as the ability of implementing a database.
 
-## 1. Application Information
+This is code that was submitted as an assignment.
 
-Below shows the application's package structure
-```
-winchester/library
-├── data
-│   ├── access
-│   └── model
-├── meta
-├── presentation
-│   ├── component
-│   ├── style
-│   ├── view
-│   └── window
-└── service
-```
+* Submitted: May 2023
+* Module: BS2202 Object-Orientated Software Development
+* Course: BSc (Hons) Computer Science
 
-| package        | name                                                                       |
-|----------------|----------------------------------------------------------------------------|
-| `data.access`  | This contains the interaction with the JDBC Driver to access the database. |
-| `data.model`   | These are all the classes used to represent objects.                       |
-| `meta`         | This contains metadata for program (e.g. version number and name).         |
-| `presentation` | This contains the user interface that the end user will interact with.     |
-| `service`      | This is a layer that helps with the interaction between data and the ui.   |
+The application was written in Java, using the JavaFX GUI Framework.
 
+## Application Structure
 
-## 2 Compilation and Execution
+|Package|Description|
+|:------|:----------|
+|`data.access`| allows access to the database using the MySQL driver. |
+|`data.model`| classes that model the data from the database. |
+|`meta`| contains the metadata for the application. |
+|`service` | contains the logic and translation between the data access and presentation layers. |
+|`presentation` | contains the implementation for the graphical user interface. |
 
-This application uses the Maven build tool, which both IntelliJ IDEA and Microsoft Visual Studio Code have good support for.
-Please make sure that Maven is able to download sources and documentation required before proceeding to run the application.
+## MySQL Database Data
 
-Please ensure that you have the MySQL Server (MariaDB if you are on linux) so that the data provided, in the data folder, 
-can be imported. The sql queries to create the database have also been provided in `data/library.sql`.
+The MySQL default data can be found in a single SQL file found in `./data/library.sql`. This file has been tested multiple times ensure that you can just run this file in the MySQL Workshop.
 
-## 3 Limitations and Known Issues
+The credentials for connecting to the database is found in `winchester.library.data.access.DatabaseCredentials`.
 
-A program is never perfect at its job.
-* Loading the Inventory takes a while due to the images loading from the internet.
-* The search filter can only be cleared when the search text is empty.
-* Refreshing the UI after a change requires restarting the specific window.
-* Accidentally closing the Main Window will require the program to be restarted.
+## Limitations and Known Issues
 
-## 4 Additional Information
-
-```
-Java            := 'Adoptium OpenJDK 17'
-Dependencies    := ['JetBrains Annotations',
-                    'JUnit', 'JavaFX', 'MySQL JDBC Connector']
-Entrypoint      := 'winchester.library.Main.main'
-```
-
-For more technical information, please visit the `project.toml` file.
+* The Individual View Windows can be the same size as the Main Window making it seem that the window's scene has changed.
+* The Individual View Windows can be initalised and shown multiple times without a limit.
+* The images are requested from the internet directly, which makes the inventory view slower to load and there no garantee on how long the images will be available.
+* Refreshing of information in the GUI.
+* Changing the database credentials through the GUI is not permanent.
