@@ -1,3 +1,5 @@
+![Banner](banner.png)
+
 # Library Loans System
 
 > A library loaning system that demonstrates the use of object orientated principles as well as the ability of implementing a database.
