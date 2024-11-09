@@ -62,9 +62,23 @@ links to access different views within the system.
 
 ![Home Page and Settings Page](./docs/lls-home-settings.PNG)
 
+The inventory pages allows the addition of new DVDs and Books, or searching through these
+items that are on the system. Viewing the details of an item shows general information and
+the stock available and if any are on loan. The program can export all this information to
+a text file.
+
 ![Inventory Pages](./docs/lls-inventory.PNG)
 
+The customers refer to the users loaning out the items in the library. It contains a list
+of customers, which can searched through. Each customer has their own view displaying all
+the loans and stating any overdue fees. Further details of each loan can be viewed and
+having the option to extend.
+
 ![Loan Pages](./docs/lls-loan.PNG)
+
+The final page displays a list of staff that have accounts within the library system. This
+is only visible to administative users, since within gives the ability to approve and
+disable (or enable) accounts.
 
 ![Users Page](./docs/lls-users.PNG)
 
