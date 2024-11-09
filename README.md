@@ -6,6 +6,9 @@
 
 The "Library Loans System" is an application for intenal use within a library. This
 "proof of concept" app allows the loaning of books and DVDs to customers of the library.
+This was for the module BS2202 Object-Orientated Software Development at the University
+of Winchester. The Original Hand-In was in May of 2022. **This project will not be**
+**developed further.**
 
 ## Original Requirements
 
@@ -18,15 +21,29 @@ approval by an admin).
 * The application is developed using Java following the object-orientated design using
 inheritance, a database and a GUI which utilises JavaFX or AWT/Swing.
 
+## Structural Overview
+
+| Package        | Description                             |
+| :------------- | :-------------------------------------- |
+| `data.access`  | Database interactions.                  |
+| `data.model`   | Represents data structures.             |
+| `meta`         | Application metadata.                   |
+| `service`      | Handles business logic and transitions. |
+| `presentation` | Implementes graphical user interface.   |
+
 ## Database Setup
 
 This program uses the MySQL Database Connector. A single SQL file can be used to build the
 database (`./data/library.sql`) by running through the MySQL CLI or Workshop.
 
-As this is a "proof of concept", login credentials are stored in the `DatabaseCredentials` class. _This is not a secure way to store credentials._
+As this is a "proof of concept", login credentials are stored in the `DatabaseCredentials`
+class. _This is not a secure way to store credentials. In production, you would use an_
+_ORM instead of interacting with the driver directly._
 
 ## Execution
 
+This project uses the Maven build tool to simplify handling dependencies and development
+process. IDEs such as VSCode, IntelliJ IDEA and NetBrains support Maven.
 
 ## Usage
 
