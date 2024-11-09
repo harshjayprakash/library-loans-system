@@ -54,12 +54,24 @@ options to temporarily change the database configuration.
 
 ![Login Window](./docs/lls-login.PNG)
 
+After credentials are validated, the main window is displayed, with the home view with
+a small summary of loans and items and the ability to change the password. This window
+offers a settings page, allowing database credential changes, displaying program
+information as well as where exports will be saved. The main window offers navigation
+links to access different views within the system.
+
 ![Home Page and Settings Page](./docs/lls-home-settings.PNG)
 
+![Inventory Pages](./docs/lls-inventory.PNG)
+
+![Loan Pages](./docs/lls-loan.PNG)
+
+![Users Page](./docs/lls-users.PNG)
 
 ## References
 
 * JavaFX (under GPL 2.0): <https://github.com/openjdk/jfx>
-* MySQL Connector (under GPL 2.0 w/ FOSS Exception): <https://github.com/mysql/mysql-connector-j>
+* MySQL Connector (under GPL 2.0 w/ FOSS Exception):
+<https://github.com/mysql/mysql-connector-j>
 * JUnit (under EPL 2.0): <https://junit.org/junit5/>
 * JetBrains Annotations (Apache 2.0): <https://github.com/JetBrains/java-annotations>
