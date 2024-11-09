@@ -88,4 +88,5 @@ disable (or enable) accounts.
 * MySQL Connector (under GPL 2.0 w/ FOSS Exception):
 <https://github.com/mysql/mysql-connector-j>
 * JUnit (under EPL 2.0): <https://junit.org/junit5/>
-* JetBrains Annotations (Apache 2.0): <https://github.com/JetBrains/java-annotations>
+* JetBrains Annotations (under Apache 2.0): 
+<https://github.com/JetBrains/java-annotations>
