@@ -47,9 +47,14 @@ process. IDEs such as VSCode, IntelliJ IDEA and NetBrains support Maven.
 
 ## Usage
 
+On startup, the login window allows the user to enter their credentials before displaying
+the main part of the system. A member of staff can register but will have to approved by
+an administrator before continuing to their account. In case of error, the window offers
+options to temporarily change the database configuration.
+
 ![Login Window](./docs/lls-login.PNG)
 
-
+![Home Page and Settings Page](./docs/lls-home-settings.PNG)
 
 
 ## References
